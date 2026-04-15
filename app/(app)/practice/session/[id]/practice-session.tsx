@@ -1,0 +1,495 @@
+'use client'
+
+import { useState, useEffect, useRef, useCallback } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import {
+  Mic, Square, Play, Volume2, ChevronRight,
+  Star, BookOpen, Lightbulb, Save, CheckCircle,
+  AlertCircle, Loader2, RotateCcw
+} from 'lucide-react'
+import { toast } from 'sonner'
+import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { ScoreCard } from '@/components/practice/score-card'
+import { AudioRecorder } from '@/components/practice/audio-recorder'
+import { cn, bandToColor, formatDuration } from '@/lib/utils'
+import type { IELTSQuestion, ScoreBreakdown, QARecord } from '@/types'
+
+interface Props {
+  sessionId: string
+  topic: string
+  part: 'PART1' | 'PART2' | 'PART3'
+  count: number
+}
+
+type Phase = 'loading' | 'intro' | 'question' | 'recording' | 'scoring' | 'result' | 'complete'
+
+export function PracticeSession({ sessionId, topic, part, count }: Props) {
+  const [phase, setPhase] = useState<Phase>('loading')
+  const [questions, setQuestions] = useState<IELTSQuestion[]>([])
+  const [currentIdx, setCurrentIdx] = useState(0)
+  const [qaRecords, setQaRecords] = useState<QARecord[]>([])
+  const [currentScore, setCurrentScore] = useState<ScoreBreakdown | null>(null)
+  const [transcript, setTranscript] = useState('')
+  const [sampleAnswer, setSampleAnswer] = useState('')
+  const [vocabData, setVocabData] = useState<{ vocabulary: string[]; idioms: string[] } | null>(null)
+  const [loadingSample, setLoadingSample] = useState(false)
+  const [loadingVocab, setLoadingVocab] = useState(false)
+  const [savedItems, setSavedItems] = useState<string[]>([])
+  const [elapsed, setElapsed] = useState(0)
+  const timerRef = useRef<NodeJS.Timeout | undefined>(undefined)
+
+  const currentQuestion = questions[currentIdx]
+
+  // Load questions
+  useEffect(() => {
+    async function loadQuestions() {
+      try {
+        const res = await fetch('/api/ai/question', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ topic, part, count }),
+        })
+        const data = await res.json()
+        setQuestions(data.questions || [])
+        setPhase('intro')
+      } catch {
+        toast.error('Không tải được câu hỏi. Vui lòng thử lại.')
+      }
+    }
+    loadQuestions()
+  }, [topic, part, count])
+
+  // Timer
+  useEffect(() => {
+    if (phase === 'question' || phase === 'recording') {
+      timerRef.current = setInterval(() => setElapsed(e => e + 1), 1000)
+    } else {
+      clearInterval(timerRef.current)
+    }
+    return () => clearInterval(timerRef.current)
+  }, [phase])
+
+  async function playQuestion(text: string) {
+    try {
+      const res = await fetch('/api/speech/tts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text }),
+      })
+      const blob = await res.blob()
+      const url = URL.createObjectURL(blob)
+      const audio = new Audio(url)
+      audio.play()
+    } catch {
+      // TTS failed silently — user can still read the question
+    }
+  }
+
+  function startQuestion() {
+    setPhase('question')
+    setCurrentScore(null)
+    setTranscript('')
+    setSampleAnswer('')
+    setVocabData(null)
+    if (currentQuestion) {
+      setTimeout(() => playQuestion(currentQuestion.question), 300)
+    }
+  }
+
+  async function onRecordingComplete(audioBlob: Blob, transcriptText: string) {
+    setTranscript(transcriptText)
+    setPhase('scoring')
+
+    try {
+      const res = await fetch('/api/ai/score', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          question: currentQuestion?.question,
+          transcript: transcriptText,
+          part,
+          type: 'PRACTICE',
+          topic,
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok) {
+        toast.error(data.error || 'Không chấm được điểm')
+        setPhase('question')
+        return
+      }
+      setCurrentScore(data.score)
+      setPhase('result')
+
+      // Add to records
+      const record: QARecord = {
+        question: currentQuestion!,
+        transcript: transcriptText,
+        score: data.score,
+      }
+      setQaRecords(prev => [...prev, record])
+    } catch {
+      toast.error('Lỗi chấm điểm. Vui lòng thử lại.')
+      setPhase('question')
+    }
+  }
+
+  async function loadSampleAnswer() {
+    setLoadingSample(true)
+    try {
+      const res = await fetch('/api/ai/sample', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question: currentQuestion?.question, part, type: 'answer' }),
+      })
+      const data = await res.json()
+      setSampleAnswer(data.answer || '')
+    } catch {
+      toast.error('Không tải được câu trả lời mẫu')
+    } finally {
+      setLoadingSample(false)
+    }
+  }
+
+  async function loadVocabAndIdioms() {
+    setLoadingVocab(true)
+    try {
+      const res = await fetch('/api/ai/sample', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question: currentQuestion?.question, type: 'vocab', topic }),
+      })
+      const data = await res.json()
+      setVocabData(data)
+    } catch {
+      toast.error('Không tải được từ vựng')
+    } finally {
+      setLoadingVocab(false)
+    }
+  }
+
+  async function saveItem(content: string, type: 'VOCABULARY' | 'IDIOM') {
+    try {
+      await fetch('/api/review/save', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          content,
+          type,
+          context: currentQuestion?.question,
+          topic,
+        }),
+      })
+      setSavedItems(prev => [...prev, content])
+      toast.success('Đã lưu vào mục Ôn tập!')
+    } catch {
+      toast.error('Không lưu được')
+    }
+  }
+
+  function nextQuestion() {
+    if (currentIdx + 1 >= questions.length) {
+      setPhase('complete')
+    } else {
+      setCurrentIdx(i => i + 1)
+      setPhase('question')
+      setCurrentScore(null)
+      setTranscript('')
+      setSampleAnswer('')
+      setVocabData(null)
+      if (questions[currentIdx + 1]) {
+        setTimeout(() => playQuestion(questions[currentIdx + 1].question), 300)
+      }
+    }
+  }
+
+  const avgScore = qaRecords.length > 0
+    ? (qaRecords.reduce((s, r) => s + r.score.overall, 0) / qaRecords.length).toFixed(1)
+    : null
+
+  // ===== RENDER =====
+
+  if (phase === 'loading') {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
+        <Loader2 size={40} className="text-cyan-400 animate-spin" />
+        <p className="text-[var(--text-secondary)]">AI đang chuẩn bị câu hỏi về "{topic}"...</p>
+      </div>
+    )
+  }
+
+  if (phase === 'complete') {
+    return (
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="max-w-2xl mx-auto space-y-6">
+        <Card className="text-center py-8">
+          <div className="text-5xl mb-4">🎉</div>
+          <h2 className="text-2xl font-bold text-[var(--text)] mb-2">Hoàn thành buổi luyện tập!</h2>
+          <p className="text-[var(--text-secondary)] mb-6">
+            Bạn đã trả lời {qaRecords.length} câu hỏi về chủ đề <strong className="text-cyan-400">{topic}</strong>
+          </p>
+          {avgScore && (
+            <div className={cn('text-5xl font-bold mb-2', bandToColor(parseFloat(avgScore)))}>
+              Band {avgScore}
+            </div>
+          )}
+          <p className="text-[var(--text-secondary)] text-sm mb-8">Điểm trung bình buổi luyện tập này</p>
+
+          <div className="grid grid-cols-3 gap-4 mb-8">
+            {qaRecords.map((r, i) => (
+              <div key={i} className="rounded-xl border border-[var(--border)] p-3">
+                <div className={cn('text-xl font-bold', bandToColor(r.score.overall))}>
+                  {r.score.overall.toFixed(1)}
+                </div>
+                <div className="text-xs text-[var(--text-secondary)]">Câu {i + 1}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Button variant="gradient" onClick={() => window.location.href = '/practice'}>
+              Luyện tiếp
+            </Button>
+            <Button variant="secondary" onClick={() => window.location.href = '/review'}>
+              <BookOpen size={16} />
+              Xem từ vựng đã lưu
+            </Button>
+          </div>
+        </Card>
+      </motion.div>
+    )
+  }
+
+  if (phase === 'intro') {
+    return (
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-2xl mx-auto">
+        <Card className="text-center py-10">
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-500 to-violet-600 flex items-center justify-center mx-auto mb-6">
+            <Mic size={28} className="text-white" />
+          </div>
+          <h2 className="text-2xl font-bold text-[var(--text)] mb-2">
+            {part} — {topic}
+          </h2>
+          <p className="text-[var(--text-secondary)] mb-2">
+            {count} câu hỏi · AI giám khảo sẽ đọc câu hỏi cho bạn
+          </p>
+          <div className="text-sm text-[var(--text-secondary)] bg-[var(--bg-secondary)] rounded-xl p-4 mb-8 text-left">
+            <p className="font-medium text-[var(--text)] mb-2">📌 Hướng dẫn:</p>
+            <ul className="space-y-1 list-disc list-inside">
+              <li>Nhấn <strong>Play</strong> để nghe câu hỏi từ AI giám khảo</li>
+              <li>Nhấn nút <strong>Ghi âm</strong> khi sẵn sàng trả lời</li>
+              <li>Nói rõ ràng và tự nhiên bằng tiếng Anh</li>
+              <li>Nhấn <strong>Dừng</strong> khi trả lời xong để nhận điểm</li>
+            </ul>
+          </div>
+          <Button variant="gradient" size="lg" onClick={startQuestion}>
+            <Play size={18} />
+            Bắt đầu
+          </Button>
+        </Card>
+      </motion.div>
+    )
+  }
+
+  return (
+    <div className="max-w-2xl mx-auto space-y-4">
+      {/* Progress */}
+      <div className="flex items-center justify-between text-sm text-[var(--text-secondary)]">
+        <span>Câu {currentIdx + 1}/{questions.length}</span>
+        <span>{formatDuration(elapsed)}</span>
+        <Badge variant="info">{part}</Badge>
+      </div>
+      <div className="h-1.5 rounded-full bg-[var(--border)]">
+        <div
+          className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-violet-600 transition-all duration-300"
+          style={{ width: `${((currentIdx) / questions.length) * 100}%` }}
+        />
+      </div>
+
+      {/* Question card */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentIdx}
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -20 }}
+        >
+          <Card>
+            <div className="flex items-start justify-between gap-3 mb-4">
+              <div className="text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wide">
+                {currentQuestion?.part} · {topic}
+              </div>
+              <button
+                onClick={() => currentQuestion && playQuestion(currentQuestion.question)}
+                className="p-2 rounded-xl bg-cyan-400/10 text-cyan-400 hover:bg-cyan-400/20 transition-all flex-shrink-0"
+                title="Nghe lại câu hỏi"
+              >
+                <Volume2 size={16} />
+              </button>
+            </div>
+
+            <p className="text-lg font-medium text-[var(--text)] mb-4 leading-relaxed">
+              {currentQuestion?.question}
+            </p>
+
+            {currentQuestion?.cueCard && (
+              <div className="bg-[var(--bg-secondary)] rounded-xl p-4 mb-4">
+                <p className="text-xs font-semibold text-cyan-400 uppercase mb-2">Cue Card</p>
+                <ul className="space-y-1">
+                  {currentQuestion.cueCard.map((item, i) => (
+                    <li key={i} className="text-sm text-[var(--text)] flex items-start gap-2">
+                      <span className="text-cyan-400 mt-0.5">•</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                {part === 'PART2' && (
+                  <p className="text-xs text-yellow-400 mt-2 font-medium">
+                    ⏱ Bạn có 1 phút chuẩn bị, sau đó nói trong 2 phút.
+                  </p>
+                )}
+              </div>
+            )}
+
+            {currentQuestion?.hint && (
+              <p className="text-xs text-[var(--text-secondary)] italic">
+                💡 Gợi ý: {currentQuestion.hint}
+              </p>
+            )}
+          </Card>
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Recording */}
+      {(phase === 'question' || phase === 'recording' || phase === 'scoring') && (
+        <AudioRecorder
+          onComplete={onRecordingComplete}
+          onStart={() => setPhase('recording')}
+          disabled={phase === 'scoring'}
+        />
+      )}
+
+      {/* Scoring indicator */}
+      {phase === 'scoring' && (
+        <div className="flex items-center justify-center gap-3 py-6">
+          <Loader2 size={24} className="text-cyan-400 animate-spin" />
+          <span className="text-[var(--text-secondary)]">AI đang chấm điểm...</span>
+        </div>
+      )}
+
+      {/* Score result */}
+      {phase === 'result' && currentScore && (
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
+          <ScoreCard score={currentScore} transcript={transcript} />
+
+          {/* Actions */}
+          <div className="grid sm:grid-cols-2 gap-3">
+            <Button
+              variant="secondary"
+              onClick={loadSampleAnswer}
+              loading={loadingSample}
+            >
+              <Star size={16} className="text-yellow-400" />
+              Câu trả lời mẫu Band 8.0
+            </Button>
+            <Button
+              variant="secondary"
+              onClick={loadVocabAndIdioms}
+              loading={loadingVocab}
+            >
+              <Lightbulb size={16} className="text-cyan-400" />
+              Từ vựng & Idioms hay
+            </Button>
+          </div>
+
+          {/* Sample answer */}
+          <AnimatePresence>
+            {sampleAnswer && (
+              <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}>
+                <Card className="border-yellow-500/20 bg-yellow-500/5">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Star size={16} className="text-yellow-400" />
+                    <h4 className="font-semibold text-[var(--text)]">Câu trả lời mẫu Band 8.0</h4>
+                    <Badge variant="premium" className="ml-auto">Mẫu</Badge>
+                  </div>
+                  <p className="text-sm text-[var(--text)] leading-relaxed">{sampleAnswer}</p>
+                </Card>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Vocab & Idioms */}
+          <AnimatePresence>
+            {vocabData && (
+              <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}>
+                <Card>
+                  <h4 className="font-semibold text-[var(--text)] mb-4">
+                    <Lightbulb size={16} className="inline mr-2 text-cyan-400" />
+                    Từ vựng & Idioms liên quan
+                  </h4>
+                  {vocabData.vocabulary.length > 0 && (
+                    <div className="mb-4">
+                      <h5 className="text-xs font-semibold text-cyan-400 uppercase mb-2">Từ vựng</h5>
+                      <div className="space-y-2">
+                        {vocabData.vocabulary.map((v, i) => (
+                          <div key={i} className="flex items-center justify-between gap-3 py-2 border-b border-[var(--border)] last:border-0">
+                            <span className="text-sm text-[var(--text)]">{v}</span>
+                            <button
+                              onClick={() => saveItem(v, 'VOCABULARY')}
+                              disabled={savedItems.includes(v)}
+                              className="flex-shrink-0 text-xs text-cyan-400 hover:text-cyan-300 disabled:text-emerald-400 transition-colors"
+                            >
+                              {savedItems.includes(v) ? <CheckCircle size={14} /> : <Save size={14} />}
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  {vocabData.idioms.length > 0 && (
+                    <div>
+                      <h5 className="text-xs font-semibold text-violet-400 uppercase mb-2">Idioms & Collocations</h5>
+                      <div className="space-y-2">
+                        {vocabData.idioms.map((idiom, i) => (
+                          <div key={i} className="flex items-center justify-between gap-3 py-2 border-b border-[var(--border)] last:border-0">
+                            <span className="text-sm text-[var(--text)]">{idiom}</span>
+                            <button
+                              onClick={() => saveItem(idiom, 'IDIOM')}
+                              disabled={savedItems.includes(idiom)}
+                              className="flex-shrink-0 text-xs text-violet-400 hover:text-violet-300 disabled:text-emerald-400 transition-colors"
+                            >
+                              {savedItems.includes(idiom) ? <CheckCircle size={14} /> : <Save size={14} />}
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </Card>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Next / Complete */}
+          <Button
+            variant="gradient"
+            size="lg"
+            className="w-full"
+            onClick={nextQuestion}
+          >
+            {currentIdx + 1 >= questions.length ? (
+              <>
+                <CheckCircle size={18} /> Xem kết quả tổng
+              </>
+            ) : (
+              <>
+                Câu tiếp theo <ChevronRight size={18} />
+              </>
+            )}
+          </Button>
+        </motion.div>
+      )}
+    </div>
+  )
+}

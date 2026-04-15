@@ -1,0 +1,142 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String    @id @default(cuid())
+  email          String    @unique
+  name           String?
+  avatar         String?
+  passwordHash   String?
+  isPremium      Boolean   @default(false)
+  premiumUntil   DateTime?
+  tokens         Int       @default(30)
+  lives          Int       @default(5)
+  livesLastRegen DateTime  @default(now())
+  referralCode   String    @unique @default(cuid())
+  referredBy     String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  accounts         Account[]
+  sessions         Session[]
+  practiceSessions PracticeSession[]
+  savedItems       SavedItem[]
+  lessonProgress   LessonProgress[]
+  referrals        Referral[]   @relation("ReferrerReferrals")
+  streaks          Streak[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+enum SessionType {
+  BEGINNER
+  PRACTICE
+  MOCK_TEST
+}
+
+enum IELTSPart {
+  PART1
+  PART2
+  PART3
+  FULL
+}
+
+enum SavedType {
+  VOCABULARY
+  IDIOM
+  SAMPLE_ANSWER
+}
+
+model PracticeSession {
+  id        String      @id @default(cuid())
+  userId    String
+  type      SessionType
+  topic     String
+  part      IELTSPart?
+  questions Json
+  scores    Json
+  duration  Int         @default(0)
+  createdAt DateTime    @default(now())
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model SavedItem {
+  id        String    @id @default(cuid())
+  userId    String
+  type      SavedType
+  content   String
+  context   String?
+  topic     String?
+  createdAt DateTime  @default(now())
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model LessonProgress {
+  id          String    @id @default(cuid())
+  userId      String
+  lessonId    String
+  completed   Boolean   @default(false)
+  score       Int?
+  completedAt DateTime?
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, lessonId])
+}
+
+model Referral {
+  id          String   @id @default(cuid())
+  referrerId  String
+  refereeId   String   @unique
+  hasUsedApp  Boolean  @default(false)
+  rewardGiven Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  referrer    User     @relation("ReferrerReferrals", fields: [referrerId], references: [id], onDelete: Cascade)
+}
+
+model Streak {
+  id        String   @id @default(cuid())
+  userId    String
+  date      DateTime @db.Date
+  practiced Boolean  @default(true)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, date])
+}
