@@ -11,8 +11,6 @@ export interface ScoreBreakdown {
   grammar: number
   pronunciation: number
   feedback: string
-  strengths: string[]
-  improvements: string[]
   corrections?: Correction[]
 }
 

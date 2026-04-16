@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { TrendingUp, MessageSquare, BookOpen, Settings, Volume2, AlertCircle } from 'lucide-react'
+import { TrendingUp, BookOpen, Settings, Volume2, AlertCircle } from 'lucide-react'
 import { Card } from '@/components/ui/card'
 import { cn, bandToColor } from '@/lib/utils'
 import type { ScoreBreakdown, Correction } from '@/types'
@@ -173,34 +173,6 @@ export function ScoreCard({ score, transcript }: ScoreCardProps) {
             <p className="text-sm text-[var(--text)]">{score.feedback}</p>
           </div>
         )}
-
-        {/* Strengths & Improvements */}
-        <div className="grid sm:grid-cols-2 gap-4 mb-4">
-          {score.strengths?.length > 0 && (
-            <div>
-              <h5 className="text-xs font-semibold text-emerald-400 uppercase mb-2">✅ Điểm mạnh</h5>
-              <ul className="space-y-1">
-                {score.strengths.map((s, i) => (
-                  <li key={i} className="text-xs text-[var(--text-secondary)] flex items-start gap-1.5">
-                    <span className="text-emerald-400 mt-0.5">•</span> {s}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-          {score.improvements?.length > 0 && (
-            <div>
-              <h5 className="text-xs font-semibold text-orange-400 uppercase mb-2">💡 Cần cải thiện</h5>
-              <ul className="space-y-1">
-                {score.improvements.map((s, i) => (
-                  <li key={i} className="text-xs text-[var(--text-secondary)] flex items-start gap-1.5">
-                    <span className="text-orange-400 mt-0.5">•</span> {s}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
 
         {/* Grammar corrections */}
         {hasCorrections && (
