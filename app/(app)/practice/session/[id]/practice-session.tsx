@@ -38,6 +38,8 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
   const [loadingVocab, setLoadingVocab] = useState(false)
   const [savedItems, setSavedItems] = useState<string[]>([])
   const [elapsed, setElapsed] = useState(0)
+  const [ttsState, setTtsState] = useState<'idle' | 'loading' | 'playing'>('idle')
+  const currentAudioRef = useRef<HTMLAudioElement | null>(null)
   const timerRef = useRef<NodeJS.Timeout | undefined>(undefined)
 
   const currentQuestion = questions[currentIdx]
@@ -72,17 +74,36 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
   }, [phase])
 
   async function playQuestion(text: string) {
+    // Stop any currently playing TTS
+    if (currentAudioRef.current) {
+      currentAudioRef.current.pause()
+      currentAudioRef.current = null
+    }
+    setTtsState('loading')
     try {
       const res = await fetch('/api/speech/tts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text }),
       })
+      if (!res.ok) throw new Error('TTS failed')
       const blob = await res.blob()
       const url = URL.createObjectURL(blob)
       const audio = new Audio(url)
+      currentAudioRef.current = audio
+      setTtsState('playing')
+      audio.onended = () => {
+        setTtsState('idle')
+        currentAudioRef.current = null
+        URL.revokeObjectURL(url)
+      }
+      audio.onerror = () => {
+        setTtsState('idle')
+        currentAudioRef.current = null
+      }
       audio.play()
     } catch {
+      setTtsState('idle')
       // TTS failed silently — user can still read the question
     }
   }
@@ -322,12 +343,51 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
               </div>
               <button
                 onClick={() => currentQuestion && playQuestion(currentQuestion.question)}
-                className="p-2 rounded-xl bg-cyan-400/10 text-cyan-400 hover:bg-cyan-400/20 transition-all flex-shrink-0"
-                title="Nghe lại câu hỏi"
+                disabled={ttsState === 'loading'}
+                className={cn(
+                  'p-2 rounded-xl transition-all flex-shrink-0 flex items-center gap-1.5',
+                  ttsState === 'playing'
+                    ? 'bg-cyan-400/20 text-cyan-400'
+                    : ttsState === 'loading'
+                      ? 'bg-cyan-400/10 text-cyan-400/60 cursor-wait'
+                      : 'bg-cyan-400/10 text-cyan-400 hover:bg-cyan-400/20'
+                )}
+                title={ttsState === 'playing' ? 'Đang đọc...' : 'Nghe lại câu hỏi'}
               >
-                <Volume2 size={16} />
+                {ttsState === 'loading' ? (
+                  <Loader2 size={16} className="animate-spin" />
+                ) : ttsState === 'playing' ? (
+                  <Volume2 size={16} className="animate-pulse" />
+                ) : (
+                  <Volume2 size={16} />
+                )}
+                <span className="text-xs hidden sm:inline">
+                  {ttsState === 'loading' ? 'Đang tải...' : ttsState === 'playing' ? 'Đang đọc' : 'Nghe đề'}
+                </span>
               </button>
             </div>
+
+            {/* TTS playing indicator */}
+            {ttsState === 'playing' && (
+              <motion.div
+                initial={{ opacity: 0, y: -4 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                className="flex items-center gap-2 mb-3 text-xs text-cyan-400"
+              >
+                <div className="flex items-end gap-0.5 h-4">
+                  {[...Array(5)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="w-1 bg-cyan-400 rounded-full"
+                      animate={{ height: ['4px', '12px', '4px'] }}
+                      transition={{ duration: 0.6, repeat: Infinity, delay: i * 0.12 }}
+                    />
+                  ))}
+                </div>
+                <span>Giám khảo đang đọc câu hỏi...</span>
+              </motion.div>
+            )}
 
             <p className="text-lg font-medium text-[var(--text)] mb-4 leading-relaxed">
               {currentQuestion?.question}

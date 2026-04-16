@@ -2,7 +2,7 @@
 
 import { useState, useRef, useCallback } from 'react'
 import { motion } from 'framer-motion'
-import { Mic, Square, AlertCircle } from 'lucide-react'
+import { Mic, Square, AlertCircle, Upload } from 'lucide-react'
 import { toast } from 'sonner'
 import { cn } from '@/lib/utils'
 
@@ -16,10 +16,12 @@ export function AudioRecorder({ onComplete, onStart, disabled }: AudioRecorderPr
   const [isRecording, setIsRecording] = useState(false)
   const [audioLevel, setAudioLevel] = useState(0)
   const [processing, setProcessing] = useState(false)
+  const [uploadProcessing, setUploadProcessing] = useState(false)
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
   const chunksRef = useRef<Blob[]>([])
   const analyserRef = useRef<AnalyserNode | null>(null)
   const animFrameRef = useRef<number | undefined>(undefined)
+  const fileInputRef = useRef<HTMLInputElement | null>(null)
 
   const startRecording = useCallback(async () => {
     try {
@@ -94,7 +96,42 @@ export function AudioRecorder({ onComplete, onStart, disabled }: AudioRecorderPr
     setIsRecording(false)
   }, [])
 
-  if (processing) {
+  const handleFileUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+    // Reset input so the same file can be re-selected
+    e.target.value = ''
+
+    const allowed = ['audio/webm', 'audio/mp4', 'audio/mpeg', 'audio/wav', 'audio/ogg', 'audio/mp3', 'audio/m4a', 'audio/x-m4a']
+    if (!allowed.includes(file.type) && !file.name.match(/\.(webm|mp4|mp3|wav|ogg|m4a)$/i)) {
+      toast.error('Định dạng không hỗ trợ. Vui lòng dùng MP3, WAV, M4A, hoặc WebM.')
+      return
+    }
+
+    setUploadProcessing(true)
+    onStart?.()
+
+    try {
+      const formData = new FormData()
+      formData.append('audio', file, file.name)
+
+      const res = await fetch('/api/speech/stt', { method: 'POST', body: formData })
+      const data = await res.json()
+
+      if (!res.ok || !data.transcript) {
+        toast.error('Không nhận dạng được âm thanh. Thử lại với file khác.')
+        setUploadProcessing(false)
+        return
+      }
+
+      onComplete(file, data.transcript)
+    } catch {
+      toast.error('Lỗi xử lý file âm thanh. Vui lòng thử lại.')
+      setUploadProcessing(false)
+    }
+  }, [onComplete, onStart])
+
+  if (processing || uploadProcessing) {
     return (
       <div className="flex flex-col items-center justify-center py-8 gap-3">
         <div className="w-16 h-16 rounded-full border-4 border-cyan-400/30 border-t-cyan-400 animate-spin" />
@@ -121,22 +158,57 @@ export function AudioRecorder({ onComplete, onStart, disabled }: AudioRecorderPr
         </div>
       )}
 
-      {/* Record button */}
-      <motion.button
-        onClick={isRecording ? stopRecording : startRecording}
-        disabled={disabled}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        className={cn(
-          'w-20 h-20 rounded-full flex items-center justify-center transition-all shadow-lg',
-          isRecording
-            ? 'bg-red-500 recording-pulse glow-violet'
-            : 'bg-gradient-to-br from-cyan-500 to-violet-600 glow-cyan hover:opacity-90',
-          disabled && 'opacity-50 cursor-not-allowed'
+      {/* Buttons row */}
+      <div className="flex items-center gap-4">
+        {/* Record button */}
+        <motion.button
+          onClick={isRecording ? stopRecording : startRecording}
+          disabled={disabled}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className={cn(
+            'w-20 h-20 rounded-full flex items-center justify-center transition-all shadow-lg',
+            isRecording
+              ? 'bg-red-500 recording-pulse glow-violet'
+              : 'bg-gradient-to-br from-cyan-500 to-violet-600 glow-cyan hover:opacity-90',
+            disabled && 'opacity-50 cursor-not-allowed'
+          )}
+        >
+          {isRecording ? <Square size={28} className="text-white" /> : <Mic size={28} className="text-white" />}
+        </motion.button>
+
+        {/* Upload button */}
+        {!isRecording && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="flex flex-col items-center gap-1"
+          >
+            <motion.button
+              onClick={() => fileInputRef.current?.click()}
+              disabled={disabled}
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.92 }}
+              title="Tải lên file âm thanh (MP3, WAV, M4A...)"
+              className={cn(
+                'w-11 h-11 rounded-full flex items-center justify-center transition-all',
+                'bg-[var(--bg-secondary)] border border-[var(--border)] hover:border-cyan-400/50 hover:bg-cyan-400/10',
+                disabled && 'opacity-50 cursor-not-allowed'
+              )}
+            >
+              <Upload size={18} className="text-[var(--text-secondary)]" />
+            </motion.button>
+            <span className="text-[10px] text-[var(--text-secondary)]">Upload</span>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="audio/*,.mp3,.wav,.m4a,.webm,.ogg"
+              className="hidden"
+              onChange={handleFileUpload}
+            />
+          </motion.div>
         )}
-      >
-        {isRecording ? <Square size={28} className="text-white" /> : <Mic size={28} className="text-white" />}
-      </motion.button>
+      </div>
 
       <p className="text-sm text-[var(--text-secondary)] text-center">
         {isRecording
@@ -148,7 +220,7 @@ export function AudioRecorder({ onComplete, onStart, disabled }: AudioRecorderPr
       {!isRecording && !disabled && (
         <p className="text-xs text-[var(--text-secondary)] flex items-center gap-1">
           <AlertCircle size={12} />
-          Đảm bảo cho phép quyền microphone
+          Không có mic? Nhấn Upload để tải file âm thanh lên
         </p>
       )}
     </div>
