@@ -94,7 +94,7 @@ export function MockTestSession({ sessionId, topic }: Props) {
   }
 
   function calcFinalScore(records: QARecord[]): ScoreBreakdown {
-    if (records.length === 0) return { overall: 0, fluency: 0, lexical: 0, grammar: 0, pronunciation: 0, feedback: '', strengths: [], improvements: [] }
+    if (records.length === 0) return { overall: 0, fluency: 0, lexical: 0, grammar: 0, pronunciation: 0, feedback: '' }
     const avg = (key: keyof ScoreBreakdown) =>
       records.reduce((s, r) => s + (r.score[key] as number), 0) / records.length
 
@@ -109,8 +109,6 @@ export function MockTestSession({ sessionId, topic }: Props) {
       grammar: parseFloat((avg('grammar')).toFixed(1)),
       pronunciation: parseFloat((avg('pronunciation')).toFixed(1)),
       feedback: `Bạn đã hoàn thành bài thi thử với band ước tính ${rounded}. Điều này dựa trên ${records.length} câu trả lời trong toàn bộ bài thi.`,
-      strengths: records.flatMap(r => r.score.strengths || []).slice(0, 3),
-      improvements: records.flatMap(r => r.score.improvements || []).slice(0, 3),
     }
   }
 
