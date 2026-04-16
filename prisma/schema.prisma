@@ -140,3 +140,12 @@ model Streak {
 
   @@unique([userId, date])
 }
+
+// Admin-managed lesson content overrides (replaces static data in lib/lessons-data.ts)
+model LessonContent {
+  id        String   @id @default(cuid())
+  lessonId  String   @unique
+  data      Json
+  updatedAt DateTime @updatedAt
+  updatedBy String?
+}
