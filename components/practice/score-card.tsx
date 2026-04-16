@@ -1,10 +1,10 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { TrendingUp, MessageSquare, BookOpen, Settings, Volume2 } from 'lucide-react'
+import { TrendingUp, MessageSquare, BookOpen, Settings, Volume2, AlertCircle } from 'lucide-react'
 import { Card } from '@/components/ui/card'
 import { cn, bandToColor } from '@/lib/utils'
-import type { ScoreBreakdown } from '@/types'
+import type { ScoreBreakdown, Correction } from '@/types'
 
 interface ScoreCardProps {
   score: ScoreBreakdown
@@ -64,6 +64,64 @@ function MiniBar({ value, max = 9 }: { value: number; max?: number }) {
   )
 }
 
+// Highlight wrong words red, show correction in green inline
+function HighlightedTranscript({ text, corrections }: { text: string; corrections: Correction[] }) {
+  if (!corrections || corrections.length === 0) {
+    return <span className="text-xs text-[var(--text-secondary)] italic">"{text}"</span>
+  }
+
+  // Find each correction's position in the original text
+  const matches = corrections
+    .map(c => {
+      const idx = text.toLowerCase().indexOf(c.wrong.toLowerCase())
+      if (idx < 0) return null
+      return { ...c, idx, endIdx: idx + c.wrong.length }
+    })
+    .filter((m): m is NonNullable<typeof m> => m !== null)
+    .sort((a, b) => a.idx - b.idx)
+
+  if (matches.length === 0) {
+    return <span className="text-xs text-[var(--text-secondary)] italic">"{text}"</span>
+  }
+
+  const nodes: React.ReactNode[] = []
+  let cursor = 0
+
+  for (const match of matches) {
+    if (match.idx < cursor) continue // skip overlapping matches
+
+    // Normal text before this match
+    if (match.idx > cursor) {
+      nodes.push(
+        <span key={`t${cursor}`} className="text-[var(--text-secondary)] italic">
+          {text.slice(cursor, match.idx)}
+        </span>
+      )
+    }
+
+    // Wrong word (red strikethrough) → correct word (green)
+    nodes.push(
+      <span key={`e${match.idx}`} className="inline-flex items-baseline gap-0.5 mx-0.5" title={match.note}>
+        <span className="text-red-400 line-through italic">{text.slice(match.idx, match.endIdx)}</span>
+        <span className="text-emerald-400 font-semibold not-italic">({match.correct})</span>
+      </span>
+    )
+
+    cursor = match.endIdx
+  }
+
+  // Remaining text after last match
+  if (cursor < text.length) {
+    nodes.push(
+      <span key={`t${cursor}`} className="text-[var(--text-secondary)] italic">
+        {text.slice(cursor)}
+      </span>
+    )
+  }
+
+  return <span className="text-xs leading-relaxed">{nodes}</span>
+}
+
 export function ScoreCard({ score, transcript }: ScoreCardProps) {
   const getBand = (s: number) => {
     if (s >= 8.5) return 'Xuất sắc'
@@ -73,6 +131,8 @@ export function ScoreCard({ score, transcript }: ScoreCardProps) {
     if (s >= 4.5) return 'Trung bình'
     return 'Cần cải thiện'
   }
+
+  const hasCorrections = score.corrections && score.corrections.length > 0
 
   return (
     <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
@@ -115,7 +175,7 @@ export function ScoreCard({ score, transcript }: ScoreCardProps) {
         )}
 
         {/* Strengths & Improvements */}
-        <div className="grid sm:grid-cols-2 gap-4">
+        <div className="grid sm:grid-cols-2 gap-4 mb-4">
           {score.strengths?.length > 0 && (
             <div>
               <h5 className="text-xs font-semibold text-emerald-400 uppercase mb-2">✅ Điểm mạnh</h5>
@@ -130,7 +190,7 @@ export function ScoreCard({ score, transcript }: ScoreCardProps) {
           )}
           {score.improvements?.length > 0 && (
             <div>
-              <h5 className="text-xs font-semibold text-orange-400 uppercase mb-2">💡 Cải thiện</h5>
+              <h5 className="text-xs font-semibold text-orange-400 uppercase mb-2">💡 Cần cải thiện</h5>
               <ul className="space-y-1">
                 {score.improvements.map((s, i) => (
                   <li key={i} className="text-xs text-[var(--text-secondary)] flex items-start gap-1.5">
@@ -142,16 +202,49 @@ export function ScoreCard({ score, transcript }: ScoreCardProps) {
           )}
         </div>
 
-        {/* Transcript */}
-        {transcript && (
-          <details className="mt-4">
-            <summary className="text-xs text-[var(--text-secondary)] cursor-pointer hover:text-[var(--text)] transition-colors">
-              Xem bản ghi âm của bạn
-            </summary>
-            <div className="mt-2 text-xs text-[var(--text-secondary)] bg-[var(--bg-secondary)] rounded-lg p-3 italic">
-              "{transcript}"
+        {/* Grammar corrections */}
+        {hasCorrections && (
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="border border-red-400/20 bg-red-400/5 rounded-xl p-4 mb-4"
+          >
+            <h5 className="text-xs font-semibold text-red-400 uppercase mb-3 flex items-center gap-1.5">
+              <AlertCircle size={12} />
+              Sửa lỗi ({score.corrections!.length} lỗi)
+            </h5>
+            <div className="space-y-2">
+              {score.corrections!.map((c, i) => (
+                <div key={i} className="flex items-start gap-2 text-xs">
+                  <span className="shrink-0 w-4 h-4 rounded-full bg-red-400/20 text-red-400 flex items-center justify-center text-[10px] font-bold mt-0.5">{i + 1}</span>
+                  <div className="flex flex-wrap items-baseline gap-x-1.5 gap-y-0.5">
+                    <span className="text-red-400 line-through">{c.wrong}</span>
+                    <span className="text-[var(--text-secondary)]">→</span>
+                    <span className="text-emerald-400 font-medium">{c.correct}</span>
+                    {c.note && (
+                      <span className="text-[var(--text-secondary)] opacity-60">({c.note})</span>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
-          </details>
+          </motion.div>
+        )}
+
+        {/* Transcript with inline highlights */}
+        {transcript && (
+          <div className="mt-2">
+            <h5 className="text-xs font-semibold text-[var(--text-secondary)] uppercase mb-2">
+              Câu trả lời của bạn
+              {hasCorrections && <span className="ml-1 text-red-400">— lỗi được gạch đỏ</span>}
+            </h5>
+            <div className="bg-[var(--bg-secondary)] rounded-xl p-3 leading-relaxed">
+              {hasCorrections
+                ? <HighlightedTranscript text={transcript} corrections={score.corrections!} />
+                : <span className="text-xs text-[var(--text-secondary)] italic">"{transcript}"</span>
+              }
+            </div>
+          </div>
         )}
       </Card>
     </motion.div>

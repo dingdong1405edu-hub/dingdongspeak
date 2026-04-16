@@ -16,6 +16,7 @@ export interface ScoreResult {
   feedback: string
   strengths: string[]
   improvements: string[]
+  corrections: Array<{ wrong: string; correct: string; note?: string }>
 }
 
 export interface IELTSQuestion {
@@ -43,16 +44,23 @@ Question: "${question}"
 Part: ${part}
 Candidate response: "${transcript}"
 
-Score this response. Return ONLY valid JSON:
+Score this response. Also find ALL grammar, vocabulary, and spelling errors in the candidate response.
+For each error, provide the exact wrong word/phrase as it appears, the corrected version, and a very brief note.
+Only include real errors — do not invent errors that are not present.
+
+Return ONLY valid JSON:
 {
   "overall": <number 0-9 in 0.5 increments>,
   "fluency": <number 0-9>,
   "lexical": <number 0-9>,
   "grammar": <number 0-9>,
   "pronunciation": <number 0-9>,
-  "feedback": "<2-3 sentence overall feedback>",
+  "feedback": "<2-3 sentence overall feedback in English>",
   "strengths": ["<strength 1>", "<strength 2>"],
-  "improvements": ["<improvement 1>", "<improvement 2>", "<improvement 3>"]
+  "improvements": ["<improvement 1>", "<improvement 2>", "<improvement 3>"],
+  "corrections": [
+    {"wrong": "<exact wrong word/phrase from response>", "correct": "<corrected version>", "note": "<brief grammar/spelling note>"}
+  ]
 }`
 
   try {
@@ -107,18 +115,23 @@ export async function generateSampleAnswer(
   band: number = 8
 ): Promise<string> {
   const lengthGuide = {
-    PART1: '2-3 sentences, 30-40 words',
-    PART2: '2 minute speech, 250-300 words with clear structure',
-    PART3: '3-5 sentences, 60-80 words with analysis',
+    PART1: '2-3 sentences, 30-45 words',
+    PART2: '2-minute speech, 230-280 words, clear intro-body-conclusion',
+    PART3: '3-5 sentences, 60-80 words with opinion + reason + example',
   }
 
-  const prompt = `Write a Band ${band}.0 IELTS Speaking sample answer for:
-Question: "${question}"
+  const prompt = `Write a Band ${band}.0 IELTS Speaking model answer for this exact question:
+"${question}"
 Part: ${part}
-Length: ${lengthGuide[part as keyof typeof lengthGuide] || '50-80 words'}
+Target length: ${lengthGuide[part as keyof typeof lengthGuide] || '50-80 words'}
 
-Requirements: varied vocabulary, discourse markers, complex grammar, natural fillers.
-Respond with ONLY the sample answer text, no labels.`
+Requirements:
+- Answer ONLY based on the question above, do NOT reference any previous student response
+- Use varied academic vocabulary, natural discourse markers, complex sentence structures
+- Include natural spoken fillers (well, actually, to be honest...)
+- Sound fluent and natural, like a high-scoring IELTS candidate
+
+Output the sample answer text ONLY, no labels, no preamble.`
 
   try {
     const result = await getModel().generateContent(prompt)
@@ -133,13 +146,18 @@ export async function generateVocabAndIdioms(
   topic: string
 ): Promise<{ vocabulary: string[]; idioms: string[] }> {
   const prompt = `For the IELTS Speaking topic "${topic}" and question "${question}", provide:
-- 5 advanced vocabulary words/phrases with brief definitions
-- 3 useful idioms or collocations
+- 5 useful vocabulary words/phrases relevant to this topic
+- 3 natural idioms or collocations that fit this topic
+
+Rules:
+- Each entry must be SHORT: "word — nghĩa tiếng Việt" (Vietnamese meaning only, max 5 words)
+- No long English definitions
+- Choose words a Vietnamese IELTS learner would actually use
 
 Return ONLY valid JSON:
 {
-  "vocabulary": ["word - definition", "word - definition", ...],
-  "idioms": ["idiom - meaning", "idiom - meaning", "idiom - meaning"]
+  "vocabulary": ["word — nghĩa TV", "phrase — nghĩa TV", ...],
+  "idioms": ["idiom — nghĩa TV", "idiom — nghĩa TV", "idiom — nghĩa TV"]
 }`
 
   try {
@@ -193,13 +211,16 @@ async function scoreWithGroq(question: string, transcript: string, part: string)
     model: 'llama-3.3-70b-versatile',
     messages: [{
       role: 'user',
-      content: `Score IELTS Speaking response strictly. Q: "${question}" | Response: "${transcript}" | Part: ${part}
-Return JSON: {"overall":6.0,"fluency":6.0,"lexical":6.0,"grammar":6.0,"pronunciation":6.0,"feedback":"...","strengths":["..."],"improvements":["..."]}`
+      content: `Score this IELTS Speaking response strictly. Q: "${question}" | Response: "${transcript}" | Part: ${part}
+Find grammar/spelling errors in the response and list them.
+Return JSON: {"overall":6.0,"fluency":6.0,"lexical":6.0,"grammar":6.0,"pronunciation":6.0,"feedback":"...","strengths":["..."],"improvements":["..."],"corrections":[{"wrong":"...","correct":"...","note":"..."}]}`
     }],
     response_format: { type: 'json_object' },
   })
 
-  return JSON.parse(completion.choices[0].message.content || '{}') as ScoreResult
+  const result = JSON.parse(completion.choices[0].message.content || '{}') as ScoreResult
+  if (!result.corrections) result.corrections = []
+  return result
 }
 
 function getDefaultQuestions(topic: string, part: string, count: number): IELTSQuestion[] {

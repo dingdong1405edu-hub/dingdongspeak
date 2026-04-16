@@ -1,3 +1,9 @@
+export interface Correction {
+  wrong: string
+  correct: string
+  note?: string
+}
+
 export interface ScoreBreakdown {
   overall: number
   fluency: number
@@ -7,6 +13,7 @@ export interface ScoreBreakdown {
   feedback: string
   strengths: string[]
   improvements: string[]
+  corrections?: Correction[]
 }
 
 export interface IELTSQuestion {
