@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import {
   ChevronRight, ArrowLeft, Trophy, Check, X, Volume2,
-  BookOpen, Lightbulb, Mic, RotateCcw, Star
+  BookOpen, Lightbulb, Mic, RotateCcw, Star, Printer
 } from 'lucide-react'
 import { toast } from 'sonner'
 import { AudioRecorder } from '@/components/practice/audio-recorder'
@@ -16,6 +16,83 @@ interface Props {
   lesson: LessonData
   lessonId: string
   stageColor: string
+}
+
+async function exportLessonPDF(lesson: LessonData) {
+  const { jsPDF } = await import('jspdf')
+  const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' })
+
+  const margin = 18
+  const pageW = 210
+  let y = margin
+
+  function addText(text: string, opts: { size?: number; bold?: boolean; color?: [number, number, number]; indent?: number } = {}) {
+    const { size = 11, bold = false, color = [30, 30, 30], indent = 0 } = opts
+    doc.setFontSize(size)
+    doc.setFont('helvetica', bold ? 'bold' : 'normal')
+    doc.setTextColor(...color)
+    const lines = doc.splitTextToSize(text, pageW - margin * 2 - indent)
+    if (y + lines.length * (size * 0.45) > 280) { doc.addPage(); y = margin }
+    doc.text(lines, margin + indent, y)
+    y += lines.length * (size * 0.45) + 3
+  }
+
+  function addSpacer(h = 4) { y += h }
+  function addDivider() {
+    doc.setDrawColor(200, 200, 200)
+    doc.line(margin, y, pageW - margin, y)
+    y += 5
+  }
+
+  // Header
+  doc.setFillColor(0, 180, 216)
+  doc.rect(0, 0, pageW, 28, 'F')
+  doc.setFont('helvetica', 'bold')
+  doc.setFontSize(16)
+  doc.setTextColor(255, 255, 255)
+  doc.text('DingDongSpeak', margin, 11)
+  doc.setFontSize(10)
+  doc.setFont('helvetica', 'normal')
+  doc.text(`${lesson.title} · ${lesson.level} · ${lesson.type === 'vocabulary' ? 'Từ vựng' : 'Ngữ pháp'}`, margin, 20)
+  y = 36
+
+  if (lesson.type === 'vocabulary') {
+    addText('DANH SÁCH TỪ VỰNG', { size: 13, bold: true, color: [0, 150, 200] })
+    addDivider()
+    for (const card of lesson.cards) {
+      if (card.type !== 'vocab') continue
+      addText(`${card.word}  ${card.phonetic}`, { size: 12, bold: true })
+      addText(`${card.pos}  —  ${card.meaning}`, { size: 10, color: [80, 80, 80], indent: 3 })
+      addText(`"${card.example}"`, { size: 10, color: [100, 100, 100], indent: 3 })
+      addSpacer(3)
+      addDivider()
+    }
+  } else if (lesson.type === 'grammar') {
+    addText('LÝ THUYẾT NGỮ PHÁP', { size: 13, bold: true, color: [70, 130, 220] })
+    addDivider()
+    for (const card of lesson.cards) {
+      if (card.type !== 'grammar') continue
+      addText(card.rule, { size: 12, bold: true })
+      addText(card.explanation, { size: 10, color: [50, 50, 50], indent: 3 })
+      addSpacer(2)
+      addText('Ví dụ:', { size: 10, bold: true, indent: 3, color: [80, 80, 80] })
+      for (const ex of card.examples) {
+        addText(`• ${ex}`, { size: 10, color: [60, 60, 60], indent: 6 })
+      }
+      addSpacer(1)
+      addText(`💡 ${card.tip}`, { size: 9, color: [160, 120, 0], indent: 3 })
+      addSpacer(3)
+      addDivider()
+    }
+  }
+
+  // Footer
+  const today = new Date().toLocaleDateString('vi-VN')
+  doc.setFontSize(8)
+  doc.setTextColor(160, 160, 160)
+  doc.text(`DingDongSpeak · Xuất ngày ${today}`, margin, 292)
+
+  doc.save(`${lesson.title.replace(/\s+/g, '_')}.pdf`)
 }
 
 // ─── Vocab card UI ────────────────────────────────────────────────────────────
@@ -371,6 +448,15 @@ export function LessonClient({ lesson, lessonId, stageColor }: Props) {
             />
           </div>
         </div>
+        {(lesson.type === 'vocabulary' || lesson.type === 'grammar') && (
+          <button
+            onClick={() => exportLessonPDF(lesson)}
+            title="In PDF"
+            className="p-2 rounded-xl hover:bg-[var(--bg-secondary)] transition-all text-[var(--text-secondary)] hover:text-cyan-400"
+          >
+            <Printer size={16} />
+          </button>
+        )}
       </div>
 
       {/* Phase indicator */}

@@ -1,41 +1,66 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { GraduationCap, Mic, Volume2, ChevronRight, Clock, Loader2, Star, BookOpen, Lightbulb, Save, CheckCircle } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { GraduationCap, Mic, Volume2, ChevronRight, Clock, Loader2, BookOpen, CheckCircle } from 'lucide-react'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { AudioRecorder } from '@/components/practice/audio-recorder'
 import { ScoreCard } from '@/components/practice/score-card'
-import { cn, bandToColor, formatDuration } from '@/lib/utils'
+import { cn, formatDuration } from '@/lib/utils'
 import type { IELTSQuestion, ScoreBreakdown, QARecord } from '@/types'
 
-interface Props { sessionId: string; topic: string }
+interface Props { sessionId: string }
 
 type Phase = 'loading' | 'briefing' | 'part1' | 'part2-prep' | 'part2' | 'part3' | 'scoring-all' | 'complete'
 
-const MOCK_QUESTIONS_FALLBACK: IELTSQuestion[] = [
-  { id: 'q1', question: 'Can you tell me your full name please?', part: 'PART1' },
-  { id: 'q2', question: 'Where are you from?', part: 'PART1' },
-  { id: 'q3', question: 'Do you work or are you a student?', part: 'PART1' },
-  { id: 'q4', question: `Describe a time when you learned something new about ${'{topic}'}.`, part: 'PART2', cueCard: ['What it was', 'When you learned it', 'How you learned it', 'How it affected you'] },
-  { id: 'q5', question: `How important is education about this topic in schools?`, part: 'PART3' },
-  { id: 'q6', question: `What role should the government play in promoting awareness about this topic?`, part: 'PART3' },
+// 50+ IELTS topics — AI picks randomly
+const IELTS_TOPIC_POOL = [
+  'Hometown & Living', 'Work & Career', 'Education & Study', 'Family & Relationships',
+  'Health & Fitness', 'Technology & Internet', 'Environment & Climate', 'Travel & Tourism',
+  'Food & Cooking', 'Sports & Exercise', 'Music & Entertainment', 'Books & Reading',
+  'Shopping & Fashion', 'Transport & Commuting', 'Housing & Accommodation',
+  'Hobbies & Free Time', 'Social Media & Communication', 'Science & Innovation',
+  'Government & Politics', 'Economy & Business', 'Arts & Culture', 'Wildlife & Nature',
+  'Language & Learning', 'Memory & Childhood', 'Friendship & Social Life',
+  'Crime & Safety', 'Media & News', 'Space & Exploration', 'Robots & AI',
+  'Water & Energy Resources', 'Tourism & Heritage', 'Volunteering & Community',
+  'Sleep & Mental Health', 'Weather & Seasons', 'Traditions & Celebrations',
 ]
 
-export function MockTestSession({ sessionId, topic }: Props) {
+function pickRandomTopic(): string {
+  return IELTS_TOPIC_POOL[Math.floor(Math.random() * IELTS_TOPIC_POOL.length)]
+}
+
+const MOCK_FALLBACK: IELTSQuestion[] = [
+  { id: 'q1', question: 'Can you tell me your full name please?', part: 'PART1' },
+  { id: 'q2', question: 'Where are you currently living?', part: 'PART1' },
+  { id: 'q3', question: 'Do you work or are you a student?', part: 'PART1' },
+  { id: 'q4', question: 'What do you enjoy doing in your free time?', part: 'PART1' },
+  { id: 'q5', question: 'Describe a memorable experience from your life.', part: 'PART2', cueCard: ['What happened', 'When and where', 'Who was involved', 'Why it was memorable'] },
+  { id: 'q6', question: 'Do you think personal experiences shape who we are?', part: 'PART3' },
+  { id: 'q7', question: 'How has modern life changed the way people spend their time?', part: 'PART3' },
+  { id: 'q8', question: 'What role should education play in preparing people for real life?', part: 'PART3' },
+  { id: 'q9', question: 'In your opinion, what makes someone successful?', part: 'PART3' },
+]
+
+interface PendingAnswer { question: IELTSQuestion; transcript: string }
+
+export function MockTestSession({ sessionId }: Props) {
+  const [topic] = useState(() => pickRandomTopic())
   const [phase, setPhase] = useState<Phase>('loading')
   const [part1Qs, setPart1Qs] = useState<IELTSQuestion[]>([])
   const [part2Q, setPart2Q] = useState<IELTSQuestion | null>(null)
   const [part3Qs, setPart3Qs] = useState<IELTSQuestion[]>([])
   const [currentPart1Idx, setCurrentPart1Idx] = useState(0)
-  const [qaRecords, setQaRecords] = useState<QARecord[]>([])
+  const [p3Idx, setP3Idx] = useState(0)
   const [prepTimer, setPrepTimer] = useState(60)
   const [elapsed, setElapsed] = useState(0)
-  const [savedItems, setSavedItems] = useState<string[]>([])
+  const [pendingAnswers, setPendingAnswers] = useState<PendingAnswer[]>([])
   const [finalScores, setFinalScores] = useState<ScoreBreakdown | null>(null)
+  const [scoringProgress, setScoringProgress] = useState(0)
 
   // Load questions
   useEffect(() => {
@@ -46,12 +71,16 @@ export function MockTestSession({ sessionId, topic }: Props) {
           fetch('/api/ai/question', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ topic, part: 'PART2', count: 1 }) }).then(r => r.json()),
           fetch('/api/ai/question', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ topic, part: 'PART3', count: 4 }) }).then(r => r.json()),
         ])
-        setPart1Qs(p1.questions || [])
-        setPart2Q(p2.questions?.[0] || null)
-        setPart3Qs(p3.questions || [])
+        setPart1Qs(p1.questions?.length ? p1.questions : MOCK_FALLBACK.filter(q => q.part === 'PART1'))
+        setPart2Q(p2.questions?.[0] || MOCK_FALLBACK.find(q => q.part === 'PART2') || null)
+        setPart3Qs(p3.questions?.length ? p3.questions : MOCK_FALLBACK.filter(q => q.part === 'PART3'))
         setPhase('briefing')
       } catch {
-        toast.error('Lỗi tải câu hỏi')
+        toast.error('Lỗi tải câu hỏi, dùng câu hỏi mặc định')
+        setPart1Qs(MOCK_FALLBACK.filter(q => q.part === 'PART1'))
+        setPart2Q(MOCK_FALLBACK.find(q => q.part === 'PART2') || null)
+        setPart3Qs(MOCK_FALLBACK.filter(q => q.part === 'PART3'))
+        setPhase('briefing')
       }
     }
     load()
@@ -66,7 +95,7 @@ export function MockTestSession({ sessionId, topic }: Props) {
     return () => clearInterval(interval)
   }, [phase])
 
-  // Prep countdown
+  // Part 2 prep countdown
   useEffect(() => {
     if (phase !== 'part2-prep') return
     if (prepTimer <= 0) { setPhase('part2'); return }
@@ -82,99 +111,130 @@ export function MockTestSession({ sessionId, topic }: Props) {
     } catch {}
   }
 
-  async function handleAnswerComplete(question: IELTSQuestion, transcript: string) {
-    const res = await fetch('/api/ai/score', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ question: question.question, transcript, part: question.part, type: 'MOCK_TEST', topic }),
-    })
-    const data = await res.json()
-    if (!res.ok) { toast.error(data.error || 'Chấm điểm lỗi'); return }
-    setQaRecords(prev => [...prev, { question, transcript, score: data.score }])
-    return data.score as ScoreBreakdown
+  // Store answer without scoring — advance immediately
+  function recordAnswer(question: IELTSQuestion, transcript: string) {
+    setPendingAnswers(prev => [...prev, { question, transcript }])
+  }
+
+  // Score all answers at the end
+  async function scoreAllAnswers(answers: PendingAnswer[]) {
+    setPhase('scoring-all')
+    const qaRecords: QARecord[] = []
+    for (let i = 0; i < answers.length; i++) {
+      const { question, transcript } = answers[i]
+      try {
+        const res = await fetch('/api/ai/score', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ question: question.question, transcript, part: question.part, type: 'MOCK_TEST', topic }),
+        })
+        const data = await res.json()
+        if (res.ok && data.score) {
+          qaRecords.push({ question, transcript, score: data.score })
+        }
+      } catch {}
+      setScoringProgress(Math.round(((i + 1) / answers.length) * 100))
+    }
+    if (qaRecords.length === 0) {
+      toast.error('Không thể chấm điểm')
+      return
+    }
+    setFinalScores(calcFinalScore(qaRecords))
+    setPhase('complete')
   }
 
   function calcFinalScore(records: QARecord[]): ScoreBreakdown {
-    if (records.length === 0) return { overall: 0, fluency: 0, lexical: 0, grammar: 0, pronunciation: 0, feedback: '' }
-    const avg = (key: keyof ScoreBreakdown) =>
+    const avg = (key: keyof Pick<ScoreBreakdown, 'overall' | 'fluency' | 'lexical' | 'grammar' | 'pronunciation'>) =>
       records.reduce((s, r) => s + (r.score[key] as number), 0) / records.length
-
-    const overall = parseFloat((avg('overall')).toFixed(1))
+    const overall = parseFloat(avg('overall').toFixed(1))
     const validBands = [0, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9]
     const rounded = validBands.reduce((prev, curr) => Math.abs(curr - overall) < Math.abs(prev - overall) ? curr : prev)
-
     return {
       overall: rounded,
-      fluency: parseFloat((avg('fluency')).toFixed(1)),
-      lexical: parseFloat((avg('lexical')).toFixed(1)),
-      grammar: parseFloat((avg('grammar')).toFixed(1)),
-      pronunciation: parseFloat((avg('pronunciation')).toFixed(1)),
-      feedback: `Bạn đã hoàn thành bài thi thử với band ước tính ${rounded}. Điều này dựa trên ${records.length} câu trả lời trong toàn bộ bài thi.`,
+      fluency: parseFloat(avg('fluency').toFixed(1)),
+      lexical: parseFloat(avg('lexical').toFixed(1)),
+      grammar: parseFloat(avg('grammar').toFixed(1)),
+      pronunciation: parseFloat(avg('pronunciation').toFixed(1)),
+      feedback: `Bạn đã hoàn thành bài thi thử với ${records.length} câu trả lời. Band ước tính: ${rounded}. Kết quả dựa trên toàn bộ bài thi Part 1, 2, 3.`,
     }
   }
 
-  // ===== PART 1 HANDLER =====
-  const [p1CurrentScore, setP1CurrentScore] = useState<ScoreBreakdown | null>(null)
-  const [p1Phase, setP1Phase] = useState<'question' | 'recording' | 'result'>('question')
+  // ── Part 1 state ──
+  const [p1Phase, setP1Phase] = useState<'question' | 'answered'>('question')
 
-  async function handlePart1Complete(blob: Blob, transcript: string) {
-    setP1Phase('result')
-    const score = await handleAnswerComplete(part1Qs[currentPart1Idx], transcript)
-    if (score) setP1CurrentScore(score)
+  function handlePart1Answer(_: Blob, transcript: string) {
+    recordAnswer(part1Qs[currentPart1Idx], transcript)
+    setP1Phase('answered')
+    setTimeout(() => {
+      if (currentPart1Idx + 1 >= part1Qs.length) {
+        setPhase('part2-prep')
+      } else {
+        setCurrentPart1Idx(i => i + 1)
+        setP1Phase('question')
+        if (part1Qs[currentPart1Idx + 1]) playTTS(part1Qs[currentPart1Idx + 1].question)
+      }
+    }, 600)
   }
 
-  function advancePart1() {
-    if (currentPart1Idx + 1 >= part1Qs.length) {
-      setPhase('part2-prep')
-    } else {
-      setCurrentPart1Idx(i => i + 1)
-      setP1Phase('question')
-      setP1CurrentScore(null)
-    }
+  // ── Part 2 state ──
+  const [p2Phase, setP2Phase] = useState<'question' | 'answered'>('question')
+
+  function handlePart2Answer(_: Blob, transcript: string) {
+    if (part2Q) recordAnswer(part2Q, transcript)
+    setP2Phase('answered')
+    setTimeout(() => {
+      setPhase('part3')
+      if (part3Qs[0]) playTTS(part3Qs[0].question)
+    }, 600)
   }
 
-  // ===== PART 2 HANDLER =====
-  const [p2Score, setP2Score] = useState<ScoreBreakdown | null>(null)
-  const [p2Phase, setP2Phase] = useState<'question' | 'recording' | 'result'>('question')
+  // ── Part 3 state ──
+  const [p3Phase, setP3Phase] = useState<'question' | 'answered'>('question')
 
-  async function handlePart2Complete(blob: Blob, transcript: string) {
-    setP2Phase('result')
-    if (part2Q) {
-      const score = await handleAnswerComplete(part2Q, transcript)
-      if (score) setP2Score(score)
-    }
+  function handlePart3Answer(_: Blob, transcript: string) {
+    recordAnswer(part3Qs[p3Idx], transcript)
+    setP3Phase('answered')
+    setTimeout(() => {
+      if (p3Idx + 1 >= part3Qs.length) {
+        scoreAllAnswers([...pendingAnswers, { question: part3Qs[p3Idx], transcript }])
+      } else {
+        setP3Idx(i => i + 1)
+        setP3Phase('question')
+        if (part3Qs[p3Idx + 1]) playTTS(part3Qs[p3Idx + 1].question)
+      }
+    }, 600)
   }
 
-  // ===== PART 3 HANDLER =====
-  const [p3Idx, setP3Idx] = useState(0)
-  const [p3Records, setP3Records] = useState<QARecord[]>([])
-  const [p3Phase, setP3Phase] = useState<'question' | 'recording' | 'result'>('question')
-  const [p3CurrentScore, setP3CurrentScore] = useState<ScoreBreakdown | null>(null)
-
-  async function handlePart3Complete(blob: Blob, transcript: string) {
-    setP3Phase('result')
-    const score = await handleAnswerComplete(part3Qs[p3Idx], transcript)
-    if (score) setP3CurrentScore(score)
-  }
-
-  function advancePart3() {
-    if (p3Idx + 1 >= part3Qs.length) {
-      const allRecords = [...qaRecords, ...p3Records]
-      const final = calcFinalScore(allRecords)
-      setFinalScores(final)
-      setPhase('complete')
-    } else {
-      setP3Idx(i => i + 1)
-      setP3Phase('question')
-      setP3CurrentScore(null)
-    }
-  }
-
-  // ===== RENDERS =====
+  // ── RENDERS ──
 
   if (phase === 'loading') return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
       <Loader2 size={40} className="text-violet-400 animate-spin" />
-      <p className="text-[var(--text-secondary)]">AI đang chuẩn bị đề thi về "{topic}"...</p>
+      <p className="text-[var(--text-secondary)]">AI đang ra đề ngẫu nhiên...</p>
+      <p className="text-xs text-[var(--text-secondary)] opacity-60">Chủ đề sẽ được chọn tự động</p>
+    </div>
+  )
+
+  if (phase === 'scoring-all') return (
+    <div className="flex flex-col items-center justify-center min-h-[60vh] gap-6">
+      <div className="relative">
+        <div className="w-20 h-20 rounded-full border-4 border-violet-400/20" />
+        <div
+          className="absolute inset-0 rounded-full border-4 border-violet-400 border-t-transparent animate-spin"
+          style={{ animationDuration: '1s' }}
+        />
+        <GraduationCap size={28} className="absolute inset-0 m-auto text-violet-400" />
+      </div>
+      <div className="text-center">
+        <p className="text-[var(--text)] font-semibold mb-1">AI đang chấm toàn bộ bài thi...</p>
+        <p className="text-sm text-[var(--text-secondary)]">{scoringProgress}% hoàn thành</p>
+      </div>
+      <div className="w-64 h-2 bg-[var(--border)] rounded-full overflow-hidden">
+        <motion.div
+          className="h-full bg-gradient-to-r from-violet-500 to-cyan-500 rounded-full"
+          animate={{ width: `${scoringProgress}%` }}
+          transition={{ duration: 0.3 }}
+        />
+      </div>
     </div>
   )
 
@@ -182,13 +242,15 @@ export function MockTestSession({ sessionId, topic }: Props) {
     <div className="max-w-2xl mx-auto">
       <Card className="text-center py-10">
         <GraduationCap size={48} className="text-violet-400 mx-auto mb-4" />
-        <h2 className="text-2xl font-bold text-[var(--text)] mb-2">IELTS Speaking Mock Test</h2>
-        <p className="text-[var(--text-secondary)] mb-6">Chủ đề: <strong className="text-violet-400">{topic}</strong></p>
-        <div className="space-y-2 text-sm text-[var(--text-secondary)] text-left bg-[var(--bg-secondary)] rounded-xl p-4 mb-8">
+        <h2 className="text-2xl font-bold text-[var(--text)] mb-2">Thi thử IELTS Speaking</h2>
+        <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-violet-500/15 text-violet-400 text-sm mb-6">
+          Chủ đề: <strong className="ml-1">{topic}</strong>
+        </div>
+        <div className="space-y-2 text-sm text-[var(--text-secondary)] text-left bg-[var(--bg-secondary)] rounded-xl p-4 mb-6">
           <p>📋 <strong>Part 1</strong>: {part1Qs.length} câu hỏi cá nhân (~4-5 phút)</p>
           <p>📋 <strong>Part 2</strong>: 1 cue card, 1 phút chuẩn bị, 2 phút nói</p>
           <p>📋 <strong>Part 3</strong>: {part3Qs.length} câu hỏi thảo luận (~4-5 phút)</p>
-          <p>⚠️ AI sẽ chấm điểm nghiêm khắc như IELTS thật. Không inflate điểm.</p>
+          <p>⚠️ <strong>Không xem điểm giữa chừng</strong> — AI chấm tổng thể sau khi xong tất cả</p>
         </div>
         <Button variant="gradient" size="lg" onClick={() => {
           setPhase('part1')
@@ -208,7 +270,7 @@ export function MockTestSession({ sessionId, topic }: Props) {
         {part2Q && (
           <div className="bg-[var(--bg-secondary)] rounded-xl p-4 text-left mb-6">
             <p className="text-sm font-semibold text-violet-400 mb-2">📋 Cue Card — {topic}</p>
-            <p className="text-[var(--text)] mb-3">{part2Q.question.replace('{topic}', topic)}</p>
+            <p className="text-[var(--text)] mb-3">{part2Q.question}</p>
             {part2Q.cueCard && (
               <ul className="space-y-1">
                 {part2Q.cueCard.map((b, i) => (
@@ -229,7 +291,7 @@ export function MockTestSession({ sessionId, topic }: Props) {
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="max-w-2xl mx-auto space-y-6">
       <div className="text-center">
         <div className="text-5xl mb-3">🎓</div>
-        <h2 className="text-2xl font-bold text-[var(--text)]">Hoàn thành IELTS Mock Test!</h2>
+        <h2 className="text-2xl font-bold text-[var(--text)]">Hoàn thành Thi thử IELTS Speaking!</h2>
         <p className="text-[var(--text-secondary)] text-sm mt-1">
           Chủ đề: {topic} · Tổng thời gian: {formatDuration(elapsed)}
         </p>
@@ -247,21 +309,31 @@ export function MockTestSession({ sessionId, topic }: Props) {
     </motion.div>
   )
 
-  // Parts render
+  // ── Part renders ──
   const currentPartLabel = phase === 'part1' ? 'Part 1' : phase === 'part2' ? 'Part 2' : 'Part 3'
   const currentQuestion =
     phase === 'part1' ? part1Qs[currentPart1Idx] :
     phase === 'part2' ? part2Q :
     part3Qs[p3Idx]
-  const currentPhaseLocal = phase === 'part1' ? p1Phase : phase === 'part2' ? p2Phase : p3Phase
-  const currentScoreLocal = phase === 'part1' ? p1CurrentScore : phase === 'part2' ? p2Score : p3CurrentScore
+  const currentLocalPhase = phase === 'part1' ? p1Phase : phase === 'part2' ? p2Phase : p3Phase
+  const totalAnswered = pendingAnswers.length
+  const totalQuestions = part1Qs.length + 1 + part3Qs.length
 
   return (
     <div className="max-w-2xl mx-auto space-y-4">
       <div className="flex items-center justify-between">
         <Badge variant="info"><GraduationCap size={12} /> {currentPartLabel}</Badge>
         <span className="text-sm text-[var(--text-secondary)]">{formatDuration(elapsed)}</span>
-        <Badge variant="default">{topic}</Badge>
+        <span className="text-xs text-violet-400">{totalAnswered}/{totalQuestions} câu</span>
+      </div>
+
+      {/* Progress bar */}
+      <div className="h-1.5 bg-[var(--border)] rounded-full overflow-hidden">
+        <motion.div
+          className="h-full bg-gradient-to-r from-violet-500 to-cyan-500 rounded-full"
+          animate={{ width: `${(totalAnswered / totalQuestions) * 100}%` }}
+          transition={{ duration: 0.4 }}
+        />
       </div>
 
       {currentQuestion && (
@@ -273,7 +345,7 @@ export function MockTestSession({ sessionId, topic }: Props) {
             </button>
           </div>
           <p className="text-lg font-medium text-[var(--text)] leading-relaxed mb-4">
-            {currentQuestion.question.replace('{topic}', topic)}
+            {currentQuestion.question}
           </p>
           {currentQuestion.cueCard && (
             <div className="bg-[var(--bg-secondary)] rounded-xl p-3 mb-3">
@@ -290,29 +362,25 @@ export function MockTestSession({ sessionId, topic }: Props) {
         </Card>
       )}
 
-      {(currentPhaseLocal === 'question' || currentPhaseLocal === 'recording') && (
+      {currentLocalPhase === 'question' && (
         <AudioRecorder
-          onComplete={phase === 'part1' ? handlePart1Complete : phase === 'part2' ? handlePart2Complete : handlePart3Complete}
-          onStart={() => {
-            if (phase === 'part1') setP1Phase('recording')
-            else if (phase === 'part2') setP2Phase('recording')
-            else setP3Phase('recording')
-          }}
+          onComplete={
+            phase === 'part1' ? handlePart1Answer :
+            phase === 'part2' ? handlePart2Answer :
+            handlePart3Answer
+          }
+          onStart={() => {}}
         />
       )}
 
-      {currentPhaseLocal === 'result' && currentScoreLocal && (
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
-          <ScoreCard score={currentScoreLocal} />
-          <Button variant="gradient" size="lg" className="w-full" onClick={() => {
-            if (phase === 'part1') advancePart1()
-            else if (phase === 'part2') {
-              setPhase('part3')
-              if (part3Qs[0]) setTimeout(() => playTTS(part3Qs[0].question), 300)
-            } else advancePart3()
-          }}>
-            Tiếp tục <ChevronRight size={18} />
-          </Button>
+      {currentLocalPhase === 'answered' && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="flex items-center justify-center gap-2 py-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20"
+        >
+          <CheckCircle size={18} className="text-emerald-400" />
+          <span className="text-emerald-400 font-medium text-sm">Đã ghi nhận — đang chuyển câu tiếp theo...</span>
         </motion.div>
       )}
     </div>

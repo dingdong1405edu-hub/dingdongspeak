@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git push *)",
+      "Bash(RAILWAY_TOKEN=61950f47-9c33-4a96-bb06-12d0b6bb4129 railway whoami)",
+      "Bash(curl -s -X POST https://backboard.railway.app/graphql/v2 -H 'Authorization: Bearer 61950f47-9c33-4a96-bb06-12d0b6bb4129' -H 'Content-Type: application/json' -d '{\"query\":\"{ me { id name email } }\"}')",
+      "Bash(curl -s -X POST https://backboard.railway.app/graphql/v2 -H 'Authorization: Bearer 61950f47-9c33-4a96-bb06-12d0b6bb4129' -H 'Content-Type: application/json' -d '{\"query\":\"{ me { projects { edges { node { id name environments { edges { node { id name } } } services { edges { node { id name } } } } } } } }\"}')",
+      "Bash(python -m json.tool)",
+      "Bash(curl -s -X POST https://backboard.railway.app/graphql/v2 -H 'Authorization: Bearer 61950f47-9c33-4a96-bb06-12d0b6bb4129' -H 'Content-Type: application/json' -d '{\"query\":\"{ me { projects { edges { node { id name services { edges { node { id name } } } } } } } }\"}')",
+      "Bash(curl -s -X POST https://backboard.railway.app/graphql/v2 -H 'Authorization: Bearer 61950f47-9c33-4a96-bb06-12d0b6bb4129' -H 'Content-Type: application/json' -d '{\"query\":\"{ projects\\(first: 20\\) { edges { node { id name } } } }\"}')",
+      "Bash(export RAILWAY_TOKEN=61950f47-9c33-4a96-bb06-12d0b6bb4129)",
+      "Bash(railway list *)",
+      "Bash(curl -s -X POST https://backboard.railway.app/graphql/v2 -H 'Authorization: Bearer 61950f47-9c33-4a96-bb06-12d0b6bb4129' -H 'Content-Type: application/json' -d '{\"query\":\"mutation { projectCreate\\(input: { name: \\\\\"dingdongspeak\\\\\" }\\) { id name } }\"}')",
+      "Bash(curl -s -X POST https://backboard.railway.app/graphql/v2 -H 'Authorization: Bearer 61950f47-9c33-4a96-bb06-12d0b6bb4129' -H 'Content-Type: application/json' -d '{\"query\":\"{ me { workspaces { edges { node { id name } } } } }\"}')",
+      "Bash(curl -s -X POST https://backboard.railway.app/graphql/v2 -H 'Authorization: Bearer 61950f47-9c33-4a96-bb06-12d0b6bb4129' -H 'Content-Type: application/json' -d '{\"query\":\"{ me { id teams { edges { node { id name } } } } }\"}')",
+      "Bash(curl -s -X POST https://backboard.railway.app/graphql/v2 -H 'Authorization: Bearer 61950f47-9c33-4a96-bb06-12d0b6bb4129' -H 'Content-Type: application/json' -d '{\"query\":\"{ me { id name email workspaceMembers { workspaceId workspace { id name } } } }\"}')",
+      "Bash(curl -s -X POST https://backboard.railway.app/graphql/v2 -H 'Authorization: Bearer 61950f47-9c33-4a96-bb06-12d0b6bb4129' -H 'Content-Type: application/json' -d '{\"query\":\"{ me { id name email workspaces { id name } } }\"}')",
+      "Bash(curl -s -X POST https://backboard.railway.app/graphql/v2 -H 'Authorization: Bearer 61950f47-9c33-4a96-bb06-12d0b6bb4129' -H 'Content-Type: application/json' -d '{\"query\":\"mutation { projectCreate\\(input: { name: \\\\\"dingdongspeak\\\\\", workspaceId: \\\\\"fa660a6f-4e10-4c0d-b7a1-6db8055986e8\\\\\" }\\) { id name environments { edges { node { id name } } } } }\"}')",
+      "Bash(curl -s -X POST https://backboard.railway.app/graphql/v2 -H 'Authorization: Bearer 61950f47-9c33-4a96-bb06-12d0b6bb4129' -H 'Content-Type: application/json' -d '{ *)"
+    ]
+  }
+}

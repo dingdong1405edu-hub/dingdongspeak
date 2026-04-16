@@ -70,9 +70,9 @@ export async function GET() {
 
   // Calculate regen
   const minutesSince = (Date.now() - user.livesLastRegen.getTime()) / 60000
-  const livesRegened = Math.floor(minutesSince / 30)
+  const livesRegened = Math.floor(minutesSince / 5)
   const actualLives = Math.min(user.lives + livesRegened, 5)
-  const nextRegenMinutes = Math.ceil(30 - (minutesSince % 30))
+  const nextRegenMinutes = Math.ceil(5 - (minutesSince % 5))
 
   const isPremiumActive = user.isPremium && user.premiumUntil && user.premiumUntil > new Date()
 

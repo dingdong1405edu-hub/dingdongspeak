@@ -3,25 +3,18 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { GraduationCap, Clock, AlertTriangle, Play, Target } from 'lucide-react'
-import { IELTS_TOPICS } from '@/types'
+import { GraduationCap, Clock, AlertTriangle, Play, Target, Shuffle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
-import { cn } from '@/lib/utils'
 
 export default function MockTestPage() {
   const router = useRouter()
-  const [selectedTopic, setSelectedTopic] = useState('')
-  const [search, setSearch] = useState('')
   const [loading, setLoading] = useState(false)
 
-  const filteredTopics = IELTS_TOPICS.filter(t => t.toLowerCase().includes(search.toLowerCase()))
-
   function startTest() {
-    if (!selectedTopic) return
     setLoading(true)
     const sessionId = Math.random().toString(36).substring(2, 12)
-    router.push(`/mock-test/session/${sessionId}?topic=${encodeURIComponent(selectedTopic)}`)
+    router.push(`/mock-test/session/${sessionId}`)
   }
 
   return (
@@ -29,10 +22,10 @@ export default function MockTestPage() {
       <div>
         <h1 className="text-2xl font-bold text-[var(--text)] flex items-center gap-2">
           <GraduationCap className="text-violet-400" size={26} />
-          IELTS Mock Test
+          Thi thử IELTS Speaking
         </h1>
         <p className="text-[var(--text-secondary)] text-sm mt-1">
-          Thi thử như thật với AI đóng vai giám khảo IELTS. Chấm điểm nghiêm khắc, chuẩn band score.
+          AI ra đề ngẫu nhiên như thi thật — đa dạng chủ đề, đầy đủ Part 1, 2, 3. Chấm điểm tổng thể sau khi hoàn thành.
         </p>
       </div>
 
@@ -42,8 +35,8 @@ export default function MockTestPage() {
         <div>
           <p className="text-sm font-medium text-yellow-400 mb-1">Lưu ý quan trọng</p>
           <p className="text-xs text-[var(--text-secondary)]">
-            Mock test sẽ bao gồm đầy đủ Part 1, 2, 3. AI sẽ chấm điểm nghiêm khắc như giám khảo thật.
-            Điểm số là ước tính — không phải kết quả thi chính thức IELTS.
+            AI sẽ ra đề ngẫu nhiên như thi IELTS thật — bạn không được chọn chủ đề.
+            Trả lời xong tất cả câu hỏi, AI mới chấm điểm tổng thể. Điểm số là ước tính, không phải kết quả chính thức.
           </p>
         </div>
       </div>
@@ -51,9 +44,9 @@ export default function MockTestPage() {
       {/* Test info */}
       <div className="grid sm:grid-cols-3 gap-4">
         {[
-          { icon: Clock, label: '11-14 phút', desc: 'Thời gian thông thường' },
+          { icon: Clock, label: '11–14 phút', desc: 'Giống thời gian thi thật' },
           { icon: Target, label: '3 Parts', desc: 'Part 1 + 2 + 3 đầy đủ' },
-          { icon: GraduationCap, label: 'Chấm thật', desc: 'Nghiêm khắc như IELTS' },
+          { icon: Shuffle, label: 'Ngẫu nhiên', desc: 'AI ra đề đa dạng chủ đề' },
         ].map(item => {
           const Icon = item.icon
           return (
@@ -66,45 +59,40 @@ export default function MockTestPage() {
         })}
       </div>
 
-      {/* Topic selection */}
+      {/* Flow explanation */}
       <Card>
-        <h2 className="font-semibold text-[var(--text)] mb-3">Chọn chủ đề cho bài thi</h2>
-        <input
-          type="text"
-          placeholder="Tìm chủ đề..."
-          value={search}
-          onChange={e => setSearch(e.target.value)}
-          className="w-full px-4 py-2.5 rounded-xl border border-[var(--border)] bg-[var(--bg-secondary)] text-[var(--text)] placeholder:text-[var(--text-secondary)] focus:outline-none focus:ring-2 focus:ring-violet-400/50 mb-4 text-sm"
-        />
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 max-h-72 overflow-y-auto pr-1">
-          {filteredTopics.map(topic => (
-            <button
-              key={topic}
-              onClick={() => setSelectedTopic(topic)}
-              className={cn(
-                'px-3 py-2 rounded-xl text-sm font-medium text-left transition-all border',
-                selectedTopic === topic
-                  ? 'bg-violet-500/20 border-violet-500/40 text-violet-400'
-                  : 'border-[var(--border)] text-[var(--text-secondary)] hover:border-violet-400/30 hover:text-[var(--text)] hover:bg-[var(--bg-secondary)]'
-              )}
-            >
-              {topic}
-            </button>
+        <h2 className="font-semibold text-[var(--text)] mb-4">Quy trình thi</h2>
+        <div className="space-y-3">
+          {[
+            { step: '1', label: 'AI ra đề', desc: 'Hệ thống tự chọn chủ đề và tạo câu hỏi ngẫu nhiên từ kho 50+ chủ đề IELTS' },
+            { step: '2', label: 'Trả lời toàn bộ', desc: 'Lần lượt trả lời Part 1 (4 câu), Part 2 (1 cue card), Part 3 (4 câu). Không xem điểm giữa chừng' },
+            { step: '3', label: 'AI chấm tổng thể', desc: 'Sau khi hoàn thành, AI phân tích toàn bộ và cho điểm band score ước tính' },
+          ].map(item => (
+            <div key={item.step} className="flex items-start gap-3">
+              <div className="w-7 h-7 rounded-full bg-violet-500/20 text-violet-400 text-sm font-bold flex items-center justify-center shrink-0">
+                {item.step}
+              </div>
+              <div>
+                <div className="text-sm font-semibold text-[var(--text)]">{item.label}</div>
+                <div className="text-xs text-[var(--text-secondary)] mt-0.5">{item.desc}</div>
+              </div>
+            </div>
           ))}
         </div>
       </Card>
 
-      <Button
-        variant="gradient"
-        size="lg"
-        className="w-full"
-        onClick={startTest}
-        loading={loading}
-        disabled={!selectedTopic}
-      >
-        <Play size={20} />
-        {selectedTopic ? `Bắt đầu thi thử — ${selectedTopic}` : 'Chọn chủ đề để bắt đầu'}
-      </Button>
+      <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>
+        <Button
+          variant="gradient"
+          size="lg"
+          className="w-full"
+          onClick={startTest}
+          loading={loading}
+        >
+          <Play size={20} />
+          Bắt đầu thi thử ngay
+        </Button>
+      </motion.div>
     </div>
   )
 }

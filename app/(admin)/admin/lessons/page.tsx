@@ -13,11 +13,12 @@ const TYPE_COLORS = {
   grammar: 'text-blue-400 bg-blue-500/10',
   speaking: 'text-violet-400 bg-violet-500/10',
 }
-const LEVEL_COLORS = {
+const LEVEL_COLORS: Record<string, string> = {
   A1: 'text-emerald-400 bg-emerald-500/10',
   A2: 'text-cyan-400 bg-cyan-500/10',
   B1: 'text-yellow-400 bg-yellow-500/10',
   B2: 'text-orange-400 bg-orange-500/10',
+  C1: 'text-violet-400 bg-violet-500/10',
 }
 
 export default async function AdminLessonsPage() {

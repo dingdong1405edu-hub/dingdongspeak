@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react'
 
 const MAX_LIVES = 5
-const REGEN_INTERVAL_MS = 30 * 60 * 1000 // 30 minutes
+const REGEN_INTERVAL_MS = 5 * 60 * 1000 // 5 minutes
 
 export function useLives(initialLives: number, isPremium: boolean) {
   const [lives, setLives] = useState(initialLives)

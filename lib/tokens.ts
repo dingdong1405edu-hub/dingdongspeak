@@ -1,6 +1,6 @@
 import { prisma } from './prisma'
 
-const LIVES_REGEN_MINUTES = 30
+const LIVES_REGEN_MINUTES = 5
 const MAX_LIVES = 5
 const FREE_TOKENS = 30
 const LIVES_PER_STREAK_BONUS = 1
