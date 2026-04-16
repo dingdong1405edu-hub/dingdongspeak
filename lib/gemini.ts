@@ -1,8 +1,11 @@
 import { GoogleGenerativeAI } from '@google/generative-ai'
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!)
-
-const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash-exp' })
+// Lazy init — tránh crash khi build (GEMINI_API_KEY chưa có)
+let _genAI: GoogleGenerativeAI | null = null
+function getModel() {
+  if (!_genAI) _genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!)
+  return _genAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
+}
 
 export interface ScoreResult {
   overall: number
@@ -53,7 +56,7 @@ Score this response. Return ONLY valid JSON:
 }`
 
   try {
-    const result = await model.generateContent(prompt)
+    const result = await getModel().generateContent(prompt)
     const text = result.response.text().trim()
     const jsonMatch = text.match(/\{[\s\S]*\}/)
     if (!jsonMatch) throw new Error('No JSON in response')
@@ -88,7 +91,7 @@ Return ONLY valid JSON array:
 }]`
 
   try {
-    const result = await model.generateContent(prompt)
+    const result = await getModel().generateContent(prompt)
     const text = result.response.text().trim()
     const jsonMatch = text.match(/\[[\s\S]*\]/)
     if (!jsonMatch) throw new Error('No JSON array in response')
@@ -118,7 +121,7 @@ Requirements: varied vocabulary, discourse markers, complex grammar, natural fil
 Respond with ONLY the sample answer text, no labels.`
 
   try {
-    const result = await model.generateContent(prompt)
+    const result = await getModel().generateContent(prompt)
     return result.response.text().trim()
   } catch {
     return 'Sample answer not available. Please try again.'
@@ -140,7 +143,7 @@ Return ONLY valid JSON:
 }`
 
   try {
-    const result = await model.generateContent(prompt)
+    const result = await getModel().generateContent(prompt)
     const text = result.response.text().trim()
     const jsonMatch = text.match(/\{[\s\S]*\}/)
     if (!jsonMatch) throw new Error('No JSON')
@@ -171,7 +174,7 @@ Return ONLY valid JSON:
 }`
 
   try {
-    const result = await model.generateContent(prompt)
+    const result = await getModel().generateContent(prompt)
     const text = result.response.text().trim()
     const jsonMatch = text.match(/\{[\s\S]*\}/)
     if (!jsonMatch) throw new Error('No JSON')
