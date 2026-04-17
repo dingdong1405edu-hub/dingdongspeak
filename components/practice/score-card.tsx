@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { TrendingUp, BookOpen, Settings2, Volume2, ChevronDown, ChevronUp, Wrench, Share2, AlertCircle } from 'lucide-react'
+import { TrendingUp, BookOpen, Settings2, Volume2, ChevronDown, ChevronUp, Wrench, Share2, AlertCircle, CheckCircle, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
@@ -15,7 +15,7 @@ interface ScoreCardProps {
   onImprove?: () => void
   loadingImprove?: boolean
   improvedAnswer?: string
-  onShare?: () => void
+  onShare?: (isAnonymous: boolean) => Promise<void>
 }
 
 function BandBadge({ band }: { band: number }) {
@@ -156,6 +156,21 @@ const CATEGORIES = [
 
 export function ScoreCard({ score, transcript, audioUrl, onImprove, loadingImprove, improvedAnswer, onShare }: ScoreCardProps) {
   const hasCorrections = score.corrections && score.corrections.length > 0
+  const [showShareOptions, setShowShareOptions] = useState(false)
+  const [shared, setShared] = useState(false)
+  const [sharingLoading, setSharingLoading] = useState(false)
+
+  async function handleShare(isAnonymous: boolean) {
+    if (!onShare) return
+    setSharingLoading(true)
+    try {
+      await onShare(isAnonymous)
+      setShared(true)
+      setShowShareOptions(false)
+    } finally {
+      setSharingLoading(false)
+    }
+  }
 
   return (
     <Card>
@@ -229,15 +244,49 @@ export function ScoreCard({ score, transcript, audioUrl, onImprove, loadingImpro
         </div>
       )}
 
-      {/* Share link */}
+      {/* Share to leaderboard */}
       {onShare && (
-        <button
-          onClick={onShare}
-          className="mt-3 flex items-center gap-1.5 text-xs text-cyan-400 hover:text-cyan-300 transition-colors"
-        >
-          <Share2 size={12} />
-          Chia sẻ lên Bảng vàng
-        </button>
+        <div className="mt-3">
+          {shared ? (
+            <span className="flex items-center gap-1.5 text-xs text-emerald-400">
+              <CheckCircle size={12} />
+              Đã chia sẻ lên Bảng vàng
+            </span>
+          ) : showShareOptions ? (
+            <div className="flex items-center gap-3">
+              <span className="text-xs text-[var(--text-secondary)]">Chia sẻ:</span>
+              <button
+                onClick={() => handleShare(false)}
+                disabled={sharingLoading}
+                className="text-xs text-cyan-400 hover:text-cyan-300 disabled:opacity-50 font-medium transition-colors"
+              >
+                {sharingLoading ? <Loader2 size={11} className="animate-spin inline" /> : 'Công khai'}
+              </button>
+              <span className="text-xs text-[var(--border)]">·</span>
+              <button
+                onClick={() => handleShare(true)}
+                disabled={sharingLoading}
+                className="text-xs text-[var(--text-secondary)] hover:text-[var(--text)] disabled:opacity-50 transition-colors"
+              >
+                Ẩn danh
+              </button>
+              <button
+                onClick={() => setShowShareOptions(false)}
+                className="text-xs text-[var(--text-secondary)] hover:text-[var(--text)] ml-1"
+              >
+                ✕
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => setShowShareOptions(true)}
+              className="flex items-center gap-1.5 text-xs text-cyan-400 hover:text-cyan-300 transition-colors"
+            >
+              <Share2 size={12} />
+              Chia sẻ lên Bảng vàng
+            </button>
+          )}
+        </div>
       )}
     </Card>
   )

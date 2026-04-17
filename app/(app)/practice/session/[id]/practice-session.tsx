@@ -44,6 +44,7 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
   const [improvedAnswer, setImprovedAnswer] = useState('')
   const [loadingImprove, setLoadingImprove] = useState(false)
   const [rightTab, setRightTab] = useState<'ai' | 'leaderboard'>('leaderboard')
+  const [serverSessionId, setServerSessionId] = useState<string | null>(null)
   const currentAudioRef = useRef<HTMLAudioElement | null>(null)
   const timerRef = useRef<NodeJS.Timeout | undefined>(undefined)
 
@@ -152,13 +153,15 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
       setCurrentScore(data.score)
       setPhase('result')
 
-      // Add to records
+      // Add to records and auto-save
       const record: QARecord = {
         question: currentQuestion!,
         transcript: transcriptText,
         score: data.score,
       }
-      setQaRecords(prev => [...prev, record])
+      const updatedRecords = [...qaRecords, record]
+      setQaRecords(updatedRecords)
+      autoSave(updatedRecords, elapsed)
     } catch {
       toast.error('Lỗi chấm điểm. Vui lòng thử lại.')
       setPhase('question')
@@ -236,26 +239,37 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
     }
   }
 
-  async function saveSession(records: QARecord[]) {
+  async function autoSave(records: QARecord[], duration: number) {
     try {
-      await fetch('/api/sessions', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type: 'PRACTICE',
-          topic,
-          part,
-          questions: records.map(r => ({ question: r.question.question, transcript: r.transcript })),
-          scores: records.map(r => r.score),
-          duration: elapsed,
-        }),
-      })
-    } catch { /* silent — history is non-critical */ }
+      const body = {
+        type: 'PRACTICE',
+        topic,
+        part,
+        questions: records.map(r => ({ question: r.question.question, transcript: r.transcript })),
+        scores: records.map(r => r.score),
+        duration,
+      }
+      if (serverSessionId) {
+        await fetch(`/api/sessions/${serverSessionId}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        })
+      } else {
+        const res = await fetch('/api/sessions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        })
+        const json = await res.json()
+        if (json.id) setServerSessionId(json.id)
+      }
+    } catch { /* silent */ }
   }
 
   function nextQuestion() {
     if (currentIdx + 1 >= questions.length) {
-      saveSession([...qaRecords])
+      autoSave([...qaRecords], elapsed)
       setPhase('complete')
     } else {
       setCurrentIdx(i => i + 1)
@@ -361,7 +375,7 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
   }
 
   return (
-    <div className="max-w-2xl mx-auto space-y-4">
+    <div className="max-w-5xl mx-auto space-y-4 px-2">
       {/* Progress */}
       <div className="flex items-center justify-between text-sm text-[var(--text-secondary)]">
         <span>Câu {currentIdx + 1}/{questions.length}</span>
@@ -497,17 +511,12 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
               onImprove={handleImprove}
               loadingImprove={loadingImprove}
               improvedAnswer={improvedAnswer}
-              onShare={async () => {
-                try {
-                  await fetch('/api/share/answer', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ question: currentQuestion?.question, transcript, score: currentScore, topic, part, isAnonymous: false }),
-                  })
-                  toast.success('Đã chia sẻ lên Bảng vàng!')
-                } catch {
-                  toast.error('Không chia sẻ được')
-                }
+              onShare={async (isAnonymous: boolean) => {
+                await fetch('/api/share/answer', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ question: currentQuestion?.question, transcript, score: currentScore, topic, part, isAnonymous }),
+                })
               }}
             />
 
