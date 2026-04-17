@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import { IELTS_TOPICS } from '@/types'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Trophy, Filter, ChevronDown, ChevronUp, Loader2 } from 'lucide-react'
 import { Card } from '@/components/ui/card'
@@ -116,6 +117,7 @@ export default function LeaderboardPage() {
   const [loading, setLoading] = useState(true)
   const [bandFilter, setBandFilter] = useState(0)
   const [partFilter, setPartFilter] = useState('Tất cả')
+  const [topicFilter, setTopicFilter] = useState('Tất cả')
   const [total, setTotal] = useState(0)
 
   const load = useCallback(async () => {
@@ -123,10 +125,12 @@ export default function LeaderboardPage() {
     try {
       const f = BAND_FILTERS[bandFilter]
       const part = partFilter === 'Tất cả' ? '' : partFilter
+      const topic = topicFilter === 'Tất cả' ? '' : topicFilter
       const params = new URLSearchParams({
         minBand: String(f.min),
         maxBand: String(f.max),
         ...(part ? { part } : {}),
+        ...(topic ? { topic } : {}),
       })
       const res = await fetch(`/api/leaderboard/answers?${params}`)
       const data = await res.json()
@@ -135,7 +139,7 @@ export default function LeaderboardPage() {
     } finally {
       setLoading(false)
     }
-  }, [bandFilter, partFilter])
+  }, [bandFilter, partFilter, topicFilter])
 
   useEffect(() => { load() }, [load])
 
@@ -182,6 +186,23 @@ export default function LeaderboardPage() {
               )}
             >
               {p}
+            </button>
+          ))}
+        </div>
+        {/* Topic filter */}
+        <div className="flex gap-2 flex-wrap">
+          {['Tất cả', ...IELTS_TOPICS.slice(0, 12)].map(t => (
+            <button
+              key={t}
+              onClick={() => setTopicFilter(t)}
+              className={cn(
+                'px-3 py-1 rounded-full text-xs font-medium border transition-all',
+                topicFilter === t
+                  ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-400'
+                  : 'border-[var(--border)] text-[var(--text-secondary)] hover:border-emerald-500/30'
+              )}
+            >
+              {t}
             </button>
           ))}
         </div>

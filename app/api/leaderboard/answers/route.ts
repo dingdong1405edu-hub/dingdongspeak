@@ -6,12 +6,14 @@ export async function GET(req: NextRequest) {
   const minBand = parseFloat(searchParams.get('minBand') ?? '0')
   const maxBand = parseFloat(searchParams.get('maxBand') ?? '9')
   const part = searchParams.get('part') ?? undefined
+  const topic = searchParams.get('topic') ?? undefined
   const limit = Math.min(parseInt(searchParams.get('limit') ?? '20'), 50)
   const offset = parseInt(searchParams.get('offset') ?? '0')
 
   const where = {
     band: { gte: minBand, lte: maxBand },
     ...(part ? { part: part as 'PART1' | 'PART2' | 'PART3' | 'FULL' } : {}),
+    ...(topic ? { topic } : {}),
   }
 
   const [answers, total] = await Promise.all([

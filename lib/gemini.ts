@@ -132,6 +132,27 @@ Return ONLY JSON: {"vocabulary":["..."],"idioms":["..."]}`
   }
 }
 
+export async function improveAnswer(
+  transcript: string,
+  question: string,
+  part: string
+): Promise<string> {
+  const prompt = `You are an IELTS Speaking coach.
+Student answered "${question}" (${part}) with: "${transcript}"
+
+Rewrite to Band 7.0 level. Keep their ideas. Fix grammar, improve vocabulary, add discourse markers.
+Output ONLY the improved answer text.`
+
+  try {
+    const result = await getModel().generateContent(prompt)
+    const text = result.response.text().trim()
+    if (!text) throw new Error('Empty')
+    return text
+  } catch {
+    return improveWithGroq(transcript, question, part)
+  }
+}
+
 export async function scoreBeginnerSpeaking(
   topic: string,
   transcript: string
@@ -202,6 +223,25 @@ async function generateVocabWithGroq(question: string, topic: string): Promise<{
   })
   const parsed = JSON.parse(completion.choices[0].message.content || '{}')
   return { vocabulary: parsed.vocabulary || [], idioms: parsed.idioms || [] }
+}
+
+async function improveWithGroq(transcript: string, question: string, part: string): Promise<string> {
+  try {
+    const groq = await getGroq()
+    const completion = await groq.chat.completions.create({
+      model: 'llama-3.3-70b-versatile',
+      messages: [{
+        role: 'user',
+        content: `Rewrite to IELTS Band 7. Keep ideas, fix grammar, better vocab, add discourse markers.
+Student: "${transcript}" | Q: "${question}" (${part})
+Output improved answer only.`,
+      }],
+      max_tokens: 300,
+    })
+    return completion.choices[0].message.content?.trim() || transcript
+  } catch {
+    return transcript
+  }
 }
 
 function getDefaultQuestions(topic: string, part: string, count: number): IELTSQuestion[] {

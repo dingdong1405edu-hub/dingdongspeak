@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import {
   Mic, Square, Play, Volume2, ChevronRight,
   Star, BookOpen, Lightbulb, Save, CheckCircle,
-  AlertCircle, Loader2, RotateCcw, Headphones, Trophy, Share2
+  Loader2, Headphones, Trophy
 } from 'lucide-react'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
@@ -13,6 +13,7 @@ import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { ScoreCard } from '@/components/practice/score-card'
 import { AudioRecorder } from '@/components/practice/audio-recorder'
+import { TopicLeaderboard } from '@/components/practice/topic-leaderboard'
 import { cn, bandToColor, formatDuration } from '@/lib/utils'
 import type { IELTSQuestion, ScoreBreakdown, QARecord } from '@/types'
 
@@ -40,6 +41,9 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
   const [elapsed, setElapsed] = useState(0)
   const [ttsState, setTtsState] = useState<'idle' | 'loading' | 'playing'>('idle')
   const [recordingUrl, setRecordingUrl] = useState<string | null>(null)
+  const [improvedAnswer, setImprovedAnswer] = useState('')
+  const [loadingImprove, setLoadingImprove] = useState(false)
+  const [rightTab, setRightTab] = useState<'ai' | 'leaderboard'>('leaderboard')
   const currentAudioRef = useRef<HTMLAudioElement | null>(null)
   const timerRef = useRef<NodeJS.Timeout | undefined>(undefined)
 
@@ -214,6 +218,24 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
     }
   }
 
+  async function handleImprove() {
+    if (!currentQuestion || !transcript) return
+    setLoadingImprove(true)
+    try {
+      const res = await fetch('/api/ai/sample', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question: currentQuestion.question, transcript, part, type: 'improve' }),
+      })
+      const data = await res.json()
+      setImprovedAnswer(data.improved || '')
+    } catch {
+      toast.error('Không cải thiện được')
+    } finally {
+      setLoadingImprove(false)
+    }
+  }
+
   async function saveSession(records: QARecord[]) {
     try {
       await fetch('/api/sessions', {
@@ -243,6 +265,8 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
       setSampleAnswer('')
       setVocabData(null)
       setRecordingUrl(null)
+      setImprovedAnswer('')
+      setRightTab('leaderboard')
       if (questions[currentIdx + 1]) {
         setTimeout(() => playQuestion(questions[currentIdx + 1].question), 300)
       }
@@ -461,147 +485,135 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
         </div>
       )}
 
-      {/* Score result */}
+      {/* Score result — two-column layout */}
       {phase === 'result' && currentScore && (
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
-          {/* Replay user recording */}
-          {recordingUrl && (
-            <div className="flex items-center gap-3 bg-[var(--bg-secondary)] rounded-xl px-4 py-3">
-              <Headphones size={16} className="text-cyan-400 shrink-0" />
-              <span className="text-xs text-[var(--text-secondary)] shrink-0">Nghe lại câu trả lời của bạn:</span>
-              <audio src={recordingUrl} controls className="h-8 flex-1 min-w-0" />
-            </div>
-          )}
-          <ScoreCard score={currentScore} transcript={transcript} />
-
-          {/* Actions */}
-          <div className="grid sm:grid-cols-2 gap-3">
-            <Button
-              variant="secondary"
-              onClick={loadSampleAnswer}
-              loading={loadingSample}
-            >
-              <Star size={16} className="text-yellow-400" />
-              Câu trả lời mẫu Band 8.0
-            </Button>
-            <Button
-              variant="secondary"
-              onClick={loadVocabAndIdioms}
-              loading={loadingVocab}
-            >
-              <Lightbulb size={16} className="text-cyan-400" />
-              Từ vựng & Idioms hay
-            </Button>
-            <Button
-              variant="secondary"
-              onClick={async () => {
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
+            {/* Left: Score card */}
+            <ScoreCard
+              score={currentScore}
+              transcript={transcript}
+              audioUrl={recordingUrl ?? undefined}
+              onImprove={handleImprove}
+              loadingImprove={loadingImprove}
+              improvedAnswer={improvedAnswer}
+              onShare={async () => {
                 try {
                   await fetch('/api/share/answer', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                      question: currentQuestion?.question,
-                      transcript,
-                      score: currentScore,
-                      topic,
-                      part,
-                      isAnonymous: false,
-                    }),
+                    body: JSON.stringify({ question: currentQuestion?.question, transcript, score: currentScore, topic, part, isAnonymous: false }),
                   })
                   toast.success('Đã chia sẻ lên Bảng vàng!')
                 } catch {
                   toast.error('Không chia sẻ được')
                 }
               }}
-            >
-              <Trophy size={16} className="text-yellow-400" />
-              Chia sẻ lên Bảng vàng
-            </Button>
+            />
+
+            {/* Right: AI hỗ trợ | Bảng vàng tabs */}
+            <div className="space-y-3">
+              {/* Tab switcher */}
+              <div className="flex rounded-xl overflow-hidden border border-[var(--border)]">
+                <button
+                  onClick={() => setRightTab('ai')}
+                  className={`flex-1 py-2 text-sm font-medium transition-all ${rightTab === 'ai' ? 'bg-cyan-500/20 text-cyan-400' : 'text-[var(--text-secondary)] hover:text-[var(--text)]'}`}
+                >
+                  AI hỗ trợ
+                </button>
+                <button
+                  onClick={() => setRightTab('leaderboard')}
+                  className={`flex-1 py-2 text-sm font-medium transition-all flex items-center justify-center gap-1.5 ${rightTab === 'leaderboard' ? 'bg-yellow-500/20 text-yellow-400' : 'text-[var(--text-secondary)] hover:text-[var(--text)]'}`}
+                >
+                  <Trophy size={13} />
+                  Bảng vàng
+                </button>
+              </div>
+
+              {rightTab === 'ai' ? (
+                <div className="space-y-3">
+                  <div className="flex flex-col gap-2">
+                    <Button variant="secondary" onClick={loadSampleAnswer} loading={loadingSample}>
+                      <Star size={15} className="text-yellow-400" />
+                      Câu trả lời mẫu Band 8.0
+                    </Button>
+                    <Button variant="secondary" onClick={loadVocabAndIdioms} loading={loadingVocab}>
+                      <Lightbulb size={15} className="text-cyan-400" />
+                      Từ vựng & Idioms hay
+                    </Button>
+                  </div>
+
+                  <AnimatePresence>
+                    {sampleAnswer && (
+                      <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}>
+                        <Card className="border-yellow-500/20 bg-yellow-500/5">
+                          <div className="flex items-center gap-2 mb-2">
+                            <Star size={14} className="text-yellow-400" />
+                            <span className="text-sm font-semibold text-[var(--text)]">Mẫu Band 8.0</span>
+                          </div>
+                          <p className="text-sm text-[var(--text)] leading-relaxed">{sampleAnswer}</p>
+                        </Card>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  <AnimatePresence>
+                    {vocabData && (
+                      <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}>
+                        <Card>
+                          <h4 className="text-sm font-semibold text-[var(--text)] mb-3 flex items-center gap-1.5">
+                            <Lightbulb size={14} className="text-cyan-400" />
+                            Từ vựng & Idioms
+                          </h4>
+                          {vocabData.vocabulary.length > 0 && (
+                            <div className="mb-3">
+                              <p className="text-[10px] font-semibold text-cyan-400 uppercase mb-1.5">Từ vựng</p>
+                              <div className="space-y-1.5">
+                                {vocabData.vocabulary.map((v, i) => (
+                                  <div key={i} className="flex items-center justify-between gap-2 text-sm">
+                                    <span className="text-[var(--text)]">{v}</span>
+                                    <button onClick={() => saveItem(v, 'VOCABULARY')} disabled={savedItems.includes(v)}
+                                      className="shrink-0 text-cyan-400 hover:text-cyan-300 disabled:text-emerald-400">
+                                      {savedItems.includes(v) ? <CheckCircle size={13} /> : <Save size={13} />}
+                                    </button>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                          {vocabData.idioms.length > 0 && (
+                            <div>
+                              <p className="text-[10px] font-semibold text-violet-400 uppercase mb-1.5">Idioms</p>
+                              <div className="space-y-1.5">
+                                {vocabData.idioms.map((idiom, i) => (
+                                  <div key={i} className="flex items-center justify-between gap-2 text-sm">
+                                    <span className="text-[var(--text)]">{idiom}</span>
+                                    <button onClick={() => saveItem(idiom, 'IDIOM')} disabled={savedItems.includes(idiom)}
+                                      className="shrink-0 text-violet-400 hover:text-violet-300 disabled:text-emerald-400">
+                                      {savedItems.includes(idiom) ? <CheckCircle size={13} /> : <Save size={13} />}
+                                    </button>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </Card>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ) : (
+                <TopicLeaderboard topic={topic} part={part} />
+              )}
+            </div>
           </div>
 
-          {/* Sample answer */}
-          <AnimatePresence>
-            {sampleAnswer && (
-              <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}>
-                <Card className="border-yellow-500/20 bg-yellow-500/5">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Star size={16} className="text-yellow-400" />
-                    <h4 className="font-semibold text-[var(--text)]">Câu trả lời mẫu Band 8.0</h4>
-                    <Badge variant="premium" className="ml-auto">Mẫu</Badge>
-                  </div>
-                  <p className="text-sm text-[var(--text)] leading-relaxed">{sampleAnswer}</p>
-                </Card>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          {/* Vocab & Idioms */}
-          <AnimatePresence>
-            {vocabData && (
-              <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}>
-                <Card>
-                  <h4 className="font-semibold text-[var(--text)] mb-4">
-                    <Lightbulb size={16} className="inline mr-2 text-cyan-400" />
-                    Từ vựng & Idioms liên quan
-                  </h4>
-                  {vocabData.vocabulary.length > 0 && (
-                    <div className="mb-4">
-                      <h5 className="text-xs font-semibold text-cyan-400 uppercase mb-2">Từ vựng</h5>
-                      <div className="space-y-2">
-                        {vocabData.vocabulary.map((v, i) => (
-                          <div key={i} className="flex items-center justify-between gap-3 py-2 border-b border-[var(--border)] last:border-0">
-                            <span className="text-sm text-[var(--text)]">{v}</span>
-                            <button
-                              onClick={() => saveItem(v, 'VOCABULARY')}
-                              disabled={savedItems.includes(v)}
-                              className="flex-shrink-0 text-xs text-cyan-400 hover:text-cyan-300 disabled:text-emerald-400 transition-colors"
-                            >
-                              {savedItems.includes(v) ? <CheckCircle size={14} /> : <Save size={14} />}
-                            </button>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                  {vocabData.idioms.length > 0 && (
-                    <div>
-                      <h5 className="text-xs font-semibold text-violet-400 uppercase mb-2">Idioms & Collocations</h5>
-                      <div className="space-y-2">
-                        {vocabData.idioms.map((idiom, i) => (
-                          <div key={i} className="flex items-center justify-between gap-3 py-2 border-b border-[var(--border)] last:border-0">
-                            <span className="text-sm text-[var(--text)]">{idiom}</span>
-                            <button
-                              onClick={() => saveItem(idiom, 'IDIOM')}
-                              disabled={savedItems.includes(idiom)}
-                              className="flex-shrink-0 text-xs text-violet-400 hover:text-violet-300 disabled:text-emerald-400 transition-colors"
-                            >
-                              {savedItems.includes(idiom) ? <CheckCircle size={14} /> : <Save size={14} />}
-                            </button>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </Card>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          {/* Next / Complete */}
-          <Button
-            variant="gradient"
-            size="lg"
-            className="w-full"
-            onClick={nextQuestion}
-          >
+          {/* Next / Complete — full width */}
+          <Button variant="gradient" size="lg" className="w-full" onClick={nextQuestion}>
             {currentIdx + 1 >= questions.length ? (
-              <>
-                <CheckCircle size={18} /> Xem kết quả tổng
-              </>
+              <><CheckCircle size={18} /> Xem kết quả tổng</>
             ) : (
-              <>
-                Câu tiếp theo <ChevronRight size={18} />
-              </>
+              <>Câu tiếp theo <ChevronRight size={18} /></>
             )}
           </Button>
         </motion.div>
