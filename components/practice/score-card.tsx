@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import { motion } from 'framer-motion'
 import { TrendingUp, BookOpen, Settings, Volume2, AlertCircle } from 'lucide-react'
 import { Card } from '@/components/ui/card'
@@ -12,10 +13,10 @@ interface ScoreCardProps {
 }
 
 const scoreCategories = [
-  { key: 'fluency', label: 'Fluency & Coherence', icon: TrendingUp },
-  { key: 'lexical', label: 'Lexical Resource', icon: BookOpen },
-  { key: 'grammar', label: 'Grammatical Range', icon: Settings },
-  { key: 'pronunciation', label: 'Pronunciation', icon: Volume2 },
+  { key: 'fluency', label: 'Trôi chảy', icon: TrendingUp },
+  { key: 'lexical', label: 'Từ vựng', icon: BookOpen },
+  { key: 'grammar', label: 'Ngữ pháp', icon: Settings },
+  { key: 'pronunciation', label: 'Phát âm', icon: Volume2 },
 ]
 
 function BandRing({ band }: { band: number }) {
@@ -49,18 +50,20 @@ function BandRing({ band }: { band: number }) {
   )
 }
 
-function MiniBar({ value, max = 9 }: { value: number; max?: number }) {
-  const pct = (value / max) * 100
-  const color = value >= 7 ? 'bg-emerald-400' : value >= 6 ? 'bg-cyan-400' : value >= 5 ? 'bg-yellow-400' : 'bg-orange-400'
+function ScorePill({ label, value, icon: Icon }: { label: string; value: number; icon: React.ElementType }) {
+  const bg = value >= 7 ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30'
+    : value >= 6 ? 'bg-cyan-500/15 text-cyan-400 border-cyan-500/30'
+    : value >= 5 ? 'bg-yellow-500/15 text-yellow-400 border-yellow-500/30'
+    : 'bg-orange-500/15 text-orange-400 border-orange-500/30'
   return (
-    <div className="h-1.5 rounded-full bg-[var(--border)] overflow-hidden">
-      <motion.div
-        className={cn('h-full rounded-full', color)}
-        initial={{ width: 0 }}
-        animate={{ width: `${pct}%` }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-      />
-    </div>
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      className={cn('flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-semibold', bg)}
+    >
+      <Icon size={12} />
+      <span>{label}: {value.toFixed(1)}</span>
+    </motion.div>
   )
 }
 
@@ -101,9 +104,9 @@ function HighlightedTranscript({ text, corrections }: { text: string; correction
 
     // Wrong word (red strikethrough) → correct word (green)
     nodes.push(
-      <span key={`e${match.idx}`} className="inline-flex items-baseline gap-0.5 mx-0.5" title={match.note}>
+      <span key={`e${match.idx}`} className="inline-flex items-baseline gap-0.5 mx-0.5">
         <span className="text-red-400 line-through italic">{text.slice(match.idx, match.endIdx)}</span>
-        <span className="text-emerald-400 font-semibold not-italic">({match.correct})</span>
+        <span className="text-emerald-400 font-semibold not-italic">{match.correct}</span>
       </span>
     )
 
@@ -148,22 +151,11 @@ export function ScoreCard({ score, transcript }: ScoreCardProps) {
           </div>
         </div>
 
-        {/* Criteria breakdown */}
-        <div className="space-y-3 mb-5">
+        {/* Criteria breakdown as pills */}
+        <div className="flex flex-wrap gap-2 mb-5">
           {scoreCategories.map(({ key, label, icon: Icon }) => {
             const val = score[key as keyof ScoreBreakdown] as number
-            return (
-              <div key={key}>
-                <div className="flex items-center justify-between mb-1">
-                  <div className="flex items-center gap-2 text-sm text-[var(--text-secondary)]">
-                    <Icon size={14} />
-                    {label}
-                  </div>
-                  <span className={cn('text-sm font-semibold', bandToColor(val))}>{val.toFixed(1)}</span>
-                </div>
-                <MiniBar value={val} />
-              </div>
-            )
+            return <ScorePill key={key} label={label} value={val} icon={Icon} />
           })}
         </div>
 
@@ -193,9 +185,6 @@ export function ScoreCard({ score, transcript }: ScoreCardProps) {
                     <span className="text-red-400 line-through">{c.wrong}</span>
                     <span className="text-[var(--text-secondary)]">→</span>
                     <span className="text-emerald-400 font-medium">{c.correct}</span>
-                    {c.note && (
-                      <span className="text-[var(--text-secondary)] opacity-60">({c.note})</span>
-                    )}
                   </div>
                 </div>
               ))}

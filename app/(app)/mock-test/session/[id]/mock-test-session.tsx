@@ -138,7 +138,21 @@ export function MockTestSession({ sessionId }: Props) {
       toast.error('Không thể chấm điểm')
       return
     }
-    setFinalScores(calcFinalScore(qaRecords))
+    const finalScore = calcFinalScore(qaRecords)
+    setFinalScores(finalScore)
+    // Save session to history
+    fetch('/api/sessions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        type: 'MOCK_TEST',
+        topic,
+        part: 'FULL',
+        questions: qaRecords.map(r => ({ question: r.question.question, transcript: r.transcript })),
+        scores: qaRecords.map(r => r.score),
+        duration: 0,
+      }),
+    }).catch(() => {})
     setPhase('complete')
   }
 

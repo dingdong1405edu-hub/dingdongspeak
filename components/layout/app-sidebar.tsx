@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
   LayoutDashboard, BookOpen, Mic, GraduationCap,
-  BookMarked, Crown, User, Settings, Gift
+  BookMarked, Crown, User, Trophy, History
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -14,6 +14,8 @@ const navItems = [
   { href: '/practice', icon: Mic, label: 'Luyện IELTS' },
   { href: '/mock-test', icon: GraduationCap, label: 'Thi thử' },
   { href: '/review', icon: BookMarked, label: 'Ôn tập' },
+  { href: '/leaderboard', icon: Trophy, label: 'Bảng vàng' },
+  { href: '/history', icon: History, label: 'Lịch sử' },
 ]
 
 const bottomItems = [

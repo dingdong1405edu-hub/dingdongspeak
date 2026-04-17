@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import {
   Mic, Square, Play, Volume2, ChevronRight,
   Star, BookOpen, Lightbulb, Save, CheckCircle,
-  AlertCircle, Loader2, RotateCcw
+  AlertCircle, Loader2, RotateCcw, Headphones, Trophy, Share2
 } from 'lucide-react'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
@@ -39,6 +39,7 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
   const [savedItems, setSavedItems] = useState<string[]>([])
   const [elapsed, setElapsed] = useState(0)
   const [ttsState, setTtsState] = useState<'idle' | 'loading' | 'playing'>('idle')
+  const [recordingUrl, setRecordingUrl] = useState<string | null>(null)
   const currentAudioRef = useRef<HTMLAudioElement | null>(null)
   const timerRef = useRef<NodeJS.Timeout | undefined>(undefined)
 
@@ -122,6 +123,9 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
   async function onRecordingComplete(audioBlob: Blob, transcriptText: string) {
     setTranscript(transcriptText)
     setPhase('scoring')
+    // Store blob URL for replay
+    if (recordingUrl) URL.revokeObjectURL(recordingUrl)
+    setRecordingUrl(URL.createObjectURL(audioBlob))
 
     try {
       const res = await fetch('/api/ai/score', {
@@ -210,8 +214,26 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
     }
   }
 
+  async function saveSession(records: QARecord[]) {
+    try {
+      await fetch('/api/sessions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'PRACTICE',
+          topic,
+          part,
+          questions: records.map(r => ({ question: r.question.question, transcript: r.transcript })),
+          scores: records.map(r => r.score),
+          duration: elapsed,
+        }),
+      })
+    } catch { /* silent — history is non-critical */ }
+  }
+
   function nextQuestion() {
     if (currentIdx + 1 >= questions.length) {
+      saveSession([...qaRecords])
       setPhase('complete')
     } else {
       setCurrentIdx(i => i + 1)
@@ -220,6 +242,7 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
       setTranscript('')
       setSampleAnswer('')
       setVocabData(null)
+      setRecordingUrl(null)
       if (questions[currentIdx + 1]) {
         setTimeout(() => playQuestion(questions[currentIdx + 1].question), 300)
       }
@@ -441,6 +464,14 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
       {/* Score result */}
       {phase === 'result' && currentScore && (
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
+          {/* Replay user recording */}
+          {recordingUrl && (
+            <div className="flex items-center gap-3 bg-[var(--bg-secondary)] rounded-xl px-4 py-3">
+              <Headphones size={16} className="text-cyan-400 shrink-0" />
+              <span className="text-xs text-[var(--text-secondary)] shrink-0">Nghe lại câu trả lời của bạn:</span>
+              <audio src={recordingUrl} controls className="h-8 flex-1 min-w-0" />
+            </div>
+          )}
           <ScoreCard score={currentScore} transcript={transcript} />
 
           {/* Actions */}
@@ -460,6 +491,31 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
             >
               <Lightbulb size={16} className="text-cyan-400" />
               Từ vựng & Idioms hay
+            </Button>
+            <Button
+              variant="secondary"
+              onClick={async () => {
+                try {
+                  await fetch('/api/share/answer', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                      question: currentQuestion?.question,
+                      transcript,
+                      score: currentScore,
+                      topic,
+                      part,
+                      isAnonymous: false,
+                    }),
+                  })
+                  toast.success('Đã chia sẻ lên Bảng vàng!')
+                } catch {
+                  toast.error('Không chia sẻ được')
+                }
+              }}
+            >
+              <Trophy size={16} className="text-yellow-400" />
+              Chia sẻ lên Bảng vàng
             </Button>
           </div>
 

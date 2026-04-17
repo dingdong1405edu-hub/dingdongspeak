@@ -30,6 +30,7 @@ model User {
   lessonProgress   LessonProgress[]
   referrals        Referral[]   @relation("ReferrerReferrals")
   streaks          Streak[]
+  sharedAnswers    SharedAnswer[]
 }
 
 model Account {
@@ -148,4 +149,19 @@ model LessonContent {
   data      Json
   updatedAt DateTime @updatedAt
   updatedBy String?
+}
+
+model SharedAnswer {
+  id          String     @id @default(cuid())
+  userId      String
+  question    String
+  transcript  String     @db.Text
+  score       Json
+  band        Float
+  topic       String
+  part        IELTSPart
+  isAnonymous Boolean    @default(false)
+  likes       Int        @default(0)
+  createdAt   DateTime   @default(now())
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

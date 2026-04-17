@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { LayoutDashboard, BookOpen, Mic, GraduationCap, BookMarked } from 'lucide-react'
+import { LayoutDashboard, BookOpen, Mic, GraduationCap, Trophy } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const items = [
@@ -10,7 +10,7 @@ const items = [
   { href: '/learn', icon: BookOpen, label: 'Learn' },
   { href: '/practice', icon: Mic, label: 'Practice' },
   { href: '/mock-test', icon: GraduationCap, label: 'Test' },
-  { href: '/review', icon: BookMarked, label: 'Review' },
+  { href: '/leaderboard', icon: Trophy, label: 'Bảng vàng' },
 ]
 
 export function MobileBottomNav() {

@@ -14,7 +14,7 @@ export interface ScoreResult {
   grammar: number
   pronunciation: number
   feedback: string
-  corrections: Array<{ wrong: string; correct: string; note?: string }>
+  corrections: Array<{ wrong: string; correct: string }>
 }
 
 export interface IELTSQuestion {
@@ -26,18 +26,23 @@ export interface IELTSQuestion {
 }
 
 const SCORER_PROMPT = (question: string, transcript: string, part: string) =>
-  `You are a strict IELTS examiner. Score according to official Band Descriptors.
-Band guide: 9=native-like, 7-8=fluent minor errors, 5-6=communicates with errors, 4-5=limited.
-Do NOT inflate scores.
+  `You are a certified IELTS examiner. Score STRICTLY per official Band Descriptors.
 
-Question: "${question}"
-Part: ${part}
+BAND CALIBRATION (realistic distribution for Vietnamese learners):
+- Band 8-9: Near-native fluency, minimal errors, wide range. VERY RARE (<5%). Only if genuinely exceptional.
+- Band 7: Mostly fluent, occasional errors, good range. Uncommon.
+- Band 6: Gets ideas across but noticeable errors, limited range, some hesitation. TYPICAL for advanced learners.
+- Band 5: Can communicate but frequent errors, restricted vocab, noticeable hesitation. TYPICAL for intermediate.
+- Band 4: Limited, many basic errors, often unclear. Beginner level.
+DO NOT give band 7+ unless truly deserved. Most responses score 4.5-6.5. Be strict.
+
+Q: "${question}" | Part: ${part}
 Response: "${transcript}"
 
-Find ALL grammar/spelling/vocabulary errors. Use exact words from the response.
+Find ALL errors (grammar, vocab misuse, awkward phrasing). Use exact words from the response.
 
-Return ONLY this JSON (no markdown, no extra text):
-{"overall":<0-9 step 0.5>,"fluency":<0-9>,"lexical":<0-9>,"grammar":<0-9>,"pronunciation":<0-9>,"feedback":"<2 sentences>","corrections":[{"wrong":"<exact text>","correct":"<fix>","note":"<reason>"}]}`
+Return ONLY JSON (no markdown):
+{"overall":<0-9 step 0.5>,"fluency":<0-9>,"lexical":<0-9>,"grammar":<0-9>,"pronunciation":<0-9>,"feedback":"<2 sentences in Vietnamese>","corrections":[{"wrong":"<exact phrase>","correct":"<fix>"}]}`
 
 export async function scoreIELTSResponse(
   question: string,
@@ -161,8 +166,9 @@ async function scoreWithGroq(question: string, transcript: string, part: string)
     model: 'llama-3.3-70b-versatile',
     messages: [{
       role: 'user',
-      content: `Score IELTS Speaking strictly. Q: "${question}" | Response: "${transcript}" | Part: ${part}
-Find grammar/spelling errors. Return JSON: {"overall":6.0,"fluency":6.0,"lexical":6.0,"grammar":6.0,"pronunciation":6.0,"feedback":"...","corrections":[{"wrong":"...","correct":"...","note":"..."}]}`,
+      content: `Score IELTS Speaking STRICTLY. Most Vietnamese learners score 4.5-6.5. Do NOT inflate.
+Q: "${question}" | Response: "${transcript}" | Part: ${part}
+Return JSON: {"overall":5.5,"fluency":5.5,"lexical":5.5,"grammar":5.5,"pronunciation":5.5,"feedback":"<2 sentences Vietnamese>","corrections":[{"wrong":"...","correct":"..."}]}`,
     }],
     response_format: { type: 'json_object' },
   })
