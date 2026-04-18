@@ -1,11 +1,57 @@
 import { GoogleGenerativeAI } from '@google/generative-ai'
 
-// Lazy init — tránh crash khi build (GEMINI_API_KEY chưa có)
 let _genAI: GoogleGenerativeAI | null = null
-function getModel() {
+let _groq: any = null
+
+function getGemini() {
   if (!_genAI) _genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!)
   return _genAI.getGenerativeModel({ model: 'gemini-2.0-flash' })
 }
+
+async function getGroq() {
+  if (!_groq) {
+    const { default: Groq } = await import('groq-sdk')
+    _groq = new Groq({ apiKey: process.env.GROQ_API_KEY })
+  }
+  return _groq
+}
+
+// Gemini with forced JSON output — no regex needed, saves output tokens
+async function geminiJSON<T>(prompt: string): Promise<T> {
+  const result = await getGemini().generateContent({
+    contents: [{ role: 'user', parts: [{ text: prompt }] }],
+    generationConfig: { responseMimeType: 'application/json' } as any,
+  })
+  return JSON.parse(result.response.text())
+}
+
+async function geminiText(prompt: string): Promise<string> {
+  const result = await getGemini().generateContent(prompt)
+  return result.response.text().trim()
+}
+
+async function groqJSON<T>(content: string, maxTokens = 300): Promise<T> {
+  const groq = await getGroq()
+  const res = await groq.chat.completions.create({
+    model: 'llama-3.3-70b-versatile',
+    messages: [{ role: 'user', content }],
+    response_format: { type: 'json_object' },
+    max_tokens: maxTokens,
+  })
+  return JSON.parse(res.choices[0].message.content || '{}')
+}
+
+async function groqText(content: string, maxTokens = 300): Promise<string> {
+  const groq = await getGroq()
+  const res = await groq.chat.completions.create({
+    model: 'llama-3.3-70b-versatile',
+    messages: [{ role: 'user', content }],
+    max_tokens: maxTokens,
+  })
+  return res.choices[0].message.content?.trim() || ''
+}
+
+// ─── Types ────────────────────────────────────────────────────────────────────
 
 export interface ScoreResult {
   overall: number
@@ -25,36 +71,21 @@ export interface IELTSQuestion {
   cueCard?: string[]
 }
 
-const SCORER_PROMPT = (question: string, transcript: string, part: string) =>
-  `You are a certified IELTS examiner. Score STRICTLY per official Band Descriptors.
-
-BAND CALIBRATION (realistic distribution for Vietnamese learners):
-- Band 8-9: Near-native fluency, minimal errors, wide range. VERY RARE (<5%). Only if genuinely exceptional.
-- Band 7: Mostly fluent, occasional errors, good range. Uncommon.
-- Band 6: Gets ideas across but noticeable errors, limited range, some hesitation. TYPICAL for advanced learners.
-- Band 5: Can communicate but frequent errors, restricted vocab, noticeable hesitation. TYPICAL for intermediate.
-- Band 4: Limited, many basic errors, often unclear. Beginner level.
-DO NOT give band 7+ unless truly deserved. Most responses score 4.5-6.5. Be strict.
-
-Q: "${question}" | Part: ${part}
-Response: "${transcript}"
-
-Find ALL errors (grammar, vocab misuse, awkward phrasing). Use exact words from the response.
-
-Return ONLY JSON (no markdown):
-{"overall":<0-9 step 0.5>,"fluency":<0-9>,"lexical":<0-9>,"grammar":<0-9>,"pronunciation":<0-9>,"feedback":"<2 sentences in Vietnamese>","corrections":[{"wrong":"<exact phrase>","correct":"<fix>"}]}`
+// ─── ACCURACY tasks → Gemini ──────────────────────────────────────────────────
 
 export async function scoreIELTSResponse(
   question: string,
   transcript: string,
   part: string
 ): Promise<ScoreResult> {
+  const prompt = `Strict IELTS examiner. Vietnamese learners typically 4.5-6.5. Never inflate.
+Q(${part}): "${question}"
+Answer: "${transcript}"
+Find max 3 errors using exact words from the answer.
+JSON: {"overall":5.5,"fluency":5.5,"lexical":5.5,"grammar":5.5,"pronunciation":5.5,"feedback":"1-2 câu tiếng Việt","corrections":[{"wrong":"exact phrase","correct":"fix"}]}`
+
   try {
-    const result = await getModel().generateContent(SCORER_PROMPT(question, transcript, part))
-    const text = result.response.text().trim()
-    const jsonMatch = text.match(/\{[\s\S]*\}/)
-    if (!jsonMatch) throw new Error('No JSON')
-    const parsed = JSON.parse(jsonMatch[0]) as ScoreResult
+    const parsed = await geminiJSON<ScoreResult>(prompt)
     if (!parsed.corrections) parsed.corrections = []
     return parsed
   } catch {
@@ -67,18 +98,13 @@ export async function generateIELTSQuestions(
   part: 'PART1' | 'PART2' | 'PART3' | 'FULL',
   count: number
 ): Promise<IELTSQuestion[]> {
-  const prompt = `Generate ${count} IELTS Speaking ${part === 'FULL' ? 'Full Test' : part} questions about: "${topic}".
-${part === 'PART2' ? 'Include cue card with 3-4 bullet points.' : ''}
-Match official IELTS difficulty and style.
-Return ONLY valid JSON array:
-[{"id":"q1","question":"<text>","part":"${part === 'FULL' ? 'PART1' : part}","hint":"<short tip>"${part === 'PART2' ? ',"cueCard":["<bullet>","<bullet>","<bullet>"]' : ''}}]`
+  const isPart2 = part === 'PART2'
+  const prompt = `${count} IELTS Speaking ${part === 'FULL' ? 'Part 1' : part} questions, topic: "${topic}".
+${isPart2 ? 'Include cueCard array (3 bullet points).' : ''}
+JSON array: [{"id":"q1","question":"...","part":"${part === 'FULL' ? 'PART1' : part}","hint":"short tip"${isPart2 ? ',"cueCard":["...","...","..."]' : ''}}]`
 
   try {
-    const result = await getModel().generateContent(prompt)
-    const text = result.response.text().trim()
-    const jsonMatch = text.match(/\[[\s\S]*\]/)
-    if (!jsonMatch) throw new Error('No JSON array')
-    return JSON.parse(jsonMatch[0]) as IELTSQuestion[]
+    return await geminiJSON<IELTSQuestion[]>(prompt)
   } catch {
     return getDefaultQuestions(topic, part, count)
   }
@@ -87,168 +113,102 @@ Return ONLY valid JSON array:
 export async function generateSampleAnswer(
   question: string,
   part: string,
-  band: number = 8
+  band = 8
 ): Promise<string> {
-  const lengthGuide: Record<string, string> = {
-    PART1: '2-3 sentences, 30-45 words',
-    PART2: '230-280 words, clear intro-body-conclusion',
-    PART3: '3-5 sentences, 60-80 words, opinion + reason + example',
+  const len: Record<string, string> = {
+    PART1: '30-45 words',
+    PART2: '230-280 words',
+    PART3: '60-80 words',
   }
-
-  const prompt = `Write a Band ${band}.0 IELTS Speaking model answer for:
-"${question}" (${part})
-Length: ${lengthGuide[part] ?? '50-80 words'}
-Use varied vocabulary, discourse markers, complex grammar, natural fillers.
-Output ONLY the answer text.`
+  const prompt = `Band ${band} IELTS ${part} answer: "${question}"
+${len[part] ?? '60 words'}. Varied vocab, discourse markers, natural flow.
+Output answer text only.`
 
   try {
-    const result = await getModel().generateContent(prompt)
-    const text = result.response.text().trim()
-    if (!text) throw new Error('Empty response')
+    const text = await geminiText(prompt)
+    if (!text) throw new Error('empty')
     return text
   } catch {
     return generateSampleAnswerWithGroq(question, part, band)
   }
 }
 
+// ─── REALTIME / SUPPLEMENTARY tasks → Groq ────────────────────────────────────
+
+// Vocab/idiom suggestions shown after scoring — speed matters
 export async function generateVocabAndIdioms(
   question: string,
   topic: string
 ): Promise<{ vocabulary: string[]; idioms: string[] }> {
-  const prompt = `IELTS topic: "${topic}", question: "${question}"
-Give 5 vocabulary + 3 idioms/collocations. Format: "word — nghĩa tiếng Việt" (max 5 words Vietnamese).
-Return ONLY JSON: {"vocabulary":["..."],"idioms":["..."]}`
-
   try {
-    const result = await getModel().generateContent(prompt)
-    const text = result.response.text().trim()
-    const jsonMatch = text.match(/\{[\s\S]*\}/)
-    if (!jsonMatch) throw new Error('No JSON')
-    const parsed = JSON.parse(jsonMatch[0])
-    if (!parsed.vocabulary?.length && !parsed.idioms?.length) throw new Error('Empty result')
-    return parsed
+    const res = await groqJSON<{ vocabulary: string[]; idioms: string[] }>(
+      `IELTS topic "${topic}", Q: "${question}". Give 5 vocab + 3 idioms, format "word — nghĩa Việt ngắn". JSON: {"vocabulary":["..."],"idioms":["..."]}`,
+      200
+    )
+    return { vocabulary: res.vocabulary || [], idioms: res.idioms || [] }
   } catch {
-    return generateVocabWithGroq(question, topic)
+    return { vocabulary: [], idioms: [] }
   }
 }
 
+// Inline answer improvement — user wants instant feedback
 export async function improveAnswer(
   transcript: string,
   question: string,
   part: string
 ): Promise<string> {
-  const prompt = `You are an IELTS Speaking coach.
-Student answered "${question}" (${part}) with: "${transcript}"
-
-Rewrite to Band 7.0 level. Keep their ideas. Fix grammar, improve vocabulary, add discourse markers.
-Output ONLY the improved answer text.`
-
   try {
-    const result = await getModel().generateContent(prompt)
-    const text = result.response.text().trim()
-    if (!text) throw new Error('Empty')
-    return text
-  } catch {
-    return improveWithGroq(transcript, question, part)
-  }
-}
-
-export async function scoreBeginnerSpeaking(
-  topic: string,
-  transcript: string
-): Promise<{ score: number; feedback: string; corrections: string[] }> {
-  const prompt = `English coach for beginners.
-Topic: "${topic}"
-Student: "${transcript}"
-Score 1-100: Accuracy 40% + Fluency 30% + Relevance 30%.
-Return ONLY JSON: {"score":<0-100>,"feedback":"<1-2 encouraging sentences>","corrections":["<fix1>","<fix2>"]}`
-
-  try {
-    const result = await getModel().generateContent(prompt)
-    const text = result.response.text().trim()
-    const jsonMatch = text.match(/\{[\s\S]*\}/)
-    if (!jsonMatch) throw new Error('No JSON')
-    return JSON.parse(jsonMatch[0])
-  } catch {
-    return { score: 70, feedback: 'Good effort! Keep practicing.', corrections: [] }
-  }
-}
-
-// ─── Groq fallbacks ────────────────────────────────────────────────────────
-
-async function getGroq() {
-  const { default: Groq } = await import('groq-sdk')
-  return new Groq({ apiKey: process.env.GROQ_API_KEY })
-}
-
-async function scoreWithGroq(question: string, transcript: string, part: string): Promise<ScoreResult> {
-  const groq = await getGroq()
-  const completion = await groq.chat.completions.create({
-    model: 'llama-3.3-70b-versatile',
-    messages: [{
-      role: 'user',
-      content: `Score IELTS Speaking STRICTLY. Most Vietnamese learners score 4.5-6.5. Do NOT inflate.
-Q: "${question}" | Response: "${transcript}" | Part: ${part}
-Return JSON: {"overall":5.5,"fluency":5.5,"lexical":5.5,"grammar":5.5,"pronunciation":5.5,"feedback":"<2 sentences Vietnamese>","corrections":[{"wrong":"...","correct":"..."}]}`,
-    }],
-    response_format: { type: 'json_object' },
-  })
-  const result = JSON.parse(completion.choices[0].message.content || '{}') as ScoreResult
-  if (!result.corrections) result.corrections = []
-  return result
-}
-
-async function generateSampleAnswerWithGroq(question: string, part: string, band: number): Promise<string> {
-  const groq = await getGroq()
-  const completion = await groq.chat.completions.create({
-    model: 'llama-3.3-70b-versatile',
-    messages: [{
-      role: 'user',
-      content: `Write a Band ${band}.0 IELTS Speaking answer for: "${question}" (${part}). Natural, academic, fluent. Output answer text only.`,
-    }],
-    max_tokens: 400,
-  })
-  return completion.choices[0].message.content?.trim() || ''
-}
-
-async function generateVocabWithGroq(question: string, topic: string): Promise<{ vocabulary: string[]; idioms: string[] }> {
-  const groq = await getGroq()
-  const completion = await groq.chat.completions.create({
-    model: 'llama-3.3-70b-versatile',
-    messages: [{
-      role: 'user',
-      content: `IELTS topic "${topic}", question "${question}": give 5 vocabulary + 3 idioms. Format: "word — nghĩa tiếng Việt". Return JSON: {"vocabulary":["..."],"idioms":["..."]}`,
-    }],
-    response_format: { type: 'json_object' },
-  })
-  const parsed = JSON.parse(completion.choices[0].message.content || '{}')
-  return { vocabulary: parsed.vocabulary || [], idioms: parsed.idioms || [] }
-}
-
-async function improveWithGroq(transcript: string, question: string, part: string): Promise<string> {
-  try {
-    const groq = await getGroq()
-    const completion = await groq.chat.completions.create({
-      model: 'llama-3.3-70b-versatile',
-      messages: [{
-        role: 'user',
-        content: `Rewrite to IELTS Band 7. Keep ideas, fix grammar, better vocab, add discourse markers.
-Student: "${transcript}" | Q: "${question}" (${part})
+    return await groqText(
+      `Rewrite to IELTS Band 7. Keep ideas. Fix grammar, better vocab, add discourse markers.
+Student (${part}): "${transcript}" | Q: "${question}"
 Output improved answer only.`,
-      }],
-      max_tokens: 300,
-    })
-    return completion.choices[0].message.content?.trim() || transcript
+      300
+    )
   } catch {
     return transcript
   }
 }
 
+// Beginner game scoring — realtime after each card
+export async function scoreBeginnerSpeaking(
+  topic: string,
+  transcript: string
+): Promise<{ score: number; feedback: string; corrections: string[] }> {
+  try {
+    return await groqJSON(
+      `English coach for beginners. Topic: "${topic}". Student: "${transcript}".
+Score 0-100 (Accuracy 40%+Fluency 30%+Relevance 30%). JSON: {"score":70,"feedback":"1 encouraging sentence","corrections":["fix1"]}`,
+      150
+    )
+  } catch {
+    return { score: 70, feedback: 'Good effort! Keep practicing.', corrections: [] }
+  }
+}
+
+// ─── Groq fallbacks for Gemini tasks ─────────────────────────────────────────
+
+async function scoreWithGroq(question: string, transcript: string, part: string): Promise<ScoreResult> {
+  const result = await groqJSON<ScoreResult>(
+    `Strict IELTS examiner. Vietnamese typically 4.5-6.5. Don't inflate.
+Q(${part}): "${question}" | Answer: "${transcript}"
+JSON: {"overall":5.5,"fluency":5.5,"lexical":5.5,"grammar":5.5,"pronunciation":5.5,"feedback":"1-2 câu tiếng Việt","corrections":[{"wrong":"...","correct":"..."}]}`,
+    400
+  )
+  if (!result.corrections) result.corrections = []
+  return result
+}
+
+async function generateSampleAnswerWithGroq(question: string, part: string, band: number): Promise<string> {
+  return groqText(
+    `Band ${band} IELTS ${part} answer for: "${question}". Natural, academic. Output text only.`,
+    400
+  )
+}
+
 function getDefaultQuestions(topic: string, part: string, count: number): IELTSQuestion[] {
-  const defaults = [
+  return [
     { id: 'q1', question: `Tell me about your experience with ${topic}.`, part: 'PART1' as const },
     { id: 'q2', question: `How has ${topic} influenced your daily life?`, part: 'PART1' as const },
     { id: 'q3', question: `Do you think ${topic} is important in modern society? Why?`, part: 'PART3' as const },
-  ]
-  return defaults.slice(0, count)
+  ].slice(0, count)
 }
