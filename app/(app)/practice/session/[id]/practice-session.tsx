@@ -128,44 +128,45 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
   async function onRecordingComplete(audioBlob: Blob, transcriptText: string) {
     setTranscript(transcriptText)
     setPhase('scoring')
-    // Store blob URL for replay
-    if (recordingUrl) URL.revokeObjectURL(recordingUrl)
-    setRecordingUrl(URL.createObjectURL(audioBlob))
 
-    try {
-      const res = await fetch('/api/ai/score', {
+    // Parallel: upload audio to Cloudinary + score the answer
+    const audioFormData = new FormData()
+    audioFormData.append('audio', audioBlob, 'recording.webm')
+
+    const [audioResult, scoreResult] = await Promise.allSettled([
+      fetch('/api/audio/upload', { method: 'POST', body: audioFormData })
+        .then(r => r.ok ? r.json() : null)
+        .then(d => d?.url ?? null)
+        .catch(() => null),
+      fetch('/api/ai/score', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          question: currentQuestion?.question,
-          transcript: transcriptText,
-          part,
-          type: 'PRACTICE',
-          topic,
-        }),
-      })
-      const data = await res.json()
-      if (!res.ok) {
-        toast.error(data.error || 'Không chấm được điểm')
-        setPhase('question')
-        return
-      }
-      setCurrentScore(data.score)
-      setPhase('result')
+        body: JSON.stringify({ question: currentQuestion?.question, transcript: transcriptText, part, type: 'PRACTICE', topic }),
+      }).then(r => r.json()),
+    ])
 
-      // Add to records and auto-save
-      const record: QARecord = {
-        question: currentQuestion!,
-        transcript: transcriptText,
-        score: data.score,
-      }
-      const updatedRecords = [...qaRecords, record]
-      setQaRecords(updatedRecords)
-      autoSave(updatedRecords, elapsed)
-    } catch {
-      toast.error('Lỗi chấm điểm. Vui lòng thử lại.')
+    const persistentAudioUrl: string | null = audioResult.status === 'fulfilled' ? audioResult.value : null
+    setRecordingUrl(persistentAudioUrl ?? URL.createObjectURL(audioBlob))
+
+    if (scoreResult.status === 'rejected' || scoreResult.value?.error) {
+      toast.error(scoreResult.status === 'rejected' ? 'Lỗi chấm điểm' : scoreResult.value.error)
       setPhase('question')
+      return
     }
+
+    const score = scoreResult.value.score
+    setCurrentScore(score)
+    setPhase('result')
+
+    const record: QARecord = {
+      question: currentQuestion!,
+      transcript: transcriptText,
+      score,
+      audioUrl: persistentAudioUrl ?? undefined,
+    }
+    const updatedRecords = [...qaRecords, record]
+    setQaRecords(updatedRecords)
+    autoSave(updatedRecords, elapsed)
   }
 
   async function loadSampleAnswer() {
@@ -245,7 +246,7 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
         type: 'PRACTICE',
         topic,
         part,
-        questions: records.map(r => ({ question: r.question.question, transcript: r.transcript })),
+        questions: records.map(r => ({ question: r.question.question, transcript: r.transcript, audioUrl: r.audioUrl ?? null })),
         scores: records.map(r => r.score),
         duration,
       }
@@ -499,125 +500,120 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
         </div>
       )}
 
-      {/* Score result — two-column layout */}
+      {/* Score result — ScoreCard full width, then AI + Leaderboard side by side */}
       {phase === 'result' && currentScore && (
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
-            {/* Left: Score card */}
-            <ScoreCard
-              score={currentScore}
-              transcript={transcript}
-              audioUrl={recordingUrl ?? undefined}
-              onImprove={handleImprove}
-              loadingImprove={loadingImprove}
-              improvedAnswer={improvedAnswer}
-              onShare={async (isAnonymous: boolean) => {
-                await fetch('/api/share/answer', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({ question: currentQuestion?.question, transcript, score: currentScore, topic, part, isAnonymous }),
-                })
-              }}
-            />
+          {/* Score card — always full width */}
+          <ScoreCard
+            score={currentScore}
+            transcript={transcript}
+            audioUrl={recordingUrl ?? undefined}
+            onImprove={handleImprove}
+            loadingImprove={loadingImprove}
+            improvedAnswer={improvedAnswer}
+            onShare={async (isAnonymous: boolean) => {
+              await fetch('/api/share/answer', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  question: currentQuestion?.question,
+                  transcript,
+                  score: currentScore,
+                  topic,
+                  part,
+                  isAnonymous,
+                  audioUrl: recordingUrl?.startsWith('http') ? recordingUrl : null,
+                }),
+              })
+            }}
+          />
 
-            {/* Right: AI hỗ trợ | Bảng vàng tabs */}
+          {/* AI hỗ trợ + Bảng vàng — side by side on desktop */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
+            {/* AI hỗ trợ */}
             <div className="space-y-3">
-              {/* Tab switcher */}
-              <div className="flex rounded-xl overflow-hidden border border-[var(--border)]">
-                <button
-                  onClick={() => setRightTab('ai')}
-                  className={`flex-1 py-2 text-sm font-medium transition-all ${rightTab === 'ai' ? 'bg-cyan-500/20 text-cyan-400' : 'text-[var(--text-secondary)] hover:text-[var(--text)]'}`}
-                >
-                  AI hỗ trợ
-                </button>
-                <button
-                  onClick={() => setRightTab('leaderboard')}
-                  className={`flex-1 py-2 text-sm font-medium transition-all flex items-center justify-center gap-1.5 ${rightTab === 'leaderboard' ? 'bg-yellow-500/20 text-yellow-400' : 'text-[var(--text-secondary)] hover:text-[var(--text)]'}`}
-                >
-                  <Trophy size={13} />
-                  Bảng vàng
-                </button>
+              <div className="flex items-center gap-1.5 px-1">
+                <Star size={14} className="text-yellow-400" />
+                <span className="text-sm font-semibold text-[var(--text)]">AI hỗ trợ</span>
+              </div>
+              <div className="flex flex-col gap-2">
+                <Button variant="secondary" onClick={loadSampleAnswer} loading={loadingSample}>
+                  <Star size={15} className="text-yellow-400" />
+                  Câu trả lời mẫu Band 8.0
+                </Button>
+                <Button variant="secondary" onClick={loadVocabAndIdioms} loading={loadingVocab}>
+                  <Lightbulb size={15} className="text-cyan-400" />
+                  Từ vựng & Idioms hay
+                </Button>
               </div>
 
-              {rightTab === 'ai' ? (
-                <div className="space-y-3">
-                  <div className="flex flex-col gap-2">
-                    <Button variant="secondary" onClick={loadSampleAnswer} loading={loadingSample}>
-                      <Star size={15} className="text-yellow-400" />
-                      Câu trả lời mẫu Band 8.0
-                    </Button>
-                    <Button variant="secondary" onClick={loadVocabAndIdioms} loading={loadingVocab}>
-                      <Lightbulb size={15} className="text-cyan-400" />
-                      Từ vựng & Idioms hay
-                    </Button>
-                  </div>
+              <AnimatePresence>
+                {sampleAnswer && (
+                  <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}>
+                    <Card className="border-yellow-500/20 bg-yellow-500/5">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Star size={14} className="text-yellow-400" />
+                        <span className="text-sm font-semibold text-[var(--text)]">Mẫu Band 8.0</span>
+                      </div>
+                      <p className="text-sm text-[var(--text)] leading-relaxed">{sampleAnswer}</p>
+                    </Card>
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
-                  <AnimatePresence>
-                    {sampleAnswer && (
-                      <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}>
-                        <Card className="border-yellow-500/20 bg-yellow-500/5">
-                          <div className="flex items-center gap-2 mb-2">
-                            <Star size={14} className="text-yellow-400" />
-                            <span className="text-sm font-semibold text-[var(--text)]">Mẫu Band 8.0</span>
+              <AnimatePresence>
+                {vocabData && (
+                  <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}>
+                    <Card>
+                      <h4 className="text-sm font-semibold text-[var(--text)] mb-3 flex items-center gap-1.5">
+                        <Lightbulb size={14} className="text-cyan-400" />
+                        Từ vựng & Idioms
+                      </h4>
+                      {vocabData.vocabulary.length > 0 && (
+                        <div className="mb-3">
+                          <p className="text-[10px] font-semibold text-cyan-400 uppercase mb-1.5">Từ vựng</p>
+                          <div className="space-y-1.5">
+                            {vocabData.vocabulary.map((v, i) => (
+                              <div key={i} className="flex items-center justify-between gap-2 text-sm">
+                                <span className="text-[var(--text)]">{v}</span>
+                                <button onClick={() => saveItem(v, 'VOCABULARY')} disabled={savedItems.includes(v)}
+                                  className="shrink-0 text-cyan-400 hover:text-cyan-300 disabled:text-emerald-400">
+                                  {savedItems.includes(v) ? <CheckCircle size={13} /> : <Save size={13} />}
+                                </button>
+                              </div>
+                            ))}
                           </div>
-                          <p className="text-sm text-[var(--text)] leading-relaxed">{sampleAnswer}</p>
-                        </Card>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                        </div>
+                      )}
+                      {vocabData.idioms.length > 0 && (
+                        <div>
+                          <p className="text-[10px] font-semibold text-violet-400 uppercase mb-1.5">Idioms</p>
+                          <div className="space-y-1.5">
+                            {vocabData.idioms.map((idiom, i) => (
+                              <div key={i} className="flex items-center justify-between gap-2 text-sm">
+                                <span className="text-[var(--text)]">{idiom}</span>
+                                <button onClick={() => saveItem(idiom, 'IDIOM')} disabled={savedItems.includes(idiom)}
+                                  className="shrink-0 text-violet-400 hover:text-violet-300 disabled:text-emerald-400">
+                                  {savedItems.includes(idiom) ? <CheckCircle size={13} /> : <Save size={13} />}
+                                </button>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </Card>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
 
-                  <AnimatePresence>
-                    {vocabData && (
-                      <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}>
-                        <Card>
-                          <h4 className="text-sm font-semibold text-[var(--text)] mb-3 flex items-center gap-1.5">
-                            <Lightbulb size={14} className="text-cyan-400" />
-                            Từ vựng & Idioms
-                          </h4>
-                          {vocabData.vocabulary.length > 0 && (
-                            <div className="mb-3">
-                              <p className="text-[10px] font-semibold text-cyan-400 uppercase mb-1.5">Từ vựng</p>
-                              <div className="space-y-1.5">
-                                {vocabData.vocabulary.map((v, i) => (
-                                  <div key={i} className="flex items-center justify-between gap-2 text-sm">
-                                    <span className="text-[var(--text)]">{v}</span>
-                                    <button onClick={() => saveItem(v, 'VOCABULARY')} disabled={savedItems.includes(v)}
-                                      className="shrink-0 text-cyan-400 hover:text-cyan-300 disabled:text-emerald-400">
-                                      {savedItems.includes(v) ? <CheckCircle size={13} /> : <Save size={13} />}
-                                    </button>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-                          {vocabData.idioms.length > 0 && (
-                            <div>
-                              <p className="text-[10px] font-semibold text-violet-400 uppercase mb-1.5">Idioms</p>
-                              <div className="space-y-1.5">
-                                {vocabData.idioms.map((idiom, i) => (
-                                  <div key={i} className="flex items-center justify-between gap-2 text-sm">
-                                    <span className="text-[var(--text)]">{idiom}</span>
-                                    <button onClick={() => saveItem(idiom, 'IDIOM')} disabled={savedItems.includes(idiom)}
-                                      className="shrink-0 text-violet-400 hover:text-violet-300 disabled:text-emerald-400">
-                                      {savedItems.includes(idiom) ? <CheckCircle size={13} /> : <Save size={13} />}
-                                    </button>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-                        </Card>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              ) : (
-                <TopicLeaderboard topic={topic} part={part} />
-              )}
+            {/* Bảng vàng */}
+            <div>
+              <TopicLeaderboard topic={topic} part={part} />
             </div>
           </div>
 
-          {/* Next / Complete — full width */}
+          {/* Next / Complete */}
           <Button variant="gradient" size="lg" className="w-full" onClick={nextQuestion}>
             {currentIdx + 1 >= questions.length ? (
               <><CheckCircle size={18} /> Xem kết quả tổng</>

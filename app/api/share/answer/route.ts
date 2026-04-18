@@ -6,7 +6,7 @@ export async function POST(req: NextRequest) {
   const session = await auth()
   if (!session?.user?.id) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
-  const { question, transcript, score, topic, part, isAnonymous } = await req.json()
+  const { question, transcript, score, topic, part, isAnonymous, audioUrl } = await req.json()
 
   if (!question || !transcript || !score || !topic || !part) {
     return NextResponse.json({ error: 'Missing fields' }, { status: 400 })
@@ -17,6 +17,7 @@ export async function POST(req: NextRequest) {
       userId: session.user.id,
       question,
       transcript,
+      audioUrl: audioUrl ?? null,
       score,
       band: score.overall,
       topic,

@@ -33,6 +33,7 @@ export async function GET(req: NextRequest) {
     id: a.id,
     question: a.question,
     transcript: a.transcript,
+    audioUrl: a.audioUrl ?? null,
     score: a.score,
     band: a.band,
     topic: a.topic,

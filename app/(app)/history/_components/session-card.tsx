@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils'
 interface QAItem {
   question: string
   transcript: string
+  audioUrl?: string | null
 }
 
 interface ScoreItem {
@@ -127,6 +128,13 @@ function QuestionDetail({ qa, score, idx }: { qa: QAItem; score: ScoreItem; idx:
                   )
                 })}
               </div>
+
+              {/* Audio replay */}
+              {qa.audioUrl && (
+                <div className="border border-[var(--border)] rounded-xl overflow-hidden">
+                  <audio src={qa.audioUrl} controls className="h-8 w-full" />
+                </div>
+              )}
 
               {/* Transcript with inline corrections */}
               <div className="bg-[var(--bg-secondary)] rounded-xl p-3">

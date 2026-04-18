@@ -12,6 +12,7 @@ interface SharedAnswer {
   id: string
   question: string
   transcript: string
+  audioUrl: string | null
   score: { overall: number; fluency: number; lexical: number; grammar: number; pronunciation: number; feedback: string }
   band: number
   topic: string
@@ -82,6 +83,11 @@ function AnswerCard({ answer }: { answer: SharedAnswer }) {
                 exit={{ opacity: 0, height: 0 }}
                 className="overflow-hidden"
               >
+                {answer.audioUrl && (
+                  <div className="mt-3 border border-[var(--border)] rounded-xl overflow-hidden">
+                    <audio src={answer.audioUrl} controls className="h-8 w-full" />
+                  </div>
+                )}
                 <div className="mt-3 bg-[var(--bg-secondary)] rounded-xl p-3">
                   <p className="text-sm text-[var(--text)] leading-relaxed">{answer.transcript}</p>
                 </div>

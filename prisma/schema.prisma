@@ -156,6 +156,7 @@ model SharedAnswer {
   userId      String
   question    String
   transcript  String     @db.Text
+  audioUrl    String?    @db.Text
   score       Json
   band        Float
   topic       String
