@@ -36,7 +36,11 @@ export async function POST(req: NextRequest) {
       cancelUrl: `${appUrl}/premium`,
     })
 
-    return NextResponse.json({ checkoutUrl: result.checkoutUrl })
+    return NextResponse.json({
+      checkoutUrl: result.checkoutUrl,
+      qrCode: result.qrCode ?? null,
+      orderCode,
+    })
   } catch (error: any) {
     console.error('create-link error:', error)
     const message = error?.message || 'Tạo link thanh toán thất bại'
