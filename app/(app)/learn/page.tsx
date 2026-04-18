@@ -10,7 +10,7 @@ export default async function LearnPage() {
   const session = await auth()
   if (!session?.user?.id) return null
 
-  const [progress, user, customLessons] = await Promise.all([
+  const [progress, user, customLessons, stageTestResults] = await Promise.all([
     prisma.lessonProgress.findMany({
       where: { userId: session.user.id },
       select: { lessonId: true, completed: true, score: true },
@@ -24,9 +24,14 @@ export default async function LearnPage() {
       orderBy: { order: 'asc' },
       select: { id: true, stageId: true, title: true, type: true, topic: true, level: true, description: true, xp: true, cards: true },
     }),
+    prisma.stageTestResult.findMany({
+      where: { userId: session.user.id, passed: true },
+      select: { stageId: true },
+    }),
   ])
 
   const completedSet = new Set(progress.filter(p => p.completed).map(p => p.lessonId))
+  const passedStageTests = new Set(stageTestResults.map(r => r.stageId))
 
   // Merge published custom lessons into each stage
   const mergedStages: StageData[] = STAGES.map(stage => ({
@@ -60,6 +65,7 @@ export default async function LearnPage() {
       completedIds={completedSet}
       user={user}
       totalXP={totalXP}
+      passedStageTests={passedStageTests}
     />
   )
 }

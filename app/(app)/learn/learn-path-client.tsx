@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { BookOpen, Settings, Mic, Lock, Check, Star, Heart, Zap, Flame, Trophy, ChevronRight } from 'lucide-react'
+import { BookOpen, Settings, Mic, Lock, Check, Star, Heart, Zap, Flame, Trophy, ChevronRight, Award } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import type { StageData } from '@/lib/lessons-data'
 
@@ -45,32 +45,53 @@ interface Props {
   completedIds: Set<string>
   user: { lives: number | null; tokens: number | null; isPremium: boolean | null; premiumUntil: Date | null } | null
   totalXP: number
+  passedStageTests: Set<string>
 }
 
-export function LearnPathClient({ stages, completedIds, user, totalXP }: Props) {
+export function LearnPathClient({ stages, completedIds, user, totalXP, passedStageTests }: Props) {
   const isPremium = user?.isPremium && user?.premiumUntil && new Date(user.premiumUntil) > new Date()
   const totalLessons = stages.reduce((s, st) => s + st.lessons.length, 0)
   const totalCompleted = completedIds.size
   const overallPct = totalLessons > 0 ? Math.round((totalCompleted / totalLessons) * 100) : 0
 
+  // Highest stage index unlocked via test (0-indexed)
+  const maxPassedStageIdx = stages.reduce((max, s, i) => passedStageTests.has(s.id) ? Math.max(max, i) : max, -1)
+
   function isUnlocked(stageIdx: number, lessonIdx: number) {
+    // Stage test passed for this stage or earlier → all lessons here are accessible
+    if (stageIdx <= maxPassedStageIdx) return true
+
     if (stageIdx === 0 && lessonIdx === 0) return true
     const stage = stages[stageIdx]
     if (lessonIdx > 0) return completedIds.has(stage.lessons[lessonIdx - 1].id)
-    const prevStage = stages[stageIdx - 1]
+
+    // First lesson of a new stage: prev stage fully done OR prev stage test passed
+    const prevStageIdx = stageIdx - 1
+    if (prevStageIdx <= maxPassedStageIdx) return true
+    const prevStage = stages[prevStageIdx]
     return prevStage?.lessons.every(l => completedIds.has(l.id)) ?? false
   }
 
-  // find the first unlocked+incomplete lesson
+  // Find first unlocked+incomplete lesson (skip test-passed stages)
   let currentLessonId: string | null = null
-  for (const stage of stages) {
-    for (const lesson of stage.lessons) {
+  for (let si = 0; si < stages.length; si++) {
+    if (si <= maxPassedStageIdx) continue // stage was skipped via test
+    for (const lesson of stages[si].lessons) {
       if (!completedIds.has(lesson.id)) {
         currentLessonId = lesson.id
         break
       }
     }
     if (currentLessonId) break
+  }
+  // Fallback: if all skipped stages dominate, find first incomplete anywhere
+  if (!currentLessonId) {
+    for (const stage of stages) {
+      for (const lesson of stage.lessons) {
+        if (!completedIds.has(lesson.id)) { currentLessonId = lesson.id; break }
+      }
+      if (currentLessonId) break
+    }
   }
 
   let globalIdx = 0
@@ -138,10 +159,11 @@ export function LearnPathClient({ stages, completedIds, user, totalXP }: Props) 
       {/* ── Stages ── */}
       <div className="space-y-10">
         {stages.map((stage, si) => {
-          const stageCompleted = stage.lessons.every(l => completedIds.has(l.id))
-          const stageStarted   = stage.lessons.some(l => completedIds.has(l.id))
-          const stageDone      = stage.lessons.filter(l => completedIds.has(l.id)).length
-          const stagePct       = Math.round((stageDone / stage.lessons.length) * 100)
+          const stageCompleted    = stage.lessons.every(l => completedIds.has(l.id))
+          const stagePassedByTest = passedStageTests.has(stage.id)
+          const stageStarted      = stage.lessons.some(l => completedIds.has(l.id))
+          const stageDone         = stage.lessons.filter(l => completedIds.has(l.id)).length
+          const stagePct          = Math.round((stageDone / stage.lessons.length) * 100)
 
           return (
             <div key={stage.id}>
@@ -164,16 +186,18 @@ export function LearnPathClient({ stages, completedIds, user, totalXP }: Props) 
                       <motion.div
                         className="h-full rounded-full bg-white"
                         initial={{ width: 0 }}
-                        animate={{ width: `${stagePct}%` }}
+                        animate={{ width: `${stagePassedByTest ? 100 : stagePct}%` }}
                         transition={{ duration: 0.8, delay: si * 0.1 + 0.2 }}
                       />
                     </div>
                   </div>
                   <div className="shrink-0 text-right ml-2">
-                    {stageCompleted ? (
+                    {stageCompleted || stagePassedByTest ? (
                       <div className="flex flex-col items-center gap-1">
                         <Trophy size={22} />
-                        <span className="text-[10px] font-bold uppercase">Done!</span>
+                        <span className="text-[10px] font-bold uppercase">
+                          {stagePassedByTest && !stageCompleted ? 'Bỏ qua!' : 'Done!'}
+                        </span>
                       </div>
                     ) : (
                       <>
@@ -280,18 +304,72 @@ export function LearnPathClient({ stages, completedIds, user, totalXP }: Props) 
                       </motion.div>
                     )
                   })}
+
+                  {/* ── Stage Test Node ── */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.75 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: si * 0.07 + stage.lessons.length * 0.08 + 0.05, type: 'spring', bounce: 0.35 }}
+                    className="flex items-center justify-center"
+                  >
+                    <div className="flex flex-col items-center gap-2">
+                      <Link
+                        href={`/learn/stage-test/${stage.id}`}
+                        className={cn(
+                          'relative w-24 h-24 rounded-3xl flex flex-col items-center justify-center gap-1.5 transition-all duration-200 select-none cursor-pointer',
+                          stagePassedByTest
+                            ? 'bg-gradient-to-br from-yellow-400 to-amber-500 shadow-xl shadow-yellow-500/40 hover:scale-105 active:scale-95'
+                            : 'bg-gradient-to-br from-cyan-500 to-violet-600 opacity-85 hover:opacity-100 hover:scale-105 active:scale-95 shadow-lg shadow-cyan-500/30',
+                        )}
+                      >
+                        {stagePassedByTest ? (
+                          <>
+                            <Trophy size={26} className="text-white" />
+                            <span className="text-[10px] font-black text-white uppercase tracking-wide">Passed!</span>
+                          </>
+                        ) : (
+                          <>
+                            <Award size={26} className="text-white" />
+                            <span className="text-[10px] font-black text-white uppercase tracking-wide">Stage Test</span>
+                          </>
+                        )}
+                      </Link>
+
+                      <div className="text-center max-w-[108px]">
+                        <span className={cn(
+                          'inline-block text-[10px] font-bold uppercase tracking-wide px-2 py-0.5 rounded-full border mb-1',
+                          stagePassedByTest
+                            ? 'bg-yellow-400/15 text-yellow-400 border-yellow-400/30'
+                            : 'bg-cyan-500/15 text-cyan-400 border-cyan-400/30'
+                        )}>
+                          Thi bỏ qua
+                        </span>
+                        <div className="text-xs font-medium leading-tight text-[var(--text)]">
+                          {stagePassedByTest ? 'Stage đã mở khoá' : 'Bỏ qua stage này'}
+                        </div>
+                        <div className={cn(
+                          'text-[10px] font-semibold mt-0.5',
+                          stagePassedByTest ? 'text-yellow-400' : 'text-cyan-400'
+                        )}>
+                          {stagePassedByTest ? '✓ Đã vượt qua' : '5 mạng · tất cả câu'}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
                 </div>
               </div>
 
               {/* Stage completed banner */}
-              {stageCompleted && (
+              {(stageCompleted || stagePassedByTest) && (
                 <motion.div
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="mt-5 flex items-center justify-center gap-2 rounded-2xl border border-yellow-400/30 bg-yellow-400/8 py-3"
                 >
                   <Trophy size={15} className="text-yellow-400" />
-                  <span className="text-sm font-bold text-yellow-400">Stage {si + 1} hoàn thành!</span>
+                  <span className="text-sm font-bold text-yellow-400">
+                    {stagePassedByTest && !stageCompleted ? `Stage ${si + 1} bỏ qua thành công!` : `Stage ${si + 1} hoàn thành!`}
+                  </span>
                   <Flame size={14} className="text-orange-400" />
                 </motion.div>
               )}
