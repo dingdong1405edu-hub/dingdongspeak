@@ -17,7 +17,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Gói không hợp lệ' }, { status: 400 })
     }
 
-    const orderCode = Date.now()
+    // Seconds-based timestamp fits INT4 (max ~2.1B, current ~1.77B)
+    const orderCode = Math.floor(Date.now() / 1000)
 
     await prisma.paymentOrder.create({
       data: { orderCode, userId: session.user.id, months: plan.months },
