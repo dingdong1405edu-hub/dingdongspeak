@@ -36,10 +36,10 @@ export default function PremiumPage() {
       if (res.ok && data.checkoutUrl) {
         window.location.href = data.checkoutUrl
       } else {
-        toast.error('Không thể tạo link thanh toán. Vui lòng thử lại.')
+        toast.error(data.error || 'Không thể tạo link thanh toán. Vui lòng thử lại.')
       }
-    } catch {
-      toast.error('Có lỗi xảy ra. Vui lòng thử lại.')
+    } catch (e: any) {
+      toast.error(e?.message || 'Có lỗi xảy ra. Vui lòng thử lại.')
     } finally {
       setLoading(false)
     }
