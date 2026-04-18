@@ -1,41 +1,56 @@
 import NextAuth from 'next-auth'
 import { PrismaAdapter } from '@auth/prisma-adapter'
-import CredentialsProvider from 'next-auth/providers/credentials'
+import GoogleProvider from 'next-auth/providers/google'
 import { prisma } from '@/lib/prisma'
-import bcrypt from 'bcryptjs'
+import type { Adapter } from 'next-auth/adapters'
+
+// Custom adapter: maps NextAuth's `image` field to our schema's `avatar` field
+const baseAdapter = PrismaAdapter(prisma) as Adapter
+const adapter: Adapter = {
+  ...baseAdapter,
+  createUser: async (data: any) => {
+    const { image, emailVerified, ...rest } = data
+    const user = await prisma.user.create({
+      data: { ...rest, avatar: image ?? null, emailVerified: emailVerified ?? null },
+    })
+    return { ...user, emailVerified: user.emailVerified ?? null, image: user.avatar ?? null }
+  },
+  updateUser: async (data: any) => {
+    const { image, id, ...rest } = data
+    const user = await prisma.user.update({
+      where: { id },
+      data: { ...rest, ...(image !== undefined ? { avatar: image } : {}) },
+    })
+    return { ...user, emailVerified: user.emailVerified ?? null, image: user.avatar ?? null }
+  },
+  getUser: async (id: string) => {
+    const user = await prisma.user.findUnique({ where: { id } })
+    if (!user) return null
+    return { ...user, emailVerified: user.emailVerified ?? null, image: user.avatar ?? null }
+  },
+  getUserByEmail: async (email: string) => {
+    const user = await prisma.user.findUnique({ where: { email } })
+    if (!user) return null
+    return { ...user, emailVerified: user.emailVerified ?? null, image: user.avatar ?? null }
+  },
+  getUserByAccount: async ({ provider, providerAccountId }: any) => {
+    const account = await prisma.account.findUnique({
+      where: { provider_providerAccountId: { provider, providerAccountId } },
+      include: { user: true },
+    })
+    if (!account) return null
+    const user = account.user
+    return { ...user, emailVerified: user.emailVerified ?? null, image: user.avatar ?? null }
+  },
+}
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   trustHost: true,
-  adapter: PrismaAdapter(prisma),
+  adapter,
   providers: [
-    CredentialsProvider({
-      name: 'credentials',
-      credentials: {
-        email: { label: 'Email', type: 'email' },
-        password: { label: 'Password', type: 'password' },
-      },
-      async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) return null
-
-        const user = await prisma.user.findUnique({
-          where: { email: credentials.email as string },
-        })
-
-        if (!user?.passwordHash) return null
-
-        const isValid = await bcrypt.compare(
-          credentials.password as string,
-          user.passwordHash
-        )
-        if (!isValid) return null
-
-        return {
-          id: user.id,
-          email: user.email,
-          name: user.name,
-          image: user.avatar,
-        }
-      },
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
   ],
   session: { strategy: 'jwt' },

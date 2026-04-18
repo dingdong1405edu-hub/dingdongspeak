@@ -10,6 +10,7 @@ datasource db {
 model User {
   id             String    @id @default(cuid())
   email          String    @unique
+  emailVerified  DateTime?
   name           String?
   avatar         String?
   passwordHash   String?
@@ -31,6 +32,17 @@ model User {
   referrals        Referral[]   @relation("ReferrerReferrals")
   streaks          Streak[]
   sharedAnswers    SharedAnswer[]
+  paymentOrders    PaymentOrder[]
+}
+
+model PaymentOrder {
+  id        String   @id @default(cuid())
+  orderCode Int      @unique
+  userId    String
+  months    Int
+  status    String   @default("PENDING")
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Account {

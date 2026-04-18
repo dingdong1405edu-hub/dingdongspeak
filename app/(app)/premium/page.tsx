@@ -27,16 +27,16 @@ export default function PremiumPage() {
     setLoading(true)
     try {
       const plan = PREMIUM_PLANS[selectedPlan]
-      const res = await fetch('/api/premium', {
+      const res = await fetch('/api/payment/create-link', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ months: plan.months }),
       })
-      if (res.ok) {
-        toast.success(`🎉 Kích hoạt Premium ${plan.label} thành công!`)
-        setTimeout(() => window.location.href = '/dashboard', 1500)
+      const data = await res.json()
+      if (res.ok && data.checkoutUrl) {
+        window.location.href = data.checkoutUrl
       } else {
-        toast.error('Thanh toán thất bại. Vui lòng thử lại.')
+        toast.error('Không thể tạo link thanh toán. Vui lòng thử lại.')
       }
     } catch {
       toast.error('Có lỗi xảy ra. Vui lòng thử lại.')

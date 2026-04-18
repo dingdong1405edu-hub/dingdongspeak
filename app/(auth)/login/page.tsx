@@ -2,109 +2,59 @@
 
 import { useState } from 'react'
 import { signIn } from 'next-auth/react'
-import { useRouter, useSearchParams } from 'next/navigation'
-import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { Mail, Lock, Eye, EyeOff, LogIn } from 'lucide-react'
-import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
+
+function GoogleIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/>
+      <path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/>
+      <path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/>
+      <path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z" fill="#EA4335"/>
+    </svg>
+  )
+}
 
 export default function LoginPage() {
-  const router = useRouter()
   const params = useSearchParams()
   const callbackUrl = params.get('callbackUrl') || '/dashboard'
-
-  const [form, setForm] = useState({ email: '', password: '' })
-  const [showPw, setShowPw] = useState(false)
   const [loading, setLoading] = useState(false)
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
+  async function handleGoogleSignIn() {
     setLoading(true)
-    try {
-      const res = await signIn('credentials', {
-        email: form.email,
-        password: form.password,
-        redirect: false,
-      })
-      if (res?.error) {
-        toast.error('Email hoặc mật khẩu không đúng')
-      } else {
-        toast.success('Đăng nhập thành công!')
-        router.push(callbackUrl)
-        router.refresh()
-      }
-    } catch {
-      toast.error('Có lỗi xảy ra. Vui lòng thử lại.')
-    } finally {
-      setLoading(false)
-    }
+    await signIn('google', { callbackUrl })
   }
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="glass-dark rounded-3xl p-8 border border-white/10"
+      className="glass-dark rounded-3xl p-10 border border-white/10 text-center"
     >
-      <h1 className="text-2xl font-bold text-white mb-2">Đăng nhập</h1>
-      <p className="text-white/50 text-sm mb-8">Chào mừng trở lại! Tiếp tục hành trình luyện Speaking.</p>
-
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label className="text-sm font-medium text-white/80 block mb-1.5">Email</label>
-          <div className="relative">
-            <Mail size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40" />
-            <input
-              type="email"
-              value={form.email}
-              onChange={e => setForm(p => ({ ...p, email: e.target.value }))}
-              placeholder="email@example.com"
-              required
-              className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:border-cyan-400/50 transition-all"
-            />
-          </div>
-        </div>
-
-        <div>
-          <label className="text-sm font-medium text-white/80 block mb-1.5">Mật khẩu</label>
-          <div className="relative">
-            <Lock size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40" />
-            <input
-              type={showPw ? 'text' : 'password'}
-              value={form.password}
-              onChange={e => setForm(p => ({ ...p, password: e.target.value }))}
-              placeholder="••••••••"
-              required
-              className="w-full pl-10 pr-10 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:border-cyan-400/50 transition-all"
-            />
-            <button type="button" onClick={() => setShowPw(v => !v)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white/70 transition-colors"
-            >
-              {showPw ? <EyeOff size={16} /> : <Eye size={16} />}
-            </button>
-          </div>
-        </div>
-
-        <Button type="submit" variant="gradient" size="lg" loading={loading} className="w-full">
-          <LogIn size={18} />
-          {loading ? 'Đang đăng nhập...' : 'Đăng nhập'}
-        </Button>
-      </form>
-
-      <div className="mt-4 text-center">
-        <Link href="/forgot-password" className="text-sm text-white/40 hover:text-white/60 transition-colors">
-          Quên mật khẩu?
-        </Link>
+      <div className="mb-8">
+        <h1 className="text-2xl font-bold text-white mb-2">Chào mừng trở lại!</h1>
+        <p className="text-white/50 text-sm">Tiếp tục hành trình luyện IELTS Speaking với AI.</p>
       </div>
 
-      <div className="mt-4 text-center text-sm text-white/50">
-        Chưa có tài khoản?{' '}
-        <Link href="/register" className="text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
-          Đăng ký miễn phí
-        </Link>
-      </div>
+      <button
+        onClick={handleGoogleSignIn}
+        disabled={loading}
+        className="w-full flex items-center justify-center gap-3 py-3.5 px-6 rounded-xl bg-white text-gray-800 font-semibold text-sm hover:bg-gray-50 active:bg-gray-100 transition-all shadow-lg disabled:opacity-70"
+      >
+        {loading ? (
+          <span className="w-5 h-5 border-2 border-gray-400 border-t-transparent rounded-full animate-spin" />
+        ) : (
+          <GoogleIcon />
+        )}
+        {loading ? 'Đang chuyển hướng...' : 'Tiếp tục với Google'}
+      </button>
+
+      <p className="mt-6 text-xs text-white/30 leading-relaxed">
+        Lần đầu đăng nhập sẽ tự động tạo tài khoản miễn phí.
+        <br />Chúng tôi chỉ đọc email và tên từ Google, không đọc dữ liệu khác.
+      </p>
     </motion.div>
   )
 }
