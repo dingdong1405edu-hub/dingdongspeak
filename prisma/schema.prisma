@@ -14,6 +14,7 @@ model User {
   name           String?
   avatar         String?
   passwordHash   String?
+  role           String    @default("USER") // USER | STAFF | ADMIN
   isPremium      Boolean   @default(false)
   premiumUntil   DateTime?
   tokens         Int       @default(30)
@@ -33,6 +34,7 @@ model User {
   streaks          Streak[]
   sharedAnswers    SharedAnswer[]
   paymentOrders    PaymentOrder[]
+  customLessons    CustomLesson[]
 }
 
 model PaymentOrder {
@@ -152,6 +154,25 @@ model Streak {
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId, date])
+}
+
+// Custom lessons created by admin (stored fully in DB, not in lessons-data.ts)
+model CustomLesson {
+  id          String   @id @default(cuid())
+  stageId     String
+  title       String
+  type        String   // vocabulary | grammar | speaking
+  topic       String
+  level       String   // A1 | A2 | B1 | B2
+  description String   @default("")
+  xp          Int      @default(50)
+  cards       Json
+  order       Int      @default(0)
+  published   Boolean  @default(false)
+  createdById String?
+  createdBy   User?    @relation(fields: [createdById], references: [id], onDelete: SetNull)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 // Admin-managed lesson content overrides (replaces static data in lib/lessons-data.ts)

@@ -2,14 +2,13 @@ import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/auth'
 import { prisma } from '@/lib/prisma'
 import { getLessonById, type LessonData } from '@/lib/lessons-data'
-
-const ADMIN_EMAILS = (process.env.ADMIN_EMAILS || '').split(',').map(e => e.trim()).filter(Boolean)
+import { getAdminRole } from '@/lib/admin-auth'
 
 async function checkAdmin() {
+  const role = await getAdminRole()
+  if (!role) return null
   const session = await auth()
-  if (!session?.user?.email) return null
-  if (!ADMIN_EMAILS.includes(session.user.email)) return null
-  return session.user.email
+  return session?.user?.email ?? null
 }
 
 // GET single lesson (DB override or static)

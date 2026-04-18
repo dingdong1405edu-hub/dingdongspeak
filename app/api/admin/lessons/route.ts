@@ -1,18 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { auth } from '@/auth'
+import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { STAGES, getAllLessons, type LessonData } from '@/lib/lessons-data'
-
-const ADMIN_EMAILS = (process.env.ADMIN_EMAILS || '').split(',').map(e => e.trim()).filter(Boolean)
-
-async function checkAdmin() {
-  const session = await auth()
-  if (!session?.user?.email) return false
-  return ADMIN_EMAILS.includes(session.user.email)
-}
+import { getAdminRole } from '@/lib/admin-auth'
 
 export async function GET() {
-  if (!(await checkAdmin())) {
+  if (!(await getAdminRole())) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
