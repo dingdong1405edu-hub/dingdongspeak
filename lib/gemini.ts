@@ -4,7 +4,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai'
 let _genAI: GoogleGenerativeAI | null = null
 function getModel() {
   if (!_genAI) _genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!)
-  return _genAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
+  return _genAI.getGenerativeModel({ model: 'gemini-2.0-flash' })
 }
 
 export interface ScoreResult {
