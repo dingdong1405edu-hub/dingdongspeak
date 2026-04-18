@@ -98,6 +98,17 @@ async function exportLessonPDF(lesson: LessonData) {
 // ─── Vocab card UI ────────────────────────────────────────────────────────────
 function VocabLearnCard({ card }: { card: VocabCard }) {
   const [flipped, setFlipped] = useState(false)
+  const [playing, setPlaying] = useState(false)
+
+  function playWord(e: React.MouseEvent) {
+    e.stopPropagation()
+    if (!card.audioBase64 || playing) return
+    setPlaying(true)
+    const audio = new Audio(`data:audio/mp3;base64,${card.audioBase64}`)
+    audio.onended = () => setPlaying(false)
+    audio.onerror = () => setPlaying(false)
+    audio.play().catch(() => setPlaying(false))
+  }
 
   return (
     <div className="perspective-1000">
@@ -115,9 +126,22 @@ function VocabLearnCard({ card }: { card: VocabCard }) {
           </span>
           <h2 className="text-4xl font-bold text-[var(--text)]">{card.word}</h2>
           <p className="text-base text-[var(--text-secondary)] font-mono">{card.phonetic}</p>
-          <div className="mt-2 flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
-            <Volume2 size={12} />
-            <span>Nhấn để xem nghĩa</span>
+          <div className="mt-2 flex items-center gap-2">
+            {card.audioBase64 ? (
+              <button
+                onClick={playWord}
+                disabled={playing}
+                className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-500/15 text-emerald-400 text-xs font-semibold hover:bg-emerald-500/25 transition-all disabled:opacity-60"
+              >
+                <Volume2 size={13} className={playing ? 'animate-pulse' : ''} />
+                {playing ? 'Đang phát...' : 'Nghe phát âm'}
+              </button>
+            ) : (
+              <div className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
+                <Volume2 size={12} />
+                <span>Nhấn thẻ để xem nghĩa</span>
+              </div>
+            )}
           </div>
         </div>
 

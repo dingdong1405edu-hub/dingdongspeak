@@ -9,6 +9,7 @@ export interface VocabCard {
   example: string
   options: string[]
   answer: string
+  audioBase64?: string
 }
 
 export interface GrammarCard {
