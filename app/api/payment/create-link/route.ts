@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/auth'
 import { prisma } from '@/lib/prisma'
-import { payos } from '@/lib/payos'
+import { getPayOS } from '@/lib/payos'
 import { PREMIUM_PLANS } from '@/types'
 
 export async function POST(req: NextRequest) {
@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
 
   const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
 
-  const paymentLink = await payos.createPaymentLink({
+  const paymentLink = await getPayOS().createPaymentLink({
     orderCode,
     amount: plan.price,
     description: `Premium ${plan.months}th`,

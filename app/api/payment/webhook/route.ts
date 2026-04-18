@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { payos } from '@/lib/payos'
+import { getPayOS } from '@/lib/payos'
 import { prisma } from '@/lib/prisma'
 import { activatePremium } from '@/lib/tokens'
 
@@ -11,7 +11,7 @@ export async function GET() {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
-    const webhookData = payos.verifyPaymentWebhookData(body)
+    const webhookData = getPayOS().verifyPaymentWebhookData(body)
 
     if (webhookData.code === '00') {
       const { orderCode } = webhookData.data
