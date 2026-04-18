@@ -17,18 +17,17 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Gói không hợp lệ' }, { status: 400 })
     }
 
-    // Millisecond timestamp to avoid collisions
     const orderCode = Date.now()
 
     await prisma.paymentOrder.create({
       data: { orderCode, userId: session.user.id, months: plan.months },
     })
 
-    // Always use the production Railway domain for returnUrl
     const appUrl = process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, '')
       || 'https://web-production-4a953.up.railway.app'
 
-    const paymentLink = await getPayOS().createPaymentLink({
+    // PayOS v2: paymentRequests.create()
+    const result = await getPayOS().paymentRequests.create({
       orderCode,
       amount: plan.price,
       description: `Premium ${plan.months}th`,
@@ -36,12 +35,10 @@ export async function POST(req: NextRequest) {
       cancelUrl: `${appUrl}/premium`,
     })
 
-    return NextResponse.json({ checkoutUrl: paymentLink.checkoutUrl })
+    return NextResponse.json({ checkoutUrl: result.checkoutUrl })
   } catch (error: any) {
     console.error('create-link error:', error)
-    const message = error?.response?.data?.desc
-      || error?.message
-      || 'Tạo link thanh toán thất bại'
+    const message = error?.message || 'Tạo link thanh toán thất bại'
     return NextResponse.json({ error: message }, { status: 500 })
   }
 }

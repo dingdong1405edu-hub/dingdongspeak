@@ -14,22 +14,24 @@ export async function POST(req: NextRequest) {
     const body = await req.json()
 
     try {
-      const webhookData = getPayOS().verifyPaymentWebhookData(body)
+      // PayOS v2: webhooks.verify() — throws WebhookError if signature invalid
+      const verified = await getPayOS().webhooks.verify(body)
 
-      if (webhookData.code === '00') {
-        const { orderCode } = webhookData.data
-        const order = await prisma.paymentOrder.findUnique({ where: { orderCode } })
-
-        if (order && order.status === 'PENDING') {
-          await activatePremium(order.userId, order.months)
-          await prisma.paymentOrder.update({
-            where: { orderCode },
-            data: { status: 'PAID' },
-          })
+      if (verified?.code === '00' || verified?.data?.orderCode) {
+        const orderCode = verified?.data?.orderCode ?? verified?.orderCode
+        if (orderCode) {
+          const order = await prisma.paymentOrder.findUnique({ where: { orderCode } })
+          if (order && order.status === 'PENDING') {
+            await activatePremium(order.userId, order.months)
+            await prisma.paymentOrder.update({
+              where: { orderCode },
+              data: { status: 'PAID' },
+            })
+          }
         }
       }
     } catch {
-      // Signature invalid or test ping — log silently, still return 200
+      // Signature invalid or test ping — still return 200
     }
 
     return NextResponse.json({ success: true })
