@@ -3,6 +3,11 @@ import { payos } from '@/lib/payos'
 import { prisma } from '@/lib/prisma'
 import { activatePremium } from '@/lib/tokens'
 
+// PayOS verifies webhook URL with a GET request
+export async function GET() {
+  return NextResponse.json({ success: true })
+}
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
