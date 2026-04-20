@@ -7,6 +7,7 @@ if (process.env.NEXT_PUBLIC_APP_URL) {
 }
 
 const nextConfig: NextConfig = {
+  serverExternalPackages: ['pdf-parse'],
   experimental: {
     serverActions: { allowedOrigins },
   },
