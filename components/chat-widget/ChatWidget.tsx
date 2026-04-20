@@ -1,10 +1,10 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { MessageCircle, X, Send, ChevronDown } from 'lucide-react'
+import { MessageCircle, X, Send } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 
-type Role = 'bot' | 'user'
+type Role = 'bot' | 'user' | 'admin'
 interface Message {
   role: Role
   content: string
@@ -27,14 +27,15 @@ const SOURCE_OPTIONS = [
 
 const GREETING_DELAY = 2000
 const STORAGE_KEY = 'dds_chat_seen'
-const SESSION_KEY = 'dds_chat_session'
+const SID_KEY = 'dds_chat_sid'
+const REPLY_KEY = 'dds_chat_replied'
 
 function botMsg(content: string, options?: string[]): Message {
   return { role: 'bot', content, ts: Date.now(), options }
 }
 
 export function ChatWidget() {
-  const { data: session } = useSession()
+  const { data: userSession } = useSession()
   const [open, setOpen] = useState(false)
   const [phase, setPhase] = useState<Phase>('idle')
   const [messages, setMessages] = useState<Message[]>([])
@@ -43,6 +44,7 @@ export function ChatWidget() {
   const [typing, setTyping] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [hasNewMsg, setHasNewMsg] = useState(false)
+  const [sessionId, setSessionId] = useState<string | null>(null)
   const bottomRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -58,7 +60,48 @@ export function ChatWidget() {
     return () => clearTimeout(t)
   }, [])
 
-  // Send greeting sequence when phase becomes 'greeting'
+  // Check for admin reply when user opens widget
+  useEffect(() => {
+    if (!open) return
+    const sid = localStorage.getItem(SID_KEY)
+    const alreadyShown = localStorage.getItem(REPLY_KEY)
+    if (!sid || alreadyShown === sid) return
+
+    fetch(`/api/chat-widget?id=${sid}`)
+      .then(r => r.json())
+      .then(data => {
+        if (data.adminReply) {
+          setMessages(prev => [
+            ...prev,
+            { role: 'admin', content: `📩 **Phản hồi từ đội ngũ hỗ trợ:**\n${data.adminReply}`, ts: Date.now() },
+          ])
+          localStorage.setItem(REPLY_KEY, sid)
+          setHasNewMsg(false)
+          setPhase('chat')
+        }
+      })
+      .catch(() => {})
+  }, [open])
+
+  // Badge: check reply when widget is closed
+  useEffect(() => {
+    const sid = localStorage.getItem(SID_KEY)
+    const alreadyShown = localStorage.getItem(REPLY_KEY)
+    if (!sid || alreadyShown === sid) return
+
+    const checkReply = () => {
+      fetch(`/api/chat-widget?id=${sid}`)
+        .then(r => r.json())
+        .then(data => { if (data.adminReply) setHasNewMsg(true) })
+        .catch(() => {})
+    }
+
+    checkReply()
+    const interval = setInterval(checkReply, 60_000)
+    return () => clearInterval(interval)
+  }, [])
+
+  // Greeting sequence
   useEffect(() => {
     if (phase !== 'greeting') return
     const lines = [
@@ -84,17 +127,9 @@ export function ChatWidget() {
     })
   }, [phase])
 
-  // Scroll to bottom on new messages
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages, typing])
-
-  // Notify badge when closed and new bot msg
-  useEffect(() => {
-    if (!open && messages.some(m => m.role === 'bot')) {
-      setHasNewMsg(true)
-    }
-  }, [messages, open])
 
   function handleOpen() {
     setOpen(true)
@@ -108,9 +143,7 @@ export function ChatWidget() {
 
   function handleClose() {
     setOpen(false)
-    if (source && !submitted) {
-      saveSession()
-    }
+    if (source && !submitted) saveSession()
   }
 
   function handleSourceSelect(label: string) {
@@ -140,7 +173,7 @@ export function ChatWidget() {
       setTyping(false)
       setMessages(prev => [
         ...prev,
-        botMsg('Mình đã nhận được tin nhắn của bạn! 📩 Đội ngũ hỗ trợ sẽ xem xét và phản hồi sớm nhất có thể nhé.'),
+        botMsg('Mình đã nhận được tin nhắn của bạn! 📩 Đội ngũ hỗ trợ sẽ phản hồi sớm nhất có thể nhé.'),
       ])
       saveSession([...messages, userMsg])
       setSubmitted(true)
@@ -150,16 +183,24 @@ export function ChatWidget() {
   async function saveSession(msgs?: Message[]) {
     const toSave = msgs ?? messages
     try {
-      await fetch('/api/chat-widget', {
+      const res = await fetch('/api/chat-widget', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ source, messages: toSave }),
+        body: JSON.stringify({
+          source,
+          messages: toSave,
+          userEmail: userSession?.user?.email ?? null,
+        }),
       })
+      const data = await res.json()
+      if (data.id) {
+        localStorage.setItem(SID_KEY, data.id)
+        setSessionId(data.id)
+      }
     } catch {}
   }
 
   function renderContent(text: string) {
-    // Simple bold markdown
     const parts = text.split(/\*\*(.+?)\*\*/g)
     return parts.map((p, i) =>
       i % 2 === 1 ? <strong key={i}>{p}</strong> : p
@@ -168,7 +209,6 @@ export function ChatWidget() {
 
   return (
     <>
-      {/* Floating button */}
       {!open && (
         <button
           onClick={handleOpen}
@@ -182,7 +222,6 @@ export function ChatWidget() {
         </button>
       )}
 
-      {/* Chat panel */}
       {open && (
         <div className="fixed bottom-6 right-6 z-50 w-[340px] max-h-[520px] flex flex-col rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] shadow-2xl shadow-black/40 overflow-hidden">
           {/* Header */}
@@ -204,22 +243,28 @@ export function ChatWidget() {
           <div className="flex-1 overflow-y-auto p-4 space-y-3 min-h-0 max-h-[360px]">
             {messages.map((msg, i) => (
               <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} gap-2`}>
-                {msg.role === 'bot' && (
-                  <div className="w-7 h-7 rounded-full bg-gradient-to-br from-cyan-500 to-violet-600 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">🤖</div>
+                {(msg.role === 'bot' || msg.role === 'admin') && (
+                  <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs flex-shrink-0 mt-0.5 ${
+                    msg.role === 'admin'
+                      ? 'bg-gradient-to-br from-emerald-500 to-cyan-600'
+                      : 'bg-gradient-to-br from-cyan-500 to-violet-600'
+                  }`}>
+                    {msg.role === 'admin' ? '👤' : '🤖'}
+                  </div>
                 )}
                 <div className="max-w-[80%] space-y-2">
-                  <div
-                    className={`px-3 py-2 rounded-2xl text-sm leading-relaxed ${
-                      msg.role === 'bot'
-                        ? 'bg-[var(--bg-secondary)] text-[var(--text)] rounded-tl-sm'
-                        : msg.isChoice
-                        ? 'bg-gradient-to-r from-cyan-500 to-violet-600 text-white rounded-tr-sm'
-                        : 'bg-gradient-to-r from-cyan-500 to-violet-600 text-white rounded-tr-sm'
-                    }`}
-                  >
+                  {msg.role === 'admin' && (
+                    <div className="text-xs text-emerald-400 font-medium">Hỗ trợ viên</div>
+                  )}
+                  <div className={`px-3 py-2 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap ${
+                    msg.role === 'bot'
+                      ? 'bg-[var(--bg-secondary)] text-[var(--text)] rounded-tl-sm'
+                      : msg.role === 'admin'
+                      ? 'bg-emerald-500/10 border border-emerald-500/20 text-[var(--text)] rounded-tl-sm'
+                      : 'bg-gradient-to-r from-cyan-500 to-violet-600 text-white rounded-tr-sm'
+                  }`}>
                     {renderContent(msg.content)}
                   </div>
-                  {/* Source options */}
                   {msg.options && phase === 'source' && !source && (
                     <div className="grid grid-cols-2 gap-1.5 mt-2">
                       {SOURCE_OPTIONS.map(opt => (
@@ -238,7 +283,6 @@ export function ChatWidget() {
               </div>
             ))}
 
-            {/* Typing indicator */}
             {typing && (
               <div className="flex items-center gap-2">
                 <div className="w-7 h-7 rounded-full bg-gradient-to-br from-cyan-500 to-violet-600 flex items-center justify-center text-xs">🤖</div>
@@ -273,11 +317,11 @@ export function ChatWidget() {
             </div>
           )}
 
-          {phase === 'idle' || phase === 'greeting' || phase === 'source' ? (
+          {(phase === 'idle' || phase === 'greeting' || phase === 'source') && (
             <div className="px-4 py-2 border-t border-[var(--border)]">
               <p className="text-xs text-[var(--text-secondary)] text-center">DingDongSpeak · Hỗ trợ 24/7</p>
             </div>
-          ) : null}
+          )}
         </div>
       )}
     </>

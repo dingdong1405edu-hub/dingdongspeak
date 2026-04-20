@@ -4,21 +4,34 @@ import { prisma } from '@/lib/prisma'
 
 export async function POST(req: NextRequest) {
   const session = await auth()
-  const { source, messages } = await req.json()
+  const { source, messages, userEmail: bodyEmail } = await req.json()
 
-  if (!source && (!messages || messages.length === 0)) {
-    return NextResponse.json({ ok: false }, { status: 400 })
-  }
+  const email = session?.user?.email ?? bodyEmail ?? null
 
-  await prisma.chatWidgetSession.create({
+  const record = await prisma.chatWidgetSession.create({
     data: {
       userId: session?.user?.id ?? null,
       userName: session?.user?.name ?? null,
+      userEmail: email,
       source: source ?? null,
       messages: messages ?? [],
       status: 'OPEN',
     },
   })
 
-  return NextResponse.json({ ok: true })
+  return NextResponse.json({ ok: true, id: record.id })
+}
+
+// Widget polls this to check for admin reply
+export async function GET(req: NextRequest) {
+  const { searchParams } = new URL(req.url)
+  const id = searchParams.get('id')
+  if (!id) return NextResponse.json({ adminReply: null })
+
+  const record = await prisma.chatWidgetSession.findUnique({
+    where: { id },
+    select: { adminReply: true, repliedAt: true },
+  })
+
+  return NextResponse.json({ adminReply: record?.adminReply ?? null, repliedAt: record?.repliedAt ?? null })
 }

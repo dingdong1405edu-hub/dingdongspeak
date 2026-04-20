@@ -17,7 +17,12 @@ export default async function FeedbackPage() {
   const [sessions, sourceStats, openCount, resolvedCount] = await Promise.all([
     prisma.chatWidgetSession.findMany({
       orderBy: { createdAt: 'desc' },
-      take: 50,
+      take: 100,
+      select: {
+        id: true, userId: true, userName: true, userEmail: true,
+        source: true, messages: true, adminReply: true, repliedAt: true,
+        status: true, createdAt: true,
+      },
     }),
     prisma.chatWidgetSession.groupBy({
       by: ['source'],

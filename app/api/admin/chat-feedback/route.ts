@@ -42,7 +42,16 @@ export async function PATCH(req: NextRequest) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
-  const { id, status } = await req.json()
-  await prisma.chatWidgetSession.update({ where: { id }, data: { status } })
+  const { id, status, adminReply } = await req.json()
+
+  const data: Record<string, unknown> = {}
+  if (status !== undefined) data.status = status
+  if (adminReply !== undefined) {
+    data.adminReply = adminReply
+    data.repliedAt = new Date()
+    data.status = 'RESOLVED'
+  }
+
+  await prisma.chatWidgetSession.update({ where: { id }, data })
   return NextResponse.json({ ok: true })
 }
