@@ -192,6 +192,45 @@ export async function getBeginnerSpeakingAssist(
   }
 }
 
+export async function generateLessonCards(
+  type: 'vocabulary' | 'grammar' | 'speaking',
+  level: string,
+  topic: string,
+  docText?: string
+): Promise<any[]> {
+  const src = docText
+    ? `Analyze this document and create the lesson from it:\n---\n${docText.slice(0, 8000)}\n---\nTopic: ${topic}`
+    : `Topic: ${topic}`
+
+  const prompts: Record<string, string> = {
+    vocabulary: `English teacher. Vietnamese learners, level ${level}. ${src}
+
+Create 10 vocabulary flashcard-quiz cards. Return JSON object with a "cards" array:
+{"cards":[{"type":"vocab","word":"word/phrase","phonetic":"/IPA/","pos":"n.|v.|adj.|adv.|phrase","meaning":"Nghĩa tiếng Việt","example":"Natural example sentence.","options":["Đúng","Sai1","Sai2","Sai3"],"answer":"Đúng"}]}
+
+Rules: options exactly 4 (all Vietnamese), answer must match one option exactly, word fits level+topic, real IPA.`,
+
+    grammar: `English teacher. Vietnamese learners, level ${level}. ${src}
+
+Create 8 grammar cards. Return JSON object with a "cards" array:
+{"cards":[{"type":"grammar","rule":"Rule name","explanation":"Giải thích tiếng Việt rõ ràng","examples":["Sentence1.","Sentence2.","Sentence3."],"tip":"Mẹo/lỗi hay gặp tiếng Việt","question":"Fill-in or MCQ exercise","options":["a","b","c","d"],"answer":"a"}]}
+
+Rules: options exactly 4, answer is one of them exactly, explanation in Vietnamese.`,
+
+    speaking: `English teacher. Vietnamese learners, level ${level}. ${src}
+
+Create 10 IELTS Part 1 speaking practice cards. Return JSON object with a "cards" array:
+{"cards":[{"type":"speaking","prompt":"Natural IELTS Part 1 question","hint":"Gợi ý trả lời tiếng Việt (2-3 ý)","samplePhrases":["Opening phrase","Key vocab phrase","Linking phrase"]}]}
+
+Rules: prompt matches IELTS Part 1 style, hint in Vietnamese, 3-5 samplePhrases.`,
+  }
+
+  const result = await groqJSON<{ cards?: any[] } | any[]>(prompts[type], ACCURATE, 2000)
+  const cards = Array.isArray(result) ? result : (result as any).cards ?? []
+  if (!cards.length) throw new Error('AI không tạo được cards')
+  return cards
+}
+
 // ─── Helper ───────────────────────────────────────────────────────────────────
 
 function getDefaultQuestions(topic: string, part: string, count: number): IELTSQuestion[] {
