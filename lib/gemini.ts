@@ -196,39 +196,66 @@ export async function generateLessonCards(
   type: 'vocabulary' | 'grammar' | 'speaking',
   level: string,
   topic: string,
-  docText?: string
+  count?: number,
+  docText?: string,
 ): Promise<any[]> {
   const src = docText
     ? `Analyze this document and create the lesson from it:\n---\n${docText.slice(0, 8000)}\n---\nTopic: ${topic}`
     : `Topic: ${topic}`
 
+  const defaults: Record<string, number> = { vocabulary: 10, grammar: 9, speaking: 8 }
+  const n = count ?? defaults[type]
+
   const prompts: Record<string, string> = {
     vocabulary: `English teacher. Vietnamese learners, level ${level}. ${src}
 
-Create 10 vocabulary flashcard-quiz cards. Return JSON object with a "cards" array:
-{"cards":[{"type":"vocab","word":"word/phrase","phonetic":"/IPA/","pos":"n.|v.|adj.|adv.|phrase","meaning":"Nghĩa tiếng Việt","example":"Natural example sentence.","options":["Đúng","Sai1","Sai2","Sai3"],"answer":"Đúng"}]}
-
-Rules: options exactly 4 (all Vietnamese), answer must match one option exactly, word fits level+topic, real IPA.`,
+Create ${n} vocabulary flashcard-quiz cards. Return JSON: {"cards":[...]}
+Format: {"type":"vocab","word":"word/phrase","phonetic":"/IPA/","pos":"n.|v.|adj.|adv.|phrase","meaning":"Nghĩa tiếng Việt","example":"Natural example sentence.","options":["Đúng","Sai1","Sai2","Sai3"],"answer":"Đúng"}
+Rules: options exactly 4 (all Vietnamese meanings), answer matches one option exactly, real IPA phonetic.`,
 
     grammar: `English teacher. Vietnamese learners, level ${level}. ${src}
 
-Create 8 grammar cards. Return JSON object with a "cards" array:
-{"cards":[{"type":"grammar","rule":"Rule name","explanation":"Giải thích tiếng Việt rõ ràng","examples":["Sentence1.","Sentence2.","Sentence3."],"tip":"Mẹo/lỗi hay gặp tiếng Việt","question":"Fill-in or MCQ exercise","options":["a","b","c","d"],"answer":"a"}]}
+Create ${n} grammar exercise cards with a MIX of 3 types (~equal ratio). Return JSON: {"cards":[...]}
 
-Rules: options exactly 4, answer is one of them exactly, explanation in Vietnamese.`,
+Type 1 - MCQ explanation card:
+{"type":"grammar","rule":"Rule name","explanation":"Giải thích rõ ràng bằng tiếng Việt","examples":["Example 1.","Example 2.","Example 3."],"tip":"Mẹo/lỗi hay gặp tiếng Việt","question":"Complete exercise sentence?","options":["a","b","c","d"],"answer":"a"}
+
+Type 2 - Fill in the blank:
+{"type":"fill-blank","sentence":"She ___ to school every day.","answer":"goes","options":["go","goes","went","going"],"explanation":"Giải thích tại sao đây là đáp án đúng (tiếng Việt)"}
+
+Type 3 - Word arrangement:
+{"type":"arrange","words":["school","She","to","goes","every","day"],"answer":"She goes to school every day.","hint":"Câu về thói quen hàng ngày (tiếng Việt)"}
+
+Rules: options exactly 4, answers correct, words in arrange are scrambled (NOT in sentence order), cover grammar topic thoroughly.`,
 
     speaking: `English teacher. Vietnamese learners, level ${level}. ${src}
 
-Create 10 IELTS Part 1 speaking practice cards. Return JSON object with a "cards" array:
-{"cards":[{"type":"speaking","prompt":"Natural IELTS Part 1 question","hint":"Gợi ý trả lời tiếng Việt (2-3 ý)","samplePhrases":["Opening phrase","Key vocab phrase","Linking phrase"]}]}
-
-Rules: prompt matches IELTS Part 1 style, hint in Vietnamese, 3-5 samplePhrases.`,
+Create ${n} IELTS Part 1 speaking practice cards. Return JSON: {"cards":[...]}
+Format:
+{"type":"speaking","prompt":"Natural IELTS Part 1 question?","hint":"Gợi ý 2-3 ý chính bằng tiếng Việt","samplePhrases":["Opening phrase","Key phrase","Linking phrase"],"ideas":["Ý tưởng 1 tiếng Việt","Ý tưởng 2","Ý tưởng 3","Ý tưởng 4"],"vocabulary":[{"word":"useful word","meaning":"nghĩa tiếng Việt","example":"Example sentence."},{"word":"word2","meaning":"nghĩa","example":"Example."},{"word":"word3","meaning":"nghĩa","example":"Example."}],"sampleAnswer":"Natural 3-4 sentence answer in English showing good vocabulary usage.\n\n(Dịch: Bản dịch tiếng Việt tương ứng)"}
+Rules: ideas has 3-4 items, vocabulary has 3-5 items per card, sampleAnswer is natural band 6-7 level.`,
   }
 
-  const result = await groqJSON<{ cards?: any[] } | any[]>(prompts[type], ACCURATE, 2000)
+  const result = await groqJSON<{ cards?: any[] } | any[]>(prompts[type], ACCURATE, 4000)
   const cards = Array.isArray(result) ? result : (result as any).cards ?? []
   if (!cards.length) throw new Error('AI không tạo được cards')
   return cards
+}
+
+export async function extractContentFromImage(imageBase64: string, mimeType: string): Promise<string> {
+  const res = await getGroq().chat.completions.create({
+    model: 'llama-3.2-90b-vision-preview',
+    messages: [{
+      role: 'user',
+      content: [
+        { type: 'image_url', image_url: { url: `data:${mimeType};base64,${imageBase64}` } },
+        { type: 'text', text: 'Extract ALL text and educational content from this image. Include vocabulary, phrases, grammar rules, exercises, topics, and any other learning material visible. Be thorough and precise.' },
+      ] as any,
+    }],
+    max_tokens: 2000,
+    temperature: 0.1,
+  })
+  return res.choices[0].message.content?.trim() || ''
 }
 
 // ─── Helper ───────────────────────────────────────────────────────────────────

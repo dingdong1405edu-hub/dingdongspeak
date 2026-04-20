@@ -23,14 +23,32 @@ export interface GrammarCard {
   answer: string
 }
 
+export interface FillBlankCard {
+  type: 'fill-blank'
+  sentence: string    // "She ___ to school every day."
+  answer: string      // "goes"
+  options: string[]   // ["go", "goes", "went", "going"]
+  explanation: string // Vietnamese explanation
+}
+
+export interface ArrangeCard {
+  type: 'arrange'
+  words: string[]     // scrambled: ["school", "She", "to", "goes", "every", "day"]
+  answer: string      // "She goes to school every day."
+  hint?: string       // Vietnamese hint
+}
+
 export interface SpeakingCard {
   type: 'speaking'
   prompt: string
   hint: string
   samplePhrases: string[]
+  vocabulary?: Array<{ word: string; meaning: string; example: string }>
+  ideas?: string[]
+  sampleAnswer?: string
 }
 
-export type LessonCard = VocabCard | GrammarCard | SpeakingCard
+export type LessonCard = VocabCard | GrammarCard | FillBlankCard | ArrangeCard | SpeakingCard
 
 export interface LessonData {
   id: string

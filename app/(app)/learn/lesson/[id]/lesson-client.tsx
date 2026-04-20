@@ -11,7 +11,7 @@ import {
 import { toast } from 'sonner'
 import { AudioRecorder } from '@/components/practice/audio-recorder'
 import { cn } from '@/lib/utils'
-import type { LessonData, VocabCard, GrammarCard, SpeakingCard } from '@/lib/lessons-data'
+import type { LessonData, VocabCard, GrammarCard, FillBlankCard, ArrangeCard, SpeakingCard } from '@/lib/lessons-data'
 
 interface Props {
   lesson: LessonData
@@ -218,6 +218,192 @@ function GrammarExplainCard({ card }: { card: GrammarCard }) {
   )
 }
 
+// ─── Fill-in-blank card UI ────────────────────────────────────────────────────
+function FillBlankExercise({ card, onComplete }: { card: FillBlankCard; onComplete: (correct: boolean) => void }) {
+  const [selected, setSelected] = useState<string | null>(null)
+  const [isCorrect, setIsCorrect] = useState<boolean | null>(null)
+
+  function handleSelect(opt: string) {
+    if (selected) return
+    const correct = opt === card.answer
+    setSelected(opt)
+    setIsCorrect(correct)
+    setTimeout(() => onComplete(correct), 1200)
+  }
+
+  const parts = card.sentence.split('___')
+
+  return (
+    <div className="space-y-4">
+      {/* Sentence with blank */}
+      <div className="rounded-2xl border border-indigo-400/20 bg-indigo-500/8 p-5">
+        <p className="text-xs font-semibold text-indigo-400 uppercase tracking-wide mb-3">Điền từ vào chỗ trống</p>
+        <p className="text-base font-medium text-[var(--text)] leading-relaxed">
+          {parts[0]}
+          <span className="inline-block mx-1 px-3 py-0.5 rounded-lg border-2 border-dashed border-indigo-400/60 bg-indigo-500/10 text-indigo-400 font-bold min-w-[60px] text-center">
+            {selected ?? '___'}
+          </span>
+          {parts[1]}
+        </p>
+      </div>
+
+      {/* Options */}
+      <div className="grid grid-cols-2 gap-2.5">
+        {card.options.map(opt => (
+          <motion.button
+            key={opt}
+            onClick={() => handleSelect(opt)}
+            whileHover={!selected ? { scale: 1.02 } : {}}
+            whileTap={!selected ? { scale: 0.97 } : {}}
+            className={cn(
+              'p-3.5 rounded-xl border text-sm font-medium text-center transition-all',
+              !selected && 'border-[var(--border)] bg-[var(--bg-secondary)] hover:border-indigo-400/40 text-[var(--text)]',
+              selected === opt && isCorrect && 'border-emerald-400 bg-emerald-500/15 text-emerald-400',
+              selected === opt && !isCorrect && 'border-red-400 bg-red-500/15 text-red-400',
+              selected && opt === card.answer && selected !== opt && 'border-emerald-400 bg-emerald-500/10 text-emerald-400',
+              selected && opt !== card.answer && selected !== opt && 'opacity-40 border-[var(--border)] text-[var(--text-secondary)]',
+            )}
+          >
+            <div className="flex items-center justify-center gap-2">
+              {selected === opt && isCorrect && <Check size={14} className="shrink-0" />}
+              {selected === opt && !isCorrect && <X size={14} className="shrink-0" />}
+              {opt}
+            </div>
+          </motion.button>
+        ))}
+      </div>
+
+      {/* Explanation after answer */}
+      {selected && (
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          className={cn('rounded-xl p-3 text-sm flex items-start gap-2', isCorrect ? 'bg-emerald-500/10 text-emerald-400' : 'bg-orange-500/10 text-orange-400')}
+        >
+          {isCorrect ? <Check size={14} className="mt-0.5 shrink-0" /> : <Lightbulb size={14} className="mt-0.5 shrink-0" />}
+          <span>{isCorrect ? `Chính xác! ` : `Đáp án: "${card.answer}". `}{card.explanation}</span>
+        </motion.div>
+      )}
+    </div>
+  )
+}
+
+// ─── Word arrangement card UI ─────────────────────────────────────────────────
+function ArrangeExercise({ card, onComplete }: { card: ArrangeCard; onComplete: (correct: boolean) => void }) {
+  const [shuffled] = useState<{ word: string; idx: number }[]>(() =>
+    card.words.map((w, i) => ({ word: w, idx: i })).sort(() => Math.random() - 0.5)
+  )
+  const [selectedIdxs, setSelectedIdxs] = useState<number[]>([])
+  const [submitted, setSubmitted] = useState(false)
+  const [isCorrect, setIsCorrect] = useState<boolean | null>(null)
+
+  const usedSet = new Set(selectedIdxs)
+  const available = shuffled.filter(({ idx }) => !usedSet.has(idx))
+  const sentence = selectedIdxs.map(i => card.words[i]).join(' ')
+
+  function addWord(idx: number) {
+    if (submitted) return
+    setSelectedIdxs(prev => [...prev, idx])
+  }
+  function removeWord(pos: number) {
+    if (submitted) return
+    setSelectedIdxs(prev => prev.filter((_, i) => i !== pos))
+  }
+  function handleSubmit() {
+    const correct = sentence.trim() === card.answer.trim()
+    setIsCorrect(correct)
+    setSubmitted(true)
+    setTimeout(() => onComplete(correct), 1600)
+  }
+  function handleClear() {
+    setSelectedIdxs([])
+  }
+
+  return (
+    <div className="space-y-4">
+      <div className="rounded-2xl border border-purple-400/20 bg-purple-500/8 p-5">
+        <p className="text-xs font-semibold text-purple-400 uppercase tracking-wide mb-3">Sắp xếp thành câu hoàn chỉnh</p>
+        {card.hint && (
+          <p className="text-xs text-[var(--text-secondary)] mb-3 flex items-center gap-1.5">
+            <Lightbulb size={12} className="text-yellow-400" /> {card.hint}
+          </p>
+        )}
+
+        {/* Answer area */}
+        <div className={cn(
+          'min-h-[52px] rounded-xl border-2 border-dashed p-3 flex flex-wrap gap-2 items-center',
+          submitted && isCorrect ? 'border-emerald-400/60 bg-emerald-500/10' :
+          submitted && !isCorrect ? 'border-red-400/60 bg-red-500/10' :
+          'border-purple-400/40 bg-[var(--bg)]'
+        )}>
+          {selectedIdxs.length === 0 ? (
+            <span className="text-sm text-[var(--text-secondary)] italic">Chọn các từ bên dưới...</span>
+          ) : (
+            selectedIdxs.map((wordIdx, pos) => (
+              <button
+                key={pos}
+                onClick={() => removeWord(pos)}
+                disabled={submitted}
+                className={cn(
+                  'px-2.5 py-1 rounded-lg text-sm font-medium transition-all',
+                  submitted && isCorrect ? 'bg-emerald-500/20 text-emerald-300 cursor-default' :
+                  submitted && !isCorrect ? 'bg-red-500/20 text-red-300 cursor-default' :
+                  'bg-purple-500/20 text-purple-300 hover:bg-red-500/20 hover:text-red-300'
+                )}
+              >
+                {card.words[wordIdx]}
+              </button>
+            ))
+          )}
+        </div>
+      </div>
+
+      {/* Available word chips */}
+      <div className="flex flex-wrap gap-2">
+        {available.map(({ word, idx }) => (
+          <button
+            key={idx}
+            onClick={() => addWord(idx)}
+            disabled={submitted}
+            className="px-3 py-1.5 rounded-xl border border-[var(--border)] bg-[var(--bg-secondary)] text-sm font-medium text-[var(--text)] hover:border-purple-400/60 hover:bg-purple-500/10 hover:text-purple-300 transition-all disabled:opacity-50"
+          >
+            {word}
+          </button>
+        ))}
+      </div>
+
+      {/* Controls */}
+      {!submitted ? (
+        <div className="flex gap-2">
+          <button
+            onClick={handleClear}
+            disabled={selectedIdxs.length === 0}
+            className="px-4 py-2.5 rounded-xl border border-[var(--border)] text-sm text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] transition-all disabled:opacity-40"
+          >
+            Xóa hết
+          </button>
+          <button
+            onClick={handleSubmit}
+            disabled={selectedIdxs.length === 0}
+            className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-purple-500 to-violet-600 text-white font-semibold text-sm hover:opacity-90 transition-all disabled:opacity-50"
+          >
+            Kiểm tra
+          </button>
+        </div>
+      ) : (
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          className={cn('rounded-xl p-3 text-sm flex items-start gap-2', isCorrect ? 'bg-emerald-500/10 text-emerald-400' : 'bg-orange-500/10 text-orange-400')}
+        >
+          {isCorrect ? <Check size={14} className="mt-0.5 shrink-0" /> : <Lightbulb size={14} className="mt-0.5 shrink-0" />}
+          <span>{isCorrect ? 'Chính xác! 🎉' : `Đáp án đúng: "${card.answer}"`}</span>
+        </motion.div>
+      )}
+    </div>
+  )
+}
+
 // ─── Speaking card UI ─────────────────────────────────────────────────────────
 function SpeakingPromptCard({ card, onComplete }: { card: SpeakingCard; onComplete: (score: number, feedback: string) => void }) {
   const [phase, setPhase] = useState<'prompt' | 'recording' | 'loading' | 'result'>('prompt')
@@ -259,8 +445,24 @@ function SpeakingPromptCard({ card, onComplete }: { card: SpeakingCard; onComple
   async function handleAssist(action: 'ideas' | 'sample' | 'vocab') {
     if (assistAction === action && assistContent) { setAssistAction(null); return }
     setAssistAction(action)
-    setAssistLoading(true)
     setAssistContent('')
+
+    // Use pre-baked card data when available (no token cost)
+    if (action === 'ideas' && card.ideas?.length) {
+      setAssistContent(card.ideas.map(i => `• ${i}`).join('\n'))
+      return
+    }
+    if (action === 'sample' && card.sampleAnswer) {
+      setAssistContent(card.sampleAnswer)
+      return
+    }
+    if (action === 'vocab' && card.vocabulary?.length) {
+      setAssistContent(card.vocabulary.map(v => `${v.word} — ${v.meaning}\n  VD: ${v.example}`).join('\n\n'))
+      return
+    }
+
+    // Fallback: live AI call for cards without pre-baked data
+    setAssistLoading(true)
     try {
       const res = await fetch('/api/ai/speaking-assist', {
         method: 'POST',
@@ -651,13 +853,12 @@ export function LessonClient({ lesson, lessonId, stageColor }: Props) {
             </>
           )}
 
-          {/* ── GRAMMAR ── */}
+          {/* ── GRAMMAR (MCQ) ── */}
           {lesson.type === 'grammar' && card.type === 'grammar' && (
             <>
               <GrammarExplainCard card={card as GrammarCard} />
-              {/* Exercise */}
               <div className="rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] p-5">
-                <p className="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-3">Bài tập</p>
+                <p className="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-3">Bài tập trắc nghiệm</p>
                 <p className="text-base font-semibold text-[var(--text)] mb-4 leading-relaxed">{(card as GrammarCard).question}</p>
                 <div className="grid grid-cols-2 gap-2.5">
                   {(card as GrammarCard).options.map(opt => (
@@ -695,6 +896,22 @@ export function LessonClient({ lesson, lessonId, stageColor }: Props) {
                 )}
               </div>
             </>
+          )}
+
+          {/* ── GRAMMAR (Fill-in-blank) ── */}
+          {lesson.type === 'grammar' && card.type === 'fill-blank' && (
+            <FillBlankExercise
+              card={card as FillBlankCard}
+              onComplete={correct => goNext(correct)}
+            />
+          )}
+
+          {/* ── GRAMMAR (Word arrange) ── */}
+          {lesson.type === 'grammar' && card.type === 'arrange' && (
+            <ArrangeExercise
+              card={card as ArrangeCard}
+              onComplete={correct => goNext(correct)}
+            />
           )}
 
           {/* ── SPEAKING ── */}

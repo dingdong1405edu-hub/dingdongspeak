@@ -4,7 +4,8 @@ import { useSearchParams, useRouter } from 'next/navigation'
 import { useState, useRef, useCallback, useEffect, Suspense } from 'react'
 import {
   Sparkles, FileText, Edit3, ArrowLeft, Upload, Loader2, Plus, Trash2,
-  ChevronDown, ChevronUp, CheckCircle, AlertCircle, Save, Eye, EyeOff
+  ChevronDown, ChevronUp, CheckCircle, AlertCircle, Save, Eye, EyeOff,
+  Image as ImageIcon, FileUp, X
 } from 'lucide-react'
 import { toast } from 'sonner'
 import { cn } from '@/lib/utils'
@@ -17,12 +18,16 @@ type Level = 'A1' | 'A2' | 'B1' | 'B2'
 
 interface VocabCard { type: 'vocab'; word: string; phonetic: string; pos: string; meaning: string; example: string; options: string[]; answer: string }
 interface GrammarCard { type: 'grammar'; rule: string; explanation: string; examples: string[]; tip: string; question: string; options: string[]; answer: string }
+interface FillBlankCard { type: 'fill-blank'; sentence: string; answer: string; options: string[]; explanation: string }
+interface ArrangeCard { type: 'arrange'; words: string[]; answer: string; hint?: string }
 interface SpeakingCard { type: 'speaking'; prompt: string; hint: string; samplePhrases: string[] }
-type AnyCard = VocabCard | GrammarCard | SpeakingCard
+type AnyCard = VocabCard | GrammarCard | FillBlankCard | ArrangeCard | SpeakingCard
+
+interface UploadedFile { data: string; mimeType: string; name: string; kind: 'pdf' | 'image' }
 
 const MODES = [
   { id: 'ai' as Mode, icon: Sparkles, label: 'AI từ chủ đề', desc: 'Nhập chủ đề, AI tạo bài hoàn chỉnh', color: 'from-cyan-500 to-violet-600' },
-  { id: 'doc' as Mode, icon: FileText, label: 'Upload tài liệu', desc: 'Tải file/paste text, AI phân tích → game', color: 'from-emerald-500 to-cyan-500' },
+  { id: 'doc' as Mode, icon: FileText, label: 'Upload tài liệu', desc: 'PDF, ảnh, hoặc paste text — AI phân tích → game', color: 'from-emerald-500 to-cyan-500' },
   { id: 'manual' as Mode, icon: Edit3, label: 'Thêm thủ công', desc: 'Tự điền cards từng bước', color: 'from-violet-500 to-pink-500' },
 ]
 
@@ -32,6 +37,7 @@ const TYPE_OPTIONS: { value: LessonType; label: string }[] = [
   { value: 'speaking', label: 'Luyện nói' },
 ]
 
+const DEFAULT_COUNT: Record<LessonType, number> = { vocabulary: 10, grammar: 9, speaking: 8 }
 const LEVEL_OPTIONS: Level[] = ['A1', 'A2', 'B1', 'B2']
 
 // ── Card preview component ────────────────────────────────────────────────────
@@ -43,19 +49,27 @@ function CardPreview({ card, index, onEdit, onDelete, onMoveUp, onMoveDown, tota
 
   const label = card.type === 'vocab' ? (card as VocabCard).word
     : card.type === 'grammar' ? (card as GrammarCard).rule
+    : card.type === 'fill-blank' ? (card as FillBlankCard).sentence.slice(0, 60)
+    : card.type === 'arrange' ? (card as ArrangeCard).answer.slice(0, 60)
     : (card as SpeakingCard).prompt.slice(0, 60)
+
+  const typeLabel = card.type === 'vocab' ? 'V'
+    : card.type === 'grammar' ? 'MCQ'
+    : card.type === 'fill-blank' ? 'Fill'
+    : card.type === 'arrange' ? 'Arr'
+    : 'S'
+
+  const typeColor = card.type === 'vocab' ? 'bg-emerald-500/15 text-emerald-400'
+    : card.type === 'grammar' ? 'bg-blue-500/15 text-blue-400'
+    : card.type === 'fill-blank' ? 'bg-indigo-500/15 text-indigo-400'
+    : card.type === 'arrange' ? 'bg-purple-500/15 text-purple-400'
+    : 'bg-violet-500/15 text-violet-400'
 
   return (
     <div className="rounded-xl border border-[var(--border)] overflow-hidden">
       <div className="flex items-center gap-2 px-3 py-2.5 bg-[var(--bg-secondary)]">
         <span className="text-[10px] font-bold text-[var(--text-secondary)] w-5">#{index + 1}</span>
-        <span className={cn('text-[10px] px-1.5 py-0.5 rounded font-bold',
-          card.type === 'vocab' ? 'bg-emerald-500/15 text-emerald-400' :
-          card.type === 'grammar' ? 'bg-blue-500/15 text-blue-400' :
-          'bg-violet-500/15 text-violet-400'
-        )}>
-          {card.type === 'vocab' ? 'V' : card.type === 'grammar' ? 'G' : 'S'}
-        </span>
+        <span className={cn('text-[10px] px-1.5 py-0.5 rounded font-bold', typeColor)}>{typeLabel}</span>
         <button onClick={() => setOpen(o => !o)} className="flex-1 text-left text-sm text-[var(--text)] truncate font-medium">
           {label}
         </button>
@@ -73,6 +87,8 @@ function CardPreview({ card, index, onEdit, onDelete, onMoveUp, onMoveDown, tota
         <div className="p-3 border-t border-[var(--border)] space-y-2">
           {card.type === 'vocab' && <VocabEditor card={card as VocabCard} onChange={onEdit} />}
           {card.type === 'grammar' && <GrammarEditor card={card as GrammarCard} onChange={onEdit} />}
+          {card.type === 'fill-blank' && <FillBlankEditor card={card as FillBlankCard} onChange={onEdit} />}
+          {card.type === 'arrange' && <ArrangeEditor card={card as ArrangeCard} onChange={onEdit} />}
           {card.type === 'speaking' && <SpeakingEditor card={card as SpeakingCard} onChange={onEdit} />}
         </div>
       )}
@@ -149,6 +165,38 @@ function GrammarEditor({ card, onChange }: { card: GrammarCard; onChange: (c: An
   )
 }
 
+function FillBlankEditor({ card, onChange }: { card: FillBlankCard; onChange: (c: AnyCard) => void }) {
+  const u = (f: keyof FillBlankCard, v: string | string[]) => onChange({ ...card, [f]: v })
+  return (
+    <div className="space-y-2">
+      <Field label='Câu (dùng ___ cho chỗ trống)' value={card.sentence} onChange={v => u('sentence', v)} placeholder='She ___ to school every day.' />
+      <Field label="Đáp án đúng" value={card.answer} onChange={v => u('answer', v)} />
+      <div>
+        <label className="block text-[10px] font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-1">4 lựa chọn</label>
+        <div className="grid grid-cols-2 gap-1.5">
+          {card.options.map((opt, i) => (
+            <input key={i} value={opt} onChange={e => { const o = [...card.options]; o[i] = e.target.value; u('options', o) }}
+              className="px-2.5 py-1.5 rounded-lg border border-[var(--border)] bg-[var(--bg)] text-xs text-[var(--text)] focus:outline-none focus:border-cyan-400" />
+          ))}
+        </div>
+      </div>
+      <Field label="Giải thích (tiếng Việt)" value={card.explanation} onChange={v => u('explanation', v)} />
+    </div>
+  )
+}
+
+function ArrangeEditor({ card, onChange }: { card: ArrangeCard; onChange: (c: AnyCard) => void }) {
+  const u = (f: keyof ArrangeCard, v: string | string[] | undefined) => onChange({ ...card, [f]: v })
+  return (
+    <div className="space-y-2">
+      <Field label="Câu đúng (đáp án)" value={card.answer} onChange={v => u('answer', v)} placeholder='She goes to school every day.' />
+      <FieldArea label="Các từ (mỗi dòng 1 từ, sắp xếp ngẫu nhiên)" value={card.words.join('\n')}
+        onChange={v => u('words', v.split('\n').filter(s => s.trim()))} rows={4} />
+      <Field label="Gợi ý (tiếng Việt, không bắt buộc)" value={card.hint ?? ''} onChange={v => u('hint', v || undefined)} />
+    </div>
+  )
+}
+
 function SpeakingEditor({ card, onChange }: { card: SpeakingCard; onChange: (c: AnyCard) => void }) {
   const u = (f: keyof SpeakingCard, v: string | string[]) => onChange({ ...card, [f]: v })
   return (
@@ -183,8 +231,10 @@ function NewLessonPageInner() {
   const [topic, setTopic] = useState('')
   const [description, setDescription] = useState('')
   const [xp, setXp] = useState(50)
+  const [count, setCount] = useState(10)
   const [cards, setCards] = useState<AnyCard[]>([])
   const [docText, setDocText] = useState('')
+  const [uploadedFile, setUploadedFile] = useState<UploadedFile | null>(null)
   const [generating, setGenerating] = useState(false)
   const [saving, setSaving] = useState(false)
   const [showPreview, setShowPreview] = useState(true)
@@ -201,27 +251,59 @@ function NewLessonPageInner() {
       .catch(() => {})
   }, [])
 
+  useEffect(() => {
+    setCount(DEFAULT_COUNT[lessonType])
+  }, [lessonType])
+
   const handleFileChange = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
+    e.target.value = ''
+
     if (file.type === 'text/plain') {
       const text = await file.text()
       setDocText(text)
+      setUploadedFile(null)
       toast.success(`Đã tải file: ${file.name}`)
+    } else if (file.type === 'application/pdf') {
+      const reader = new FileReader()
+      reader.onload = () => {
+        const base64 = (reader.result as string).split(',')[1]
+        setUploadedFile({ data: base64, mimeType: 'application/pdf', name: file.name, kind: 'pdf' })
+        setDocText('')
+        toast.success(`Đã tải PDF: ${file.name}`)
+      }
+      reader.readAsDataURL(file)
+    } else if (file.type.startsWith('image/')) {
+      if (file.size > 10 * 1024 * 1024) { toast.error('Ảnh quá lớn (tối đa 10MB)'); return }
+      const reader = new FileReader()
+      reader.onload = () => {
+        const base64 = (reader.result as string).split(',')[1]
+        setUploadedFile({ data: base64, mimeType: file.type, name: file.name, kind: 'image' })
+        setDocText('')
+        toast.success(`Đã tải ảnh: ${file.name}`)
+      }
+      reader.readAsDataURL(file)
     } else {
-      toast.error('Hiện chỉ hỗ trợ file .txt. Với PDF/DOCX, hãy copy text vào ô bên dưới.')
+      toast.error('Hỗ trợ: .txt, .pdf, .png, .jpg, .jpeg, .webp')
     }
   }, [])
 
   async function handleGenerate() {
     if (!topic.trim()) { toast.error('Nhập chủ đề trước'); return }
-    if (mode === 'doc' && !docText.trim()) { toast.error('Cần có nội dung tài liệu'); return }
+    if (mode === 'doc' && !docText.trim() && !uploadedFile) { toast.error('Cần upload file hoặc paste nội dung'); return }
     setGenerating(true)
     try {
+      const body: Record<string, unknown> = { type: lessonType, level, topic, count }
+      if (mode === 'doc') {
+        if (uploadedFile?.kind === 'pdf') body.pdfBase64 = uploadedFile.data
+        else if (uploadedFile?.kind === 'image') { body.imageBase64 = uploadedFile.data; body.imageMimeType = uploadedFile.mimeType }
+        else if (docText.trim()) body.docText = docText
+      }
       const res = await fetch('/api/admin/ai/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type: lessonType, level, topic, docText: mode === 'doc' ? docText : undefined }),
+        body: JSON.stringify(body),
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error)
@@ -272,7 +354,7 @@ function NewLessonPageInner() {
     }
   }
 
-  const canGenerate = !!topic.trim() && (mode !== 'doc' || !!docText.trim())
+  const canGenerate = !!topic.trim() && (mode !== 'doc' || !!docText.trim() || !!uploadedFile)
 
   return (
     <div className="h-full flex flex-col">
@@ -365,6 +447,15 @@ function NewLessonPageInner() {
                 </div>
               </div>
 
+              {/* Count */}
+              <div>
+                <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-1">
+                  Số lượng câu hỏi {lessonType === 'grammar' ? '(MCQ + điền từ + sắp xếp)' : ''}
+                </label>
+                <input type="number" value={count} onChange={e => setCount(Math.max(3, Math.min(30, Number(e.target.value))))} min={3} max={30}
+                  className="w-full px-3 py-2.5 rounded-xl border border-[var(--border)] bg-[var(--bg-secondary)] text-sm text-[var(--text)] focus:outline-none focus:border-cyan-400" />
+              </div>
+
               {/* XP */}
               <div>
                 <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-1">XP thưởng</label>
@@ -392,27 +483,48 @@ function NewLessonPageInner() {
             {/* Document upload area (mode = doc) */}
             {mode === 'doc' && (
               <div className="space-y-3">
-                <div
-                  onClick={() => fileRef.current?.click()}
-                  className="border-2 border-dashed border-[var(--border)] rounded-xl p-6 text-center cursor-pointer hover:border-cyan-400/60 transition-colors group"
-                >
-                  <Upload size={24} className="mx-auto text-[var(--text-secondary)] group-hover:text-cyan-400 mb-2 transition-colors" />
-                  <p className="text-sm font-medium text-[var(--text)]">Kéo thả hoặc bấm để tải file .txt</p>
-                  <p className="text-xs text-[var(--text-secondary)] mt-0.5">PDF/DOCX: copy nội dung vào ô bên dưới</p>
-                  <input ref={fileRef} type="file" accept=".txt" className="hidden" onChange={handleFileChange} />
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-1">
-                    Nội dung tài liệu {docText ? `(${docText.length.toLocaleString()} ký tự)` : ''}
-                  </label>
-                  <textarea
-                    value={docText}
-                    onChange={e => setDocText(e.target.value)}
-                    rows={8}
-                    placeholder="Paste nội dung tài liệu vào đây... AI sẽ phân tích và tạo bài học từ vựng/ngữ pháp/luyện nói từ nội dung này."
-                    className="w-full px-3 py-2.5 rounded-xl border border-[var(--border)] bg-[var(--bg-secondary)] text-sm text-[var(--text)] focus:outline-none focus:border-cyan-400 resize-none"
-                  />
-                </div>
+                {/* File upload */}
+                {uploadedFile ? (
+                  <div className="flex items-center gap-3 p-3 rounded-xl border border-cyan-400/30 bg-cyan-500/8">
+                    {uploadedFile.kind === 'pdf' ? <FileUp size={18} className="text-cyan-400 shrink-0" /> : <ImageIcon size={18} className="text-cyan-400 shrink-0" />}
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium text-[var(--text)] truncate">{uploadedFile.name}</p>
+                      <p className="text-xs text-[var(--text-secondary)]">{uploadedFile.kind === 'pdf' ? 'PDF — AI sẽ đọc và tạo bài học' : 'Ảnh — AI sẽ phân tích nội dung'}</p>
+                    </div>
+                    <button onClick={() => setUploadedFile(null)} className="p-1 rounded-lg hover:bg-red-500/10 text-red-400 shrink-0">
+                      <X size={14} />
+                    </button>
+                  </div>
+                ) : (
+                  <div
+                    onClick={() => fileRef.current?.click()}
+                    className="border-2 border-dashed border-[var(--border)] rounded-xl p-6 text-center cursor-pointer hover:border-cyan-400/60 transition-colors group"
+                  >
+                    <div className="flex justify-center gap-3 mb-2">
+                      <FileUp size={20} className="text-[var(--text-secondary)] group-hover:text-cyan-400 transition-colors" />
+                      <ImageIcon size={20} className="text-[var(--text-secondary)] group-hover:text-cyan-400 transition-colors" />
+                    </div>
+                    <p className="text-sm font-medium text-[var(--text)]">Kéo thả hoặc bấm để upload</p>
+                    <p className="text-xs text-[var(--text-secondary)] mt-0.5">PDF · PNG · JPG · WEBP · TXT — tối đa 10MB</p>
+                    <input ref={fileRef} type="file" accept=".txt,.pdf,.png,.jpg,.jpeg,.webp" className="hidden" onChange={handleFileChange} />
+                  </div>
+                )}
+
+                {/* Text paste area */}
+                {!uploadedFile && (
+                  <div>
+                    <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-1">
+                      Hoặc paste nội dung tài liệu {docText ? `(${docText.length.toLocaleString()} ký tự)` : ''}
+                    </label>
+                    <textarea
+                      value={docText}
+                      onChange={e => setDocText(e.target.value)}
+                      rows={8}
+                      placeholder="Paste nội dung tài liệu vào đây... AI sẽ phân tích và tạo bài học từ vựng/ngữ pháp/luyện nói từ nội dung này."
+                      className="w-full px-3 py-2.5 rounded-xl border border-[var(--border)] bg-[var(--bg-secondary)] text-sm text-[var(--text)] focus:outline-none focus:border-cyan-400 resize-none"
+                    />
+                  </div>
+                )}
               </div>
             )}
 
@@ -424,9 +536,9 @@ function NewLessonPageInner() {
                 className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-violet-600 text-white font-semibold hover:opacity-90 transition-all disabled:opacity-50"
               >
                 {generating ? (
-                  <><Loader2 size={18} className="animate-spin" /> AI đang tạo bài học...</>
+                  <><Loader2 size={18} className="animate-spin" /> AI đang tạo {count} câu hỏi...</>
                 ) : (
-                  <><Sparkles size={18} /> {cards.length > 0 ? 'Tạo lại bài học' : 'Tạo bài học với AI'}</>
+                  <><Sparkles size={18} /> {cards.length > 0 ? `Tạo lại (${count} câu)` : `Tạo bài học với AI (${count} câu)`}</>
                 )}
               </button>
             )}
