@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
   // Score
   let score
   if (type === 'BEGINNER') {
-    score = await scoreBeginnerSpeaking(topic, transcript)
+    score = await scoreBeginnerSpeaking(question, transcript)
   } else {
     score = await scoreIELTSResponse(question, transcript, part)
   }

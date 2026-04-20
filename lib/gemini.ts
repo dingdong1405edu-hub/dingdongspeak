@@ -157,17 +157,38 @@ Output improved answer only.`,
 }
 
 export async function scoreBeginnerSpeaking(
-  topic: string,
+  question: string,
   transcript: string
 ): Promise<{ score: number; feedback: string; corrections: string[] }> {
   try {
     return await groqJSON(
-      `English coach for beginners. Topic: "${topic}". Student said: "${transcript}".
-Score 0-100 (Accuracy 40%+Fluency 30%+Relevance 30%). Return JSON: {"score":70,"feedback":"1 encouraging sentence","corrections":["fix1"]}`,
-      FAST, 150
+      `You are an English speaking coach for beginners. Score this response strictly and accurately.
+Question asked: "${question}"
+Student's answer: "${transcript}"
+Scoring criteria: Accuracy/Relevance to question (40%) + Grammar (30%) + Fluency/Vocabulary (30%).
+Score range: 0-100. Be honest - if the answer is off-topic or has major errors, score below 50.
+Return JSON only: {"score": <number>, "feedback": "<2 sentences in Vietnamese: praise + main improvement>", "corrections": ["<specific correction 1>", "<specific correction 2>"]}`,
+      ACCURATE, 200
     )
   } catch {
-    return { score: 70, feedback: 'Good effort! Keep practicing.', corrections: [] }
+    return { score: 50, feedback: 'Không thể chấm điểm. Vui lòng thử lại.', corrections: [] }
+  }
+}
+
+export async function getBeginnerSpeakingAssist(
+  question: string,
+  transcript: string,
+  action: 'ideas' | 'sample' | 'vocab'
+): Promise<string> {
+  try {
+    const prompts = {
+      ideas: `Question: "${question}"\nStudent said: "${transcript}"\nGive 3-4 additional ideas/points in Vietnamese the student could add to improve their answer. Be specific and practical. Format as bullet points.`,
+      sample: `Question: "${question}"\nWrite a natural, clear sample answer (band 7+ level) for this beginner speaking question. Use simple but correct English. 3-5 sentences. Then provide a Vietnamese translation below.`,
+      vocab: `Question: "${question}"\nStudent said: "${transcript}"\nList 5 useful vocabulary words or phrases relevant to this question that the student should know. Format: word/phrase - Vietnamese meaning - example sentence.`,
+    }
+    return await groqText(prompts[action], ACCURATE, 300)
+  } catch {
+    return 'Không thể tải nội dung. Vui lòng thử lại.'
   }
 }
 

@@ -5,7 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import {
   ChevronRight, ArrowLeft, Trophy, Check, X, Volume2,
-  BookOpen, Lightbulb, Mic, RotateCcw, Star, Printer
+  BookOpen, Lightbulb, Mic, RotateCcw, Star, Printer,
+  Sparkles, MessageSquare, GraduationCap
 } from 'lucide-react'
 import { toast } from 'sonner'
 import { AudioRecorder } from '@/components/practice/audio-recorder'
@@ -221,6 +222,10 @@ function GrammarExplainCard({ card }: { card: GrammarCard }) {
 function SpeakingPromptCard({ card, onComplete }: { card: SpeakingCard; onComplete: (score: number, feedback: string) => void }) {
   const [phase, setPhase] = useState<'prompt' | 'recording' | 'loading' | 'result'>('prompt')
   const [result, setResult] = useState<{ score: number; feedback: string } | null>(null)
+  const [lastTranscript, setLastTranscript] = useState('')
+  const [assistAction, setAssistAction] = useState<'ideas' | 'sample' | 'vocab' | null>(null)
+  const [assistContent, setAssistContent] = useState('')
+  const [assistLoading, setAssistLoading] = useState(false)
 
   async function handleRecordingComplete(_: Blob, transcript: string) {
     if (!transcript.trim()) {
@@ -229,21 +234,45 @@ function SpeakingPromptCard({ card, onComplete }: { card: SpeakingCard; onComple
       return
     }
 
+    setLastTranscript(transcript)
     setPhase('loading')
     try {
       const res = await fetch('/api/ai/score', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question: card.prompt, transcript, type: 'BEGINNER', topic: 'Speaking practice' }),
+        body: JSON.stringify({ question: card.prompt, transcript, type: 'BEGINNER' }),
       })
       const data = await res.json()
-      const score = data.score?.score ?? 70
-      const feedback = data.score?.feedback ?? 'Câu trả lời của bạn khá tốt!'
+      if (data.error) { toast.error(data.error); setPhase('prompt'); return }
+      const score = data.score?.score ?? 50
+      const feedback = data.score?.feedback ?? 'Hãy thử lại nhé!'
       setResult({ score, feedback })
+      setAssistAction(null)
+      setAssistContent('')
       setPhase('result')
     } catch {
       toast.error('Lỗi kết nối. Vui lòng thử lại.')
       setPhase('prompt')
+    }
+  }
+
+  async function handleAssist(action: 'ideas' | 'sample' | 'vocab') {
+    if (assistAction === action && assistContent) { setAssistAction(null); return }
+    setAssistAction(action)
+    setAssistLoading(true)
+    setAssistContent('')
+    try {
+      const res = await fetch('/api/ai/speaking-assist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question: card.prompt, transcript: lastTranscript, action }),
+      })
+      const data = await res.json()
+      setAssistContent(data.result ?? '')
+    } catch {
+      setAssistContent('Không thể tải nội dung. Vui lòng thử lại.')
+    } finally {
+      setAssistLoading(false)
     }
   }
 
@@ -293,11 +322,12 @@ function SpeakingPromptCard({ card, onComplete }: { card: SpeakingCard; onComple
         {phase === 'loading' && (
           <motion.div key="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex flex-col items-center py-8 gap-3">
             <div className="w-14 h-14 rounded-full border-4 border-violet-400/30 border-t-violet-400 animate-spin" />
-            <p className="text-sm text-[var(--text-secondary)]">Đang chấm điểm...</p>
+            <p className="text-sm text-[var(--text-secondary)]">AI đang chấm điểm...</p>
           </motion.div>
         )}
         {phase === 'result' && result && (
-          <motion.div key="result" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}>
+          <motion.div key="result" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} className="space-y-3">
+            {/* Score card */}
             <div className={cn(
               'rounded-2xl border p-5 space-y-3',
               result.score >= 75 ? 'border-emerald-400/30 bg-emerald-500/8' :
@@ -311,21 +341,86 @@ function SpeakingPromptCard({ card, onComplete }: { card: SpeakingCard; onComple
                   result.score >= 55 ? 'text-yellow-400' : 'text-orange-400'
                 )}>{result.score}%</span>
               </div>
-              <p className="text-sm text-[var(--text-secondary)]">{result.feedback}</p>
-              <div className="flex gap-2">
-                <button
-                  onClick={() => { setResult(null); setPhase('prompt') }}
-                  className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl border border-[var(--border)] text-sm text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] transition-all"
-                >
-                  <RotateCcw size={14} /> Thử lại
-                </button>
-                <button
-                  onClick={() => onComplete(result.score, result.feedback)}
-                  className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-gradient-to-r from-violet-500 to-cyan-500 text-white font-semibold text-sm hover:opacity-90 transition-all"
-                >
-                  Tiếp tục <ChevronRight size={14} />
-                </button>
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{result.feedback}</p>
+            </div>
+
+            {/* AI assist buttons */}
+            <div className="grid grid-cols-3 gap-2">
+              <button
+                onClick={() => handleAssist('ideas')}
+                className={cn(
+                  'flex flex-col items-center gap-1.5 py-3 px-2 rounded-xl border text-xs font-medium transition-all',
+                  assistAction === 'ideas'
+                    ? 'border-violet-400/50 bg-violet-500/15 text-violet-300'
+                    : 'border-[var(--border)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
+                )}
+              >
+                <Sparkles size={15} className={assistAction === 'ideas' ? 'text-violet-400' : 'text-violet-400/60'} />
+                Thêm ý
+              </button>
+              <button
+                onClick={() => handleAssist('sample')}
+                className={cn(
+                  'flex flex-col items-center gap-1.5 py-3 px-2 rounded-xl border text-xs font-medium transition-all',
+                  assistAction === 'sample'
+                    ? 'border-cyan-400/50 bg-cyan-500/15 text-cyan-300'
+                    : 'border-[var(--border)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
+                )}
+              >
+                <GraduationCap size={15} className={assistAction === 'sample' ? 'text-cyan-400' : 'text-cyan-400/60'} />
+                Câu mẫu hay
+              </button>
+              <button
+                onClick={() => handleAssist('vocab')}
+                className={cn(
+                  'flex flex-col items-center gap-1.5 py-3 px-2 rounded-xl border text-xs font-medium transition-all',
+                  assistAction === 'vocab'
+                    ? 'border-emerald-400/50 bg-emerald-500/15 text-emerald-300'
+                    : 'border-[var(--border)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
+                )}
+              >
+                <MessageSquare size={15} className={assistAction === 'vocab' ? 'text-emerald-400' : 'text-emerald-400/60'} />
+                Từ vựng
+              </button>
+            </div>
+
+            {/* AI assist content */}
+            {assistAction && (
+              <div className={cn(
+                'rounded-xl border p-4',
+                assistAction === 'ideas' ? 'border-violet-400/20 bg-violet-500/8' :
+                assistAction === 'sample' ? 'border-cyan-400/20 bg-cyan-500/8' :
+                'border-emerald-400/20 bg-emerald-500/8'
+              )}>
+                <p className="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-2">
+                  {assistAction === 'ideas' ? '💡 Ý tưởng bổ sung' :
+                   assistAction === 'sample' ? '🎓 Câu trả lời mẫu' : '📖 Từ vựng gợi ý'}
+                </p>
+                {assistLoading ? (
+                  <div className="flex items-center gap-2 text-sm text-[var(--text-secondary)]">
+                    <div className="w-4 h-4 rounded-full border-2 border-current border-t-transparent animate-spin" />
+                    AI đang tạo nội dung...
+                  </div>
+                ) : (
+                  <p className="text-sm text-[var(--text)] leading-relaxed whitespace-pre-wrap">{assistContent}</p>
+                )}
               </div>
+            )}
+
+            {/* Action buttons */}
+            <div className="flex gap-2">
+              <button
+                onClick={() => { setResult(null); setAssistAction(null); setAssistContent(''); setPhase('prompt') }}
+                className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl border border-[var(--border)] text-sm text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] transition-all"
+              >
+                <RotateCcw size={14} /> Thử lại
+              </button>
+              <button
+                onClick={() => onComplete(result.score, result.feedback)}
+                className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-gradient-to-r from-violet-500 to-cyan-500 text-white font-semibold text-sm hover:opacity-90 transition-all"
+              >
+                Tiếp tục <ChevronRight size={14} />
+              </button>
             </div>
           </motion.div>
         )}
