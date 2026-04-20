@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/shared/theme-provider'
 import { Toaster } from 'sonner'
 import { SessionProvider } from 'next-auth/react'
 import { auth } from '@/auth'
+import { ChatWidget } from '@/components/chat-widget/ChatWidget'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
@@ -33,6 +34,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <SessionProvider session={session}>
           <ThemeProvider>
             {children}
+            <ChatWidget />
             <Toaster position="top-right" richColors />
           </ThemeProvider>
         </SessionProvider>

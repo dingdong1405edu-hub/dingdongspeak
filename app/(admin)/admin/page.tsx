@@ -1,16 +1,17 @@
 import { prisma } from '@/lib/prisma'
 import Link from 'next/link'
-import { BookOpen, Users, Edit3, Plus, Sparkles, FileText, BarChart3 } from 'lucide-react'
+import { BookOpen, Users, Edit3, Plus, Sparkles, FileText, BarChart3, MessageCircle } from 'lucide-react'
 
 export const metadata = { title: 'Admin Dashboard — DingDongSpeak' }
 
 export default async function AdminPage() {
-  const [totalUsers, totalSessions, premiumUsers, customLessons, stageCount] = await Promise.all([
+  const [totalUsers, totalSessions, premiumUsers, customLessons, stageCount, openFeedback] = await Promise.all([
     prisma.user.count(),
     prisma.practiceSession.count(),
     prisma.user.count({ where: { isPremium: true, premiumUntil: { gt: new Date() } } }),
     prisma.customLesson.count(),
     prisma.stage.count().catch(() => 0),
+    prisma.chatWidgetSession.count({ where: { status: 'OPEN' } }).catch(() => 0),
   ])
 
   const stats = [
@@ -18,6 +19,7 @@ export default async function AdminPage() {
     { label: 'Phiên luyện tập', value: totalSessions, icon: BarChart3, color: 'text-violet-400', bg: 'bg-violet-500/10', border: 'border-violet-500/20' },
     { label: 'Premium đang dùng', value: premiumUsers, icon: Sparkles, color: 'text-yellow-400', bg: 'bg-yellow-500/10', border: 'border-yellow-500/20' },
     { label: 'Bài học đã tạo', value: customLessons, icon: BookOpen, color: 'text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/20' },
+    { label: 'Feedback chờ xử lý', value: openFeedback, icon: MessageCircle, color: 'text-orange-400', bg: 'bg-orange-500/10', border: 'border-orange-500/20' },
   ]
 
   const quickActions = [
@@ -44,7 +46,7 @@ export default async function AdminPage() {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
         {stats.map(s => (
           <div key={s.label} className={`rounded-2xl border ${s.border} bg-[var(--bg-card)] p-5`}>
             <div className={`w-10 h-10 rounded-xl ${s.bg} flex items-center justify-center mb-3`}>
