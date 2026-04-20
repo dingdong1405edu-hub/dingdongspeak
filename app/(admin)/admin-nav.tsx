@@ -2,11 +2,12 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { BookOpen, LayoutDashboard, Plus, Users } from 'lucide-react'
+import { BookOpen, LayoutDashboard, Plus, Users, Layers } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const BASE_NAV = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard, exact: true, exclude: undefined },
+  { href: '/admin/stages', label: 'Stages', icon: Layers, exact: false, exclude: undefined },
   { href: '/admin/lessons', label: 'Bài học', icon: BookOpen, exact: false, exclude: '/admin/lessons/new' },
   { href: '/admin/lessons/new', label: 'Tạo bài học', icon: Plus, exact: false, exclude: undefined },
 ]

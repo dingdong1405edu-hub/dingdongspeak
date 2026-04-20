@@ -199,6 +199,19 @@ model StageTestResult {
   @@unique([userId, stageId])
 }
 
+model Stage {
+  id          String   @id @default(cuid())
+  title       String
+  subtitle    String
+  icon        String   @default("📚")
+  color       String   @default("from-cyan-500 to-blue-600")
+  accentColor String   @default("cyan")
+  order       Int      @default(0)
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
 model SharedAnswer {
   id          String     @id @default(cuid())
   userId      String

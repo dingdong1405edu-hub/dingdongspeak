@@ -1,26 +1,23 @@
 import { prisma } from '@/lib/prisma'
-import { getAllLessons, STAGES } from '@/lib/lessons-data'
 import Link from 'next/link'
-import { BookOpen, Users, CheckCircle, Edit3, Plus, Sparkles, FileText, BarChart3 } from 'lucide-react'
+import { BookOpen, Users, Edit3, Plus, Sparkles, FileText, BarChart3 } from 'lucide-react'
 
 export const metadata = { title: 'Admin Dashboard — DingDongSpeak' }
 
 export default async function AdminPage() {
-  const [totalUsers, totalSessions, lessonOverrides, premiumUsers, customLessons] = await Promise.all([
+  const [totalUsers, totalSessions, premiumUsers, customLessons, stageCount] = await Promise.all([
     prisma.user.count(),
     prisma.practiceSession.count(),
-    prisma.lessonContent.count(),
     prisma.user.count({ where: { isPremium: true, premiumUntil: { gt: new Date() } } }),
     prisma.customLesson.count(),
+    prisma.stage.count().catch(() => 0),
   ])
-
-  const allLessons = getAllLessons()
 
   const stats = [
     { label: 'Người dùng', value: totalUsers, icon: Users, color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/20' },
     { label: 'Phiên luyện tập', value: totalSessions, icon: BarChart3, color: 'text-violet-400', bg: 'bg-violet-500/10', border: 'border-violet-500/20' },
     { label: 'Premium đang dùng', value: premiumUsers, icon: Sparkles, color: 'text-yellow-400', bg: 'bg-yellow-500/10', border: 'border-yellow-500/20' },
-    { label: 'Bài học đã tạo', value: allLessons.length + customLessons, icon: BookOpen, color: 'text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/20' },
+    { label: 'Bài học đã tạo', value: customLessons, icon: BookOpen, color: 'text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/20' },
   ]
 
   const quickActions = [
@@ -83,44 +80,21 @@ export default async function AdminPage() {
       <div>
         <div className="flex items-center justify-between mb-3">
           <h2 className="text-base font-semibold text-[var(--text)]">Lộ trình bài học</h2>
-          <Link href="/admin/lessons" className="text-sm text-cyan-400 hover:underline">
-            Xem tất cả →
+          <Link href="/admin/stages" className="text-sm text-cyan-400 hover:underline">
+            Quản lý Stages →
           </Link>
         </div>
-        <div className="space-y-3">
-          {STAGES.map((stage) => (
-            <div key={stage.id} className="rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] overflow-hidden">
-              <div className={`px-4 py-3 bg-gradient-to-r ${stage.color}`}>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="text-lg">{stage.icon}</span>
-                    <span className="font-semibold text-white text-sm">{stage.title}: {stage.subtitle}</span>
-                  </div>
-                  <span className="text-white/70 text-xs">{stage.lessons.length} bài</span>
-                </div>
-              </div>
-              <div className="p-3 grid grid-cols-2 sm:grid-cols-3 gap-2">
-                {stage.lessons.slice(0, 6).map(lesson => (
-                  <Link
-                    key={lesson.id}
-                    href={`/admin/lessons/${lesson.id}`}
-                    className="flex items-center gap-2 p-2.5 rounded-xl border border-[var(--border)] hover:border-cyan-400/40 hover:bg-[var(--bg-secondary)] transition-all text-xs"
-                  >
-                    <div className={`w-5 h-5 rounded-md flex items-center justify-center text-white text-[10px] font-bold shrink-0 bg-gradient-to-br ${stage.color}`}>
-                      {lesson.type === 'vocabulary' ? 'V' : lesson.type === 'grammar' ? 'G' : 'S'}
-                    </div>
-                    <span className="text-[var(--text)] truncate">{lesson.title}</span>
-                  </Link>
-                ))}
-                {stage.lessons.length > 6 && (
-                  <Link href="/admin/lessons" className="flex items-center justify-center p-2.5 rounded-xl border border-dashed border-[var(--border)] text-xs text-[var(--text-secondary)] hover:border-cyan-400/40 transition-colors">
-                    +{stage.lessons.length - 6} bài nữa
-                  </Link>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
+        {stageCount === 0 ? (
+          <div className="rounded-2xl border border-dashed border-[var(--border)] p-8 text-center">
+            <p className="text-[var(--text-secondary)] text-sm">Chưa có stage nào.</p>
+            <Link href="/admin/stages" className="mt-3 inline-block text-sm text-cyan-400 hover:underline">Tạo stage đầu tiên →</Link>
+          </div>
+        ) : (
+          <div className="rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] p-4 text-center text-[var(--text-secondary)] text-sm">
+            {stageCount} stage · {customLessons} bài học —{' '}
+            <Link href="/admin/lessons" className="text-cyan-400 hover:underline">Xem tất cả</Link>
+          </div>
+        )}
       </div>
     </div>
   )

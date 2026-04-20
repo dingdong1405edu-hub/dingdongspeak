@@ -1,7 +1,6 @@
 import { redirect } from 'next/navigation'
 import { auth } from '@/auth'
 import { prisma } from '@/lib/prisma'
-import { STAGES } from '@/lib/lessons-data'
 import type { LessonData } from '@/lib/lessons-data'
 import { StageTestClient } from './stage-test-client'
 
@@ -59,10 +58,9 @@ export default async function StageTestPage({ params }: { params: Promise<{ stag
   if (!session?.user?.id) redirect('/login')
 
   const { stageId } = await params
-  const stage = STAGES.find(s => s.id === stageId)
-  if (!stage) redirect('/learn')
 
-  const [customLessons, existingResult] = await Promise.all([
+  const [stage, customLessons, existingResult] = await Promise.all([
+    prisma.stage.findUnique({ where: { id: stageId } }).catch(() => null),
     prisma.customLesson.findMany({
       where: { stageId, published: true },
       select: { id: true, stageId: true, title: true, type: true, topic: true, level: true, description: true, xp: true, cards: true },
@@ -72,20 +70,19 @@ export default async function StageTestPage({ params }: { params: Promise<{ stag
     }),
   ])
 
-  const allLessons: LessonData[] = [
-    ...stage.lessons,
-    ...customLessons.map(cl => ({
-      id: cl.id,
-      stageId: cl.stageId,
-      title: cl.title,
-      type: cl.type as LessonData['type'],
-      topic: cl.topic,
-      level: cl.level as LessonData['level'],
-      description: cl.description,
-      xp: cl.xp,
-      cards: cl.cards as any[],
-    })),
-  ]
+  if (!stage) redirect('/learn')
+
+  const allLessons: LessonData[] = customLessons.map(cl => ({
+    id: cl.id,
+    stageId: cl.stageId,
+    title: cl.title,
+    type: cl.type as LessonData['type'],
+    topic: cl.topic,
+    level: cl.level as LessonData['level'],
+    description: cl.description,
+    xp: cl.xp,
+    cards: cl.cards as any[],
+  }))
 
   const questions = buildTestQuestions(allLessons)
 

@@ -1,6 +1,5 @@
 import { auth } from '@/auth'
 import { prisma } from '@/lib/prisma'
-import { STAGES } from '@/lib/lessons-data'
 import { LearnPathClient } from './learn-path-client'
 import type { StageData, LessonData } from '@/lib/lessons-data'
 
@@ -10,7 +9,7 @@ export default async function LearnPage() {
   const session = await auth()
   if (!session?.user?.id) return null
 
-  const [progress, user, customLessons, stageTestResults] = await Promise.all([
+  const [progress, user, dbStages, customLessons, stageTestResults] = await Promise.all([
     prisma.lessonProgress.findMany({
       where: { userId: session.user.id },
       select: { lessonId: true, completed: true, score: true },
@@ -19,6 +18,7 @@ export default async function LearnPage() {
       where: { id: session.user.id },
       select: { lives: true, tokens: true, isPremium: true, premiumUntil: true },
     }),
+    prisma.stage.findMany({ where: { published: true }, orderBy: { order: 'asc' } }).catch(() => []),
     prisma.customLesson.findMany({
       where: { published: true },
       orderBy: { order: 'asc' },
@@ -33,25 +33,26 @@ export default async function LearnPage() {
   const completedSet = new Set(progress.filter(p => p.completed).map(p => p.lessonId))
   const passedStageTests = new Set(stageTestResults.map(r => r.stageId))
 
-  // Merge published custom lessons into each stage
-  const mergedStages: StageData[] = STAGES.map(stage => ({
-    ...stage,
-    lessons: [
-      ...stage.lessons,
-      ...customLessons
-        .filter(cl => cl.stageId === stage.id)
-        .map(cl => ({
-          id: cl.id,
-          stageId: cl.stageId,
-          title: cl.title,
-          type: cl.type as LessonData['type'],
-          topic: cl.topic,
-          level: cl.level as LessonData['level'],
-          description: cl.description,
-          xp: cl.xp,
-          cards: cl.cards as any[],
-        })),
-    ],
+  const mergedStages: StageData[] = dbStages.map(s => ({
+    id: s.id,
+    title: s.title,
+    subtitle: s.subtitle,
+    icon: s.icon,
+    color: s.color,
+    accentColor: s.accentColor,
+    lessons: customLessons
+      .filter(cl => cl.stageId === s.id)
+      .map(cl => ({
+        id: cl.id,
+        stageId: cl.stageId,
+        title: cl.title,
+        type: cl.type as LessonData['type'],
+        topic: cl.topic,
+        level: cl.level as LessonData['level'],
+        description: cl.description,
+        xp: cl.xp,
+        cards: cl.cards as any[],
+      })),
   }))
 
   const allLessons = mergedStages.flatMap(s => s.lessons)

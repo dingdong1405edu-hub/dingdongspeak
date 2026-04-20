@@ -1,14 +1,15 @@
 'use client'
 
 import { useSearchParams, useRouter } from 'next/navigation'
-import { useState, useRef, useCallback, Suspense } from 'react'
+import { useState, useRef, useCallback, useEffect, Suspense } from 'react'
 import {
   Sparkles, FileText, Edit3, ArrowLeft, Upload, Loader2, Plus, Trash2,
   ChevronDown, ChevronUp, CheckCircle, AlertCircle, Save, Eye, EyeOff
 } from 'lucide-react'
 import { toast } from 'sonner'
 import { cn } from '@/lib/utils'
-import { STAGES } from '@/lib/lessons-data'
+
+interface StageOption { id: string; title: string; subtitle: string; icon: string }
 
 type Mode = 'ai' | 'doc' | 'manual'
 type LessonType = 'vocabulary' | 'grammar' | 'speaking'
@@ -176,7 +177,8 @@ function NewLessonPageInner() {
   const [mode, setMode] = useState<Mode>(initialMode)
   const [lessonType, setLessonType] = useState<LessonType>('vocabulary')
   const [level, setLevel] = useState<Level>('A1')
-  const [stageId, setStageId] = useState(STAGES[0]?.id ?? '')
+  const [stageId, setStageId] = useState(searchParams.get('stageId') ?? '')
+  const [stages, setStages] = useState<StageOption[]>([])
   const [title, setTitle] = useState('')
   const [topic, setTopic] = useState('')
   const [description, setDescription] = useState('')
@@ -187,6 +189,16 @@ function NewLessonPageInner() {
   const [saving, setSaving] = useState(false)
   const [showPreview, setShowPreview] = useState(true)
   const fileRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    fetch('/api/admin/stages')
+      .then(r => r.json())
+      .then((data: StageOption[]) => {
+        setStages(data)
+        if (!stageId && data.length > 0) setStageId(data[0].id)
+      })
+      .catch(() => {})
+  }, [])
 
   const handleFileChange = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
@@ -323,7 +335,8 @@ function NewLessonPageInner() {
                 <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-1">Chặng (Stage)</label>
                 <select value={stageId} onChange={e => setStageId(e.target.value)}
                   className="w-full px-3 py-2.5 rounded-xl border border-[var(--border)] bg-[var(--bg-secondary)] text-sm text-[var(--text)] focus:outline-none focus:border-cyan-400">
-                  {STAGES.map(s => <option key={s.id} value={s.id}>{s.icon} {s.title}: {s.subtitle}</option>)}
+                  {stages.length === 0 && <option value="">-- Chưa có stage --</option>}
+                  {stages.map(s => <option key={s.id} value={s.id}>{s.icon} {s.title}: {s.subtitle}</option>)}
                 </select>
               </div>
 
