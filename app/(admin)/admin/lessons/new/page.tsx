@@ -193,9 +193,10 @@ function NewLessonPageInner() {
   useEffect(() => {
     fetch('/api/admin/stages')
       .then(r => r.json())
-      .then((data: StageOption[]) => {
-        setStages(data)
-        if (!stageId && data.length > 0) setStageId(data[0].id)
+      .then((data) => {
+        const list: StageOption[] = Array.isArray(data) ? data : []
+        setStages(list)
+        if (!stageId && list.length > 0) setStageId(list[0].id)
       })
       .catch(() => {})
   }, [])

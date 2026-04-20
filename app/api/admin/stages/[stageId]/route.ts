@@ -1,18 +1,13 @@
 import { NextResponse } from 'next/server'
-import { auth } from '@/auth'
+import { requireAdmin } from '@/lib/admin-auth'
 import { prisma } from '@/lib/prisma'
 
-async function requireAdmin() {
-  const session = await auth()
-  if (!session?.user?.id) return null
-  const user = await prisma.user.findUnique({ where: { id: session.user.id }, select: { role: true } })
-  if (!user || !['ADMIN', 'OWNER', 'STAFF'].includes(user.role)) return null
-  return session
-}
-
 export async function PATCH(req: Request, { params }: { params: Promise<{ stageId: string }> }) {
-  const session = await requireAdmin()
-  if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  try {
+    await requireAdmin()
+  } catch {
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+  }
 
   const { stageId } = await params
   const body = await req.json()
@@ -34,8 +29,11 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ stageI
 }
 
 export async function DELETE(_req: Request, { params }: { params: Promise<{ stageId: string }> }) {
-  const session = await requireAdmin()
-  if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  try {
+    await requireAdmin()
+  } catch {
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+  }
 
   const { stageId } = await params
 
