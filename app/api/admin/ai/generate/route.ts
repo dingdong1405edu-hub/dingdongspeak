@@ -21,7 +21,9 @@ export async function POST(req: NextRequest) {
     if (imageBase64 && imageMimeType) {
       effectiveDocText = await extractContentFromImage(imageBase64, imageMimeType)
     } else if (pdfBase64) {
-      const { default: pdfParse } = await import('pdf-parse')
+      // Use lib path directly to avoid pdf-parse v1 test file auto-loading
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
+      const pdfParse = require('pdf-parse/lib/pdf-parse.js')
       const buffer = Buffer.from(pdfBase64, 'base64')
       const pdfData = await pdfParse(buffer)
       effectiveDocText = pdfData.text
