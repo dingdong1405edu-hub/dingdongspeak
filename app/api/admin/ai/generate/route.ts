@@ -21,10 +21,9 @@ export async function POST(req: NextRequest) {
     if (imageBase64 && imageMimeType) {
       effectiveDocText = await extractContentFromImage(imageBase64, imageMimeType)
     } else if (pdfBase64) {
-      // eslint-disable-next-line @typescript-eslint/no-require-imports
-      const pdfParse = require('pdf-parse')
+      const { default: pdfParse } = await import('pdf-parse')
       const buffer = Buffer.from(pdfBase64, 'base64')
-      const pdfData = await pdfParse.default ? pdfParse.default(buffer) : pdfParse(buffer)
+      const pdfData = await pdfParse(buffer)
       effectiveDocText = pdfData.text
     }
 
