@@ -5,14 +5,14 @@ import { useState, useRef, useCallback, useEffect, Suspense } from 'react'
 import {
   Sparkles, FileText, Edit3, ArrowLeft, Upload, Loader2, Plus, Trash2,
   ChevronDown, ChevronUp, CheckCircle, AlertCircle, Save, Eye, EyeOff,
-  Image as ImageIcon, FileUp, X
+  Image as ImageIcon, FileUp, X, List
 } from 'lucide-react'
 import { toast } from 'sonner'
 import { cn } from '@/lib/utils'
 
 interface StageOption { id: string; title: string; subtitle: string; icon: string }
 
-type Mode = 'ai' | 'doc' | 'manual'
+type Mode = 'ai' | 'doc' | 'manual' | 'batch'
 type LessonType = 'vocabulary' | 'grammar' | 'speaking'
 type Level = 'A1' | 'A2' | 'B1' | 'B2'
 
@@ -27,6 +27,7 @@ interface UploadedFile { data: string; mimeType: string; name: string; kind: 'pd
 
 const MODES = [
   { id: 'ai' as Mode, icon: Sparkles, label: 'AI từ chủ đề', desc: 'Nhập chủ đề, AI tạo bài hoàn chỉnh', color: 'from-cyan-500 to-violet-600' },
+  { id: 'batch' as Mode, icon: List, label: 'Nhập hàng loạt', desc: 'Paste danh sách từ, AI tạo flashcard cho từng từ', color: 'from-amber-500 to-orange-500' },
   { id: 'doc' as Mode, icon: FileText, label: 'Upload tài liệu', desc: 'PDF, ảnh, hoặc paste text — AI phân tích → game', color: 'from-emerald-500 to-cyan-500' },
   { id: 'manual' as Mode, icon: Edit3, label: 'Thêm thủ công', desc: 'Tự điền cards từng bước', color: 'from-violet-500 to-pink-500' },
 ]
@@ -235,6 +236,7 @@ function NewLessonPageInner() {
   const [cards, setCards] = useState<AnyCard[]>([])
   const [docText, setDocText] = useState('')
   const [uploadedFile, setUploadedFile] = useState<UploadedFile | null>(null)
+  const [batchText, setBatchText] = useState('')
   const [generating, setGenerating] = useState(false)
   const [saving, setSaving] = useState(false)
   const [showPreview, setShowPreview] = useState(true)
@@ -317,6 +319,30 @@ function NewLessonPageInner() {
     }
   }
 
+  async function handleBatchGenerate() {
+    const words = batchText.split('\n').map(w => w.trim()).filter(Boolean)
+    if (words.length === 0) { toast.error('Nhập ít nhất 1 từ'); return }
+    if (words.length > 50) { toast.error('Tối đa 50 từ mỗi lần'); return }
+    setGenerating(true)
+    try {
+      const res = await fetch('/api/admin/ai/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ wordList: words, level }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error)
+      setCards(prev => [...prev, ...data.cards])
+      if (!title) setTitle(`Vocabulary — ${level}`)
+      if (!topic) setTopic('Batch Vocabulary')
+      toast.success(`Đã tạo ${data.cards.length} flashcards!`)
+    } catch (e: any) {
+      toast.error(e?.message || 'AI tạo thất bại')
+    } finally {
+      setGenerating(false)
+    }
+  }
+
   function updateCard(i: number, c: AnyCard) {
     setCards(cs => { const n = [...cs]; n[i] = c; return n })
   }
@@ -354,7 +380,9 @@ function NewLessonPageInner() {
     }
   }
 
+  const batchWords = batchText.split('\n').map(w => w.trim()).filter(Boolean)
   const canGenerate = !!topic.trim() && (mode !== 'doc' || !!docText.trim() || !!uploadedFile)
+  const canBatchGenerate = batchWords.length > 0 && batchWords.length <= 50
 
   return (
     <div className="h-full flex flex-col">
@@ -389,7 +417,7 @@ function NewLessonPageInner() {
         <div className="max-w-4xl mx-auto p-6 space-y-6">
 
           {/* Mode selector */}
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {MODES.map(m => (
               <button
                 key={m.id}
@@ -424,6 +452,7 @@ function NewLessonPageInner() {
               </div>
 
               {/* Type */}
+              {mode !== 'batch' && (
               <div>
                 <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-1">Loại bài</label>
                 <select value={lessonType} onChange={e => setLessonType(e.target.value as LessonType)}
@@ -431,6 +460,7 @@ function NewLessonPageInner() {
                   {TYPE_OPTIONS.map(t => <option key={t.value} value={t.value}>{t.label}</option>)}
                 </select>
               </div>
+              )}
 
               {/* Level */}
               <div>
@@ -448,6 +478,7 @@ function NewLessonPageInner() {
               </div>
 
               {/* Count */}
+              {mode !== 'batch' && (
               <div>
                 <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-1">
                   Số lượng câu hỏi {lessonType === 'grammar' ? '(MCQ + điền từ + sắp xếp)' : ''}
@@ -455,6 +486,7 @@ function NewLessonPageInner() {
                 <input type="number" value={count} onChange={e => setCount(Math.max(3, Math.min(30, Number(e.target.value))))} min={3} max={30}
                   className="w-full px-3 py-2.5 rounded-xl border border-[var(--border)] bg-[var(--bg-secondary)] text-sm text-[var(--text)] focus:outline-none focus:border-cyan-400" />
               </div>
+              )}
 
               {/* XP */}
               <div>
@@ -528,8 +560,41 @@ function NewLessonPageInner() {
               </div>
             )}
 
+            {/* Batch vocabulary input */}
+            {mode === 'batch' && (
+              <div className="space-y-3">
+                <div>
+                  <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-1">
+                    Danh sách từ vựng {batchWords.length > 0 ? `(${batchWords.length} từ${batchWords.length > 50 ? ' — tối đa 50' : ''})` : ''}
+                  </label>
+                  <textarea
+                    value={batchText}
+                    onChange={e => setBatchText(e.target.value)}
+                    rows={10}
+                    placeholder={"Nhập mỗi từ/cụm từ trên 1 dòng. Ví dụ:\nabandon\nability\nabsolute\naccount for\nachieve\nacknowledge\nacquire\nadapt\n..."}
+                    className="w-full px-3 py-2.5 rounded-xl border border-[var(--border)] bg-[var(--bg-secondary)] text-sm text-[var(--text)] focus:outline-none focus:border-amber-400 resize-none font-mono"
+                  />
+                  <p className="text-xs text-[var(--text-secondary)] mt-1">
+                    AI sẽ tự động tạo phiên âm IPA, nghĩa tiếng Việt, câu ví dụ và 4 lựa chọn cho mỗi từ.
+                    {cards.length > 0 && ' Các từ mới sẽ được thêm vào cards hiện có.'}
+                  </p>
+                </div>
+                <button
+                  onClick={handleBatchGenerate}
+                  disabled={generating || !canBatchGenerate}
+                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold hover:opacity-90 transition-all disabled:opacity-50"
+                >
+                  {generating ? (
+                    <><Loader2 size={18} className="animate-spin" /> AI đang tạo {batchWords.length} flashcards...</>
+                  ) : (
+                    <><List size={18} /> Tạo flashcard cho {batchWords.length > 0 ? `${batchWords.length} từ` : 'danh sách từ'}</>
+                  )}
+                </button>
+              </div>
+            )}
+
             {/* Generate button (AI modes) */}
-            {mode !== 'manual' && (
+            {mode !== 'manual' && mode !== 'batch' && (
               <button
                 onClick={handleGenerate}
                 disabled={generating || !canGenerate}
@@ -553,6 +618,7 @@ function NewLessonPageInner() {
                 </h2>
                 <p className="text-xs text-[var(--text-secondary)] mt-0.5">
                   {mode === 'manual' ? 'Thêm cards thủ công bên dưới' :
+                   mode === 'batch' ? (cards.length > 0 ? 'Có thể nhập thêm từ và bấm tạo nhiều lần' : 'Nhập danh sách từ ở trên rồi bấm tạo') :
                    cards.length > 0 ? 'Xem lại, chỉnh sửa trước khi lưu' :
                    'Cards sẽ xuất hiện sau khi AI tạo xong'}
                 </p>

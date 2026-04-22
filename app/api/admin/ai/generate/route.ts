@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { requireAdmin } from '@/lib/admin-auth'
-import { generateLessonCards, extractContentFromImage } from '@/lib/gemini'
+import { generateLessonCards, generateBatchVocabCards, extractContentFromImage } from '@/lib/gemini'
 
 export async function POST(req: NextRequest) {
   try {
@@ -9,7 +9,19 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
-  const { type, level, topic, count, docText, imageBase64, imageMimeType, pdfBase64 } = await req.json()
+  const { type, level, topic, count, docText, imageBase64, imageMimeType, pdfBase64, wordList } = await req.json()
+
+  // Batch vocabulary mode
+  if (wordList && Array.isArray(wordList) && wordList.length > 0) {
+    if (!level) return NextResponse.json({ error: 'Thiếu level' }, { status: 400 })
+    try {
+      const cards = await generateBatchVocabCards(wordList, level)
+      return NextResponse.json({ cards })
+    } catch (error: any) {
+      console.error('Batch vocab generate error:', error?.message)
+      return NextResponse.json({ error: error?.message || 'AI tạo từ vựng thất bại' }, { status: 500 })
+    }
+  }
 
   if (!type || !level || !topic) {
     return NextResponse.json({ error: 'Thiếu type, level, hoặc topic' }, { status: 400 })

@@ -242,6 +242,23 @@ Rules: ideas has 3-4 items, vocabulary has 3-5 items per card, sampleAnswer is n
   return cards
 }
 
+export async function generateBatchVocabCards(words: string[], level: string): Promise<any[]> {
+  const wordList = words.map((w, i) => `${i + 1}. ${w.trim()}`).join('\n')
+  const prompt = `English teacher. Vietnamese learners, level ${level}.
+
+Generate exactly ONE VocabCard for EACH of these ${words.length} words:
+${wordList}
+
+Return JSON: {"cards":[...]} with exactly ${words.length} cards in the same order.
+Format per card: {"type":"vocab","word":"exact word from list","phonetic":"/IPA/","pos":"n.|v.|adj.|adv.|phrase","meaning":"Nghĩa tiếng Việt ngắn gọn","example":"Natural example sentence.","options":["Nghĩa đúng","Sai1","Sai2","Sai3"],"answer":"Nghĩa đúng"}
+Rules: options exactly 4 Vietnamese meanings, answer matches one option exactly, real IPA phonetic, example suits ${level} level.`
+
+  const result = await groqJSON<{ cards?: any[] } | any[]>(prompt, ACCURATE, Math.min(4000, words.length * 200 + 500))
+  const cards = Array.isArray(result) ? result : (result as any).cards ?? []
+  if (!cards.length) throw new Error('AI không tạo được cards')
+  return cards
+}
+
 export async function extractContentFromImage(imageBase64: string, mimeType: string): Promise<string> {
   const res = await getGroq().chat.completions.create({
     model: 'llama-3.2-90b-vision-preview',
