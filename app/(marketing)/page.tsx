@@ -126,6 +126,30 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Language selector — multi-language platform (Multi-Zones) */}
+      <section className="px-4 sm:px-6 -mt-10 relative z-10">
+        <div className="max-w-3xl mx-auto">
+          <p className="text-center text-white/50 text-sm mb-4">Chọn ngôn ngữ bạn muốn học</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <a href="/" className="glass-dark rounded-2xl p-5 border border-cyan-400/50 text-center hover:border-cyan-400 transition-all">
+              <div className="text-3xl mb-1">🇬🇧</div>
+              <div className="text-white font-semibold">Tiếng Anh</div>
+              <div className="text-cyan-400/70 text-xs mt-1">IELTS Speaking · đang xem</div>
+            </a>
+            <a href="/ja" className="glass-dark rounded-2xl p-5 border border-white/10 text-center hover:border-pink-400/60 transition-all">
+              <div className="text-3xl mb-1">🇯🇵</div>
+              <div className="text-white font-semibold">Tiếng Nhật</div>
+              <div className="text-white/40 text-xs mt-1">JLPT N5–N1</div>
+            </a>
+            <a href="/zh" className="glass-dark rounded-2xl p-5 border border-white/10 text-center hover:border-red-400/60 transition-all">
+              <div className="text-3xl mb-1">🇨🇳</div>
+              <div className="text-white font-semibold">Tiếng Trung</div>
+              <div className="text-white/40 text-xs mt-1">HSK 1–6</div>
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Features */}
       <section id="features" className="py-24 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
