@@ -31,16 +31,16 @@ export default function ForgotPasswordPage() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="glass-dark rounded-3xl p-8 border border-white/10 text-center"
+        className="soft-card rounded-3xl p-8 text-center"
       >
-        <CheckCircle size={48} className="text-emerald-400 mx-auto mb-4" />
-        <h2 className="text-2xl font-bold text-white mb-2">Email đã được gửi!</h2>
-        <p className="text-white/60 text-sm mb-6">
-          Chúng tôi đã gửi hướng dẫn đặt lại mật khẩu đến <strong className="text-white">{email}</strong>.
+        <CheckCircle size={48} className="text-emerald-500 mx-auto mb-4" />
+        <h2 className="text-2xl font-bold text-[var(--text)] mb-2">Email đã được gửi!</h2>
+        <p className="text-[var(--text-secondary)] text-sm mb-6">
+          Chúng tôi đã gửi hướng dẫn đặt lại mật khẩu đến <strong className="text-[var(--text)]">{email}</strong>.
           Vui lòng kiểm tra hộp thư (kể cả thư rác).
         </p>
         <Link href="/login"
-          className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm font-medium transition-colors">
+          className="inline-flex items-center gap-2 text-[var(--brand)] hover:opacity-80 text-sm font-medium transition-colors">
           <ArrowLeft size={16} /> Quay lại đăng nhập
         </Link>
       </motion.div>
@@ -51,29 +51,29 @@ export default function ForgotPasswordPage() {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="glass-dark rounded-3xl p-8 border border-white/10"
+      className="soft-card rounded-3xl p-8"
     >
-      <Link href="/login" className="inline-flex items-center gap-1.5 text-white/50 hover:text-white/80 text-sm mb-6 transition-colors">
+      <Link href="/login" className="inline-flex items-center gap-1.5 text-[var(--text-secondary)] hover:text-[var(--text)] text-sm mb-6 transition-colors">
         <ArrowLeft size={15} /> Quay lại
       </Link>
 
-      <h1 className="text-2xl font-bold text-white mb-2">Quên mật khẩu?</h1>
-      <p className="text-white/50 text-sm mb-8">
+      <h1 className="text-2xl font-bold text-[var(--text)] mb-2">Quên mật khẩu?</h1>
+      <p className="text-[var(--text-secondary)] text-sm mb-8">
         Nhập email của bạn và chúng tôi sẽ gửi link đặt lại mật khẩu.
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="text-sm font-medium text-white/80 block mb-1.5">Email</label>
+          <label className="text-sm font-medium text-[var(--text)] block mb-1.5">Email</label>
           <div className="relative">
-            <Mail size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40" />
+            <Mail size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--text-secondary)]" />
             <input
               type="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
               placeholder="email@example.com"
               required
-              className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:border-cyan-400/50 transition-all"
+              className="w-full pl-10 pr-4 py-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text)] placeholder:text-[var(--text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--ring)] focus:border-[var(--brand)] transition-all"
             />
           </div>
         </div>
@@ -83,9 +83,9 @@ export default function ForgotPasswordPage() {
         </Button>
       </form>
 
-      <div className="mt-6 text-center text-sm text-white/50">
+      <div className="mt-6 text-center text-sm text-[var(--text-secondary)]">
         Nhớ mật khẩu rồi?{' '}
-        <Link href="/login" className="text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
+        <Link href="/login" className="text-[var(--brand)] hover:opacity-80 font-medium transition-colors">
           Đăng nhập
         </Link>
       </div>

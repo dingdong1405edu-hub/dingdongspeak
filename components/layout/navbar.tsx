@@ -49,7 +49,7 @@ export function Navbar() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         scrolled || isApp
-          ? 'bg-[var(--bg)]/90 backdrop-blur-xl border-b border-[var(--border)] shadow-sm'
+          ? 'glass-light border-b border-[var(--border)] shadow-soft'
           : 'bg-transparent'
       )}
     >
@@ -59,10 +59,7 @@ export function Navbar() {
           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-violet-600 flex items-center justify-center">
             <span className="text-white font-bold text-sm">D</span>
           </div>
-          <span className={cn(
-            'font-bold text-lg hidden sm:block',
-            !isApp && !scrolled ? 'text-white' : 'text-[var(--text)]'
-          )}>
+          <span className="font-bold text-lg hidden sm:block text-[var(--text)]">
             DingDong<span className="gradient-text">Speak</span>
           </span>
         </Link>
@@ -74,10 +71,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={cn(
-                  'text-sm transition-colors',
-                  !scrolled ? 'text-white/80 hover:text-white' : 'text-[var(--text-secondary)] hover:text-[var(--text)]'
-                )}
+                className="text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--brand)] transition-colors"
               >
                 {link.label}
               </Link>
@@ -98,7 +92,7 @@ export function Navbar() {
                   className={cn(
                     'flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-all',
                     active
-                      ? 'bg-cyan-400/15 text-cyan-400 font-medium'
+                      ? 'bg-[var(--brand)]/10 text-[var(--brand)] font-semibold'
                       : 'text-[var(--text-secondary)] hover:text-[var(--text)] hover:bg-[var(--bg-secondary)]'
                   )}
                 >
@@ -140,15 +134,13 @@ export function Navbar() {
             <div className="hidden md:flex items-center gap-2">
               <Link
                 href="/login"
-                className={cn('px-4 py-1.5 text-sm font-medium rounded-lg transition-all',
-                  !scrolled ? 'text-white/80 hover:text-white' : 'text-[var(--text-secondary)] hover:text-[var(--text)]'
-                )}
+                className="px-4 py-1.5 text-sm font-medium rounded-lg text-[var(--text-secondary)] hover:text-[var(--text)] transition-all"
               >
                 Đăng nhập
               </Link>
               <Link
                 href="/register"
-                className="px-4 py-1.5 text-sm font-medium rounded-lg bg-gradient-to-r from-cyan-500 to-violet-600 text-white hover:opacity-90 transition-opacity"
+                className="px-4 py-1.5 text-sm font-semibold rounded-lg brand-gradient text-white hover:opacity-95 transition-opacity shadow-soft"
               >
                 Bắt đầu miễn phí
               </Link>
@@ -158,10 +150,7 @@ export function Navbar() {
           {/* Hamburger */}
           <button
             onClick={() => setMobileOpen(v => !v)}
-            className={cn(
-              'md:hidden p-2 rounded-lg transition-all',
-              !scrolled && !isApp ? 'text-white hover:bg-white/10' : 'text-[var(--text)] hover:bg-[var(--bg-secondary)]'
-            )}
+            className="md:hidden p-2 rounded-lg transition-all text-[var(--text)] hover:bg-[var(--bg-secondary)]"
             aria-label="Menu"
           >
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}

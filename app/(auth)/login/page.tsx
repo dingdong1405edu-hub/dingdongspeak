@@ -31,17 +31,17 @@ export default function LoginPage() {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="glass-dark rounded-3xl p-10 border border-white/10 text-center"
+      className="soft-card rounded-3xl p-10 text-center"
     >
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-white mb-2">Chào mừng trở lại!</h1>
-        <p className="text-white/50 text-sm">Tiếp tục hành trình luyện IELTS Speaking với AI.</p>
+        <h1 className="text-2xl font-bold text-[var(--text)] mb-2">Chào mừng trở lại!</h1>
+        <p className="text-[var(--text-secondary)] text-sm">Tiếp tục hành trình luyện IELTS Speaking với AI.</p>
       </div>
 
       <button
         onClick={handleGoogleSignIn}
         disabled={loading}
-        className="w-full flex items-center justify-center gap-3 py-3.5 px-6 rounded-xl bg-white text-gray-800 font-semibold text-sm hover:bg-gray-50 active:bg-gray-100 transition-all shadow-lg disabled:opacity-70"
+        className="w-full flex items-center justify-center gap-3 py-3.5 px-6 rounded-xl bg-white text-gray-800 font-semibold text-sm border border-[var(--border)] hover:bg-gray-50 hover:shadow-soft active:bg-gray-100 transition-all disabled:opacity-70"
       >
         {loading ? (
           <span className="w-5 h-5 border-2 border-gray-400 border-t-transparent rounded-full animate-spin" />
@@ -51,7 +51,7 @@ export default function LoginPage() {
         {loading ? 'Đang chuyển hướng...' : 'Tiếp tục với Google'}
       </button>
 
-      <p className="mt-6 text-xs text-white/30 leading-relaxed">
+      <p className="mt-6 text-xs text-[var(--text-secondary)] leading-relaxed">
         Lần đầu đăng nhập sẽ tự động tạo tài khoản miễn phí.
         <br />Chúng tôi chỉ đọc email và tên từ Google, không đọc dữ liệu khác.
       </p>
