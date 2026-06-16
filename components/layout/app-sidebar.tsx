@@ -8,6 +8,7 @@ import {
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useLang } from '@/components/shared/lang-provider'
+import { LANG_LIST } from '@/lib/languages'
 
 const bottomItems = [
   { href: '/premium', icon: Crown, label: 'Premium', className: 'text-yellow-400' },
@@ -16,7 +17,7 @@ const bottomItems = [
 
 export function AppSidebar() {
   const pathname = usePathname()
-  const { config } = useLang()
+  const { lang, config, setLang } = useLang()
 
   const navItems = [
     { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
@@ -30,6 +31,30 @@ export function AppSidebar() {
 
   return (
     <aside className="hidden md:flex flex-col fixed left-0 top-16 bottom-0 w-60 border-r border-[var(--border)] bg-[var(--bg)] z-40">
+      {/* Learning-language picker — always visible */}
+      <div className="p-3 border-b border-[var(--border)]">
+        <p className="text-[11px] font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-2 px-1">
+          🌐 Ngôn ngữ đang học
+        </p>
+        <div className="grid grid-cols-2 gap-1.5">
+          {LANG_LIST.map(l => (
+            <button
+              key={l.code}
+              onClick={() => setLang(l.code)}
+              title={`${l.viName} · ${l.exam}`}
+              className={cn(
+                'flex items-center gap-1.5 px-2 py-2 rounded-lg text-xs font-medium border transition-all',
+                l.code === lang
+                  ? 'bg-cyan-400/15 text-cyan-400 border-cyan-400/40'
+                  : 'border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--text)] hover:bg-[var(--bg-secondary)]'
+              )}
+            >
+              <span className="text-base leading-none">{l.flag}</span>
+              <span className="truncate">{l.nativeName}</span>
+            </button>
+          ))}
+        </div>
+      </div>
       <nav className="flex-1 p-3 space-y-1 overflow-y-auto">
         {navItems.map(item => {
           const Icon = item.icon

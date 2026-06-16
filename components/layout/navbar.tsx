@@ -11,6 +11,8 @@ import {
 } from 'lucide-react'
 import { ThemeToggle } from '@/components/shared/theme-toggle'
 import { LanguageSwitcher } from '@/components/shared/language-switcher'
+import { useLang } from '@/components/shared/lang-provider'
+import { LANG_LIST } from '@/lib/languages'
 import { cn } from '@/lib/utils'
 
 const marketingLinks = [
@@ -31,6 +33,7 @@ const appLinks = [
 export function Navbar() {
   const pathname = usePathname()
   const { data: session } = useSession()
+  const { lang, setLang } = useLang()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -107,7 +110,7 @@ export function Navbar() {
 
         {/* Right side */}
         <div className="flex items-center gap-2">
-          {session?.user && <LanguageSwitcher compact />}
+          {session?.user && <LanguageSwitcher />}
           <ThemeToggle />
 
           {session?.user ? (
@@ -171,6 +174,30 @@ export function Navbar() {
             className="md:hidden bg-[var(--bg)]/95 backdrop-blur-xl border-b border-[var(--border)] overflow-hidden"
           >
             <div className="px-4 py-4 space-y-1">
+              {session?.user && (
+                <div className="pb-3 mb-2 border-b border-[var(--border)]">
+                  <p className="text-[11px] font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-2 px-1">
+                    🌐 Ngôn ngữ đang học
+                  </p>
+                  <div className="grid grid-cols-2 gap-1.5">
+                    {LANG_LIST.map(l => (
+                      <button
+                        key={l.code}
+                        onClick={() => { setLang(l.code); setMobileOpen(false) }}
+                        className={cn(
+                          'flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium border transition-all',
+                          l.code === lang
+                            ? 'bg-cyan-400/15 text-cyan-400 border-cyan-400/40'
+                            : 'border-[var(--border)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
+                        )}
+                      >
+                        <span className="text-lg leading-none">{l.flag}</span>
+                        <span className="truncate">{l.nativeName}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
               {(isApp ? appLinks : marketingLinks.map(l => ({ ...l, icon: BookOpen }))).map((link) => {
                 const Icon = 'icon' in link ? link.icon : BookOpen
                 return (
