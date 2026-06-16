@@ -1,9 +1,12 @@
 import type { NextConfig } from 'next'
 
-const allowedOrigins = ['localhost:3000']
-if (process.env.NEXT_PUBLIC_APP_URL) {
-  const url = process.env.NEXT_PUBLIC_APP_URL.replace(/^https?:\/\//, '')
-  allowedOrigins.push(url)
+// Allow server actions from the production domain regardless of env config.
+const allowedOrigins = ['localhost:3000', 'dingdongspeak.com', 'www.dingdongspeak.com']
+for (const envUrl of [process.env.NEXT_PUBLIC_APP_URL, process.env.RAILWAY_PUBLIC_DOMAIN]) {
+  if (envUrl) {
+    const host = envUrl.replace(/^https?:\/\//, '')
+    if (!allowedOrigins.includes(host)) allowedOrigins.push(host)
+  }
 }
 
 // DingDongSpeak is now a single consolidated app: all target languages
