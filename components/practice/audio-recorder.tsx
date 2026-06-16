@@ -10,9 +10,11 @@ interface AudioRecorderProps {
   onComplete: (blob: Blob, transcript: string) => void
   onStart?: () => void
   disabled?: boolean
+  /** Target language for transcription (en | zh | ja | ko). */
+  lang?: string
 }
 
-export function AudioRecorder({ onComplete, onStart, disabled }: AudioRecorderProps) {
+export function AudioRecorder({ onComplete, onStart, disabled, lang = 'en' }: AudioRecorderProps) {
   const [isRecording, setIsRecording] = useState(false)
   const [audioLevel, setAudioLevel] = useState(0)
   const [processing, setProcessing] = useState(false)
@@ -62,6 +64,7 @@ export function AudioRecorder({ onComplete, onStart, disabled }: AudioRecorderPr
         try {
           const formData = new FormData()
           formData.append('audio', blob, 'recording.webm')
+          formData.append('lang', lang)
 
           const res = await fetch('/api/speech/stt', { method: 'POST', body: formData })
           const data = await res.json()
@@ -89,7 +92,7 @@ export function AudioRecorder({ onComplete, onStart, disabled }: AudioRecorderPr
         toast.error('Không mở được microphone. Kiểm tra lại thiết bị.')
       }
     }
-  }, [onComplete, onStart])
+  }, [onComplete, onStart, lang])
 
   const stopRecording = useCallback(() => {
     mediaRecorderRef.current?.stop()
@@ -114,6 +117,7 @@ export function AudioRecorder({ onComplete, onStart, disabled }: AudioRecorderPr
     try {
       const formData = new FormData()
       formData.append('audio', file, file.name)
+      formData.append('lang', lang)
 
       const res = await fetch('/api/speech/stt', { method: 'POST', body: formData })
       const data = await res.json()
@@ -129,7 +133,7 @@ export function AudioRecorder({ onComplete, onStart, disabled }: AudioRecorderPr
       toast.error('Lỗi xử lý file âm thanh. Vui lòng thử lại.')
       setUploadProcessing(false)
     }
-  }, [onComplete, onStart])
+  }, [onComplete, onStart, lang])
 
   if (processing || uploadProcessing) {
     return (

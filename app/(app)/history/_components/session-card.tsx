@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Clock, BookOpen, ChevronDown, ChevronUp, AlertCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { getLang, formatScore, scoreToColor, scoreRatio, type LangCode } from '@/lib/languages'
 
 interface QAItem {
   question: string
@@ -26,6 +27,7 @@ interface Session {
   type: string
   topic: string
   part: string | null
+  language?: string | null
   questions: QAItem[]
   scores: ScoreItem[]
   duration: number
@@ -33,26 +35,17 @@ interface Session {
 }
 
 const TYPE_LABELS: Record<string, string> = {
-  PRACTICE: 'Luyện IELTS',
+  PRACTICE: 'Luyện nói',
   MOCK_TEST: 'Thi thử',
   BEGINNER: 'Beginner',
 }
 
-const PART_LABELS: Record<string, string> = {
-  PART1: 'Part 1', PART2: 'Part 2', PART3: 'Part 3', FULL: 'Full Test',
-}
-
-function bandColor(b: number) {
-  if (b >= 7) return 'text-emerald-400'
-  if (b >= 6) return 'text-cyan-400'
-  if (b >= 5) return 'text-yellow-400'
-  return 'text-orange-400'
-}
-
-function pillColor(v: number) {
-  return v >= 7 ? 'bg-emerald-500/15 text-emerald-400'
-    : v >= 6 ? 'bg-cyan-500/15 text-cyan-400'
-    : v >= 5 ? 'bg-amber-500/15 text-amber-400'
+/** Pill background color from a normalised 0..1 score ratio. */
+function pillColor(v: number, lang: LangCode) {
+  const r = scoreRatio(v, lang)
+  return r >= 0.78 ? 'bg-emerald-500/15 text-emerald-400'
+    : r >= 0.66 ? 'bg-cyan-500/15 text-cyan-400'
+    : r >= 0.55 ? 'bg-amber-500/15 text-amber-400'
     : 'bg-orange-500/15 text-orange-400'
 }
 
@@ -88,8 +81,9 @@ function HighlightedText({ text, corrections }: { text: string; corrections?: Ar
   return <span className="text-sm leading-relaxed text-[var(--text)]">{nodes}</span>
 }
 
-function QuestionDetail({ qa, score, idx }: { qa: QAItem; score: ScoreItem; idx: number }) {
+function QuestionDetail({ qa, score, idx, lang }: { qa: QAItem; score: ScoreItem; idx: number; lang: LangCode }) {
   const [open, setOpen] = useState(false)
+  const config = getLang(lang)
 
   return (
     <div className="border border-[var(--border)] rounded-xl overflow-hidden">
@@ -102,7 +96,7 @@ function QuestionDetail({ qa, score, idx }: { qa: QAItem; score: ScoreItem; idx:
           <span className="text-sm text-[var(--text)] truncate">{qa.question}</span>
         </div>
         <div className="flex items-center gap-2 shrink-0 ml-2">
-          <span className={cn('text-sm font-bold', bandColor(score.overall))}>{score.overall.toFixed(1)}</span>
+          <span className={cn('text-sm font-bold', scoreToColor(score.overall, lang))}>{formatScore(score.overall, lang)}</span>
           {open ? <ChevronUp size={14} className="text-[var(--text-secondary)]" /> : <ChevronDown size={14} className="text-[var(--text-secondary)]" />}
         </div>
       </button>
@@ -118,12 +112,11 @@ function QuestionDetail({ qa, score, idx }: { qa: QAItem; score: ScoreItem; idx:
             <div className="px-4 pb-4 space-y-3 border-t border-[var(--border)]">
               {/* Sub-scores */}
               <div className="flex flex-wrap gap-1.5 pt-3">
-                {(['fluency', 'lexical', 'grammar', 'pronunciation'] as const).map(k => {
-                  const labels: Record<string, string> = { fluency: 'Trôi chảy', lexical: 'Từ vựng', grammar: 'Ngữ pháp', pronunciation: 'Phát âm' }
-                  const val = score[k]
+                {config.criteria.map(c => {
+                  const val = score[c.key]
                   return (
-                    <span key={k} className={cn('text-[10px] px-2 py-0.5 rounded-full font-medium', pillColor(val))}>
-                      {labels[k]}: {val.toFixed(1)}
+                    <span key={c.key} className={cn('text-[10px] px-2 py-0.5 rounded-full font-medium', pillColor(val, lang))}>
+                      {c.label}: {formatScore(val, lang)}
                     </span>
                   )
                 })}
@@ -161,10 +154,16 @@ function QuestionDetail({ qa, score, idx }: { qa: QAItem; score: ScoreItem; idx:
 
 export function SessionCard({ session }: { session: Session }) {
   const [expanded, setExpanded] = useState(false)
+  const lang = (session.language ?? 'en') as LangCode
+  const config = getLang(lang)
+  const partLabels: Record<string, string> = {
+    ...Object.fromEntries(config.sections.map(s => [s.id, s.label])),
+    FULL: 'Full Test',
+  }
   const scores = session.scores ?? []
   const questions = session.questions ?? []
   const avg = scores.length > 0
-    ? (scores.reduce((acc, sc) => acc + (sc.overall ?? 0), 0) / scores.length).toFixed(1)
+    ? scores.reduce((acc, sc) => acc + (sc.overall ?? 0), 0) / scores.length
     : null
   const minutes = Math.round((session.duration ?? 0) / 60)
 
@@ -182,7 +181,7 @@ export function SessionCard({ session }: { session: Session }) {
             </span>
             {session.part && (
               <span className="text-xs px-2 py-0.5 rounded-full bg-violet-500/10 text-violet-400 font-medium">
-                {PART_LABELS[session.part] ?? session.part}
+                {partLabels[session.part] ?? session.part}
               </span>
             )}
           </div>
@@ -201,10 +200,10 @@ export function SessionCard({ session }: { session: Session }) {
         </div>
 
         <div className="flex items-center gap-3 shrink-0">
-          {avg && (
+          {avg != null && (
             <div className="text-right">
-              <div className={cn('text-2xl font-bold', bandColor(parseFloat(avg)))}>{avg}</div>
-              <div className="text-xs text-[var(--text-secondary)]">Band TB</div>
+              <div className={cn('text-2xl font-bold', scoreToColor(avg, lang))}>{formatScore(avg, lang)}</div>
+              <div className="text-xs text-[var(--text-secondary)]">{config.scoreLabel} TB</div>
             </div>
           )}
           {expanded
@@ -228,6 +227,7 @@ export function SessionCard({ session }: { session: Session }) {
                 <QuestionDetail
                   key={i}
                   idx={i}
+                  lang={lang}
                   qa={qa}
                   score={scores[i] ?? { overall: 0, fluency: 0, lexical: 0, grammar: 0, pronunciation: 0 }}
                 />

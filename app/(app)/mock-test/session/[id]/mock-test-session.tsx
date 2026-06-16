@@ -9,6 +9,7 @@ import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { AudioRecorder } from '@/components/practice/audio-recorder'
 import { ScoreCard } from '@/components/practice/score-card'
+import { useLang } from '@/components/shared/lang-provider'
 import { cn, formatDuration } from '@/lib/utils'
 import type { IELTSQuestion, ScoreBreakdown, QARecord } from '@/types'
 
@@ -16,40 +17,12 @@ interface Props { sessionId: string }
 
 type Phase = 'loading' | 'briefing' | 'part1' | 'part2-prep' | 'part2' | 'part3' | 'scoring-all' | 'complete'
 
-// 50+ IELTS topics — AI picks randomly
-const IELTS_TOPIC_POOL = [
-  'Hometown & Living', 'Work & Career', 'Education & Study', 'Family & Relationships',
-  'Health & Fitness', 'Technology & Internet', 'Environment & Climate', 'Travel & Tourism',
-  'Food & Cooking', 'Sports & Exercise', 'Music & Entertainment', 'Books & Reading',
-  'Shopping & Fashion', 'Transport & Commuting', 'Housing & Accommodation',
-  'Hobbies & Free Time', 'Social Media & Communication', 'Science & Innovation',
-  'Government & Politics', 'Economy & Business', 'Arts & Culture', 'Wildlife & Nature',
-  'Language & Learning', 'Memory & Childhood', 'Friendship & Social Life',
-  'Crime & Safety', 'Media & News', 'Space & Exploration', 'Robots & AI',
-  'Water & Energy Resources', 'Tourism & Heritage', 'Volunteering & Community',
-  'Sleep & Mental Health', 'Weather & Seasons', 'Traditions & Celebrations',
-]
-
-function pickRandomTopic(): string {
-  return IELTS_TOPIC_POOL[Math.floor(Math.random() * IELTS_TOPIC_POOL.length)]
-}
-
-const MOCK_FALLBACK: IELTSQuestion[] = [
-  { id: 'q1', question: 'Can you tell me your full name please?', part: 'PART1' },
-  { id: 'q2', question: 'Where are you currently living?', part: 'PART1' },
-  { id: 'q3', question: 'Do you work or are you a student?', part: 'PART1' },
-  { id: 'q4', question: 'What do you enjoy doing in your free time?', part: 'PART1' },
-  { id: 'q5', question: 'Describe a memorable experience from your life.', part: 'PART2', cueCard: ['What happened', 'When and where', 'Who was involved', 'Why it was memorable'] },
-  { id: 'q6', question: 'Do you think personal experiences shape who we are?', part: 'PART3' },
-  { id: 'q7', question: 'How has modern life changed the way people spend their time?', part: 'PART3' },
-  { id: 'q8', question: 'What role should education play in preparing people for real life?', part: 'PART3' },
-  { id: 'q9', question: 'In your opinion, what makes someone successful?', part: 'PART3' },
-]
-
 interface PendingAnswer { question: IELTSQuestion; transcript: string }
 
 export function MockTestSession({ sessionId }: Props) {
-  const [topic] = useState(() => pickRandomTopic())
+  const { lang, config } = useLang()
+  // Pick a random topic from the active language's topic pool.
+  const [topic] = useState(() => config.topics[Math.floor(Math.random() * config.topics.length)])
   const [phase, setPhase] = useState<Phase>('loading')
   const [part1Qs, setPart1Qs] = useState<IELTSQuestion[]>([])
   const [part2Q, setPart2Q] = useState<IELTSQuestion | null>(null)
@@ -62,29 +35,54 @@ export function MockTestSession({ sessionId }: Props) {
   const [finalScores, setFinalScores] = useState<ScoreBreakdown | null>(null)
   const [scoringProgress, setScoringProgress] = useState(0)
 
+  // Section labels driven by config.
+  const sectionLabel = (id: 'PART1' | 'PART2' | 'PART3') =>
+    config.sections.find(s => s.id === id)?.label ?? id
+
+  // Build fallback questions in the target language from config.fallbackQuestions.
+  function buildFallback(): IELTSQuestion[] {
+    const fb = config.fallbackQuestions
+    const result: IELTSQuestion[] = []
+    // Part 1 — first question.
+    result.push({ id: 'fb-p1', question: fb[0] ?? '', part: 'PART1' })
+    // Part 2 — middle (cue card only when the language uses one).
+    result.push({
+      id: 'fb-p2',
+      question: fb[1] ?? fb[0] ?? '',
+      part: 'PART2',
+      ...(config.hasCueCard ? { cueCard: ['What', 'When & where', 'Who', 'Why'] } : {}),
+    })
+    // Part 3 — last question.
+    result.push({ id: 'fb-p3', question: fb[2] ?? fb[fb.length - 1] ?? '', part: 'PART3' })
+    return result
+  }
+
   // Load questions
   useEffect(() => {
     async function load() {
       try {
         const [p1, p2, p3] = await Promise.all([
-          fetch('/api/ai/question', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ topic, part: 'PART1', count: 4 }) }).then(r => r.json()),
-          fetch('/api/ai/question', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ topic, part: 'PART2', count: 1 }) }).then(r => r.json()),
-          fetch('/api/ai/question', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ topic, part: 'PART3', count: 4 }) }).then(r => r.json()),
+          fetch('/api/ai/question', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ topic, part: 'PART1', count: 4, lang }) }).then(r => r.json()),
+          fetch('/api/ai/question', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ topic, part: 'PART2', count: 1, lang }) }).then(r => r.json()),
+          fetch('/api/ai/question', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ topic, part: 'PART3', count: 4, lang }) }).then(r => r.json()),
         ])
-        setPart1Qs(p1.questions?.length ? p1.questions : MOCK_FALLBACK.filter(q => q.part === 'PART1'))
-        setPart2Q(p2.questions?.[0] || MOCK_FALLBACK.find(q => q.part === 'PART2') || null)
-        setPart3Qs(p3.questions?.length ? p3.questions : MOCK_FALLBACK.filter(q => q.part === 'PART3'))
+        const fallback = buildFallback()
+        setPart1Qs(p1.questions?.length ? p1.questions : fallback.filter(q => q.part === 'PART1'))
+        setPart2Q(p2.questions?.[0] || fallback.find(q => q.part === 'PART2') || null)
+        setPart3Qs(p3.questions?.length ? p3.questions : fallback.filter(q => q.part === 'PART3'))
         setPhase('briefing')
       } catch {
         toast.error('Lỗi tải câu hỏi, dùng câu hỏi mặc định')
-        setPart1Qs(MOCK_FALLBACK.filter(q => q.part === 'PART1'))
-        setPart2Q(MOCK_FALLBACK.find(q => q.part === 'PART2') || null)
-        setPart3Qs(MOCK_FALLBACK.filter(q => q.part === 'PART3'))
+        const fallback = buildFallback()
+        setPart1Qs(fallback.filter(q => q.part === 'PART1'))
+        setPart2Q(fallback.find(q => q.part === 'PART2') || null)
+        setPart3Qs(fallback.filter(q => q.part === 'PART3'))
         setPhase('briefing')
       }
     }
     load()
-  }, [topic])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [topic, lang])
 
   // Timer
   useEffect(() => {
@@ -95,7 +93,7 @@ export function MockTestSession({ sessionId }: Props) {
     return () => clearInterval(interval)
   }, [phase])
 
-  // Part 2 prep countdown
+  // Part 2 prep countdown (only relevant when the language uses a cue card)
   useEffect(() => {
     if (phase !== 'part2-prep') return
     if (prepTimer <= 0) { setPhase('part2'); return }
@@ -104,9 +102,13 @@ export function MockTestSession({ sessionId }: Props) {
   }, [phase, prepTimer])
 
   async function playTTS(text: string) {
+    // No server TTS voice for this language — skip gracefully (text stays visible).
+    if (!config.ttsVoice) return
     try {
-      const res = await fetch('/api/speech/tts', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text }) })
+      const res = await fetch('/api/speech/tts', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text, lang }) })
+      if (!res.ok || res.status === 204) return
       const blob = await res.blob()
+      if (blob.size === 0) return
       new Audio(URL.createObjectURL(blob)).play()
     } catch {}
   }
@@ -125,7 +127,7 @@ export function MockTestSession({ sessionId }: Props) {
       try {
         const res = await fetch('/api/ai/score', {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ question: question.question, transcript, part: question.part, type: 'MOCK_TEST', topic }),
+          body: JSON.stringify({ question: question.question, transcript, part: question.part, type: 'MOCK_TEST', topic, lang }),
         })
         const data = await res.json()
         if (res.ok && data.score) {
@@ -148,6 +150,7 @@ export function MockTestSession({ sessionId }: Props) {
         type: 'MOCK_TEST',
         topic,
         part: 'FULL',
+        language: lang,
         questions: qaRecords.map(r => ({ question: r.question.question, transcript: r.transcript })),
         scores: qaRecords.map(r => r.score),
         duration: 0,
@@ -159,16 +162,25 @@ export function MockTestSession({ sessionId }: Props) {
   function calcFinalScore(records: QARecord[]): ScoreBreakdown {
     const avg = (key: keyof Pick<ScoreBreakdown, 'overall' | 'fluency' | 'lexical' | 'grammar' | 'pronunciation'>) =>
       records.reduce((s, r) => s + (r.score[key] as number), 0) / records.length
-    const overall = parseFloat(avg('overall').toFixed(1))
-    const validBands = [0, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9]
-    const rounded = validBands.reduce((prev, curr) => Math.abs(curr - overall) < Math.abs(prev - overall) ? curr : prev)
+    const overallAvg = avg('overall')
+    let overall: number
+    if (config.scoreScale === 9) {
+      // IELTS-style: round to nearest 0.5 band step.
+      const validBands = [0, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9]
+      overall = validBands.reduce((prev, curr) => Math.abs(curr - overallAvg) < Math.abs(prev - overallAvg) ? curr : prev)
+    } else {
+      // 0–100 scale: plain integer average.
+      overall = Math.round(overallAvg)
+    }
+    const sub = (key: keyof Pick<ScoreBreakdown, 'fluency' | 'lexical' | 'grammar' | 'pronunciation'>) =>
+      config.scoreScale === 9 ? parseFloat(avg(key).toFixed(1)) : Math.round(avg(key))
     return {
-      overall: rounded,
-      fluency: parseFloat(avg('fluency').toFixed(1)),
-      lexical: parseFloat(avg('lexical').toFixed(1)),
-      grammar: parseFloat(avg('grammar').toFixed(1)),
-      pronunciation: parseFloat(avg('pronunciation').toFixed(1)),
-      feedback: `Bạn đã hoàn thành bài thi thử với ${records.length} câu trả lời. Band ước tính: ${rounded}. Kết quả dựa trên toàn bộ bài thi Part 1, 2, 3.`,
+      overall,
+      fluency: sub('fluency'),
+      lexical: sub('lexical'),
+      grammar: sub('grammar'),
+      pronunciation: sub('pronunciation'),
+      feedback: `Bạn đã hoàn thành bài thi thử với ${records.length} câu trả lời. ${config.scoreLabel} ước tính: ${overall}. Kết quả dựa trên toàn bộ bài thi ${sectionLabel('PART1')}, ${sectionLabel('PART2')}, ${sectionLabel('PART3')}.`,
     }
   }
 
@@ -180,7 +192,13 @@ export function MockTestSession({ sessionId }: Props) {
     setP1Phase('answered')
     setTimeout(() => {
       if (currentPart1Idx + 1 >= part1Qs.length) {
-        setPhase('part2-prep')
+        // Cue-card prep step only when the language uses a cue card.
+        if (config.hasCueCard) {
+          setPhase('part2-prep')
+        } else {
+          setPhase('part2')
+          if (part2Q) playTTS(part2Q.question)
+        }
       } else {
         setCurrentPart1Idx(i => i + 1)
         setP1Phase('question')
@@ -256,14 +274,18 @@ export function MockTestSession({ sessionId }: Props) {
     <div className="max-w-2xl mx-auto">
       <Card className="text-center py-10">
         <GraduationCap size={48} className="text-violet-400 mx-auto mb-4" />
-        <h2 className="text-2xl font-bold text-[var(--text)] mb-2">Thi thử IELTS Speaking</h2>
+        <h2 className="text-2xl font-bold text-[var(--text)] mb-2">Thi thử {config.examFull}</h2>
         <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-violet-500/15 text-violet-400 text-sm mb-6">
           Chủ đề: <strong className="ml-1">{topic}</strong>
         </div>
         <div className="space-y-2 text-sm text-[var(--text-secondary)] text-left bg-[var(--bg-secondary)] rounded-xl p-4 mb-6">
-          <p>📋 <strong>Part 1</strong>: {part1Qs.length} câu hỏi cá nhân (~4-5 phút)</p>
-          <p>📋 <strong>Part 2</strong>: 1 cue card, 1 phút chuẩn bị, 2 phút nói</p>
-          <p>📋 <strong>Part 3</strong>: {part3Qs.length} câu hỏi thảo luận (~4-5 phút)</p>
+          <p>📋 <strong>{sectionLabel('PART1')}</strong>: {part1Qs.length} câu hỏi cá nhân (~4-5 phút)</p>
+          {config.hasCueCard ? (
+            <p>📋 <strong>{sectionLabel('PART2')}</strong>: 1 cue card, 1 phút chuẩn bị, 2 phút nói</p>
+          ) : (
+            <p>📋 <strong>{sectionLabel('PART2')}</strong>: nói liên tục về một chủ đề</p>
+          )}
+          <p>📋 <strong>{sectionLabel('PART3')}</strong>: {part3Qs.length} câu hỏi thảo luận (~4-5 phút)</p>
           <p>⚠️ <strong>Không xem điểm giữa chừng</strong> — AI chấm tổng thể sau khi xong tất cả</p>
         </div>
         <Button variant="gradient" size="lg" onClick={() => {
@@ -280,7 +302,7 @@ export function MockTestSession({ sessionId }: Props) {
     <div className="max-w-2xl mx-auto">
       <Card className="text-center py-10">
         <div className="text-6xl font-bold gradient-text mb-2">{prepTimer}</div>
-        <p className="text-[var(--text-secondary)] mb-4">giây chuẩn bị cho Part 2</p>
+        <p className="text-[var(--text-secondary)] mb-4">giây chuẩn bị cho {sectionLabel('PART2')}</p>
         {part2Q && (
           <div className="bg-[var(--bg-secondary)] rounded-xl p-4 text-left mb-6">
             <p className="text-sm font-semibold text-violet-400 mb-2">📋 Cue Card — {topic}</p>
@@ -305,15 +327,15 @@ export function MockTestSession({ sessionId }: Props) {
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="max-w-2xl mx-auto space-y-6">
       <div className="text-center">
         <div className="text-5xl mb-3">🎓</div>
-        <h2 className="text-2xl font-bold text-[var(--text)]">Hoàn thành Thi thử IELTS Speaking!</h2>
+        <h2 className="text-2xl font-bold text-[var(--text)]">Hoàn thành Thi thử {config.examFull}!</h2>
         <p className="text-[var(--text-secondary)] text-sm mt-1">
           Chủ đề: {topic} · Tổng thời gian: {formatDuration(elapsed)}
         </p>
       </div>
       <div className="p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-xl text-xs text-yellow-400 text-center">
-        ⚠️ Đây là điểm ước tính từ AI — không phải kết quả thi IELTS chính thức
+        ⚠️ Đây là điểm ước tính từ AI — không phải kết quả thi {config.exam} chính thức
       </div>
-      <ScoreCard score={finalScores} />
+      <ScoreCard score={finalScores} lang={lang} />
       <div className="flex gap-3">
         <Button variant="gradient" onClick={() => window.location.href = '/mock-test'} className="flex-1">Thi lại</Button>
         <Button variant="secondary" onClick={() => window.location.href = '/review'} className="flex-1">
@@ -324,7 +346,10 @@ export function MockTestSession({ sessionId }: Props) {
   )
 
   // ── Part renders ──
-  const currentPartLabel = phase === 'part1' ? 'Part 1' : phase === 'part2' ? 'Part 2' : 'Part 3'
+  const currentPartLabel =
+    phase === 'part1' ? sectionLabel('PART1') :
+    phase === 'part2' ? sectionLabel('PART2') :
+    sectionLabel('PART3')
   const currentQuestion =
     phase === 'part1' ? part1Qs[currentPart1Idx] :
     phase === 'part2' ? part2Q :
@@ -353,10 +378,12 @@ export function MockTestSession({ sessionId }: Props) {
       {currentQuestion && (
         <Card>
           <div className="flex items-center justify-between gap-2 mb-3">
-            <span className="text-xs text-violet-400 font-medium uppercase">{currentQuestion.part}</span>
-            <button onClick={() => playTTS(currentQuestion.question)} className="p-1.5 rounded-lg bg-violet-400/10 text-violet-400 hover:bg-violet-400/20 transition-all">
-              <Volume2 size={14} />
-            </button>
+            <span className="text-xs text-violet-400 font-medium uppercase">{currentPartLabel}</span>
+            {config.ttsVoice && (
+              <button onClick={() => playTTS(currentQuestion.question)} className="p-1.5 rounded-lg bg-violet-400/10 text-violet-400 hover:bg-violet-400/20 transition-all">
+                <Volume2 size={14} />
+              </button>
+            )}
           </div>
           <p className="text-lg font-medium text-[var(--text)] leading-relaxed mb-4">
             {currentQuestion.question}
@@ -378,6 +405,7 @@ export function MockTestSession({ sessionId }: Props) {
 
       {currentLocalPhase === 'question' && (
         <AudioRecorder
+          lang={lang}
           onComplete={
             phase === 'part1' ? handlePart1Answer :
             phase === 'part2' ? handlePart2Answer :

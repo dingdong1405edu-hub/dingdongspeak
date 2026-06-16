@@ -2,10 +2,13 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import {
   Mic, Star, Zap, ChevronRight, Play, CheckCircle,
   ArrowRight, Sparkles, BookOpen, GraduationCap, ShieldCheck
 } from 'lucide-react'
+import { useLang } from '@/components/shared/lang-provider'
+import { LANG_LIST, type LangCode } from '@/lib/languages'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -17,52 +20,60 @@ const fadeUp = {
 
 const features = [
   {
-    icon: BookOpen, title: 'Beginner Path', color: 'from-emerald-500 to-teal-500',
+    icon: BookOpen, title: 'Lộ trình cơ bản', color: 'from-emerald-500 to-teal-500',
     desc: 'Học từ vựng, ngữ pháp rồi luyện nói theo chặng đường kiểu Duolingo với AI chấm điểm tức thì.',
     href: '/learn',
   },
   {
-    icon: Mic, title: 'IELTS Practice', color: 'from-blue-600 to-indigo-600',
-    desc: 'Chọn topic, part, số câu. AI giám khảo đặt câu hỏi, bạn ghi âm, nhận điểm chuẩn IELTS tức thì.',
+    icon: Mic, title: 'Luyện nói', color: 'from-blue-600 to-indigo-600',
+    desc: 'Chọn chủ đề, phần, số câu. AI giám khảo đặt câu hỏi, bạn ghi âm, nhận điểm chuẩn tức thì.',
     href: '/practice',
   },
   {
-    icon: GraduationCap, title: 'Mock Test', color: 'from-violet-600 to-fuchsia-500',
-    desc: 'Thi thử như thật với AI đóng vai giám khảo. Chấm điểm nghiêm khắc đúng chuẩn band IELTS.',
+    icon: GraduationCap, title: 'Thi thử', color: 'from-violet-600 to-fuchsia-500',
+    desc: 'Thi thử như thật với AI đóng vai giám khảo. Chấm điểm nghiêm khắc đúng chuẩn từng kỳ thi.',
     href: '/mock-test',
   },
 ]
 
 const stats = [
   { value: '10,000+', label: 'Học viên' },
-  { value: '50+', label: 'Chủ đề IELTS' },
-  { value: '9.0', label: 'Band cao nhất' },
+  { value: '4', label: 'Ngôn ngữ' },
+  { value: '50+', label: 'Chủ đề luyện tập' },
   { value: '98%', label: 'Hài lòng' },
 ]
 
 const steps = [
   { num: '01', title: 'Đăng ký miễn phí', desc: 'Tạo tài khoản trong 30 giây. Không cần thẻ tín dụng.' },
-  { num: '02', title: 'Chọn bài luyện', desc: 'Luyện từ đầu với Beginner Path hoặc thẳng vào IELTS Practice.' },
-  { num: '03', title: 'Ghi âm và nhận điểm', desc: 'AI chấm điểm tức thì theo chuẩn band IELTS. Nghiêm khắc và chính xác.' },
+  { num: '02', title: 'Chọn bài luyện', desc: 'Luyện từ đầu với Lộ trình cơ bản hoặc vào thẳng phần Luyện nói.' },
+  { num: '03', title: 'Ghi âm và nhận điểm', desc: 'AI chấm điểm tức thì theo chuẩn từng kỳ thi. Nghiêm khắc và chính xác.' },
   { num: '04', title: 'Theo dõi tiến độ', desc: 'Dashboard heatmap, leaderboard và stats giúp bạn thấy sự tiến bộ rõ ràng.' },
 ]
 
 const testimonials = [
   {
-    name: 'Nguyễn Minh Anh', score: 'Band 7.0', avatar: 'M',
-    text: 'Sau 2 tháng dùng DingDongSpeak, mình tăng từ band 5.5 lên 7.0. AI chấm nghiêm hơn thi thật nên khi thi thật thấy dễ hơn!'
+    name: 'Nguyễn Minh Anh', score: 'Tiếng Anh · 7.0', avatar: 'M',
+    text: 'Sau 2 tháng dùng DingDongSpeak, mình tăng từ 5.5 lên 7.0. AI chấm nghiêm hơn thi thật nên khi thi thật thấy dễ hơn!'
   },
   {
-    name: 'Trần Thị Hương', score: 'Band 6.5', avatar: 'H',
+    name: 'Trần Thị Hương', score: 'Tiếng Trung · HSK4', avatar: 'H',
     text: 'Interface đẹp, dễ dùng. Đặc biệt phần lưu từ vựng và câu trả lời mẫu rất hữu ích cho việc ôn tập.',
   },
   {
-    name: 'Lê Văn Đức', score: 'Band 8.0', avatar: 'D',
-    text: 'Mock test giống thi thật đến mức mình không còn lo lắng khi bước vào phòng thi. Recommend 100%!',
+    name: 'Lê Văn Đức', score: 'Tiếng Nhật · N3', avatar: 'D',
+    text: 'Thi thử giống thi thật đến mức mình không còn lo lắng khi bước vào phòng thi. Recommend 100%!',
   },
 ]
 
 export default function HomePage() {
+  const router = useRouter()
+  const { setLang } = useLang()
+
+  function chooseLang(code: LangCode) {
+    setLang(code)
+    router.push('/dashboard')
+  }
+
   return (
     <div className="aurora-bg min-h-screen overflow-hidden">
 
@@ -79,15 +90,15 @@ export default function HomePage() {
           <motion.h1 variants={fadeUp} initial="hidden" animate="visible" custom={1}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-[var(--text)] mb-6 leading-[1.1] tracking-tight"
           >
-            Luyện IELTS Speaking<br />
-            <span className="gradient-text">chuẩn band score</span>
+            Luyện nói ngoại ngữ<br />
+            <span className="gradient-text">chuẩn điểm chuẩn</span>
           </motion.h1>
 
           <motion.p variants={fadeUp} initial="hidden" animate="visible" custom={2}
             className="text-lg sm:text-xl text-[var(--text-secondary)] max-w-2xl mx-auto mb-10 leading-relaxed"
           >
-            AI giám khảo nghiêm khắc chấm điểm thật — Fluency, Grammar, Vocabulary, Pronunciation.
-            Luyện mỗi ngày, tăng band score mỗi tuần.
+            Tiếng Anh, Trung, Nhật, Hàn — AI giám khảo nghiêm khắc chấm điểm thật: trôi chảy, ngữ pháp,
+            từ vựng, phát âm. Luyện mỗi ngày, tiến bộ mỗi tuần.
           </motion.p>
 
           <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={3}
@@ -130,26 +141,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Language selector — multi-language platform (Multi-Zones) */}
+      {/* Language selector — in-app learning-language chooser */}
       <section className="px-4 sm:px-6 relative z-10">
         <div className="max-w-3xl mx-auto">
           <p className="text-center text-[var(--text-secondary)] text-sm mb-4">Chọn ngôn ngữ bạn muốn học</p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <a href="/" className="soft-card rounded-2xl p-5 ring-2 ring-[var(--brand)]/50 text-center hover:ring-[var(--brand)] transition-all">
-              <div className="text-3xl mb-1">🇬🇧</div>
-              <div className="text-[var(--text)] font-semibold">Tiếng Anh</div>
-              <div className="text-[var(--brand)] text-xs mt-1">IELTS Speaking · đang xem</div>
-            </a>
-            <a href="/ja" className="soft-card rounded-2xl p-5 text-center hover:ring-2 hover:ring-pink-400/60 transition-all">
-              <div className="text-3xl mb-1">🇯🇵</div>
-              <div className="text-[var(--text)] font-semibold">Tiếng Nhật</div>
-              <div className="text-[var(--text-secondary)] text-xs mt-1">JLPT N5–N1</div>
-            </a>
-            <a href="/zh" className="soft-card rounded-2xl p-5 text-center hover:ring-2 hover:ring-red-400/60 transition-all">
-              <div className="text-3xl mb-1">🇨🇳</div>
-              <div className="text-[var(--text)] font-semibold">Tiếng Trung</div>
-              <div className="text-[var(--text-secondary)] text-xs mt-1">HSK 1–6</div>
-            </a>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {LANG_LIST.map((l) => (
+              <button
+                key={l.code}
+                type="button"
+                onClick={() => chooseLang(l.code)}
+                className="soft-card rounded-2xl p-5 text-center hover:ring-2 hover:ring-[var(--brand)]/60 transition-all"
+              >
+                <div className="text-3xl mb-1">{l.flag}</div>
+                <div className="text-[var(--text)] font-semibold">{l.viName}</div>
+                <div className="text-[var(--text-secondary)] text-xs mt-1">{l.examFull}</div>
+              </button>
+            ))}
           </div>
         </div>
       </section>
@@ -164,7 +172,7 @@ export default function HomePage() {
               3 phần luyện tập toàn diện
             </h2>
             <p className="text-[var(--text-secondary)] max-w-xl mx-auto">
-              Từ người mới bắt đầu đến IELTS 8.0 — tất cả trong một nền tảng.
+              Từ người mới bắt đầu đến trình độ nâng cao — tất cả trong một nền tảng.
             </p>
           </motion.div>
 

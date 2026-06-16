@@ -25,6 +25,7 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
         lesson={{ ...customLesson, cards: customLesson.cards as any[] } as LessonData}
         lessonId={id}
         stageColor={stage?.color ?? 'from-cyan-500 to-violet-600'}
+        lessonLanguage={customLesson.language}
       />
     )
   }

@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
 import type { ScoreBreakdown, Correction } from '@/types'
+import { getLang, formatScore, scoreRatio } from '@/lib/languages'
 
 interface ScoreCardProps {
   score: ScoreBreakdown
@@ -16,45 +17,54 @@ interface ScoreCardProps {
   loadingImprove?: boolean
   improvedAnswer?: string
   onShare?: (isAnonymous: boolean) => Promise<void>
+  /** Target language (en | zh | ja | ko) — controls scale, label, criteria. */
+  lang?: string
 }
 
-function BandBadge({ band }: { band: number }) {
-  const cls = band >= 7 ? 'from-emerald-500 to-emerald-600'
-    : band >= 6 ? 'from-cyan-500 to-cyan-600'
-    : band >= 5 ? 'from-amber-500 to-amber-600'
+function ScoreBadge({ value, lang }: { value: number; lang: string }) {
+  const r = scoreRatio(value, lang)
+  const cls = r >= 0.72 ? 'from-emerald-500 to-emerald-600'
+    : r >= 0.6 ? 'from-cyan-500 to-cyan-600'
+    : r >= 0.5 ? 'from-amber-500 to-amber-600'
     : 'from-orange-500 to-orange-600'
   return (
     <div className={cn('w-20 h-20 rounded-2xl flex flex-col items-center justify-center text-white shrink-0 shadow-xl bg-gradient-to-br', cls)}>
-      <span className="text-3xl font-bold leading-none tracking-tight">{band.toFixed(1)}</span>
-      <span className="text-[10px] opacity-80 font-semibold tracking-widest uppercase mt-0.5">Band</span>
+      <span className="text-3xl font-bold leading-none tracking-tight">{formatScore(value, lang)}</span>
+      <span className="text-[10px] opacity-80 font-semibold tracking-widest uppercase mt-0.5">{getLang(lang).scoreLabel}</span>
     </div>
   )
 }
 
-const CRITERIA = [
-  { key: 'fluency', label: 'Trôi chảy', icon: TrendingUp, hint: { high: 'Nói trôi chảy, mạch lạc. Tiếp tục duy trì!', mid: 'Đôi khi dừng để tìm từ. Luyện nói nhiều hơn để tăng tốc độ tự nhiên.', low: 'Hay dừng lâu hoặc lặp từ. Luyện nói chủ đề quen thuộc mỗi ngày.', vlow: 'Nói còn chậm và thiếu tự tin. Bắt đầu bằng câu ngắn và tăng dần.' } },
-  { key: 'lexical', label: 'Từ vựng', icon: BookOpen, hint: { high: 'Vốn từ phong phú. Thử thêm idioms và collocations phức tạp hơn.', mid: 'Từ vựng khá nhưng hơi lặp. Học thêm synonyms và collocations.', low: 'Từ vựng còn hạn chế. Học 5 từ IELTS mới mỗi ngày và luyện dùng trong câu.', vlow: 'Vốn từ còn rất ít. Bắt đầu với 500 từ IELTS cơ bản nhất.' } },
-  { key: 'grammar', label: 'Ngữ pháp', icon: Settings2, hint: { high: 'Ngữ pháp tốt. Thử dùng thêm cấu trúc câu phức tạp hơn.', mid: 'Một vài lỗi nhỏ. Chú ý tense và subject-verb agreement.', low: 'Nhiều lỗi cơ bản. Ôn lại tenses, articles, prepositions.', vlow: 'Lỗi ngữ pháp nhiều. Cần ôn lại toàn bộ kiến thức grammar nền tảng.' } },
-  { key: 'pronunciation', label: 'Phát âm', icon: Volume2, hint: { high: 'Phát âm rõ ràng, tự nhiên. Tiếp tục duy trì!', mid: 'Khá rõ nhưng một vài âm chưa chuẩn. Tập shadow speaking.', low: 'Phát âm còn khó nghe. Tập phonetics và nghe/lặp lại theo người bản ngữ.', vlow: 'Cần tập phát âm các âm cơ bản. Thử dùng ELSA Speak hoặc Forvo.' } },
-] as const
-
-function getLevel(v: number) {
-  return v >= 7 ? 'high' : v >= 6 ? 'mid' : v >= 5 ? 'low' : 'vlow'
+// Generic, language-neutral coaching hints keyed by score slot + level.
+const HINTS: Record<string, { high: string; mid: string; low: string; vlow: string }> = {
+  fluency: { high: 'Nói trôi chảy, mạch lạc. Tiếp tục duy trì!', mid: 'Đôi khi dừng để tìm từ. Luyện nói nhiều hơn để tăng tốc độ tự nhiên.', low: 'Hay dừng lâu hoặc lặp từ. Luyện nói chủ đề quen thuộc mỗi ngày.', vlow: 'Nói còn chậm và thiếu tự tin. Bắt đầu bằng câu ngắn và tăng dần.' },
+  lexical: { high: 'Vốn từ phong phú. Thử thêm cụm từ/thành ngữ nâng cao hơn.', mid: 'Từ vựng khá nhưng hơi lặp. Học thêm từ đồng nghĩa và cụm từ.', low: 'Từ vựng còn hạn chế. Học 5 từ mới mỗi ngày và luyện dùng trong câu.', vlow: 'Vốn từ còn rất ít. Bắt đầu với các từ cơ bản nhất theo chủ đề.' },
+  grammar: { high: 'Ngữ pháp tốt. Thử dùng thêm cấu trúc câu phức tạp hơn.', mid: 'Một vài lỗi nhỏ. Chú ý cấu trúc và sự hoà hợp trong câu.', low: 'Nhiều lỗi cơ bản. Ôn lại các điểm ngữ pháp nền tảng.', vlow: 'Lỗi ngữ pháp nhiều. Cần ôn lại toàn bộ kiến thức ngữ pháp cơ bản.' },
+  pronunciation: { high: 'Phát âm rõ ràng, tự nhiên. Tiếp tục duy trì!', mid: 'Khá rõ nhưng một vài âm chưa chuẩn. Tập nhại theo người bản ngữ.', low: 'Phát âm còn khó nghe. Nghe và lặp lại theo người bản ngữ mỗi ngày.', vlow: 'Cần tập phát âm các âm cơ bản. Nghe – lặp lại từng từ chậm rãi.' },
 }
 
-function pillColor(v: number) {
-  return v >= 7 ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30'
-    : v >= 6 ? 'bg-cyan-500/15 text-cyan-400 border-cyan-500/30'
-    : v >= 5 ? 'bg-amber-500/15 text-amber-400 border-amber-500/30'
+const CRITERIA_ICONS: Record<string, typeof TrendingUp> = {
+  fluency: TrendingUp, lexical: BookOpen, grammar: Settings2, pronunciation: Volume2,
+}
+
+function levelOf(r: number) {
+  return r >= 0.72 ? 'high' : r >= 0.6 ? 'mid' : r >= 0.5 ? 'low' : 'vlow'
+}
+
+function pillColor(r: number) {
+  return r >= 0.72 ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30'
+    : r >= 0.6 ? 'bg-cyan-500/15 text-cyan-400 border-cyan-500/30'
+    : r >= 0.5 ? 'bg-amber-500/15 text-amber-400 border-amber-500/30'
     : 'bg-orange-500/15 text-orange-400 border-orange-500/30'
 }
 
-function ScorePill({ criterion, value, corrections }: { criterion: typeof CRITERIA[number]; value: number; corrections?: Correction[] }) {
+function ScorePill({ slotKey, label, value, lang, corrections }: { slotKey: string; label: string; value: number; lang: string; corrections?: Correction[] }) {
   const [open, setOpen] = useState(false)
-  const Icon = criterion.icon
-  const hint = criterion.key === 'grammar' && corrections && corrections.length > 0
+  const Icon = CRITERIA_ICONS[slotKey] ?? TrendingUp
+  const r = scoreRatio(value, lang)
+  const hint = slotKey === 'grammar' && corrections && corrections.length > 0
     ? corrections.map(c => `"${c.wrong}" → "${c.correct}"`).slice(0, 3).join(' · ')
-    : criterion.hint[getLevel(value)]
+    : HINTS[slotKey]?.[levelOf(r)]
 
   return (
     <div className="flex-1 min-w-[calc(50%-0.5rem)]">
@@ -64,15 +74,15 @@ function ScorePill({ criterion, value, corrections }: { criterion: typeof CRITER
         onClick={() => setOpen(o => !o)}
         className={cn(
           'w-full flex items-center justify-between gap-2 px-3 py-2 rounded-xl border text-sm font-semibold transition-all hover:opacity-80',
-          pillColor(value)
+          pillColor(r)
         )}
       >
         <span className="flex items-center gap-1.5">
           <Icon size={14} />
-          {criterion.label}
+          {label}
         </span>
         <span className="flex items-center gap-1">
-          <span className="text-base font-bold">{value.toFixed(1)}</span>
+          <span className="text-base font-bold">{formatScore(value, lang)}</span>
           {open ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
         </span>
       </motion.button>
@@ -127,7 +137,8 @@ function HighlightedTranscript({ text, corrections }: { text: string; correction
   return <span className="leading-loose text-[var(--text)]">{nodes}</span>
 }
 
-export function ScoreCard({ score, transcript, audioUrl, onImprove, loadingImprove, improvedAnswer, onShare }: ScoreCardProps) {
+export function ScoreCard({ score, transcript, audioUrl, onImprove, loadingImprove, improvedAnswer, onShare, lang = 'en' }: ScoreCardProps) {
+  const criteria = getLang(lang).criteria
   const hasCorrections = score.corrections && score.corrections.length > 0
   const [showShareOptions, setShowShareOptions] = useState(false)
   const [shared, setShared] = useState(false)
@@ -149,14 +160,16 @@ export function ScoreCard({ score, transcript, audioUrl, onImprove, loadingImpro
     <Card className="p-5 space-y-5">
       {/* Header: Band badge + score pills grid */}
       <div className="flex gap-4 items-start">
-        <BandBadge band={score.overall} />
+        <ScoreBadge value={score.overall} lang={lang} />
         <div className="flex-1 min-w-0">
           <div className="flex flex-wrap gap-2">
-            {CRITERIA.map(c => (
+            {criteria.map(c => (
               <ScorePill
                 key={c.key}
-                criterion={c}
+                slotKey={c.key}
+                label={c.label}
                 value={score[c.key as keyof ScoreBreakdown] as number}
+                lang={lang}
                 corrections={c.key === 'grammar' ? score.corrections : undefined}
               />
             ))}

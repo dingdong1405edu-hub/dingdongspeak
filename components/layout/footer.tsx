@@ -13,15 +13,15 @@ export function Footer() {
               <span className="font-bold text-lg text-[var(--text)]">DingDongSpeak</span>
             </div>
             <p className="text-sm text-[var(--text-secondary)] max-w-xs">
-              Luyện nói tiếng Anh và IELTS Speaking với AI chấm điểm thật, học thật.
+              Luyện nói ngoại ngữ với AI chấm điểm thật, học thật — tiếng Anh, Trung, Nhật, Hàn.
             </p>
           </div>
 
           <div>
             <h4 className="font-semibold text-[var(--text)] mb-3 text-sm">Sản phẩm</h4>
             <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
-              <li><Link href="/learn" className="hover:text-cyan-400 transition-colors">Beginner Path</Link></li>
-              <li><Link href="/practice" className="hover:text-cyan-400 transition-colors">IELTS Practice</Link></li>
+              <li><Link href="/learn" className="hover:text-cyan-400 transition-colors">Lộ trình cơ bản</Link></li>
+              <li><Link href="/practice" className="hover:text-cyan-400 transition-colors">Luyện nói</Link></li>
               <li><Link href="/mock-test" className="hover:text-cyan-400 transition-colors">Mock Test</Link></li>
               <li><Link href="/pricing" className="hover:text-cyan-400 transition-colors">Bảng giá</Link></li>
             </ul>
@@ -48,7 +48,7 @@ export function Footer() {
 
         <div className="border-t border-[var(--border)] pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-[var(--text-secondary)]">
           <p>© 2025 DingDongSpeak. All rights reserved.</p>
-          <p>Made with ❤️ for IELTS learners in Vietnam</p>
+          <p>Made with ❤️ cho người học ngoại ngữ tại Việt Nam</p>
         </div>
       </div>
     </footer>

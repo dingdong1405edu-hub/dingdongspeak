@@ -6,11 +6,11 @@ import { cn } from '@/lib/utils'
 export const metadata = { title: 'Bảng giá' }
 
 const allFeatures = [
-  { label: 'Luyện tập IELTS Practice', free: '30 lượt/tháng', premium: 'Không giới hạn' },
-  { label: 'IELTS Mock Test', free: '5 lượt/tháng', premium: 'Không giới hạn' },
-  { label: 'Beginner Path', free: '5 mạng', premium: 'Không giới hạn' },
-  { label: 'AI chấm điểm IELTS', free: '✓', premium: '✓ Ưu tiên' },
-  { label: 'Câu trả lời mẫu Band 8', free: '✓', premium: '✓' },
+  { label: 'Luyện nói', free: '30 lượt/tháng', premium: 'Không giới hạn' },
+  { label: 'Thi thử', free: '5 lượt/tháng', premium: 'Không giới hạn' },
+  { label: 'Lộ trình cơ bản', free: '5 mạng', premium: 'Không giới hạn' },
+  { label: 'AI chấm điểm', free: '✓', premium: '✓ Ưu tiên' },
+  { label: 'Câu trả lời mẫu', free: '✓', premium: '✓' },
   { label: 'Lưu từ vựng & Idioms', free: '✓', premium: '✓ Không giới hạn' },
   { label: 'Export PDF', free: '✗', premium: '✓' },
   { label: 'Analytics chi tiết', free: '✗', premium: '✓' },

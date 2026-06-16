@@ -2,6 +2,7 @@ import { prisma } from '@/lib/prisma'
 import Link from 'next/link'
 import { BookOpen, Settings, Mic, Edit3, Globe, Lock, Plus, Sparkles } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { getLang } from '@/lib/languages'
 
 export const metadata = { title: 'Quản lý bài học — Admin' }
 
@@ -18,6 +19,8 @@ const LEVEL_COLORS: Record<string, string> = {
   B1: 'text-yellow-400 bg-yellow-500/10',
   B2: 'text-orange-400 bg-orange-500/10',
 }
+// Fallback for non-IELTS level strings (HSK / JLPT / TOPIK).
+const LEVEL_FALLBACK_COLOR = 'text-cyan-400 bg-cyan-500/10'
 
 export default async function AdminLessonsPage() {
   const [stages, customLessons] = await Promise.all([
@@ -84,7 +87,12 @@ export default async function AdminLessonsPage() {
                   <div className="flex items-center gap-2">
                     <span className="text-xl">{stage.icon}</span>
                     <div>
-                      <div className="font-bold">{stage.title}: {stage.subtitle}</div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-bold">{stage.title}: {stage.subtitle}</span>
+                        <span className="px-2 py-0.5 rounded-md bg-white/20 text-[10px] font-semibold">
+                          {getLang(stage.language).flag} {getLang(stage.language).viName}
+                        </span>
+                      </div>
                       <div className="text-xs opacity-70">{stageCustom.length} bài học</div>
                     </div>
                   </div>
@@ -120,8 +128,11 @@ export default async function AdminLessonsPage() {
                           <span className={cn('text-xs px-1.5 py-0.5 rounded-md font-medium', TYPE_COLORS[cl.type as keyof typeof TYPE_COLORS] ?? '')}>
                             {TYPE_LABELS[cl.type as keyof typeof TYPE_LABELS] ?? cl.type}
                           </span>
-                          <span className={cn('text-xs px-1.5 py-0.5 rounded-md font-medium', LEVEL_COLORS[cl.level] ?? '')}>
+                          <span className={cn('text-xs px-1.5 py-0.5 rounded-md font-medium', LEVEL_COLORS[cl.level] ?? LEVEL_FALLBACK_COLOR)}>
                             {cl.level}
+                          </span>
+                          <span className="text-xs px-1.5 py-0.5 rounded-md font-medium text-[var(--text-secondary)] bg-[var(--bg-secondary)]">
+                            {getLang(cl.language).flag} {getLang(cl.language).viName}
                           </span>
                           <span className="text-xs text-[var(--text-secondary)]">{Array.isArray(cl.cards) ? cl.cards.length : 0} cards</span>
                           <span className="text-xs text-cyan-400">+{cl.xp} XP</span>

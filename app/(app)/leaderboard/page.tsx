@@ -1,12 +1,13 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
-import { IELTS_TOPICS } from '@/types'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Trophy, Filter, ChevronDown, ChevronUp, Loader2 } from 'lucide-react'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
+import { useLang } from '@/components/shared/lang-provider'
+import { formatScore, scoreToColor, scoreRatio } from '@/lib/languages'
 
 interface SharedAnswer {
   id: string
@@ -17,31 +18,35 @@ interface SharedAnswer {
   band: number
   topic: string
   part: string
+  language: string
   createdAt: string
   likes: number
   displayName: string
   avatar: string | null
 }
 
-const BAND_FILTERS = [
+interface ScoreFilter { label: string; min: number; max: number }
+
+// Score buckets: IELTS uses 0–9 bands, other exams use a normalised 0–100 score.
+const BAND_BUCKETS: ScoreFilter[] = [
   { label: 'Tất cả', min: 0, max: 9 },
-  { label: '7+', min: 7, max: 9 },
-  { label: '6–7', min: 6, max: 7 },
-  { label: '5–6', min: 5, max: 6 },
-  { label: '< 5', min: 0, max: 5 },
+  { label: 'Band 7+', min: 7, max: 9 },
+  { label: 'Band 6–7', min: 6, max: 7 },
+  { label: 'Band 5–6', min: 5, max: 6 },
+  { label: 'Band < 5', min: 0, max: 5 },
 ]
 
-const PART_FILTERS = ['Tất cả', 'PART1', 'PART2', 'PART3']
-
-function bandColor(b: number) {
-  if (b >= 7) return 'text-emerald-400'
-  if (b >= 6) return 'text-cyan-400'
-  if (b >= 5) return 'text-yellow-400'
-  return 'text-orange-400'
-}
+const SCORE_BUCKETS: ScoreFilter[] = [
+  { label: 'Tất cả', min: 0, max: 100 },
+  { label: '90+', min: 90, max: 100 },
+  { label: '80+', min: 80, max: 100 },
+  { label: '70+', min: 70, max: 100 },
+  { label: '< 70', min: 0, max: 70 },
+]
 
 function AnswerCard({ answer }: { answer: SharedAnswer }) {
   const [expanded, setExpanded] = useState(false)
+  const { config } = useLang()
 
   return (
     <Card className="transition-all">
@@ -52,13 +57,15 @@ function AnswerCard({ answer }: { answer: SharedAnswer }) {
         <div className="flex-1 min-w-0">
           <div className="flex items-center justify-between gap-2 mb-1">
             <span className="text-sm font-medium text-[var(--text)]">{answer.displayName}</span>
-            <span className={cn('text-xl font-bold shrink-0', bandColor(answer.band))}>
-              {answer.band.toFixed(1)}
+            <span className={cn('text-xl font-bold shrink-0', scoreToColor(answer.band, answer.language))}>
+              {formatScore(answer.band, answer.language)}
             </span>
           </div>
           <div className="flex flex-wrap gap-1.5 mb-2">
             <span className="text-xs px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400">{answer.topic}</span>
-            <span className="text-xs px-2 py-0.5 rounded-full bg-violet-500/10 text-violet-400">{answer.part}</span>
+            <span className="text-xs px-2 py-0.5 rounded-full bg-violet-500/10 text-violet-400">
+              {config.sections.find(s => s.id === answer.part)?.label ?? answer.part}
+            </span>
             <span className="text-xs text-[var(--text-secondary)]">
               {new Date(answer.createdAt).toLocaleDateString('vi-VN')}
             </span>
@@ -92,16 +99,16 @@ function AnswerCard({ answer }: { answer: SharedAnswer }) {
                   <p className="text-sm text-[var(--text)] leading-relaxed">{answer.transcript}</p>
                 </div>
                 <div className="flex flex-wrap gap-2 mt-2">
-                  {(['fluency', 'lexical', 'grammar', 'pronunciation'] as const).map(k => {
-                    const labels: Record<string, string> = { fluency: 'Trôi chảy', lexical: 'Từ vựng', grammar: 'Ngữ pháp', pronunciation: 'Phát âm' }
-                    const val = answer.score[k]
-                    const color = val >= 7 ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30'
-                      : val >= 6 ? 'bg-cyan-500/15 text-cyan-400 border-cyan-500/30'
-                      : val >= 5 ? 'bg-yellow-500/15 text-yellow-400 border-yellow-500/30'
+                  {config.criteria.map(c => {
+                    const val = answer.score[c.key]
+                    const r = scoreRatio(val, answer.language)
+                    const color = r >= 0.78 ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30'
+                      : r >= 0.66 ? 'bg-cyan-500/15 text-cyan-400 border-cyan-500/30'
+                      : r >= 0.55 ? 'bg-yellow-500/15 text-yellow-400 border-yellow-500/30'
                       : 'bg-orange-500/15 text-orange-400 border-orange-500/30'
                     return (
-                      <span key={k} className={cn('text-xs px-2 py-0.5 rounded-full border font-medium', color)}>
-                        {labels[k]}: {val.toFixed(1)}
+                      <span key={c.key} className={cn('text-xs px-2 py-0.5 rounded-full border font-medium', color)}>
+                        {c.label}: {formatScore(val, answer.language)}
                       </span>
                     )
                   })}
@@ -119,6 +126,7 @@ function AnswerCard({ answer }: { answer: SharedAnswer }) {
 }
 
 export default function LeaderboardPage() {
+  const { lang, config } = useLang()
   const [answers, setAnswers] = useState<SharedAnswer[]>([])
   const [loading, setLoading] = useState(true)
   const [bandFilter, setBandFilter] = useState(0)
@@ -126,13 +134,27 @@ export default function LeaderboardPage() {
   const [topicFilter, setTopicFilter] = useState('Tất cả')
   const [total, setTotal] = useState(0)
 
+  // Scale-aware score buckets (Band 0–9 for IELTS, 0–100 for other exams).
+  const scoreBuckets = useMemo(
+    () => (config.scoreScale === 9 ? BAND_BUCKETS : SCORE_BUCKETS),
+    [config.scoreScale]
+  )
+
+  // Reset filters when the active language changes (sections/scale differ).
+  useEffect(() => {
+    setBandFilter(0)
+    setPartFilter('Tất cả')
+    setTopicFilter('Tất cả')
+  }, [lang])
+
   const load = useCallback(async () => {
     setLoading(true)
     try {
-      const f = BAND_FILTERS[bandFilter]
+      const f = scoreBuckets[bandFilter] ?? scoreBuckets[0]
       const part = partFilter === 'Tất cả' ? '' : partFilter
       const topic = topicFilter === 'Tất cả' ? '' : topicFilter
       const params = new URLSearchParams({
+        lang,
         minBand: String(f.min),
         maxBand: String(f.max),
         ...(part ? { part } : {}),
@@ -145,7 +167,7 @@ export default function LeaderboardPage() {
     } finally {
       setLoading(false)
     }
-  }, [bandFilter, partFilter, topicFilter])
+  }, [lang, scoreBuckets, bandFilter, partFilter, topicFilter])
 
   useEffect(() => { load() }, [load])
 
@@ -164,7 +186,7 @@ export default function LeaderboardPage() {
       {/* Filters */}
       <div className="flex flex-col gap-3 mb-6">
         <div className="flex gap-2 flex-wrap">
-          {BAND_FILTERS.map((f, i) => (
+          {scoreBuckets.map((f, i) => (
             <button
               key={i}
               onClick={() => setBandFilter(i)}
@@ -175,29 +197,40 @@ export default function LeaderboardPage() {
                   : 'border-[var(--border)] text-[var(--text-secondary)] hover:border-cyan-500/30'
               )}
             >
-              Band {f.label}
+              {f.label}
             </button>
           ))}
         </div>
         <div className="flex gap-2">
-          {PART_FILTERS.map(p => (
+          <button
+            onClick={() => setPartFilter('Tất cả')}
+            className={cn(
+              'px-3 py-1.5 rounded-full text-xs font-medium border transition-all',
+              partFilter === 'Tất cả'
+                ? 'bg-violet-500/20 border-violet-500/50 text-violet-400'
+                : 'border-[var(--border)] text-[var(--text-secondary)] hover:border-violet-500/30'
+            )}
+          >
+            Tất cả
+          </button>
+          {config.sections.map(sec => (
             <button
-              key={p}
-              onClick={() => setPartFilter(p)}
+              key={sec.id}
+              onClick={() => setPartFilter(sec.id)}
               className={cn(
                 'px-3 py-1.5 rounded-full text-xs font-medium border transition-all',
-                partFilter === p
+                partFilter === sec.id
                   ? 'bg-violet-500/20 border-violet-500/50 text-violet-400'
                   : 'border-[var(--border)] text-[var(--text-secondary)] hover:border-violet-500/30'
               )}
             >
-              {p}
+              {sec.label}
             </button>
           ))}
         </div>
         {/* Topic filter */}
         <div className="flex gap-2 flex-wrap">
-          {['Tất cả', ...IELTS_TOPICS.slice(0, 12)].map(t => (
+          {['Tất cả', ...config.topics.slice(0, 12)].map(t => (
             <button
               key={t}
               onClick={() => setTopicFilter(t)}

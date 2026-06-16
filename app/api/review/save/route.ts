@@ -1,16 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/auth'
 import { prisma } from '@/lib/prisma'
+import { toLangCode } from '@/lib/languages'
 
 export async function POST(req: NextRequest) {
   const session = await auth()
   if (!session?.user?.id) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
-  const { content, type, context, topic } = await req.json()
+  const { content, type, context, topic, language } = await req.json()
   if (!content || !type) return NextResponse.json({ error: 'Missing fields' }, { status: 400 })
 
   const item = await prisma.savedItem.create({
-    data: { userId: session.user.id, content, type, context, topic },
+    data: { userId: session.user.id, content, type, context, topic, language: toLangCode(language) },
   })
 
   return NextResponse.json(item, { status: 201 })

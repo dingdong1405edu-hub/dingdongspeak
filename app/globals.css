@@ -37,11 +37,29 @@ html {
 body {
   background-color: var(--bg);
   color: var(--text);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
+
+/* CJK fallback fonts per active learning language.
+   Latin/Vietnamese keeps Inter; CJK glyphs fall back to the script-appropriate
+   Noto font (Han shapes differ between Chinese and Japanese, so it is per-lang). */
+body[data-lang='zh'] {
+  font-family: var(--font-inter), 'Inter', 'Noto Sans SC', system-ui, sans-serif;
+}
+body[data-lang='ja'] {
+  font-family: var(--font-inter), 'Inter', 'Noto Sans JP', system-ui, sans-serif;
+}
+body[data-lang='ko'] {
+  font-family: var(--font-inter), 'Inter', 'Noto Sans KR', system-ui, sans-serif;
+}
+
+/* Force a CJK font on demand (e.g. vocab words, AI answers, lesson cards). */
+.font-zh { font-family: 'Noto Sans SC', var(--font-inter), sans-serif; }
+.font-ja { font-family: 'Noto Sans JP', var(--font-inter), sans-serif; }
+.font-ko { font-family: 'Noto Sans KR', var(--font-inter), sans-serif; }
 
 /* ---------- Backgrounds ---------- */
 

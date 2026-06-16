@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { BookOpen, Settings, Mic, Lock, Check, Star, Heart, Zap, Flame, Trophy, ChevronRight, Award } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { useLang } from '@/components/shared/lang-provider'
 import type { StageData } from '@/lib/lessons-data'
 
 const TYPE_CONFIG = {
@@ -49,6 +50,10 @@ interface Props {
 }
 
 export function LearnPathClient({ stages, completedIds, user, totalXP, passedStageTests }: Props) {
+  const { config } = useLang()
+  const levelRange = config.levels.length > 1
+    ? `${config.levels[0]} → ${config.levels[config.levels.length - 1]}`
+    : config.levels[0] ?? 'Cơ bản'
   const isPremium = user?.isPremium && user?.premiumUntil && new Date(user.premiumUntil) > new Date()
   const totalLessons = stages.reduce((s, st) => s + st.lessons.length, 0)
   const totalCompleted = completedIds.size
@@ -112,8 +117,8 @@ export function LearnPathClient({ stages, completedIds, user, totalXP, passedSta
         <div className="relative">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h1 className="text-2xl font-extrabold text-white tracking-tight">Beginner Path</h1>
-              <p className="text-white/70 text-sm mt-0.5">Từ A1 → B2 · {totalLessons} bài học</p>
+              <h1 className="text-2xl font-extrabold text-white tracking-tight">Lộ trình {config.viName}</h1>
+              <p className="text-white/70 text-sm mt-0.5">Từ {levelRange} · {totalLessons} bài học</p>
             </div>
             <div className="text-center">
               <div className="text-3xl font-black text-white">{totalXP}</div>
@@ -396,13 +401,13 @@ export function LearnPathClient({ stages, completedIds, user, totalXP, passedSta
         >
           <div className="text-7xl mb-4">🏆</div>
           <h2 className="text-2xl font-black text-[var(--text)] mb-2">Xuất sắc!</h2>
-          <p className="text-[var(--text-secondary)] mb-1">Bạn đã hoàn thành toàn bộ Beginner Path.</p>
+          <p className="text-[var(--text-secondary)] mb-1">Bạn đã hoàn thành toàn bộ lộ trình {config.viName}.</p>
           <p className="text-sm text-yellow-400 font-bold mb-6">{totalXP} XP tích luỹ ⭐</p>
           <Link
             href="/practice"
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-2xl bg-gradient-to-r from-cyan-500 to-violet-600 text-white font-bold text-sm hover:opacity-90 transition-all shadow-lg shadow-cyan-500/25"
           >
-            Bắt đầu IELTS Practice →
+            Bắt đầu luyện nói →
           </Link>
         </motion.div>
       )}

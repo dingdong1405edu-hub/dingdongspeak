@@ -4,28 +4,25 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import { Mic, BookOpen, Hash, Play, Target, ChevronRight } from 'lucide-react'
-import { IELTS_TOPICS } from '@/types'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
+import { useLang } from '@/components/shared/lang-provider'
 
-const parts = [
-  { id: 'PART1', label: 'Part 1', desc: 'Câu hỏi cá nhân (daily life, hobbies, family)', color: 'from-emerald-500 to-cyan-500' },
-  { id: 'PART2', label: 'Part 2', desc: 'Cue card — nói 2 phút về chủ đề', color: 'from-cyan-500 to-blue-500' },
-  { id: 'PART3', label: 'Part 3', desc: 'Thảo luận & phân tích sâu hơn', color: 'from-violet-500 to-pink-500' },
-]
-
+const PART_COLORS = ['from-emerald-500 to-cyan-500', 'from-cyan-500 to-blue-500', 'from-violet-500 to-pink-500']
 const questionCounts = [3, 5, 10]
 
 export default function PracticePage() {
   const router = useRouter()
+  const { lang, config } = useLang()
+  const parts = config.sections.map((s, i) => ({ ...s, color: PART_COLORS[i % PART_COLORS.length] }))
   const [selectedTopic, setSelectedTopic] = useState('')
   const [selectedPart, setSelectedPart] = useState('PART1')
   const [questionCount, setQuestionCount] = useState(5)
   const [loading, setLoading] = useState(false)
   const [search, setSearch] = useState('')
 
-  const filteredTopics = IELTS_TOPICS.filter(t =>
+  const filteredTopics = config.topics.filter(t =>
     t.toLowerCase().includes(search.toLowerCase())
   )
 
@@ -34,15 +31,15 @@ export default function PracticePage() {
     setLoading(true)
     // Generate session ID and start
     const sessionId = Math.random().toString(36).substring(2, 12)
-    router.push(`/practice/session/${sessionId}?topic=${encodeURIComponent(selectedTopic)}&part=${selectedPart}&count=${questionCount}`)
+    router.push(`/practice/session/${sessionId}?topic=${encodeURIComponent(selectedTopic)}&part=${selectedPart}&count=${questionCount}&lang=${lang}`)
   }
 
   return (
     <div className="max-w-4xl mx-auto space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-[var(--text)]">IELTS Speaking Practice</h1>
+        <h1 className="text-2xl font-bold text-[var(--text)]">Luyện nói {config.viName} {config.flag}</h1>
         <p className="text-[var(--text-secondary)] mt-1 text-sm">
-          AI giám khảo đặt câu hỏi theo chủ đề — ghi âm và nhận điểm chuẩn IELTS tức thì.
+          AI đặt câu hỏi theo chủ đề — ghi âm và nhận điểm {config.exam} tức thì.
         </p>
       </div>
 

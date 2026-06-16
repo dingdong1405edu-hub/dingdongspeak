@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { Mic } from 'lucide-react'
 import { SessionCard } from './_components/session-card'
+import { getServerLang } from '@/lib/lang-server'
 
 export const metadata = { title: 'Lịch sử luyện tập — DingDongSpeak' }
 
@@ -11,8 +12,9 @@ export default async function HistoryPage() {
   const session = await auth()
   if (!session?.user?.id) redirect('/login')
 
+  const lang = await getServerLang()
   const sessions = await prisma.practiceSession.findMany({
-    where: { userId: session.user.id },
+    where: { userId: session.user.id, language: lang },
     orderBy: { createdAt: 'desc' },
     take: 50,
   })

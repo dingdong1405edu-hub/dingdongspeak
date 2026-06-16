@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { requireAdmin } from '@/lib/admin-auth'
+import { toLangCode, type LangCode } from '@/lib/languages'
 
 async function generateWordAudio(word: string): Promise<string | null> {
   if (!process.env.DEEPGRAM_API_KEY || !word.trim()) return null
@@ -21,8 +22,9 @@ async function generateWordAudio(word: string): Promise<string | null> {
   }
 }
 
-async function enrichVocabAudio(cards: any[], type: string): Promise<any[]> {
-  if (type !== 'vocabulary') return cards
+async function enrichVocabAudio(cards: any[], type: string, language: LangCode): Promise<any[]> {
+  // Deepgram Aura (aura-asteria-en) is English-only — skip audio for zh/ja/ko.
+  if (type !== 'vocabulary' || language !== 'en') return cards
   return Promise.all(
     cards.map(async (card) => {
       if (card.type === 'vocab' && card.word && !card.audioBase64) {
@@ -42,10 +44,19 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
 
   const { id } = await params
   const body = await req.json()
-  const { title, type, topic, level, description, xp, cards, stageId, published } = body
+  const { title, type, topic, level, description, xp, cards, stageId, published, language } = body
+
+  // Resolve the language for audio gating: prefer the body value, else the stored one.
+  let resolvedLang: LangCode
+  if (language !== undefined) {
+    resolvedLang = toLangCode(language)
+  } else {
+    const existing = await prisma.customLesson.findUnique({ where: { id }, select: { language: true } })
+    resolvedLang = toLangCode(existing?.language)
+  }
 
   const enrichedCards = cards !== undefined
-    ? await enrichVocabAudio(cards, type ?? 'vocabulary')
+    ? await enrichVocabAudio(cards, type ?? 'vocabulary', resolvedLang)
     : undefined
 
   const lesson = await prisma.customLesson.update({
@@ -60,6 +71,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
       ...(enrichedCards !== undefined && { cards: enrichedCards }),
       ...(stageId !== undefined && { stageId }),
       ...(published !== undefined && { published }),
+      ...(language !== undefined && { language: resolvedLang }),
     },
   })
 

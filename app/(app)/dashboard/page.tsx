@@ -3,10 +3,12 @@ import { prisma } from '@/lib/prisma'
 import { redirect } from 'next/navigation'
 import { DashboardClient } from './dashboard-client'
 import { subDays, startOfMonth, format } from 'date-fns'
+import { getServerLang } from '@/lib/lang-server'
+import type { LangCode } from '@/lib/languages'
 
 export const metadata = { title: 'Dashboard' }
 
-async function getDashboardData(userId: string) {
+async function getDashboardData(userId: string, lang: LangCode) {
   const now = new Date()
   const yearAgo = subDays(now, 365)
   const monthStart = startOfMonth(now)
@@ -24,7 +26,7 @@ async function getDashboardData(userId: string) {
       select: { date: true, practiced: true },
     }),
     prisma.practiceSession.findMany({
-      where: { userId },
+      where: { userId, language: lang },
       select: { createdAt: true, duration: true, scores: true, type: true },
       orderBy: { createdAt: 'desc' },
       take: 100,
@@ -56,13 +58,13 @@ async function getDashboardData(userId: string) {
     }
   }
 
-  // Avg band score
-  const ieltsScores = sessions
+  // Avg overall score (scale differs per language — keep raw, format client-side)
+  const overallScores = sessions
     .filter(s => s.type !== 'BEGINNER')
     .map(s => (s.scores as { overall?: number })?.overall || 0)
     .filter(s => s > 0)
-  const avgBand = ieltsScores.length
-    ? (ieltsScores.reduce((a, b) => a + b, 0) / ieltsScores.length).toFixed(1)
+  const avgScore = overallScores.length
+    ? overallScores.reduce((a, b) => a + b, 0) / overallScores.length
     : null
 
   // Weekly minutes
@@ -109,7 +111,7 @@ async function getDashboardData(userId: string) {
     longestStreak,
     totalSessions: sessions.length,
     weeklyMinutes,
-    avgBand,
+    avgScore,
     leaderboard: leaderboardWithNames,
     recentSessions: sessions.slice(0, 5),
   }
@@ -119,6 +121,7 @@ export default async function DashboardPage() {
   const session = await auth()
   if (!session?.user?.id) redirect('/login')
 
-  const data = await getDashboardData(session.user.id)
-  return <DashboardClient data={data} userId={session.user.id} />
+  const lang = await getServerLang()
+  const data = await getDashboardData(session.user.id, lang)
+  return <DashboardClient data={data} userId={session.user.id} lang={lang} />
 }

@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { ArrowLeft, Save, Trash2, Globe, Lock, CheckCircle, AlertCircle, Plus, ChevronUp, ChevronDown, Loader2 } from 'lucide-react'
 import { toast } from 'sonner'
 import { cn } from '@/lib/utils'
+import { getLang } from '@/lib/languages'
 
 type AnyCard = Record<string, any>
 
@@ -12,7 +13,7 @@ interface Props {
   lesson: {
     id: string; stageId: string; title: string; type: string; topic: string
     level: string; description: string; xp: number; cards: AnyCard[]
-    published: boolean
+    published: boolean; language: string
   }
   stageTitle: string
 }
@@ -68,6 +69,8 @@ export function CustomLessonEditor({ lesson: initial, stageTitle }: Props) {
   const [lesson, setLesson] = useState(initial)
   const [saving, setSaving] = useState(false)
   const [deleting, setDeleting] = useState(false)
+
+  const langConfig = getLang(lesson.language)
 
   function updateCard(i: number, c: AnyCard) {
     const cards = [...lesson.cards]; cards[i] = c
@@ -162,15 +165,21 @@ export function CustomLessonEditor({ lesson: initial, stageTitle }: Props) {
 
           {/* Metadata */}
           <div className="rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] p-5 space-y-4">
-            <h2 className="font-semibold text-[var(--text)]">Thông tin bài học</h2>
+            <div className="flex items-center justify-between">
+              <h2 className="font-semibold text-[var(--text)]">Thông tin bài học</h2>
+              <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border)] text-xs font-semibold text-[var(--text-secondary)]">
+                {langConfig.flag} {langConfig.viName} · {langConfig.readingLabel}
+              </span>
+            </div>
             <div className="grid grid-cols-2 gap-3">
               <Field label="Tiêu đề" value={lesson.title} onChange={v => setLesson(l => ({ ...l, title: v }))} />
               <Field label="Chủ đề (topic)" value={lesson.topic} onChange={v => setLesson(l => ({ ...l, topic: v }))} />
               <div>
-                <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-1">Level</label>
+                <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-1">Cấp độ ({langConfig.exam})</label>
                 <select value={lesson.level} onChange={e => setLesson(l => ({ ...l, level: e.target.value }))}
                   className="w-full px-3 py-2.5 rounded-xl border border-[var(--border)] bg-[var(--bg-secondary)] text-sm text-[var(--text)] focus:outline-none focus:border-cyan-400">
-                  {['A1', 'A2', 'B1', 'B2'].map(l => <option key={l} value={l}>{l}</option>)}
+                  {!langConfig.levels.includes(lesson.level) && <option value={lesson.level}>{lesson.level}</option>}
+                  {langConfig.levels.map(l => <option key={l} value={l}>{l}</option>)}
                 </select>
               </div>
               <div>

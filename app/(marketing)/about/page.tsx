@@ -6,11 +6,11 @@ export const metadata = { title: 'Về DingDongSpeak' }
 const team = [
   { name: 'AI Examiner', role: 'Powered by Gemini 2.0 Flash', emoji: '🤖' },
   { name: 'Voice Engine', role: 'Deepgram Nova-3 + Aura TTS', emoji: '🎙️' },
-  { name: 'Smart Scoring', role: 'IELTS Band 1–9 Calibrated', emoji: '📊' },
+  { name: 'Smart Scoring', role: 'Chuẩn IELTS · HSK · JLPT · TOPIK', emoji: '📊' },
 ]
 
 const stats = [
-  { value: '50+', label: 'Chủ đề IELTS' },
+  { value: '50+', label: 'Chủ đề luyện tập' },
   { value: '3', label: 'Module luyện tập' },
   { value: 'AI', label: 'Chấm điểm tức thì' },
   { value: '24/7', label: 'Luyện tập mọi lúc' },
@@ -27,8 +27,8 @@ export default function AboutPage() {
             Về DingDongSpeak
           </h1>
           <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed">
-            Nền tảng luyện nói tiếng Anh và IELTS Speaking bằng AI, được xây dựng dành riêng
-            cho người học Việt Nam muốn đạt band score mục tiêu.
+            Nền tảng luyện nói ngoại ngữ bằng AI — tiếng Anh, Trung, Nhật, Hàn — được xây dựng
+            dành riêng cho người học Việt Nam muốn đạt mục tiêu của mình.
           </p>
         </div>
 
@@ -37,7 +37,7 @@ export default function AboutPage() {
           <Heart size={32} className="text-cyan-400 mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-[var(--text)] mb-3">Sứ mệnh của chúng tôi</h2>
           <p className="text-[var(--text-secondary)] max-w-2xl mx-auto">
-            Giúp mọi người học Việt Nam tự tin nói tiếng Anh và chinh phục IELTS Speaking — không cần
+            Giúp mọi người học Việt Nam tự tin nói ngoại ngữ và chinh phục mục tiêu giao tiếp — không cần
             gia sư đắt tiền, không cần đến trung tâm, chỉ cần smartphone và kết nối internet.
           </p>
         </div>
@@ -66,8 +66,8 @@ export default function AboutPage() {
               {
                 icon: Brain,
                 color: 'from-violet-500 to-purple-700',
-                title: 'Chấm điểm IELTS chuẩn',
-                desc: 'Gemini 2.0 Flash được calibrate theo IELTS Band Descriptors chính thức. Không inflate điểm.',
+                title: 'Chấm điểm chuẩn quốc tế',
+                desc: 'Gemini 2.0 Flash được calibrate theo thang điểm chính thức của từng kỳ thi (IELTS, HSK, JLPT, TOPIK). Không inflate điểm.',
               },
               {
                 icon: Trophy,
@@ -79,7 +79,7 @@ export default function AboutPage() {
                 icon: Zap,
                 color: 'from-emerald-500 to-cyan-600',
                 title: 'Feedback tức thì',
-                desc: 'Sau mỗi câu trả lời, nhận ngay điểm số, nhận xét, và câu trả lời mẫu band 8.0.',
+                desc: 'Sau mỗi câu trả lời, nhận ngay điểm số, nhận xét, và câu trả lời mẫu chất lượng cao.',
               },
               {
                 icon: Users,

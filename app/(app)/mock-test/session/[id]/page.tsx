@@ -1,11 +1,15 @@
 import { Suspense } from 'react'
 import { MockTestSession } from './mock-test-session'
+import { getServerLangConfig } from '@/lib/lang-server'
 
 interface Props {
   params: Promise<{ id: string }>
 }
 
-export const metadata = { title: 'Thi thử IELTS Speaking' }
+export async function generateMetadata() {
+  const config = await getServerLangConfig()
+  return { title: `Thi thử ${config.examFull}` }
+}
 
 export default async function MockTestSessionPage({ params }: Props) {
   const { id } = await params

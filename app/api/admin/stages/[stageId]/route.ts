@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { requireAdmin } from '@/lib/admin-auth'
 import { prisma } from '@/lib/prisma'
+import { toLangCode } from '@/lib/languages'
 
 export async function PATCH(req: Request, { params }: { params: Promise<{ stageId: string }> }) {
   try {
@@ -11,7 +12,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ stageI
 
   const { stageId } = await params
   const body = await req.json()
-  const { title, subtitle, icon, color, accentColor, published, order } = body
+  const { title, subtitle, icon, color, accentColor, published, order, language } = body
 
   const stage = await prisma.stage.update({
     where: { id: stageId },
@@ -23,6 +24,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ stageI
       ...(accentColor !== undefined && { accentColor }),
       ...(published !== undefined && { published }),
       ...(order !== undefined && { order }),
+      ...(language !== undefined && { language: toLangCode(language) }),
     },
   })
   return NextResponse.json(stage)

@@ -94,15 +94,10 @@ export interface LeaderboardEntry {
   rank: number
 }
 
-export const IELTS_TOPICS = [
-  'Education', 'Technology', 'Environment', 'Health & Medicine',
-  'Work & Career', 'Travel & Tourism', 'Food & Diet', 'Sports & Fitness',
-  'Arts & Culture', 'Family & Relationships', 'Media & Advertising',
-  'Crime & Punishment', 'Urban & Rural Life', 'Transport', 'Fashion & Clothing',
-  'Science & Innovation', 'Social Media', 'Animal Rights', 'Globalization',
-  'Volunteering & Community', 'Mental Health', 'Space Exploration',
-  'Language Learning', 'Reading & Literature', 'Government & Politics',
-]
+// English/IELTS topic list. For multi-language topic sets use the registry:
+// `getLang(code).topics` (lib/languages.ts). Kept here for backward compat.
+import { LANGUAGES } from '@/lib/languages'
+export const IELTS_TOPICS = LANGUAGES.en.topics
 
 export const PREMIUM_PLANS = [
   { months: 1, price: 100000, label: '1 tháng', discount: 0, popular: false },

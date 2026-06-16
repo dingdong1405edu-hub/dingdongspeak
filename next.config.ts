@@ -6,11 +6,9 @@ if (process.env.NEXT_PUBLIC_APP_URL) {
   allowedOrigins.push(url)
 }
 
-// Multi-Zones: the Japanese (/ja) and Chinese (/zh) apps are independent Next.js
-// deployments mounted under path prefixes of dingdongspeak.com via rewrites.
-// Override with env vars if the child deployment URLs ever change.
-const JA_ZONE = process.env.JA_ZONE_URL || 'https://web-production-53710.up.railway.app'
-const ZH_ZONE = process.env.ZH_ZONE_URL || 'https://zestful-victory-production-6f4f.up.railway.app'
+// DingDongSpeak is now a single consolidated app: all target languages
+// (en/zh/ja/ko) are handled in-app via the dds_lang cookie, so the previous
+// Multi-Zones rewrites to separate /ja and /zh deployments are no longer needed.
 
 const nextConfig: NextConfig = {
   experimental: {
@@ -22,16 +20,6 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'avatars.githubusercontent.com' },
       { protocol: 'https', hostname: '**.railway.app' },
     ],
-  },
-  async rewrites() {
-    return {
-      beforeFiles: [
-        { source: '/ja', destination: `${JA_ZONE}/ja` },
-        { source: '/ja/:path*', destination: `${JA_ZONE}/ja/:path*` },
-        { source: '/zh', destination: `${ZH_ZONE}/zh` },
-        { source: '/zh/:path*', destination: `${ZH_ZONE}/zh/:path*` },
-      ],
-    }
   },
 }
 

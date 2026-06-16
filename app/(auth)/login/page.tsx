@@ -35,7 +35,7 @@ export default function LoginPage() {
     >
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-[var(--text)] mb-2">Chào mừng trở lại!</h1>
-        <p className="text-[var(--text-secondary)] text-sm">Tiếp tục hành trình luyện IELTS Speaking với AI.</p>
+        <p className="text-[var(--text-secondary)] text-sm">Tiếp tục hành trình luyện nói ngoại ngữ với AI.</p>
       </div>
 
       <button

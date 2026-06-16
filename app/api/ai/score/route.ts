@@ -4,6 +4,7 @@ import { scoreIELTSResponse, scoreBeginnerSpeaking } from '@/lib/gemini'
 import { consumeToken, consumeLife } from '@/lib/tokens'
 import { prisma } from '@/lib/prisma'
 import { rateLimit } from '@/lib/rate-limit'
+import { toLangCode } from '@/lib/languages'
 
 export async function POST(req: NextRequest) {
   const session = await auth()
@@ -13,9 +14,12 @@ export async function POST(req: NextRequest) {
   const rl = rateLimit(`score:${session.user.id}`, { maxRequests: 20, windowMs: 60_000 })
   if (!rl.success) return NextResponse.json({ error: 'Quá nhiều yêu cầu. Vui lòng thử lại sau.' }, { status: 429 })
 
-  const { question, transcript, part, type, topic, sessionId } = await req.json()
+  const { question, transcript, part, type, topic, sessionId, lang } = await req.json()
+  const L = toLangCode(lang)
 
-  if (!transcript || transcript.trim().length < 5) {
+  // CJK is character-dense — 2 chars is meaningful; Latin needs ~5.
+  const minLen = L === 'zh' || L === 'ja' ? 2 : 5
+  if (!transcript || transcript.trim().length < minLen) {
     return NextResponse.json({ error: 'Câu trả lời quá ngắn' }, { status: 400 })
   }
 
@@ -32,9 +36,9 @@ export async function POST(req: NextRequest) {
   // Score
   let score
   if (type === 'BEGINNER') {
-    score = await scoreBeginnerSpeaking(question, transcript)
+    score = await scoreBeginnerSpeaking(question, transcript, L)
   } else {
-    score = await scoreIELTSResponse(question, transcript, part)
+    score = await scoreIELTSResponse(question, transcript, part, L)
   }
 
   // Record today's streak

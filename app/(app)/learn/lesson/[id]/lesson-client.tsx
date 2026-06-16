@@ -10,6 +10,8 @@ import {
 } from 'lucide-react'
 import { toast } from 'sonner'
 import { AudioRecorder } from '@/components/practice/audio-recorder'
+import { useLang } from '@/components/shared/lang-provider'
+import { getLang, toLangCode, type LangCode } from '@/lib/languages'
 import { cn } from '@/lib/utils'
 import type { LessonData, VocabCard, GrammarCard, FillBlankCard, ArrangeCard, SpeakingCard } from '@/lib/lessons-data'
 
@@ -17,6 +19,8 @@ interface Props {
   lesson: LessonData
   lessonId: string
   stageColor: string
+  /** Target language of the lesson (from CustomLesson.language); falls back to the active UI language. */
+  lessonLanguage?: string
 }
 
 async function exportLessonPDF(lesson: LessonData) {
@@ -97,7 +101,7 @@ async function exportLessonPDF(lesson: LessonData) {
 }
 
 // ─── Vocab card UI ────────────────────────────────────────────────────────────
-function VocabLearnCard({ card }: { card: VocabCard }) {
+function VocabLearnCard({ card, readingLabel }: { card: VocabCard; readingLabel: string }) {
   const [flipped, setFlipped] = useState(false)
   const [playing, setPlaying] = useState(false)
 
@@ -126,7 +130,9 @@ function VocabLearnCard({ card }: { card: VocabCard }) {
             {card.pos}
           </span>
           <h2 className="text-4xl font-bold text-[var(--text)]">{card.word}</h2>
-          <p className="text-base text-[var(--text-secondary)] font-mono">{card.phonetic}</p>
+          {card.phonetic && (
+            <p className="text-base text-[var(--text-secondary)] font-mono" title={readingLabel}>{card.phonetic}</p>
+          )}
           <div className="mt-2 flex items-center gap-2">
             {card.audioBase64 ? (
               <button
@@ -289,7 +295,7 @@ function FillBlankExercise({ card, onComplete }: { card: FillBlankCard; onComple
 }
 
 // ─── Word arrangement card UI ─────────────────────────────────────────────────
-function ArrangeExercise({ card, onComplete }: { card: ArrangeCard; onComplete: (correct: boolean) => void }) {
+function ArrangeExercise({ card, onComplete, noWordSpacing }: { card: ArrangeCard; onComplete: (correct: boolean) => void; noWordSpacing: boolean }) {
   const [shuffled] = useState<{ word: string; idx: number }[]>(() =>
     card.words.map((w, i) => ({ word: w, idx: i })).sort(() => Math.random() - 0.5)
   )
@@ -297,9 +303,11 @@ function ArrangeExercise({ card, onComplete }: { card: ArrangeCard; onComplete: 
   const [submitted, setSubmitted] = useState(false)
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null)
 
+  // CJK scripts (zh, ja) have no spaces between words; join with '' there.
+  const joiner = noWordSpacing ? '' : ' '
   const usedSet = new Set(selectedIdxs)
   const available = shuffled.filter(({ idx }) => !usedSet.has(idx))
-  const sentence = selectedIdxs.map(i => card.words[i]).join(' ')
+  const sentence = selectedIdxs.map(i => card.words[i]).join(joiner)
 
   function addWord(idx: number) {
     if (submitted) return
@@ -310,7 +318,11 @@ function ArrangeExercise({ card, onComplete }: { card: ArrangeCard; onComplete: 
     setSelectedIdxs(prev => prev.filter((_, i) => i !== pos))
   }
   function handleSubmit() {
-    const correct = sentence.trim() === card.answer.trim()
+    // For no-space scripts, compare after stripping all whitespace so a stray
+    // space in the stored answer doesn't cause a false mismatch.
+    const correct = noWordSpacing
+      ? sentence.replace(/\s+/g, '') === card.answer.replace(/\s+/g, '')
+      : sentence.trim() === card.answer.trim()
     setIsCorrect(correct)
     setSubmitted(true)
     setTimeout(() => onComplete(correct), 1600)
@@ -405,7 +417,7 @@ function ArrangeExercise({ card, onComplete }: { card: ArrangeCard; onComplete: 
 }
 
 // ─── Speaking card UI ─────────────────────────────────────────────────────────
-function SpeakingPromptCard({ card, onComplete }: { card: SpeakingCard; onComplete: (score: number, feedback: string) => void }) {
+function SpeakingPromptCard({ card, onComplete, lang }: { card: SpeakingCard; onComplete: (score: number, feedback: string) => void; lang: LangCode }) {
   const [phase, setPhase] = useState<'prompt' | 'recording' | 'loading' | 'result'>('prompt')
   const [result, setResult] = useState<{ score: number; feedback: string } | null>(null)
   const [lastTranscript, setLastTranscript] = useState('')
@@ -426,7 +438,7 @@ function SpeakingPromptCard({ card, onComplete }: { card: SpeakingCard; onComple
       const res = await fetch('/api/ai/score', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question: card.prompt, transcript, type: 'BEGINNER' }),
+        body: JSON.stringify({ question: card.prompt, transcript, type: 'BEGINNER', lang }),
       })
       const data = await res.json()
       if (data.error) { toast.error(data.error); setPhase('prompt'); return }
@@ -467,7 +479,7 @@ function SpeakingPromptCard({ card, onComplete }: { card: SpeakingCard; onComple
       const res = await fetch('/api/ai/speaking-assist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question: card.prompt, transcript: lastTranscript, action }),
+        body: JSON.stringify({ question: card.prompt, transcript: lastTranscript, action, lang }),
       })
       const data = await res.json()
       setAssistContent(data.result ?? '')
@@ -513,12 +525,12 @@ function SpeakingPromptCard({ card, onComplete }: { card: SpeakingCard; onComple
       <AnimatePresence mode="wait">
         {phase === 'prompt' && (
           <motion.div key="prompt" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-            <AudioRecorder onComplete={handleRecordingComplete} onStart={() => setPhase('recording')} />
+            <AudioRecorder onComplete={handleRecordingComplete} onStart={() => setPhase('recording')} lang={lang} />
           </motion.div>
         )}
         {phase === 'recording' && (
           <motion.div key="recording" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-            <AudioRecorder onComplete={handleRecordingComplete} onStart={() => {}} />
+            <AudioRecorder onComplete={handleRecordingComplete} onStart={() => {}} lang={lang} />
           </motion.div>
         )}
         {phase === 'loading' && (
@@ -632,8 +644,12 @@ function SpeakingPromptCard({ card, onComplete }: { card: SpeakingCard; onComple
 }
 
 // ─── Main Lesson Client ───────────────────────────────────────────────────────
-export function LessonClient({ lesson, lessonId, stageColor }: Props) {
+export function LessonClient({ lesson, lessonId, stageColor, lessonLanguage }: Props) {
   const router = useRouter()
+  const { lang: uiLang } = useLang()
+  // Prefer the lesson's own target language; fall back to the active UI language.
+  const lang: LangCode = lessonLanguage ? toLangCode(lessonLanguage) : uiLang
+  const config = getLang(lang)
   const [cardIdx, setCardIdx] = useState(0)
   const [phase, setPhase] = useState<'learn' | 'quiz'>('learn')
   const [selected, setSelected] = useState<string | null>(null)
@@ -771,9 +787,15 @@ export function LessonClient({ lesson, lessonId, stageColor }: Props) {
         </div>
         {(lesson.type === 'vocabulary' || lesson.type === 'grammar') && (
           <button
-            onClick={() => exportLessonPDF(lesson)}
-            title="In PDF"
-            className="p-2 rounded-xl hover:bg-[var(--bg-secondary)] transition-all text-[var(--text-secondary)] hover:text-cyan-400"
+            onClick={() => { if (config.code === 'en') exportLessonPDF(lesson) }}
+            disabled={config.code !== 'en'}
+            title={config.code === 'en' ? 'In PDF' : 'PDF chưa hỗ trợ ngôn ngữ này'}
+            className={cn(
+              'p-2 rounded-xl transition-all text-[var(--text-secondary)]',
+              config.code === 'en'
+                ? 'hover:bg-[var(--bg-secondary)] hover:text-cyan-400'
+                : 'opacity-40 cursor-not-allowed'
+            )}
           >
             <Printer size={16} />
           </button>
@@ -808,7 +830,7 @@ export function LessonClient({ lesson, lessonId, stageColor }: Props) {
             <>
               {phase === 'learn' ? (
                 <>
-                  <VocabLearnCard card={card as VocabCard} />
+                  <VocabLearnCard card={card as VocabCard} readingLabel={config.readingLabel} />
                   <button
                     onClick={() => setPhase('quiz')}
                     className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-bold hover:opacity-90 transition-all flex items-center justify-center gap-2"
@@ -822,7 +844,9 @@ export function LessonClient({ lesson, lessonId, stageColor }: Props) {
                   <div className="rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] p-6 text-center">
                     <p className="text-xs text-[var(--text-secondary)] mb-2 uppercase tracking-wide">Từ này có nghĩa là gì?</p>
                     <h2 className="text-3xl font-bold text-[var(--text)] mb-1">{(card as VocabCard).word}</h2>
-                    <p className="text-sm text-[var(--text-secondary)] font-mono">{(card as VocabCard).phonetic}</p>
+                    {(card as VocabCard).phonetic && (
+                      <p className="text-sm text-[var(--text-secondary)] font-mono" title={config.readingLabel}>{(card as VocabCard).phonetic}</p>
+                    )}
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     {(card as VocabCard).options.map(opt => (
@@ -911,6 +935,7 @@ export function LessonClient({ lesson, lessonId, stageColor }: Props) {
             <ArrangeExercise
               card={card as ArrangeCard}
               onComplete={correct => goNext(correct)}
+              noWordSpacing={config.noWordSpacing}
             />
           )}
 
@@ -919,6 +944,7 @@ export function LessonClient({ lesson, lessonId, stageColor }: Props) {
             <SpeakingPromptCard
               card={card as SpeakingCard}
               onComplete={(score) => handleSpeakingComplete(score)}
+              lang={lang}
             />
           )}
         </motion.div>

@@ -10,6 +10,7 @@ import {
   BookMarked, Crown, User, LogOut, Menu, X, Bell
 } from 'lucide-react'
 import { ThemeToggle } from '@/components/shared/theme-toggle'
+import { LanguageSwitcher } from '@/components/shared/language-switcher'
 import { cn } from '@/lib/utils'
 
 const marketingLinks = [
@@ -106,6 +107,7 @@ export function Navbar() {
 
         {/* Right side */}
         <div className="flex items-center gap-2">
+          {session?.user && <LanguageSwitcher compact />}
           <ThemeToggle />
 
           {session?.user ? (

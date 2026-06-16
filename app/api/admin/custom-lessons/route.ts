@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/auth'
 import { prisma } from '@/lib/prisma'
 import { requireAdmin } from '@/lib/admin-auth'
+import { toLangCode, type LangCode } from '@/lib/languages'
 
 async function generateWordAudio(word: string): Promise<string | null> {
   if (!process.env.DEEPGRAM_API_KEY || !word.trim()) return null
@@ -22,8 +23,9 @@ async function generateWordAudio(word: string): Promise<string | null> {
   }
 }
 
-async function enrichVocabAudio(cards: any[], type: string): Promise<any[]> {
-  if (type !== 'vocabulary') return cards
+async function enrichVocabAudio(cards: any[], type: string, language: LangCode): Promise<any[]> {
+  // Deepgram Aura (aura-asteria-en) is English-only — skip audio for zh/ja/ko.
+  if (type !== 'vocabulary' || language !== 'en') return cards
   return Promise.all(
     cards.map(async (card) => {
       if (card.type === 'vocab' && card.word && !card.audioBase64) {
@@ -59,6 +61,7 @@ export async function POST(req: NextRequest) {
   const session = await auth()
   const body = await req.json()
   const { stageId, title, type, topic, level, description, xp, cards } = body
+  const language = toLangCode(body.language)
 
   if (!stageId || !title || !type || !topic || !level || !cards?.length) {
     return NextResponse.json({ error: 'Thiếu thông tin bắt buộc' }, { status: 400 })
@@ -68,7 +71,7 @@ export async function POST(req: NextRequest) {
     ? await prisma.user.findUnique({ where: { email: session.user.email }, select: { id: true } })
     : null
 
-  const enrichedCards = await enrichVocabAudio(cards, type)
+  const enrichedCards = await enrichVocabAudio(cards, type, language)
 
   const lesson = await prisma.customLesson.create({
     data: {
@@ -82,6 +85,7 @@ export async function POST(req: NextRequest) {
       cards: enrichedCards,
       published: false,
       createdById: user?.id ?? null,
+      language,
     },
   })
 

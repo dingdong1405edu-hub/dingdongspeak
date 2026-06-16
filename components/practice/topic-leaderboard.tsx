@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Trophy, ChevronDown, ChevronUp, Loader2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { getLang, formatScore, scoreRatio } from '@/lib/languages'
 
 interface Answer {
   id: string
@@ -15,31 +16,38 @@ interface Answer {
   createdAt: string
 }
 
-const BAND_FILTERS = [
-  { label: 'Tất cả', min: 0, max: 9 },
-  { label: 'Band 8', min: 8, max: 9 },
-  { label: 'Band 7', min: 7, max: 8 },
-  { label: 'Band 6', min: 6, max: 7 },
-]
-
-const SUB_SCORE_LABELS: Record<string, string> = {
-  fluency: 'Trôi chảy', lexical: 'Từ vựng', grammar: 'Ngữ pháp', pronunciation: 'Phát âm',
+function bandFilters(scale: number) {
+  if (scale === 9) {
+    return [
+      { label: 'Tất cả', min: 0, max: 9 },
+      { label: 'Band 8+', min: 8, max: 9 },
+      { label: 'Band 7+', min: 7, max: 9 },
+      { label: 'Band 6+', min: 6, max: 9 },
+    ]
+  }
+  return [
+    { label: 'Tất cả', min: 0, max: 100 },
+    { label: '90+', min: 90, max: 100 },
+    { label: '80+', min: 80, max: 100 },
+    { label: '70+', min: 70, max: 100 },
+  ]
 }
 
-function pillColor(v: number) {
-  return v >= 7 ? 'bg-emerald-500/15 text-emerald-400'
-    : v >= 6 ? 'bg-cyan-500/15 text-cyan-400'
-    : v >= 5 ? 'bg-amber-500/15 text-amber-400'
+function pillColor(r: number) {
+  return r >= 0.72 ? 'bg-emerald-500/15 text-emerald-400'
+    : r >= 0.6 ? 'bg-cyan-500/15 text-cyan-400'
+    : r >= 0.5 ? 'bg-amber-500/15 text-amber-400'
     : 'bg-orange-500/15 text-orange-400'
 }
 
-function badgeBg(b: number) {
-  return b >= 7 ? 'bg-emerald-500' : b >= 6 ? 'bg-cyan-500' : b >= 5 ? 'bg-amber-500' : 'bg-orange-500'
+function badgeBg(r: number) {
+  return r >= 0.72 ? 'bg-emerald-500' : r >= 0.6 ? 'bg-cyan-500' : r >= 0.5 ? 'bg-amber-500' : 'bg-orange-500'
 }
 
-function AnswerEntry({ answer, rank }: { answer: Answer; rank: number }) {
+function AnswerEntry({ answer, rank, lang }: { answer: Answer; rank: number; lang: string }) {
   const [open, setOpen] = useState(false)
   const rankLabel = rank === 0 ? '👑' : rank === 1 ? '🥈' : rank === 2 ? '🥉' : `${rank + 1}.`
+  const subLabels = getLang(lang).criteria
 
   return (
     <div className="border border-[var(--border)] rounded-xl p-3 bg-[var(--bg-card)]">
@@ -49,15 +57,15 @@ function AnswerEntry({ answer, rank }: { answer: Answer; rank: number }) {
           {answer.displayName[0]?.toUpperCase()}
         </div>
         <span className="text-xs font-medium text-[var(--text)] flex-1 truncate">{answer.displayName}</span>
-        <div className={cn('w-9 h-9 rounded-full flex flex-col items-center justify-center text-white shrink-0', badgeBg(answer.band))}>
-          <span className="text-sm font-bold leading-none">{answer.band.toFixed(1)}</span>
+        <div className={cn('w-9 h-9 rounded-full flex flex-col items-center justify-center text-white shrink-0', badgeBg(scoreRatio(answer.band, lang)))}>
+          <span className="text-sm font-bold leading-none">{formatScore(answer.band, lang)}</span>
         </div>
       </div>
 
       <div className="flex flex-wrap gap-1 mb-2">
-        {(['fluency', 'lexical', 'grammar', 'pronunciation'] as const).map(k => (
-          <span key={k} className={cn('text-[10px] px-2 py-0.5 rounded-full font-medium', pillColor(answer.score[k]))}>
-            {SUB_SCORE_LABELS[k]}: {answer.score[k].toFixed(1)}
+        {subLabels.map(c => (
+          <span key={c.key} className={cn('text-[10px] px-2 py-0.5 rounded-full font-medium', pillColor(scoreRatio(answer.score[c.key], lang)))}>
+            {c.label}: {formatScore(answer.score[c.key], lang)}
           </span>
         ))}
       </div>
@@ -94,19 +102,22 @@ function AnswerEntry({ answer, rank }: { answer: Answer; rank: number }) {
 interface TopicLeaderboardProps {
   topic: string
   part: string
+  lang?: string
 }
 
-export function TopicLeaderboard({ topic, part }: TopicLeaderboardProps) {
+export function TopicLeaderboard({ topic, part, lang = 'en' }: TopicLeaderboardProps) {
+  const BAND_FILTERS = bandFilters(getLang(lang).scoreScale)
   const [answers, setAnswers] = useState<Answer[]>([])
   const [loading, setLoading] = useState(true)
   const [filterIdx, setFilterIdx] = useState(0)
   const [total, setTotal] = useState(0)
 
   useEffect(() => {
-    const f = BAND_FILTERS[filterIdx]
+    const f = bandFilters(getLang(lang).scoreScale)[filterIdx]
     const params = new URLSearchParams({
       topic,
       part,
+      lang,
       minBand: String(f.min),
       maxBand: String(f.max),
       limit: '10',
@@ -117,7 +128,7 @@ export function TopicLeaderboard({ topic, part }: TopicLeaderboardProps) {
       .then(d => { setAnswers(d.answers ?? []); setTotal(d.total ?? 0) })
       .catch(() => setAnswers([]))
       .finally(() => setLoading(false))
-  }, [topic, part, filterIdx])
+  }, [topic, part, filterIdx, lang])
 
   return (
     <div className="space-y-3">
@@ -158,7 +169,7 @@ export function TopicLeaderboard({ topic, part }: TopicLeaderboardProps) {
         </div>
       ) : (
         <div className="space-y-2">
-          {answers.map((a, i) => <AnswerEntry key={a.id} answer={a} rank={i} />)}
+          {answers.map((a, i) => <AnswerEntry key={a.id} answer={a} rank={i} lang={lang} />)}
         </div>
       )}
     </div>

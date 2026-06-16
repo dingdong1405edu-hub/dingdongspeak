@@ -8,6 +8,7 @@ import { Card, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { cn, formatDate } from '@/lib/utils'
+import { useLang } from '@/components/shared/lang-provider'
 
 interface Props {
   user: {
@@ -23,6 +24,7 @@ interface Props {
 
 export function ProfileClient({ user, referralStats }: Props) {
   const [copied, setCopied] = useState(false)
+  const { config } = useLang()
 
   function copyLink() {
     navigator.clipboard.writeText(referralStats.referralLink)
@@ -53,6 +55,9 @@ export function ProfileClient({ user, referralStats }: Props) {
             </div>
             <div className="flex items-center gap-1.5 text-sm text-[var(--text-secondary)] mt-1">
               <Calendar size={14} /> Tham gia từ {formatDate(user.createdAt)}
+            </div>
+            <div className="flex items-center gap-1.5 text-sm text-[var(--text-secondary)] mt-1">
+              <span className="text-base leading-none">{config.flag}</span> Đang học: {config.viName}
             </div>
           </div>
         </div>

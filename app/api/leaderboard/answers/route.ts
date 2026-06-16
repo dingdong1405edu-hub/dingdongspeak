@@ -1,12 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
+import { isLangCode } from '@/lib/languages'
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url)
   const minBand = parseFloat(searchParams.get('minBand') ?? '0')
-  const maxBand = parseFloat(searchParams.get('maxBand') ?? '9')
+  const maxBand = parseFloat(searchParams.get('maxBand') ?? '100')
   const part = searchParams.get('part') ?? undefined
   const topic = searchParams.get('topic') ?? undefined
+  const langParam = searchParams.get('lang')
   const limit = Math.min(parseInt(searchParams.get('limit') ?? '20'), 50)
   const offset = parseInt(searchParams.get('offset') ?? '0')
 
@@ -14,6 +16,7 @@ export async function GET(req: NextRequest) {
     band: { gte: minBand, lte: maxBand },
     ...(part ? { part: part as 'PART1' | 'PART2' | 'PART3' | 'FULL' } : {}),
     ...(topic ? { topic } : {}),
+    ...(isLangCode(langParam) ? { language: langParam } : {}),
   }
 
   const [answers, total] = await Promise.all([
@@ -38,6 +41,7 @@ export async function GET(req: NextRequest) {
     band: a.band,
     topic: a.topic,
     part: a.part,
+    language: a.language,
     createdAt: a.createdAt,
     likes: a.likes,
     displayName: a.isAnonymous

@@ -20,6 +20,7 @@ model User {
   tokens         Int       @default(30)
   lives          Int       @default(5)
   livesLastRegen DateTime  @default(now())
+  learningLanguage String  @default("en") // active target language: en | zh | ja | ko
   referralCode   String    @unique @default(cuid())
   referredBy     String?
   createdAt      DateTime  @default(now())
@@ -105,6 +106,7 @@ model PracticeSession {
   id        String      @id @default(cuid())
   userId    String
   type      SessionType
+  language  String      @default("en") // target language: en | zh | ja | ko
   topic     String
   part      IELTSPart?
   questions Json
@@ -118,6 +120,7 @@ model SavedItem {
   id        String    @id @default(cuid())
   userId    String
   type      SavedType
+  language  String    @default("en") // target language: en | zh | ja | ko
   content   String
   context   String?
   topic     String?
@@ -161,10 +164,11 @@ model Streak {
 model CustomLesson {
   id          String   @id @default(cuid())
   stageId     String
+  language    String   @default("en") // target language: en | zh | ja | ko
   title       String
   type        String   // vocabulary | grammar | speaking
   topic       String
-  level       String   // A1 | A2 | B1 | B2
+  level       String   // per language: A1..C1 | HSK1..6 | N5..N1 | TOPIK1..6
   description String   @default("")
   xp          Int      @default(50)
   cards       Json
@@ -201,6 +205,7 @@ model StageTestResult {
 
 model Stage {
   id          String   @id @default(cuid())
+  language    String   @default("en") // target language: en | zh | ja | ko
   title       String
   subtitle    String
   icon        String   @default("📚")
@@ -229,11 +234,12 @@ model ChatWidgetSession {
 model SharedAnswer {
   id          String     @id @default(cuid())
   userId      String
+  language    String     @default("en") // target language: en | zh | ja | ko
   question    String
   transcript  String     @db.Text
   audioUrl    String?    @db.Text
   score       Json
-  band        Float
+  band        Float      // overall score (IELTS 0-9 band, or 0-100 for zh/ja/ko)
   topic       String
   part        IELTSPart
   isAnonymous Boolean    @default(false)

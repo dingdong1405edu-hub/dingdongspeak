@@ -6,9 +6,11 @@ import { motion } from 'framer-motion'
 import { GraduationCap, Clock, AlertTriangle, Play, Target, Shuffle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
+import { useLang } from '@/components/shared/lang-provider'
 
 export default function MockTestPage() {
   const router = useRouter()
+  const { config } = useLang()
   const [loading, setLoading] = useState(false)
 
   function startTest() {
@@ -22,10 +24,10 @@ export default function MockTestPage() {
       <div>
         <h1 className="text-2xl font-bold text-[var(--text)] flex items-center gap-2">
           <GraduationCap className="text-violet-400" size={26} />
-          Thi thử IELTS Speaking
+          Thi thử {config.examFull}
         </h1>
         <p className="text-[var(--text-secondary)] text-sm mt-1">
-          AI ra đề ngẫu nhiên như thi thật — đa dạng chủ đề, đầy đủ Part 1, 2, 3. Chấm điểm tổng thể sau khi hoàn thành.
+          AI ra đề ngẫu nhiên như thi thật — đa dạng chủ đề, đầy đủ {config.sections.map(s => s.label).join(', ')}. Chấm điểm tổng thể sau khi hoàn thành.
         </p>
       </div>
 
@@ -35,7 +37,7 @@ export default function MockTestPage() {
         <div>
           <p className="text-sm font-medium text-yellow-400 mb-1">Lưu ý quan trọng</p>
           <p className="text-xs text-[var(--text-secondary)]">
-            AI sẽ ra đề ngẫu nhiên như thi IELTS thật — bạn không được chọn chủ đề.
+            AI sẽ ra đề ngẫu nhiên như thi {config.exam} thật — bạn không được chọn chủ đề.
             Trả lời xong tất cả câu hỏi, AI mới chấm điểm tổng thể. Điểm số là ước tính, không phải kết quả chính thức.
           </p>
         </div>
@@ -44,8 +46,8 @@ export default function MockTestPage() {
       {/* Test info */}
       <div className="grid sm:grid-cols-3 gap-4">
         {[
-          { icon: Clock, label: '11–14 phút', desc: 'Giống thời gian thi thật' },
-          { icon: Target, label: '3 Parts', desc: 'Part 1 + 2 + 3 đầy đủ' },
+          { icon: Clock, label: '~10–14 phút', desc: 'Giống thời gian thi thật' },
+          { icon: Target, label: `${config.sections.length} phần`, desc: `${config.sections.map(s => s.label).join(' + ')} đầy đủ` },
           { icon: Shuffle, label: 'Ngẫu nhiên', desc: 'AI ra đề đa dạng chủ đề' },
         ].map(item => {
           const Icon = item.icon
@@ -64,9 +66,11 @@ export default function MockTestPage() {
         <h2 className="font-semibold text-[var(--text)] mb-4">Quy trình thi</h2>
         <div className="space-y-3">
           {[
-            { step: '1', label: 'AI ra đề', desc: 'Hệ thống tự chọn chủ đề và tạo câu hỏi ngẫu nhiên từ kho 50+ chủ đề IELTS' },
-            { step: '2', label: 'Trả lời toàn bộ', desc: 'Lần lượt trả lời Part 1 (4 câu), Part 2 (1 cue card), Part 3 (4 câu). Không xem điểm giữa chừng' },
-            { step: '3', label: 'AI chấm tổng thể', desc: 'Sau khi hoàn thành, AI phân tích toàn bộ và cho điểm band score ước tính' },
+            { step: '1', label: 'AI ra đề', desc: `Hệ thống tự chọn chủ đề và tạo câu hỏi ngẫu nhiên từ kho chủ đề ${config.exam}` },
+            { step: '2', label: 'Trả lời toàn bộ', desc: config.hasCueCard
+                ? `Lần lượt trả lời ${config.sections[0].label} (4 câu), ${config.sections[1].label} (1 cue card), ${config.sections[2].label} (4 câu). Không xem điểm giữa chừng`
+                : `Lần lượt trả lời ${config.sections[0].label} (4 câu), ${config.sections[1].label} (nói về chủ đề), ${config.sections[2].label} (4 câu). Không xem điểm giữa chừng` },
+            { step: '3', label: 'AI chấm tổng thể', desc: `Sau khi hoàn thành, AI phân tích toàn bộ và cho ${config.scoreLabel} ước tính` },
           ].map(item => (
             <div key={item.step} className="flex items-start gap-3">
               <div className="w-7 h-7 rounded-full bg-violet-500/20 text-violet-400 text-sm font-bold flex items-center justify-center shrink-0">

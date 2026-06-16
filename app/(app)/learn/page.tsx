@@ -1,13 +1,16 @@
 import { auth } from '@/auth'
 import { prisma } from '@/lib/prisma'
+import { getServerLang } from '@/lib/lang-server'
 import { LearnPathClient } from './learn-path-client'
 import type { StageData, LessonData } from '@/lib/lessons-data'
 
-export const metadata = { title: 'Beginner Path — DingDongSpeak' }
+export const metadata = { title: 'Lộ trình luyện nói — DingDongSpeak' }
 
 export default async function LearnPage() {
   const session = await auth()
   if (!session?.user?.id) return null
+
+  const lang = await getServerLang()
 
   const [progress, user, dbStages, customLessons, stageTestResults] = await Promise.all([
     prisma.lessonProgress.findMany({
@@ -18,9 +21,9 @@ export default async function LearnPage() {
       where: { id: session.user.id },
       select: { lives: true, tokens: true, isPremium: true, premiumUntil: true },
     }),
-    prisma.stage.findMany({ where: { published: true }, orderBy: { order: 'asc' } }).catch(() => []),
+    prisma.stage.findMany({ where: { published: true, language: lang }, orderBy: { order: 'asc' } }).catch(() => []),
     prisma.customLesson.findMany({
-      where: { published: true },
+      where: { published: true, language: lang },
       orderBy: { order: 'asc' },
       select: { id: true, stageId: true, title: true, type: true, topic: true, level: true, description: true, xp: true, cards: true },
     }),

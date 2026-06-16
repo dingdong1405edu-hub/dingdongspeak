@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { requireAdmin } from '@/lib/admin-auth'
 import { prisma } from '@/lib/prisma'
+import { toLangCode } from '@/lib/languages'
 
 export async function GET() {
   try {
@@ -26,7 +27,10 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'title and subtitle required' }, { status: 400 })
   }
 
-  const maxOrder = await prisma.stage.aggregate({ _max: { order: true } })
+  const language = toLangCode(body.language)
+
+  // Order is scoped per target language so each language has its own sequence.
+  const maxOrder = await prisma.stage.aggregate({ where: { language }, _max: { order: true } })
   const order = (maxOrder._max.order ?? -1) + 1
 
   const stage = await prisma.stage.create({
@@ -37,6 +41,7 @@ export async function POST(req: Request) {
       color: color ?? 'from-cyan-500 to-blue-600',
       accentColor: accentColor ?? 'cyan',
       order,
+      language,
     },
   })
   return NextResponse.json(stage)

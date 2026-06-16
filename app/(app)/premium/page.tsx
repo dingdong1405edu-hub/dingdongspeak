@@ -125,7 +125,7 @@ export default function PremiumPage() {
             Luyện không giới hạn — Tiến bộ nhanh hơn
           </h1>
           <p className="text-[var(--text-secondary)] max-w-xl mx-auto">
-            Hơn 10,000 học viên đã cải thiện band score với Premium. Bắt đầu ngay hôm nay.
+            Hơn 10,000 học viên đã cải thiện kỹ năng nói với Premium. Bắt đầu ngay hôm nay.
           </p>
         </div>
 

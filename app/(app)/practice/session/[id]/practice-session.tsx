@@ -14,7 +14,8 @@ import { Badge } from '@/components/ui/badge'
 import { ScoreCard } from '@/components/practice/score-card'
 import { AudioRecorder } from '@/components/practice/audio-recorder'
 import { TopicLeaderboard } from '@/components/practice/topic-leaderboard'
-import { cn, bandToColor, formatDuration } from '@/lib/utils'
+import { cn, formatDuration } from '@/lib/utils'
+import { getLang, formatScore, scoreToColor } from '@/lib/languages'
 import type { IELTSQuestion, ScoreBreakdown, QARecord } from '@/types'
 
 interface Props {
@@ -22,11 +23,14 @@ interface Props {
   topic: string
   part: 'PART1' | 'PART2' | 'PART3'
   count: number
+  lang: string
 }
 
 type Phase = 'loading' | 'intro' | 'question' | 'recording' | 'scoring' | 'result' | 'complete'
 
-export function PracticeSession({ sessionId, topic, part, count }: Props) {
+export function PracticeSession({ sessionId, topic, part, count, lang }: Props) {
+  const config = getLang(lang)
+  const sectionLabel = config.sections.find(s => s.id === part)?.label ?? part
   const [phase, setPhase] = useState<Phase>('loading')
   const [questions, setQuestions] = useState<IELTSQuestion[]>([])
   const [currentIdx, setCurrentIdx] = useState(0)
@@ -57,7 +61,7 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
         const res = await fetch('/api/ai/question', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ topic, part, count }),
+          body: JSON.stringify({ topic, part, count, lang }),
         })
         const data = await res.json()
         setQuestions(data.questions || [])
@@ -67,7 +71,7 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
       }
     }
     loadQuestions()
-  }, [topic, part, count])
+  }, [topic, part, count, lang])
 
   // Timer
   useEffect(() => {
@@ -90,10 +94,11 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
       const res = await fetch('/api/speech/tts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text }),
+        body: JSON.stringify({ text, lang }),
       })
-      if (!res.ok) throw new Error('TTS failed')
+      if (!res.ok || res.status === 204) throw new Error('TTS unavailable')
       const blob = await res.blob()
+      if (blob.size === 0) throw new Error('TTS empty')
       const url = URL.createObjectURL(blob)
       const audio = new Audio(url)
       currentAudioRef.current = audio
@@ -141,7 +146,7 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
       fetch('/api/ai/score', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question: currentQuestion?.question, transcript: transcriptText, part, type: 'PRACTICE', topic }),
+        body: JSON.stringify({ question: currentQuestion?.question, transcript: transcriptText, part, type: 'PRACTICE', topic, lang }),
       }).then(r => r.json()),
     ])
 
@@ -175,7 +180,7 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
       const res = await fetch('/api/ai/sample', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question: currentQuestion?.question, part, type: 'answer' }),
+        body: JSON.stringify({ question: currentQuestion?.question, part, type: 'answer', lang }),
       })
       const data = await res.json()
       setSampleAnswer(data.answer || '')
@@ -192,7 +197,7 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
       const res = await fetch('/api/ai/sample', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question: currentQuestion?.question, type: 'vocab', topic }),
+        body: JSON.stringify({ question: currentQuestion?.question, type: 'vocab', topic, lang }),
       })
       const data = await res.json()
       setVocabData(data)
@@ -213,6 +218,7 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
           type,
           context: currentQuestion?.question,
           topic,
+          lang,
         }),
       })
       setSavedItems(prev => [...prev, content])
@@ -229,7 +235,7 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
       const res = await fetch('/api/ai/sample', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question: currentQuestion.question, transcript, part, type: 'improve' }),
+        body: JSON.stringify({ question: currentQuestion.question, transcript, part, type: 'improve', lang }),
       })
       const data = await res.json()
       setImprovedAnswer(data.improved || '')
@@ -244,6 +250,7 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
     try {
       const body = {
         type: 'PRACTICE',
+        language: lang,
         topic,
         part,
         questions: records.map(r => ({ question: r.question.question, transcript: r.transcript, audioUrl: r.audioUrl ?? null })),
@@ -288,8 +295,8 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
     }
   }
 
-  const avgScore = qaRecords.length > 0
-    ? (qaRecords.reduce((s, r) => s + r.score.overall, 0) / qaRecords.length).toFixed(1)
+  const avgScoreNum = qaRecords.length > 0
+    ? qaRecords.reduce((s, r) => s + r.score.overall, 0) / qaRecords.length
     : null
 
   // ===== RENDER =====
@@ -312,9 +319,9 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
           <p className="text-[var(--text-secondary)] mb-6">
             Bạn đã trả lời {qaRecords.length} câu hỏi về chủ đề <strong className="text-cyan-400">{topic}</strong>
           </p>
-          {avgScore && (
-            <div className={cn('text-5xl font-bold mb-2', bandToColor(parseFloat(avgScore)))}>
-              Band {avgScore}
+          {avgScoreNum !== null && (
+            <div className={cn('text-5xl font-bold mb-2', scoreToColor(avgScoreNum, lang))}>
+              {config.scoreLabel} {formatScore(avgScoreNum, lang)}
             </div>
           )}
           <p className="text-[var(--text-secondary)] text-sm mb-8">Điểm trung bình buổi luyện tập này</p>
@@ -322,8 +329,8 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
           <div className="grid grid-cols-3 gap-4 mb-8">
             {qaRecords.map((r, i) => (
               <div key={i} className="rounded-xl border border-[var(--border)] p-3">
-                <div className={cn('text-xl font-bold', bandToColor(r.score.overall))}>
-                  {r.score.overall.toFixed(1)}
+                <div className={cn('text-xl font-bold', scoreToColor(r.score.overall, lang))}>
+                  {formatScore(r.score.overall, lang)}
                 </div>
                 <div className="text-xs text-[var(--text-secondary)]">Câu {i + 1}</div>
               </div>
@@ -352,17 +359,19 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
             <Mic size={28} className="text-white" />
           </div>
           <h2 className="text-2xl font-bold text-[var(--text)] mb-2">
-            {part} — {topic}
+            {sectionLabel} — {topic}
           </h2>
           <p className="text-[var(--text-secondary)] mb-2">
-            {count} câu hỏi · AI giám khảo sẽ đọc câu hỏi cho bạn
+            {count} câu hỏi · luyện nói {config.viName}
           </p>
           <div className="text-sm text-[var(--text-secondary)] bg-[var(--bg-secondary)] rounded-xl p-4 mb-8 text-left">
             <p className="font-medium text-[var(--text)] mb-2">📌 Hướng dẫn:</p>
             <ul className="space-y-1 list-disc list-inside">
-              <li>Nhấn <strong>Play</strong> để nghe câu hỏi từ AI giám khảo</li>
+              {config.ttsVoice
+                ? <li>Nhấn <strong>Nghe đề</strong> để AI đọc câu hỏi</li>
+                : <li>Đọc kỹ câu hỏi hiển thị trên màn hình</li>}
               <li>Nhấn nút <strong>Ghi âm</strong> khi sẵn sàng trả lời</li>
-              <li>Nói rõ ràng và tự nhiên bằng tiếng Anh</li>
+              <li>Nói rõ ràng và tự nhiên bằng {config.speakViName}</li>
               <li>Nhấn <strong>Dừng</strong> khi trả lời xong để nhận điểm</li>
             </ul>
           </div>
@@ -381,7 +390,7 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
       <div className="flex items-center justify-between text-sm text-[var(--text-secondary)]">
         <span>Câu {currentIdx + 1}/{questions.length}</span>
         <span>{formatDuration(elapsed)}</span>
-        <Badge variant="info">{part}</Badge>
+        <Badge variant="info">{sectionLabel}</Badge>
       </div>
       <div className="h-1.5 rounded-full bg-[var(--border)]">
         <div
@@ -401,9 +410,9 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
           <Card>
             <div className="flex items-start justify-between gap-3 mb-4">
               <div className="text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wide">
-                {currentQuestion?.part} · {topic}
+                {sectionLabel} · {topic}
               </div>
-              <button
+              {config.ttsVoice && <button
                 onClick={() => currentQuestion && playQuestion(currentQuestion.question)}
                 disabled={ttsState === 'loading'}
                 className={cn(
@@ -426,7 +435,7 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
                 <span className="text-xs hidden sm:inline">
                   {ttsState === 'loading' ? 'Đang tải...' : ttsState === 'playing' ? 'Đang đọc' : 'Nghe đề'}
                 </span>
-              </button>
+              </button>}
             </div>
 
             {/* TTS playing indicator */}
@@ -489,6 +498,7 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
           onComplete={onRecordingComplete}
           onStart={() => setPhase('recording')}
           disabled={phase === 'scoring'}
+          lang={lang}
         />
       )}
 
@@ -506,6 +516,7 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
           {/* Score card — always full width */}
           <ScoreCard
             score={currentScore}
+            lang={lang}
             transcript={transcript}
             audioUrl={recordingUrl ?? undefined}
             onImprove={handleImprove}
@@ -521,6 +532,7 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
                   score: currentScore,
                   topic,
                   part,
+                  language: lang,
                   isAnonymous,
                   audioUrl: recordingUrl?.startsWith('http') ? recordingUrl : null,
                 }),
@@ -539,11 +551,11 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
               <div className="flex flex-col gap-2">
                 <Button variant="secondary" onClick={loadSampleAnswer} loading={loadingSample}>
                   <Star size={15} className="text-yellow-400" />
-                  Câu trả lời mẫu Band 8.0
+                  Câu trả lời mẫu
                 </Button>
                 <Button variant="secondary" onClick={loadVocabAndIdioms} loading={loadingVocab}>
                   <Lightbulb size={15} className="text-cyan-400" />
-                  Từ vựng & Idioms hay
+                  Từ vựng & thành ngữ hay
                 </Button>
               </div>
 
@@ -553,7 +565,7 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
                     <Card className="border-yellow-500/20 bg-yellow-500/5">
                       <div className="flex items-center gap-2 mb-2">
                         <Star size={14} className="text-yellow-400" />
-                        <span className="text-sm font-semibold text-[var(--text)]">Mẫu Band 8.0</span>
+                        <span className="text-sm font-semibold text-[var(--text)]">Câu trả lời mẫu</span>
                       </div>
                       <p className="text-sm text-[var(--text)] leading-relaxed">{sampleAnswer}</p>
                     </Card>
@@ -609,7 +621,7 @@ export function PracticeSession({ sessionId, topic, part, count }: Props) {
 
             {/* Bảng vàng */}
             <div>
-              <TopicLeaderboard topic={topic} part={part} />
+              <TopicLeaderboard topic={topic} part={part} lang={lang} />
             </div>
           </div>
 

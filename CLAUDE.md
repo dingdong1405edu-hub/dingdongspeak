@@ -2,6 +2,25 @@
 
 ## Tổng quan dự án
 
+**DingDongSpeak** là nền tảng luyện nói **đa ngôn ngữ** bằng AI, nhắm đến người dùng Việt Nam: tiếng Anh (IELTS), tiếng Trung (HSK), tiếng Nhật (JLPT), tiếng Hàn (TOPIK). Giao diện luôn là tiếng Việt; chỉ **ngôn ngữ luyện tập** thay đổi.
+
+> Trước đây app chỉ tiếng Anh/IELTS và dùng kiến trúc Multi-Zones (/ja, /zh trỏ sang deployment riêng). Nay đã **gộp thành 1 app đa ngôn ngữ**: người dùng chọn ngôn ngữ học ngay trong app.
+
+### Kiến trúc đa ngôn ngữ (QUAN TRỌNG)
+
+- **Nguồn chân lý**: [`lib/languages.ts`](lib/languages.ts) — registry `LANGUAGES` (en|zh|ja|ko) chứa mọi cấu hình theo ngôn ngữ: tên/cờ, kỳ thi (IELTS/HSK/JLPT/TOPIK), thang điểm (`scoreScale` 9 hoặc 100), nhãn tiêu chí chấm điểm, các "section" luyện nói, chủ đề (`topics`), cấp độ (`levels`), cấu hình STT Deepgram, giọng TTS (`ttsVoice`, null = chưa có), hệ phiên âm (`readingLabel`/`readingPrompt`). **Thêm ngôn ngữ mới = thêm 1 entry ở đây.**
+- Helpers: `getLang(code)`, `toLangCode`, `isLangCode`, `formatScore(v,code)`, `scoreToColor(v,code)`, `scoreRatio(v,code)`, `LANG_LIST`.
+- **Ngôn ngữ đang học** lưu ở: cookie `dds_lang` (đọc SSR qua [`lib/lang-server.ts`](lib/lang-server.ts) `getServerLang()`) + `User.learningLanguage` (đồng bộ qua `PATCH /api/user`). Client dùng `useLang()` từ [`components/shared/lang-provider.tsx`](components/shared/lang-provider.tsx). Đổi ngôn ngữ qua [`LanguageSwitcher`](components/shared/language-switcher.tsx) trên navbar.
+- **DB**: các bảng `PracticeSession`, `SharedAnswer`, `SavedItem`, `Stage`, `CustomLesson` có cột `language` (default "en"); `User.learningLanguage`. Sau khi sửa schema phải chạy `npx prisma db push` (không có thư mục migrations).
+- **AI** ([`lib/gemini.ts`](lib/gemini.ts)): mọi hàm nhận tham số `lang` cuối, build prompt theo registry. Nội dung luyện tập (câu hỏi, câu mẫu, từ vựng, ví dụ) bằng **ngôn ngữ đích**; nhận xét/nghĩa luôn **tiếng Việt**.
+- **Speech** ([`lib/deepgram.ts`](lib/deepgram.ts)): STT chọn model/ngôn ngữ theo `getSttConfig(lang)` (en→nova-3, zh/ja/ko→nova-2). TTS chỉ có tiếng Anh (Deepgram Aura); zh/ja/ko hiện **không có TTS** → `/api/speech/tts` trả 204, client hiển thị câu hỏi dạng chữ.
+- **Font CJK**: nạp Noto Sans SC/JP/KR trong [`app/layout.tsx`](app/layout.tsx); `<body data-lang>` chọn font phù hợp (xem [`app/globals.css`](app/globals.css)).
+- Khi thêm flow mới: client lấy ngôn ngữ từ `useLang()`, server từ `getServerLang()`; truyền `lang` vào mọi call `/api/ai/*`, `/api/speech/*`, và `language` vào `/api/sessions|share|review`; truyền `lang` cho `<AudioRecorder>` và `<ScoreCard>`; lọc query `Stage/CustomLesson` theo `language`.
+
+---
+
+### (Lịch sử) Nền tảng luyện tiếng Anh/IELTS
+
 **DingDongSpeak** là nền tảng luyện nói tiếng Anh và luyện Speaking IELTS bằng AI, nhắm đến người dùng Việt Nam.
 - **Stack**: Next.js 14 (App Router) + TypeScript, TailwindCSS, Framer Motion
 - **Backend**: Next.js API Routes + Prisma ORM

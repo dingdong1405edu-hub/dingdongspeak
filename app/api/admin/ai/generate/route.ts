@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { requireAdmin } from '@/lib/admin-auth'
 import { generateLessonCards, generateBatchVocabCards, extractContentFromImage } from '@/lib/gemini'
+import { toLangCode } from '@/lib/languages'
 
 export async function POST(req: NextRequest) {
   try {
@@ -9,13 +10,15 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
-  const { type, level, topic, count, docText, imageBase64, imageMimeType, pdfBase64, wordList } = await req.json()
+  const body = await req.json()
+  const { type, level, topic, count, docText, imageBase64, imageMimeType, pdfBase64, wordList } = body
+  const language = toLangCode(body.language)
 
   // Batch vocabulary mode
   if (wordList && Array.isArray(wordList) && wordList.length > 0) {
     if (!level) return NextResponse.json({ error: 'Thiếu level' }, { status: 400 })
     try {
-      const cards = await generateBatchVocabCards(wordList, level)
+      const cards = await generateBatchVocabCards(wordList, level, language)
       return NextResponse.json({ cards })
     } catch (error: any) {
       console.error('Batch vocab generate error:', error?.message)
@@ -31,7 +34,7 @@ export async function POST(req: NextRequest) {
     let effectiveDocText: string | undefined = docText
 
     if (imageBase64 && imageMimeType) {
-      effectiveDocText = await extractContentFromImage(imageBase64, imageMimeType)
+      effectiveDocText = await extractContentFromImage(imageBase64, imageMimeType, language)
     } else if (pdfBase64) {
       // Use lib path directly to avoid pdf-parse v1 test file auto-loading
       // eslint-disable-next-line @typescript-eslint/no-require-imports
@@ -41,7 +44,7 @@ export async function POST(req: NextRequest) {
       effectiveDocText = pdfData.text
     }
 
-    const cards = await generateLessonCards(type, level, topic, count ? Number(count) : undefined, effectiveDocText)
+    const cards = await generateLessonCards(type, level, topic, count ? Number(count) : undefined, effectiveDocText, language)
     return NextResponse.json({ cards })
   } catch (error: any) {
     console.error('Admin AI generate error:', error?.message)

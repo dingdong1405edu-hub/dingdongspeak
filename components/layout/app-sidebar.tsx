@@ -7,16 +7,7 @@ import {
   BookMarked, Crown, User, Trophy, History
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
-
-const navItems = [
-  { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-  { href: '/learn', icon: BookOpen, label: 'Beginner Path' },
-  { href: '/practice', icon: Mic, label: 'Luyện IELTS' },
-  { href: '/mock-test', icon: GraduationCap, label: 'Thi thử' },
-  { href: '/review', icon: BookMarked, label: 'Ôn tập' },
-  { href: '/leaderboard', icon: Trophy, label: 'Bảng vàng' },
-  { href: '/history', icon: History, label: 'Lịch sử' },
-]
+import { useLang } from '@/components/shared/lang-provider'
 
 const bottomItems = [
   { href: '/premium', icon: Crown, label: 'Premium', className: 'text-yellow-400' },
@@ -25,6 +16,17 @@ const bottomItems = [
 
 export function AppSidebar() {
   const pathname = usePathname()
+  const { config } = useLang()
+
+  const navItems = [
+    { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
+    { href: '/learn', icon: BookOpen, label: 'Lộ trình cơ bản' },
+    { href: '/practice', icon: Mic, label: `Luyện ${config.exam}` },
+    { href: '/mock-test', icon: GraduationCap, label: 'Thi thử' },
+    { href: '/review', icon: BookMarked, label: 'Ôn tập' },
+    { href: '/leaderboard', icon: Trophy, label: 'Bảng vàng' },
+    { href: '/history', icon: History, label: 'Lịch sử' },
+  ]
 
   return (
     <aside className="hidden md:flex flex-col fixed left-0 top-16 bottom-0 w-60 border-r border-[var(--border)] bg-[var(--bg)] z-40">

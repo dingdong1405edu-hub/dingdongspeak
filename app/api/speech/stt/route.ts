@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/auth'
+import { getSttConfig } from '@/lib/deepgram'
 
 const DEEPGRAM_API_KEY = process.env.DEEPGRAM_API_KEY
 
@@ -13,6 +14,7 @@ export async function POST(req: NextRequest) {
 
   let audioBuffer: ArrayBuffer
   let mimeType: string
+  let lang = 'en'
 
   try {
     const formData = await req.formData()
@@ -21,15 +23,17 @@ export async function POST(req: NextRequest) {
 
     audioBuffer = await audio.arrayBuffer()
     mimeType = audio.type || 'audio/webm'
+    lang = (formData.get('lang') as string) || 'en'
   } catch (err) {
     console.error('STT formdata error:', err)
     return NextResponse.json({ error: 'Invalid request body' }, { status: 400 })
   }
 
   try {
+    const stt = getSttConfig(lang)
     const params = new URLSearchParams({
-      model: 'nova-3',
-      language: 'en',
+      model: stt.model,
+      language: stt.language,
       smart_format: 'true',
       punctuate: 'true',
     })

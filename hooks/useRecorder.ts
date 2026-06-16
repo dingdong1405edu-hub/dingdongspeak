@@ -9,7 +9,7 @@ export interface RecorderState {
   error: string | null
 }
 
-export function useRecorder(onComplete: (blob: Blob, transcript: string) => void) {
+export function useRecorder(onComplete: (blob: Blob, transcript: string) => void, lang: string = 'en') {
   const [state, setState] = useState<RecorderState>({
     isRecording: false,
     audioLevel: 0,
@@ -60,6 +60,7 @@ export function useRecorder(onComplete: (blob: Blob, transcript: string) => void
         try {
           const formData = new FormData()
           formData.append('audio', blob, 'recording.webm')
+          formData.append('lang', lang)
 
           const res = await fetch('/api/speech/stt', { method: 'POST', body: formData })
           const data = await res.json()
@@ -84,7 +85,7 @@ export function useRecorder(onComplete: (blob: Blob, transcript: string) => void
         : 'Không mở được microphone'
       setState(s => ({ ...s, error: msg }))
     }
-  }, [onComplete])
+  }, [onComplete, lang])
 
   const stopRecording = useCallback(() => {
     mediaRecorderRef.current?.stop()

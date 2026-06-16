@@ -1,5 +1,17 @@
+import { getLang, type LangCode } from '@/lib/languages'
+
 const DEEPGRAM_API_KEY = process.env.DEEPGRAM_API_KEY!
 const DEEPGRAM_BASE = 'https://api.deepgram.com/v1'
+
+/** Deepgram STT model + language code for a target language. */
+export function getSttConfig(lang: LangCode | string) {
+  return getLang(lang).stt // { model, language }
+}
+
+/** Deepgram TTS voice for a target language, or null when unsupported (zh/ja/ko). */
+export function getTtsVoice(lang: LangCode | string): string | null {
+  return getLang(lang).ttsVoice
+}
 
 export async function textToSpeech(text: string, voice: string = 'aura-asteria-en'): Promise<Buffer> {
   const response = await fetch(`${DEEPGRAM_BASE}/speak?model=${voice}&encoding=mp3&container=mp3`, {
@@ -20,10 +32,15 @@ export async function textToSpeech(text: string, voice: string = 'aura-asteria-e
   return Buffer.from(arrayBuffer)
 }
 
-export async function speechToText(audioBuffer: Buffer, mimeType: string = 'audio/webm'): Promise<string> {
+export async function speechToText(
+  audioBuffer: Buffer,
+  mimeType: string = 'audio/webm',
+  lang: LangCode | string = 'en',
+): Promise<string> {
+  const stt = getSttConfig(lang)
   const params = new URLSearchParams({
-    model: 'nova-3',
-    language: 'en',
+    model: stt.model,
+    language: stt.language,
     smart_format: 'true',
     punctuate: 'true',
   })
@@ -46,6 +63,8 @@ export async function speechToText(audioBuffer: Buffer, mimeType: string = 'audi
   return data?.results?.channels?.[0]?.alternatives?.[0]?.transcript ?? ''
 }
 
+// English examiner voices (Deepgram Aura is English-only). Other languages
+// currently have no server TTS — see getTtsVoice().
 export const EXAMINER_VOICES = [
   { id: 'aura-asteria-en', name: 'Asteria (Female)', accent: 'American' },
   { id: 'aura-orion-en', name: 'Orion (Male)', accent: 'American' },

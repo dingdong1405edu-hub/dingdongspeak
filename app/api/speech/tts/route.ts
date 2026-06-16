@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/auth'
+import { getTtsVoice } from '@/lib/deepgram'
 
 const DEEPGRAM_API_KEY = process.env.DEEPGRAM_API_KEY
 
@@ -7,8 +8,16 @@ export async function POST(req: NextRequest) {
   const session = await auth()
   if (!session?.user?.id) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
-  const { text, voice = 'aura-asteria-en' } = await req.json()
+  const { text, voice, lang = 'en' } = await req.json()
   if (!text) return NextResponse.json({ error: 'No text provided' }, { status: 400 })
+
+  // Resolve the voice from the target language unless one is explicitly given.
+  // Languages without server TTS (zh/ja/ko) return 204 — the client shows the
+  // question as text instead of playing audio.
+  const resolvedVoice = voice || getTtsVoice(lang)
+  if (!resolvedVoice) {
+    return new NextResponse(null, { status: 204 })
+  }
 
   if (!DEEPGRAM_API_KEY) {
     return NextResponse.json({ error: 'TTS not configured' }, { status: 503 })
@@ -16,7 +25,7 @@ export async function POST(req: NextRequest) {
 
   try {
     const response = await fetch(
-      `https://api.deepgram.com/v1/speak?model=${voice}`,
+      `https://api.deepgram.com/v1/speak?model=${resolvedVoice}`,
       {
         method: 'POST',
         headers: {

@@ -10,9 +10,10 @@ import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { ContributionHeatmap } from '@/components/dashboard/heatmap'
 import { Leaderboard } from '@/components/dashboard/leaderboard'
-import { cn, bandToColor } from '@/lib/utils'
+import { cn } from '@/lib/utils'
 import { format } from 'date-fns'
 import { vi } from 'date-fns/locale'
+import { getLang, formatScore, scoreToColor, type LangCode } from '@/lib/languages'
 
 interface DashboardData {
   user: {
@@ -28,7 +29,7 @@ interface DashboardData {
   longestStreak: number
   totalSessions: number
   weeklyMinutes: number
-  avgBand: string | null
+  avgScore: number | null
   leaderboard: {
     userId: string; name: string; avatar?: string | null;
     totalMinutes: number; totalSessions: number; rank: number;
@@ -41,12 +42,13 @@ const fadeUp = {
   visible: (i = 0) => ({ opacity: 1, y: 0, transition: { delay: i * 0.08, duration: 0.5 } }),
 }
 
-export function DashboardClient({ data, userId }: { data: DashboardData; userId: string }) {
-  const { user, currentStreak, longestStreak, totalSessions, weeklyMinutes, avgBand, leaderboard } = data
+export function DashboardClient({ data, userId, lang }: { data: DashboardData; userId: string; lang: LangCode }) {
+  const { user, currentStreak, longestStreak, totalSessions, weeklyMinutes, avgScore, leaderboard } = data
+  const config = getLang(lang)
 
   const quickActions = [
     { href: '/learn', icon: BookOpen, label: 'Beginner Path', color: 'from-emerald-500 to-cyan-500', desc: 'Tiếp tục hành trình' },
-    { href: '/practice', icon: Mic, label: 'IELTS Practice', color: 'from-cyan-500 to-violet-600', desc: 'Luyện với AI giám khảo' },
+    { href: '/practice', icon: Mic, label: 'Luyện nói', color: 'from-cyan-500 to-violet-600', desc: 'Luyện với AI giám khảo' },
     { href: '/mock-test', icon: GraduationCap, label: 'Mock Test', color: 'from-violet-600 to-pink-500', desc: 'Thi thử như thật' },
   ]
 
@@ -81,7 +83,7 @@ export function DashboardClient({ data, userId }: { data: DashboardData; userId:
             color: user.isPremiumActive ? 'text-yellow-400' : 'text-cyan-400',
             sub: user.isPremiumActive ? 'Không giới hạn' : 'Lượt luyện tập'
           },
-          { label: 'Band trung bình', value: avgBand || '—', icon: TrendingUp, color: avgBand ? bandToColor(parseFloat(avgBand)) : 'text-[var(--text-secondary)]', sub: '30 ngày gần nhất' },
+          { label: `${config.scoreLabel} trung bình`, value: avgScore != null ? formatScore(avgScore, lang) : '—', icon: TrendingUp, color: avgScore != null ? scoreToColor(avgScore, lang) : 'text-[var(--text-secondary)]', sub: '30 ngày gần nhất' },
           { label: 'Tuần này', value: `${weeklyMinutes} phút`, icon: Clock, color: 'text-violet-400', sub: `${totalSessions} bài tổng` },
         ].map((stat, i) => {
           const Icon = stat.icon

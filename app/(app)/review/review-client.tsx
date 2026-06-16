@@ -22,7 +22,7 @@ interface SavedItem {
 
 const typeConfig: Record<SavedType, { icon: typeof Book; label: string; color: string; bg: string }> = {
   VOCABULARY: { icon: Book, label: 'Từ vựng', color: 'text-cyan-400', bg: 'bg-cyan-400/10' },
-  IDIOM: { icon: Lightbulb, label: 'Idiom', color: 'text-violet-400', bg: 'bg-violet-400/10' },
+  IDIOM: { icon: Lightbulb, label: 'Thành ngữ', color: 'text-violet-400', bg: 'bg-violet-400/10' },
   SAMPLE_ANSWER: { icon: MessageSquare, label: 'Câu mẫu', color: 'text-emerald-400', bg: 'bg-emerald-400/10' },
 }
 

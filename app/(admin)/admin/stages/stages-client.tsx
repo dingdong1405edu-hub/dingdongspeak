@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Plus, Trash2, Edit3, ChevronUp, ChevronDown, Check, X, Layers } from 'lucide-react'
 import { toast } from 'sonner'
 import { cn } from '@/lib/utils'
+import { LANG_LIST, getLang, toLangCode, type LangCode } from '@/lib/languages'
 
 interface Stage {
   id: string
@@ -14,6 +15,7 @@ interface Stage {
   accentColor: string
   order: number
   published: boolean
+  language: string
 }
 
 const COLOR_OPTIONS = [
@@ -31,11 +33,13 @@ const ICON_OPTIONS = ['📚', '🌱', '🔥', '⚡', '🎯', '🏆', '💡', '�
 
 function StageForm({
   initial,
+  defaultLanguage,
   onSave,
   onCancel,
   saving,
 }: {
   initial?: Partial<Stage>
+  defaultLanguage?: LangCode
   onSave: (data: Omit<Stage, 'id' | 'order' | 'published' | 'createdAt' | 'updatedAt'>) => void
   onCancel: () => void
   saving: boolean
@@ -45,9 +49,30 @@ function StageForm({
   const [icon, setIcon] = useState(initial?.icon ?? '📚')
   const [color, setColor] = useState(initial?.color ?? 'from-cyan-500 to-violet-600')
   const [accentColor, setAccentColor] = useState(initial?.accentColor ?? 'cyan')
+  const [language, setLanguage] = useState<LangCode>(
+    initial?.language ? toLangCode(initial.language) : (defaultLanguage ?? 'en')
+  )
 
   return (
     <div className="space-y-4 p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-secondary)]">
+      <div>
+        <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-2">Ngôn ngữ</label>
+        <div className="flex flex-wrap gap-2">
+          {LANG_LIST.map(l => (
+            <button
+              key={l.code}
+              onClick={() => setLanguage(l.code)}
+              className={cn('flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-sm font-semibold border transition-all',
+                language === l.code ? 'border-cyan-400 bg-cyan-500/15 text-cyan-400' : 'border-[var(--border)] text-[var(--text-secondary)] hover:border-cyan-400/40'
+              )}
+            >
+              <span>{l.flag}</span>
+              <span>{l.viName}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
       <div className="grid grid-cols-2 gap-3">
         <div>
           <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-1">Tên chặng</label>
@@ -110,7 +135,7 @@ function StageForm({
           Huỷ
         </button>
         <button
-          onClick={() => onSave({ title, subtitle, icon, color, accentColor })}
+          onClick={() => onSave({ title, subtitle, icon, color, accentColor, language })}
           disabled={saving || !title.trim() || !subtitle.trim()}
           className="px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-violet-600 text-white text-sm font-semibold hover:opacity-90 disabled:opacity-50 transition-all"
         >
@@ -132,6 +157,12 @@ export function StagesClient({
   const [showAdd, setShowAdd] = useState(false)
   const [editingId, setEditingId] = useState<string | null>(null)
   const [saving, setSaving] = useState(false)
+  const [filterLang, setFilterLang] = useState<LangCode>('en')
+
+  // Only show stages of the selected target language; ordering is per-language.
+  const visibleStages = stages
+    .filter(s => toLangCode(s.language) === filterLang)
+    .sort((a, b) => a.order - b.order)
 
   async function handleAdd(data: any) {
     setSaving(true)
@@ -192,26 +223,33 @@ export function StagesClient({
   }
 
   async function handleMove(id: string, dir: 'up' | 'down') {
-    const idx = stages.findIndex(s => s.id === id)
-    if (dir === 'up' && idx === 0) return
-    if (dir === 'down' && idx === stages.length - 1) return
+    // Reorder within the same target language only (orders are per-language).
+    const sameLang = stages.filter(s => toLangCode(s.language) === filterLang)
+    const pos = sameLang.findIndex(s => s.id === id)
+    if (dir === 'up' && pos === 0) return
+    if (dir === 'down' && pos === sameLang.length - 1) return
 
-    const newStages = [...stages]
-    const swapIdx = dir === 'up' ? idx - 1 : idx + 1
-    ;[newStages[idx], newStages[swapIdx]] = [newStages[swapIdx], newStages[idx]]
-    setStages(newStages)
+    const swapPos = dir === 'up' ? pos - 1 : pos + 1
+    const a = sameLang[pos]
+    const b = sameLang[swapPos]
+
+    setStages(s => s.map(st =>
+      st.id === a.id ? { ...st, order: b.order }
+      : st.id === b.id ? { ...st, order: a.order }
+      : st
+    ))
 
     try {
       await Promise.all([
-        fetch(`/api/admin/stages/${newStages[idx].id}`, {
+        fetch(`/api/admin/stages/${a.id}`, {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ order: idx }),
+          body: JSON.stringify({ order: b.order }),
         }),
-        fetch(`/api/admin/stages/${newStages[swapIdx].id}`, {
+        fetch(`/api/admin/stages/${b.id}`, {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ order: swapIdx }),
+          body: JSON.stringify({ order: a.order }),
         }),
       ])
     } catch {
@@ -238,10 +276,10 @@ export function StagesClient({
 
   return (
     <div className="p-8">
-      <div className="mb-8 flex items-start justify-between">
+      <div className="mb-6 flex items-start justify-between">
         <div>
           <h1 className="text-2xl font-bold text-[var(--text)]">Quản lý Stages</h1>
-          <p className="text-[var(--text-secondary)] text-sm mt-1">{stages.length} chặng học trên lộ trình</p>
+          <p className="text-[var(--text-secondary)] text-sm mt-1">{visibleStages.length} chặng học trên lộ trình</p>
         </div>
         <button
           onClick={() => { setShowAdd(true); setEditingId(null) }}
@@ -252,22 +290,42 @@ export function StagesClient({
         </button>
       </div>
 
+      {/* Target-language filter tabs */}
+      <div className="mb-6 flex flex-wrap gap-2">
+        {LANG_LIST.map(l => {
+          const n = stages.filter(s => toLangCode(s.language) === l.code).length
+          return (
+            <button
+              key={l.code}
+              onClick={() => setFilterLang(l.code)}
+              className={cn('flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-sm font-semibold border transition-all',
+                filterLang === l.code ? 'border-cyan-400 bg-cyan-500/15 text-cyan-400' : 'border-[var(--border)] text-[var(--text-secondary)] hover:border-cyan-400/40'
+              )}
+            >
+              <span>{l.flag}</span>
+              <span>{l.viName}</span>
+              <span className="text-xs opacity-70">({n})</span>
+            </button>
+          )
+        })}
+      </div>
+
       {showAdd && (
         <div className="mb-6">
           <h2 className="text-sm font-semibold text-[var(--text)] mb-3">Tạo Stage mới</h2>
-          <StageForm onSave={handleAdd} onCancel={() => setShowAdd(false)} saving={saving} />
+          <StageForm defaultLanguage={filterLang} onSave={handleAdd} onCancel={() => setShowAdd(false)} saving={saving} />
         </div>
       )}
 
-      {stages.length === 0 && !showAdd && (
+      {visibleStages.length === 0 && !showAdd && (
         <div className="rounded-2xl border border-dashed border-[var(--border)] p-16 text-center">
           <Layers size={40} className="mx-auto text-[var(--text-secondary)] mb-4 opacity-40" />
-          <p className="text-[var(--text-secondary)] mb-4">Chưa có stage nào. Tạo stage đầu tiên để bắt đầu!</p>
+          <p className="text-[var(--text-secondary)] mb-4">Chưa có stage nào cho {getLang(filterLang).viName}. Tạo stage đầu tiên để bắt đầu!</p>
         </div>
       )}
 
       <div className="space-y-3">
-        {stages.map((stage, idx) => (
+        {visibleStages.map((stage, idx) => (
           <div key={stage.id} className="rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] overflow-hidden">
             {editingId === stage.id ? (
               <div className="p-4">
@@ -286,7 +344,7 @@ export function StagesClient({
                       className="p-0.5 rounded hover:bg-white/20 disabled:opacity-30 text-white transition-colors">
                       <ChevronUp size={14} />
                     </button>
-                    <button onClick={() => handleMove(stage.id, 'down')} disabled={idx === stages.length - 1}
+                    <button onClick={() => handleMove(stage.id, 'down')} disabled={idx === visibleStages.length - 1}
                       className="p-0.5 rounded hover:bg-white/20 disabled:opacity-30 text-white transition-colors">
                       <ChevronDown size={14} />
                     </button>
@@ -295,7 +353,12 @@ export function StagesClient({
                   <span className="text-2xl">{stage.icon}</span>
 
                   <div className="flex-1">
-                    <div className="font-bold text-white">{stage.title}: {stage.subtitle}</div>
+                    <div className="flex items-center gap-2">
+                      <div className="font-bold text-white">{stage.title}: {stage.subtitle}</div>
+                      <span className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-white/20 text-white text-[10px] font-semibold">
+                        {getLang(stage.language).flag} {getLang(stage.language).viName}
+                      </span>
+                    </div>
                     <div className="text-xs text-white/70">
                       {lessonCounts[stage.id] ?? 0} bài học
                       {!stage.published && ' · Đang ẩn'}

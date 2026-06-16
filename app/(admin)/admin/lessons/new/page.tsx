@@ -9,12 +9,12 @@ import {
 } from 'lucide-react'
 import { toast } from 'sonner'
 import { cn } from '@/lib/utils'
+import { LANG_LIST, getLang, toLangCode, type LangCode } from '@/lib/languages'
 
-interface StageOption { id: string; title: string; subtitle: string; icon: string }
+interface StageOption { id: string; title: string; subtitle: string; icon: string; language?: string }
 
 type Mode = 'ai' | 'doc' | 'manual' | 'batch'
 type LessonType = 'vocabulary' | 'grammar' | 'speaking'
-type Level = 'A1' | 'A2' | 'B1' | 'B2'
 
 interface VocabCard { type: 'vocab'; word: string; phonetic: string; pos: string; meaning: string; example: string; options: string[]; answer: string }
 interface GrammarCard { type: 'grammar'; rule: string; explanation: string; examples: string[]; tip: string; question: string; options: string[]; answer: string }
@@ -39,12 +39,11 @@ const TYPE_OPTIONS: { value: LessonType; label: string }[] = [
 ]
 
 const DEFAULT_COUNT: Record<LessonType, number> = { vocabulary: 10, grammar: 9, speaking: 8 }
-const LEVEL_OPTIONS: Level[] = ['A1', 'A2', 'B1', 'B2']
 
 // ── Card preview component ────────────────────────────────────────────────────
-function CardPreview({ card, index, onEdit, onDelete, onMoveUp, onMoveDown, total }: {
+function CardPreview({ card, index, onEdit, onDelete, onMoveUp, onMoveDown, total, readingLabel }: {
   card: AnyCard; index: number; onEdit: (c: AnyCard) => void; onDelete: () => void
-  onMoveUp: () => void; onMoveDown: () => void; total: number
+  onMoveUp: () => void; onMoveDown: () => void; total: number; readingLabel: string
 }) {
   const [open, setOpen] = useState(false)
 
@@ -86,7 +85,7 @@ function CardPreview({ card, index, onEdit, onDelete, onMoveUp, onMoveDown, tota
 
       {open && (
         <div className="p-3 border-t border-[var(--border)] space-y-2">
-          {card.type === 'vocab' && <VocabEditor card={card as VocabCard} onChange={onEdit} />}
+          {card.type === 'vocab' && <VocabEditor card={card as VocabCard} onChange={onEdit} readingLabel={readingLabel} />}
           {card.type === 'grammar' && <GrammarEditor card={card as GrammarCard} onChange={onEdit} />}
           {card.type === 'fill-blank' && <FillBlankEditor card={card as FillBlankCard} onChange={onEdit} />}
           {card.type === 'arrange' && <ArrangeEditor card={card as ArrangeCard} onChange={onEdit} />}
@@ -117,13 +116,13 @@ function FieldArea({ label, value, onChange, rows = 3, placeholder }: { label: s
   )
 }
 
-function VocabEditor({ card, onChange }: { card: VocabCard; onChange: (c: AnyCard) => void }) {
+function VocabEditor({ card, onChange, readingLabel }: { card: VocabCard; onChange: (c: AnyCard) => void; readingLabel: string }) {
   const u = (f: keyof VocabCard, v: string | string[]) => onChange({ ...card, [f]: v })
   return (
     <div className="space-y-2">
       <div className="grid grid-cols-2 gap-2">
         <Field label="Từ" value={card.word} onChange={v => u('word', v)} />
-        <Field label="Phiên âm" value={card.phonetic} onChange={v => u('phonetic', v)} />
+        <Field label={readingLabel} value={card.phonetic} onChange={v => u('phonetic', v)} />
         <Field label="Loại từ" value={card.pos} onChange={v => u('pos', v)} placeholder="n. / v. / adj." />
         <Field label="Nghĩa tiếng Việt" value={card.meaning} onChange={v => u('meaning', v)} />
       </div>
@@ -225,7 +224,8 @@ function NewLessonPageInner() {
 
   const [mode, setMode] = useState<Mode>(initialMode)
   const [lessonType, setLessonType] = useState<LessonType>('vocabulary')
-  const [level, setLevel] = useState<Level>('A1')
+  const [lang, setLang] = useState<LangCode>('en')
+  const [level, setLevel] = useState<string>(getLang('en').defaultLevel)
   const [stageId, setStageId] = useState(searchParams.get('stageId') ?? '')
   const [stages, setStages] = useState<StageOption[]>([])
   const [title, setTitle] = useState('')
@@ -248,14 +248,31 @@ function NewLessonPageInner() {
       .then((data) => {
         const list: StageOption[] = Array.isArray(data) ? data : []
         setStages(list)
-        if (!stageId && list.length > 0) setStageId(list[0].id)
+        // If we arrived with a pre-selected stage (e.g. "Thêm bài" deep-link),
+        // adopt that stage's target language so the form is consistent.
+        const preselected = stageId ? list.find(s => s.id === stageId) : undefined
+        if (preselected) setLang(toLangCode(preselected.language))
+        else if (!stageId && list.length > 0) setStageId(list[0].id)
       })
       .catch(() => {})
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
     setCount(DEFAULT_COUNT[lessonType])
   }, [lessonType])
+
+  const langConfig = getLang(lang)
+  const levelOptions = langConfig.levels
+  // Only let the admin pick stages that belong to the selected target language.
+  const visibleStages = stages.filter(s => (s.language ?? 'en') === lang)
+
+  // When the target language changes, keep the level + selected stage valid.
+  useEffect(() => {
+    setLevel(prev => (langConfig.levels.includes(prev) ? prev : langConfig.defaultLevel))
+    setStageId(prev => (visibleStages.some(s => s.id === prev) ? prev : (visibleStages[0]?.id ?? '')))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lang, stages])
 
   const handleFileChange = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
@@ -296,7 +313,7 @@ function NewLessonPageInner() {
     if (mode === 'doc' && !docText.trim() && !uploadedFile) { toast.error('Cần upload file hoặc paste nội dung'); return }
     setGenerating(true)
     try {
-      const body: Record<string, unknown> = { type: lessonType, level, topic, count }
+      const body: Record<string, unknown> = { type: lessonType, level, topic, count, language: lang }
       if (mode === 'doc') {
         if (uploadedFile?.kind === 'pdf') body.pdfBase64 = uploadedFile.data
         else if (uploadedFile?.kind === 'image') { body.imageBase64 = uploadedFile.data; body.imageMimeType = uploadedFile.mimeType }
@@ -328,7 +345,7 @@ function NewLessonPageInner() {
       const res = await fetch('/api/admin/ai/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ wordList: words, level }),
+        body: JSON.stringify({ wordList: words, level, language: lang }),
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error)
@@ -367,7 +384,7 @@ function NewLessonPageInner() {
       const res = await fetch('/api/admin/custom-lessons', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ stageId, title, type: lessonType, topic, level, description, xp, cards, published: publish }),
+        body: JSON.stringify({ stageId, title, type: lessonType, topic, level, description, xp, cards, published: publish, language: lang }),
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error)
@@ -441,13 +458,29 @@ function NewLessonPageInner() {
             <h2 className="font-semibold text-[var(--text)]">Thông tin bài học</h2>
 
             <div className="grid grid-cols-2 gap-3">
+              {/* Language */}
+              <div className="col-span-2">
+                <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-1">Ngôn ngữ học</label>
+                <div className="flex flex-wrap gap-2">
+                  {LANG_LIST.map(l => (
+                    <button key={l.code} onClick={() => setLang(l.code)}
+                      className={cn('flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-semibold border transition-all',
+                        lang === l.code ? 'border-cyan-400 bg-cyan-500/15 text-cyan-400' : 'border-[var(--border)] text-[var(--text-secondary)] hover:border-cyan-400/40'
+                      )}>
+                      <span>{l.flag}</span>
+                      <span>{l.viName}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               {/* Stage */}
               <div>
                 <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-1">Chặng (Stage)</label>
                 <select value={stageId} onChange={e => setStageId(e.target.value)}
                   className="w-full px-3 py-2.5 rounded-xl border border-[var(--border)] bg-[var(--bg-secondary)] text-sm text-[var(--text)] focus:outline-none focus:border-cyan-400">
-                  {stages.length === 0 && <option value="">-- Chưa có stage --</option>}
-                  {stages.map(s => <option key={s.id} value={s.id}>{s.icon} {s.title}: {s.subtitle}</option>)}
+                  {visibleStages.length === 0 && <option value="">-- Chưa có stage cho {langConfig.viName} --</option>}
+                  {visibleStages.map(s => <option key={s.id} value={s.id}>{s.icon} {s.title}: {s.subtitle}</option>)}
                 </select>
               </div>
 
@@ -464,11 +497,11 @@ function NewLessonPageInner() {
 
               {/* Level */}
               <div>
-                <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-1">Cấp độ</label>
-                <div className="flex gap-2">
-                  {LEVEL_OPTIONS.map(l => (
+                <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-1">Cấp độ ({langConfig.exam})</label>
+                <div className="flex flex-wrap gap-2">
+                  {levelOptions.map(l => (
                     <button key={l} onClick={() => setLevel(l)}
-                      className={cn('flex-1 py-2 rounded-xl text-sm font-semibold border transition-all',
+                      className={cn('flex-1 min-w-[3rem] py-2 rounded-xl text-sm font-semibold border transition-all',
                         level === l ? 'border-cyan-400 bg-cyan-500/15 text-cyan-400' : 'border-[var(--border)] text-[var(--text-secondary)] hover:border-cyan-400/40'
                       )}>
                       {l}
@@ -641,6 +674,7 @@ function NewLessonPageInner() {
                 {cards.map((card, i) => (
                   <CardPreview
                     key={i} card={card} index={i} total={cards.length}
+                    readingLabel={langConfig.readingLabel}
                     onEdit={c => updateCard(i, c)}
                     onDelete={() => deleteCard(i)}
                     onMoveUp={() => moveCard(i, i - 1)}
