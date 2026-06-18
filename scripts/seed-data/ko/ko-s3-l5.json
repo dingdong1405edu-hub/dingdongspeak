@@ -1,0 +1,105 @@
+{
+  "key": "ko-s3-l5",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "취미",
+      "phonetic": "chwimi",
+      "pos": "n.",
+      "meaning": "sở thích",
+      "example": "제 취미는 영화 보기예요.",
+      "options": ["sở thích", "thói quen xấu", "nghề nghiệp", "kỳ nghỉ"],
+      "answer": "sở thích"
+    },
+    {
+      "type": "vocab",
+      "word": "운동",
+      "phonetic": "undong",
+      "pos": "n.",
+      "meaning": "thể thao; việc tập thể dục",
+      "example": "저는 아침마다 운동을 해요.",
+      "options": ["thể thao; việc tập thể dục", "âm nhạc", "việc đọc sách", "việc nghỉ ngơi"],
+      "answer": "thể thao; việc tập thể dục"
+    },
+    {
+      "type": "vocab",
+      "word": "축구",
+      "phonetic": "chukgu",
+      "pos": "n.",
+      "meaning": "bóng đá",
+      "example": "친구들과 같이 축구를 해요.",
+      "options": ["bóng đá", "bóng rổ", "bơi lội", "leo núi"],
+      "answer": "bóng đá"
+    },
+    {
+      "type": "vocab",
+      "word": "수영",
+      "phonetic": "suyeong",
+      "pos": "n.",
+      "meaning": "bơi lội",
+      "example": "여름에는 바다에서 수영을 해요.",
+      "options": ["bơi lội", "bóng đá", "leo núi", "chụp ảnh"],
+      "answer": "bơi lội"
+    },
+    {
+      "type": "vocab",
+      "word": "등산",
+      "phonetic": "deungsan",
+      "pos": "n.",
+      "meaning": "leo núi",
+      "example": "주말에 가족과 등산을 가요.",
+      "options": ["leo núi", "du lịch", "bơi lội", "vẽ tranh"],
+      "answer": "leo núi"
+    },
+    {
+      "type": "vocab",
+      "word": "영화",
+      "phonetic": "yeonghwa",
+      "pos": "n.",
+      "meaning": "phim, điện ảnh",
+      "example": "주말에 영화를 보러 가요.",
+      "options": ["phim, điện ảnh", "âm nhạc", "bài hát", "bức ảnh"],
+      "answer": "phim, điện ảnh"
+    },
+    {
+      "type": "vocab",
+      "word": "음악",
+      "phonetic": "eumak",
+      "pos": "n.",
+      "meaning": "âm nhạc",
+      "example": "저는 음악을 들으면서 공부해요.",
+      "options": ["âm nhạc", "phim, điện ảnh", "trò chơi", "bức tranh"],
+      "answer": "âm nhạc"
+    },
+    {
+      "type": "vocab",
+      "word": "독서",
+      "phonetic": "dokseo",
+      "pos": "n.",
+      "meaning": "việc đọc sách",
+      "example": "제 취미는 독서예요.",
+      "options": ["việc đọc sách", "việc hát hò", "việc chụp ảnh", "việc tập thể dục"],
+      "answer": "việc đọc sách"
+    },
+    {
+      "type": "vocab",
+      "word": "여행",
+      "phonetic": "yeohaeng",
+      "pos": "n.",
+      "meaning": "du lịch, chuyến đi",
+      "example": "방학에 한국으로 여행을 갈 거예요.",
+      "options": ["du lịch, chuyến đi", "leo núi", "bóng rổ", "âm nhạc"],
+      "answer": "du lịch, chuyến đi"
+    },
+    {
+      "type": "vocab",
+      "word": "쉬다",
+      "phonetic": "swida",
+      "pos": "v.",
+      "meaning": "nghỉ ngơi",
+      "example": "주말에는 집에서 푹 쉬어요.",
+      "options": ["nghỉ ngơi", "tập thể dục", "đi du lịch", "chụp ảnh"],
+      "answer": "nghỉ ngơi"
+    }
+  ]
+}

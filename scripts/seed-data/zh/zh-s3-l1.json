@@ -1,0 +1,105 @@
+{
+  "key": "zh-s3-l1",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "公共汽车",
+      "phonetic": "gōnggòng qìchē",
+      "pos": "n.",
+      "meaning": "xe buýt",
+      "example": "我每天坐公共汽车去上班。",
+      "options": ["xe buýt", "tàu điện ngầm", "xe taxi", "xe đạp"],
+      "answer": "xe buýt"
+    },
+    {
+      "type": "vocab",
+      "word": "出租车",
+      "phonetic": "chūzūchē",
+      "pos": "n.",
+      "meaning": "xe taxi",
+      "example": "下雨了，我们坐出租车回家吧。",
+      "options": ["xe taxi", "xe lửa", "máy bay", "xe buýt"],
+      "answer": "xe taxi"
+    },
+    {
+      "type": "vocab",
+      "word": "地铁",
+      "phonetic": "dìtiě",
+      "pos": "n.",
+      "meaning": "tàu điện ngầm",
+      "example": "坐地铁去机场又快又便宜。",
+      "options": ["tàu điện ngầm", "xe buýt", "xe đạp", "nhà ga"],
+      "answer": "tàu điện ngầm"
+    },
+    {
+      "type": "vocab",
+      "word": "火车",
+      "phonetic": "huǒchē",
+      "pos": "n.",
+      "meaning": "tàu hỏa",
+      "example": "我明天坐火车去北京。",
+      "options": ["tàu hỏa", "máy bay", "xe taxi", "tàu điện ngầm"],
+      "answer": "tàu hỏa"
+    },
+    {
+      "type": "vocab",
+      "word": "飞机",
+      "phonetic": "fēijī",
+      "pos": "n.",
+      "meaning": "máy bay",
+      "example": "坐飞机去上海只要两个小时。",
+      "options": ["máy bay", "tàu hỏa", "xe buýt", "xe đạp"],
+      "answer": "máy bay"
+    },
+    {
+      "type": "vocab",
+      "word": "自行车",
+      "phonetic": "zìxíngchē",
+      "pos": "n.",
+      "meaning": "xe đạp",
+      "example": "他骑自行车去学校。",
+      "options": ["xe đạp", "xe máy", "xe taxi", "tàu hỏa"],
+      "answer": "xe đạp"
+    },
+    {
+      "type": "vocab",
+      "word": "坐",
+      "phonetic": "zuò",
+      "pos": "v.",
+      "meaning": "ngồi; đi (bằng phương tiện)",
+      "example": "你想坐火车还是坐飞机？",
+      "options": ["ngồi; đi (bằng phương tiện)", "lái xe", "đi bộ", "đứng"],
+      "answer": "ngồi; đi (bằng phương tiện)"
+    },
+    {
+      "type": "vocab",
+      "word": "开车",
+      "phonetic": "kāichē",
+      "pos": "v.",
+      "meaning": "lái xe",
+      "example": "我爸爸会开车，他每天开车去公司。",
+      "options": ["lái xe", "đi bộ", "ngồi xe", "đạp xe"],
+      "answer": "lái xe"
+    },
+    {
+      "type": "vocab",
+      "word": "远",
+      "phonetic": "yuǎn",
+      "pos": "adj.",
+      "meaning": "xa",
+      "example": "我家离学校很远。",
+      "options": ["xa", "gần", "bên trái", "phía trước"],
+      "answer": "xa"
+    },
+    {
+      "type": "vocab",
+      "word": "近",
+      "phonetic": "jìn",
+      "pos": "adj.",
+      "meaning": "gần",
+      "example": "地铁站离这儿很近，走五分钟就到了。",
+      "options": ["gần", "xa", "bên phải", "phía sau"],
+      "answer": "gần"
+    }
+  ]
+}

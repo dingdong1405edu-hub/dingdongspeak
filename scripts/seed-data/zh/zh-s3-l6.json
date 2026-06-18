@@ -1,0 +1,141 @@
+{
+  "key": "zh-s3-l6",
+  "cards": [
+    {
+      "type": "speaking",
+      "prompt": "你几点起床？",
+      "hint": "Nói giờ bạn thức dậy mỗi ngày, có thể nói thêm dậy sớm hay muộn và lý do.",
+      "samplePhrases": [
+        "我每天……点起床。",
+        "我一般六点半起床。",
+        "我起得很早／很晚。"
+      ],
+      "vocabulary": [
+        { "word": "起床", "meaning": "thức dậy, ngủ dậy", "example": "我每天七点起床。" },
+        { "word": "几点", "meaning": "mấy giờ", "example": "你几点起床？" },
+        { "word": "每天", "meaning": "mỗi ngày, hằng ngày", "example": "我每天都很早起床。" },
+        { "word": "早", "meaning": "sớm", "example": "今天我起得很早。" }
+      ],
+      "ideas": [
+        "Nói rõ giờ thức dậy bằng cấu trúc ……点 + 起床.",
+        "Cho biết bạn dậy sớm hay muộn, có dùng đồng hồ báo thức không.",
+        "Có thể nói thêm giờ dậy khác nhau giữa ngày thường và cuối tuần."
+      ],
+      "sampleAnswer": "我每天早上六点半起床。我起得比较早，因为要去上班。起床以后，我先喝一杯水，然后洗脸。周末我起得晚一点。\n\n(Dịch: Mỗi ngày tôi thức dậy lúc sáu giờ rưỡi sáng. Tôi dậy khá sớm vì phải đi làm. Sau khi dậy, tôi uống một cốc nước trước, rồi rửa mặt. Cuối tuần tôi dậy muộn hơn một chút.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "你早上做什么？",
+      "hint": "Kể những việc bạn thường làm vào buổi sáng theo thứ tự: ăn sáng, đánh răng, đi học hoặc đi làm.",
+      "samplePhrases": [
+        "我早上先……，然后……",
+        "我先吃早饭。",
+        "我每天早上都很忙。"
+      ],
+      "vocabulary": [
+        { "word": "早上", "meaning": "buổi sáng", "example": "我早上喜欢喝咖啡。" },
+        { "word": "早饭", "meaning": "bữa sáng", "example": "我早上吃早饭。" },
+        { "word": "先……然后……", "meaning": "trước…sau đó…", "example": "我先洗脸，然后吃饭。" },
+        { "word": "刷牙", "meaning": "đánh răng", "example": "我每天早上刷牙。" }
+      ],
+      "ideas": [
+        "Kể các việc buổi sáng theo thứ tự dùng 先……然后……",
+        "Nói bạn ăn sáng món gì, uống gì.",
+        "Có thể nói buổi sáng bận hay thong thả."
+      ],
+      "sampleAnswer": "我早上很忙。我先刷牙、洗脸，然后吃早饭。我一般吃面包，喝一杯牛奶。吃完早饭以后，我就去上班。早上的时间过得很快。\n\n(Dịch: Buổi sáng tôi rất bận. Tôi đánh răng, rửa mặt trước, sau đó ăn sáng. Tôi thường ăn bánh mì và uống một cốc sữa. Ăn sáng xong, tôi liền đi làm. Thời gian buổi sáng trôi qua rất nhanh.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "你怎么去学校或者上班？",
+      "hint": "Nói bạn đi học hoặc đi làm bằng phương tiện gì và mất bao lâu.",
+      "samplePhrases": [
+        "我坐……去上班。",
+        "我每天骑自行车去学校。",
+        "从我家到公司要……分钟。"
+      ],
+      "vocabulary": [
+        { "word": "上班", "meaning": "đi làm", "example": "我八点上班。" },
+        { "word": "坐", "meaning": "ngồi (đi bằng phương tiện)", "example": "我坐地铁去上班。" },
+        { "word": "地铁", "meaning": "tàu điện ngầm", "example": "坐地铁很快。" },
+        { "word": "自行车", "meaning": "xe đạp", "example": "我骑自行车去学校。" },
+        { "word": "分钟", "meaning": "phút", "example": "从我家到公司要二十分钟。" }
+      ],
+      "ideas": [
+        "Nói bạn dùng phương tiện gì: đi bộ, xe đạp, xe buýt, tàu điện ngầm.",
+        "Cho biết quãng đường gần hay xa, mất bao nhiêu phút.",
+        "Có thể so sánh cách đi nào nhanh hơn hoặc tiện hơn."
+      ],
+      "sampleAnswer": "我每天坐地铁去上班。我家离公司有点儿远，坐地铁比坐公共汽车快。从我家到公司大概要三十分钟。地铁很方便，也不太贵。\n\n(Dịch: Mỗi ngày tôi đi làm bằng tàu điện ngầm. Nhà tôi cách công ty hơi xa, đi tàu điện ngầm nhanh hơn đi xe buýt. Từ nhà tôi đến công ty mất khoảng ba mươi phút. Tàu điện ngầm rất tiện và cũng không đắt lắm.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "你周末喜欢做什么？",
+      "hint": "Kể những hoạt động bạn thích vào cuối tuần: nghỉ ngơi, gặp bạn, thể thao, xem phim.",
+      "samplePhrases": [
+        "周末我喜欢……",
+        "我常常和朋友一起……",
+        "周末我想休息。"
+      ],
+      "vocabulary": [
+        { "word": "周末", "meaning": "cuối tuần", "example": "周末我不上班。" },
+        { "word": "喜欢", "meaning": "thích", "example": "我喜欢看电影。" },
+        { "word": "运动", "meaning": "vận động, thể thao", "example": "周末我喜欢运动。" },
+        { "word": "休息", "meaning": "nghỉ ngơi", "example": "周末我想在家休息。" },
+        { "word": "一起", "meaning": "cùng nhau", "example": "我们一起去逛街。" }
+      ],
+      "ideas": [
+        "Nói cuối tuần bạn nghỉ ngơi hay đi ra ngoài.",
+        "Kể các hoạt động ưa thích: thể thao, xem phim, gặp bạn bè.",
+        "Có thể nói bạn thường làm việc đó với ai."
+      ],
+      "sampleAnswer": "周末我喜欢休息，也喜欢运动。星期六上午我常常去跑步或者游泳。下午我有时候和朋友一起看电影、逛街。星期天晚上我在家看书，准备下个星期的工作。\n\n(Dịch: Cuối tuần tôi thích nghỉ ngơi và cũng thích vận động. Sáng thứ Bảy tôi thường đi chạy bộ hoặc bơi. Buổi chiều thỉnh thoảng tôi đi xem phim, đi dạo phố cùng bạn bè. Tối Chủ nhật tôi ở nhà đọc sách, chuẩn bị cho công việc tuần sau.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "今天天气怎么样？",
+      "hint": "Mô tả thời tiết hôm nay: nóng hay lạnh, có mưa hay nắng, và cảm nhận của bạn.",
+      "samplePhrases": [
+        "今天天气很好。",
+        "今天有点儿热／冷。",
+        "今天会下雨。"
+      ],
+      "vocabulary": [
+        { "word": "天气", "meaning": "thời tiết", "example": "今天天气很好。" },
+        { "word": "晴", "meaning": "nắng, quang đãng", "example": "今天是晴天。" },
+        { "word": "热", "meaning": "nóng", "example": "今天很热。" },
+        { "word": "下雨", "meaning": "mưa", "example": "今天下午会下雨。" },
+        { "word": "舒服", "meaning": "dễ chịu, thoải mái", "example": "今天天气很舒服。" }
+      ],
+      "ideas": [
+        "Nói trời nắng, mưa, nhiều mây hay quang đãng.",
+        "Cho biết nóng, lạnh hay mát, có thể nói nhiệt độ.",
+        "Nói cảm nhận của bạn và bạn muốn làm gì với thời tiết đó."
+      ],
+      "sampleAnswer": "今天天气很好，是晴天。早上有一点儿凉快，下午有点儿热，但是不下雨。我觉得这样的天气很舒服，很适合出去走走。听说明天会下雨，要带伞。\n\n(Dịch: Hôm nay thời tiết rất đẹp, trời nắng. Buổi sáng hơi mát, buổi chiều hơi nóng, nhưng không mưa. Tôi thấy thời tiết thế này rất dễ chịu, rất thích hợp để ra ngoài đi dạo. Nghe nói ngày mai sẽ mưa, phải mang ô.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "你最近忙吗？身体好吗？",
+      "hint": "Nói dạo này bạn có bận không, sức khỏe thế nào, và cách bạn chăm sóc bản thân.",
+      "samplePhrases": [
+        "我最近很忙。",
+        "我身体很好，谢谢。",
+        "我有点儿累，但是没问题。"
+      ],
+      "vocabulary": [
+        { "word": "最近", "meaning": "gần đây, dạo này", "example": "我最近工作很多。" },
+        { "word": "忙", "meaning": "bận", "example": "我最近很忙。" },
+        { "word": "身体", "meaning": "sức khỏe, cơ thể", "example": "我身体很好。" },
+        { "word": "累", "meaning": "mệt", "example": "工作以后我有点儿累。" },
+        { "word": "注意", "meaning": "chú ý, để ý", "example": "你要注意身体。" }
+      ],
+      "ideas": [
+        "Nói dạo này bạn bận hay rảnh, bận vì việc gì.",
+        "Cho biết sức khỏe của bạn tốt hay hơi mệt.",
+        "Có thể nói cách bạn giữ gìn sức khỏe và hỏi thăm lại đối phương."
+      ],
+      "sampleAnswer": "我最近比较忙，工作和学习都很多，所以有时候有点儿累。不过我的身体还好。我每天都运动，也睡得很好，所以不太容易生病。你要注意身体，别太累了。你最近怎么样？\n\n(Dịch: Dạo này tôi khá bận, công việc và việc học đều nhiều, nên đôi khi hơi mệt. Nhưng sức khỏe của tôi vẫn ổn. Mỗi ngày tôi đều vận động và ngủ rất ngon, nên không dễ bị ốm lắm. Bạn nhớ giữ gìn sức khỏe, đừng quá mệt nhé. Dạo này bạn thế nào?)"
+    }
+  ]
+}

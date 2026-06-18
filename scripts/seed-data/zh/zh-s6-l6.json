@@ -1,0 +1,149 @@
+{
+  "key": "zh-s6-l6",
+  "cards": [
+    {
+      "type": "speaking",
+      "prompt": "你觉得手机对生活有什么影响？",
+      "hint": "Nói cả mặt tích cực (tiện lợi, liên lạc) và tiêu cực (nghiện, ảnh hưởng sức khỏe); nêu ý kiến cá nhân của bạn.",
+      "samplePhrases": [
+        "我觉得手机对我们的生活影响很大……",
+        "一方面……另一方面……",
+        "总的来说，我认为……"
+      ],
+      "vocabulary": [
+        { "word": "影响", "meaning": "ảnh hưởng", "example": "手机对我们的生活影响很大。" },
+        { "word": "方便", "meaning": "tiện lợi", "example": "用手机付款很方便。" },
+        { "word": "联系", "meaning": "liên lạc", "example": "我用手机跟家人联系。" },
+        { "word": "沉迷", "meaning": "nghiện, đắm chìm", "example": "很多年轻人沉迷于玩手机。" },
+        { "word": "影响健康", "meaning": "ảnh hưởng sức khỏe", "example": "长时间看手机会影响健康。" }
+      ],
+      "ideas": [
+        "Mặt tốt: liên lạc dễ dàng, tra cứu thông tin, mua sắm và thanh toán tiện lợi.",
+        "Mặt xấu: dễ nghiện, mất thời gian, ảnh hưởng mắt và giấc ngủ.",
+        "Ảnh hưởng đến giao tiếp trực tiếp giữa người với người.",
+        "Quan điểm cá nhân: cần dùng điện thoại một cách hợp lý."
+      ],
+      "sampleAnswer": "我觉得手机对我们的生活影响很大。一方面，手机很方便，我们可以用它跟家人朋友联系，还可以上网、购物和学习。另一方面，有些人沉迷于玩手机，花太多时间看屏幕，这样会影响健康和学习。总的来说，我认为手机是个好工具，但是我们应该合理地使用它。\n\n(Dịch: Tôi cảm thấy điện thoại có ảnh hưởng rất lớn đến cuộc sống của chúng ta. Một mặt, điện thoại rất tiện lợi, chúng ta có thể dùng nó để liên lạc với gia đình và bạn bè, còn có thể lên mạng, mua sắm và học tập. Mặt khác, một số người nghiện chơi điện thoại, bỏ quá nhiều thời gian nhìn màn hình, như vậy sẽ ảnh hưởng đến sức khỏe và việc học. Nói chung, tôi cho rằng điện thoại là một công cụ tốt, nhưng chúng ta nên sử dụng nó một cách hợp lý.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "我们应该怎么保护环境？",
+      "hint": "Đưa ra các biện pháp cụ thể: tiết kiệm, tái chế, giảm rác thải; nhấn mạnh trách nhiệm của mỗi người.",
+      "samplePhrases": [
+        "为了保护环境，我们应该……",
+        "首先……其次……",
+        "每个人都有责任……"
+      ],
+      "vocabulary": [
+        { "word": "保护环境", "meaning": "bảo vệ môi trường", "example": "保护环境是每个人的责任。" },
+        { "word": "节约", "meaning": "tiết kiệm", "example": "我们要节约用水用电。" },
+        { "word": "污染", "meaning": "ô nhiễm", "example": "汽车太多会造成空气污染。" },
+        { "word": "垃圾", "meaning": "rác", "example": "请不要乱扔垃圾。" },
+        { "word": "回收", "meaning": "tái chế, thu hồi", "example": "我们应该把塑料瓶回收利用。" }
+      ],
+      "ideas": [
+        "Tiết kiệm nước và điện trong sinh hoạt hằng ngày.",
+        "Không vứt rác bừa bãi, phân loại và tái chế rác.",
+        "Đi xe đạp hoặc phương tiện công cộng để giảm ô nhiễm không khí.",
+        "Mỗi người đều có trách nhiệm bảo vệ môi trường."
+      ],
+      "sampleAnswer": "为了保护环境，我们每个人都应该做一些事情。首先，我们要节约用水和用电，不浪费资源。其次，我们不能乱扔垃圾，应该把垃圾分类，把能回收的东西回收利用。另外，我们可以多坐公共汽车或者骑自行车，这样能减少空气污染。我觉得保护环境是每个人的责任。\n\n(Dịch: Để bảo vệ môi trường, mỗi người chúng ta đều nên làm một số việc. Trước hết, chúng ta phải tiết kiệm nước và điện, không lãng phí tài nguyên. Tiếp theo, chúng ta không được vứt rác bừa bãi, nên phân loại rác, đem những thứ có thể tái chế đi tái chế. Ngoài ra, chúng ta có thể đi xe buýt hoặc đạp xe nhiều hơn, như vậy có thể giảm ô nhiễm không khí. Tôi cho rằng bảo vệ môi trường là trách nhiệm của mỗi người.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "你认为网上购物好不好？",
+      "hint": "Nêu ưu điểm (tiện, rẻ, nhiều lựa chọn) và nhược điểm (không thử được, lo lừa đảo); đưa ra kết luận.",
+      "samplePhrases": [
+        "我觉得网上购物有好处也有坏处……",
+        "网上购物的好处是……",
+        "但是也有一些问题，比如……"
+      ],
+      "vocabulary": [
+        { "word": "网上购物", "meaning": "mua sắm trực tuyến", "example": "现在很多人喜欢网上购物。" },
+        { "word": "方便", "meaning": "tiện lợi", "example": "网上购物又方便又快。" },
+        { "word": "便宜", "meaning": "rẻ", "example": "网上的东西常常比较便宜。" },
+        { "word": "质量", "meaning": "chất lượng", "example": "有时候网上买的东西质量不太好。" },
+        { "word": "退货", "meaning": "trả hàng", "example": "如果不满意，可以退货。" }
+      ],
+      "ideas": [
+        "Ưu điểm: tiện lợi, tiết kiệm thời gian, giá thường rẻ hơn, nhiều lựa chọn.",
+        "Nhược điểm: không thử trực tiếp được, lo chất lượng và hàng giả.",
+        "Cần chọn cửa hàng uy tín và đọc đánh giá trước khi mua.",
+        "Kết luận: mua sắm trực tuyến tốt nếu biết cách mua thông minh."
+      ],
+      "sampleAnswer": "我觉得网上购物有好处也有坏处。好处是非常方便，我们不用出门就能买到很多东西，而且网上的东西常常比较便宜，选择也很多。但是也有一些问题，比如我们不能先试一下，有时候收到的东西质量不太好，或者和图片不一样。所以我觉得网上购物挺好的，不过买之前最好看看别人的评价。\n\n(Dịch: Tôi cảm thấy mua sắm trực tuyến vừa có lợi vừa có hại. Lợi ích là rất tiện lợi, chúng ta không cần ra khỏi nhà cũng có thể mua được nhiều thứ, hơn nữa đồ trên mạng thường rẻ hơn, lựa chọn cũng rất nhiều. Nhưng cũng có một số vấn đề, ví dụ như chúng ta không thể thử trước, đôi khi nhận được đồ chất lượng không tốt lắm, hoặc khác với hình ảnh. Vì vậy tôi thấy mua sắm trực tuyến khá tốt, nhưng trước khi mua thì nên xem đánh giá của người khác.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "年轻人应该怎么减压？",
+      "hint": "Gợi ý các cách giảm áp lực: vận động, nghe nhạc, trò chuyện với bạn bè, nghỉ ngơi hợp lý.",
+      "samplePhrases": [
+        "现在年轻人的压力越来越大……",
+        "我觉得最好的方法是……",
+        "除此以外，还可以……"
+      ],
+      "vocabulary": [
+        { "word": "压力", "meaning": "áp lực", "example": "年轻人的工作压力很大。" },
+        { "word": "减压", "meaning": "giảm áp lực, giải tỏa", "example": "运动是一种很好的减压方法。" },
+        { "word": "放松", "meaning": "thư giãn", "example": "周末我喜欢在家放松一下。" },
+        { "word": "运动", "meaning": "vận động, thể thao", "example": "多运动对身体和心情都好。" },
+        { "word": "聊天", "meaning": "trò chuyện", "example": "心情不好的时候，可以跟朋友聊天。" }
+      ],
+      "ideas": [
+        "Tập thể dục, chơi thể thao để giải tỏa căng thẳng.",
+        "Nghe nhạc, xem phim hoặc làm việc mình thích để thư giãn.",
+        "Trò chuyện, chia sẻ với bạn bè và gia đình.",
+        "Sắp xếp thời gian hợp lý, ngủ đủ giấc và nghỉ ngơi."
+      ],
+      "sampleAnswer": "现在年轻人的压力越来越大，工作和学习都很忙，所以减压非常重要。我觉得最好的方法是运动，比如跑步、打球或者游泳，运动以后心情会好很多。除此以外，还可以听听音乐、看看电影，或者跟朋友聊聊天，把心里的话说出来。我觉得最重要的是好好休息，每天睡够觉，这样才能保持身体健康和好心情。\n\n(Dịch: Hiện nay áp lực của người trẻ ngày càng lớn, công việc và việc học đều rất bận, vì vậy giải tỏa căng thẳng rất quan trọng. Tôi cảm thấy cách tốt nhất là vận động, ví dụ như chạy bộ, chơi bóng hoặc bơi lội, sau khi vận động tâm trạng sẽ tốt hơn nhiều. Ngoài ra, còn có thể nghe nhạc, xem phim, hoặc trò chuyện với bạn bè, nói ra những điều trong lòng. Tôi cho rằng điều quan trọng nhất là nghỉ ngơi cho tốt, mỗi ngày ngủ đủ giấc, như vậy mới có thể giữ được sức khỏe và tâm trạng tốt.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "你觉得学外语重要吗？",
+      "hint": "Nêu lý do tại sao học ngoại ngữ quan trọng: công việc, du lịch, hiểu văn hóa; cho ví dụ bản thân.",
+      "samplePhrases": [
+        "我觉得学外语非常重要……",
+        "第一……第二……",
+        "对我来说，学中文帮助很大……"
+      ],
+      "vocabulary": [
+        { "word": "外语", "meaning": "ngoại ngữ", "example": "学一门外语对将来很有用。" },
+        { "word": "重要", "meaning": "quan trọng", "example": "学外语越来越重要了。" },
+        { "word": "交流", "meaning": "giao tiếp, giao lưu", "example": "会说外语能跟外国人交流。" },
+        { "word": "机会", "meaning": "cơ hội", "example": "会外语能找到更好的工作机会。" },
+        { "word": "文化", "meaning": "văn hóa", "example": "学外语也能了解别的国家的文化。" }
+      ],
+      "ideas": [
+        "Học ngoại ngữ giúp tìm được công việc tốt hơn, nhiều cơ hội hơn.",
+        "Giúp giao tiếp với người nước ngoài khi đi du lịch hoặc làm việc.",
+        "Hiểu thêm về văn hóa và cách suy nghĩ của nước khác.",
+        "Ví dụ bản thân: học tiếng Trung giúp ích cho công việc và sở thích."
+      ],
+      "sampleAnswer": "我觉得学外语非常重要。第一，会说外语可以帮我们找到更好的工作，有更多的机会。第二，出国旅游或者工作的时候，会外语就能跟外国人交流，很方便。第三，学外语还能让我们了解别的国家的文化。对我来说，学中文帮助很大，不但让我认识了很多新朋友，而且也让我更喜欢中国文化。所以我认为每个人都应该学一门外语。\n\n(Dịch: Tôi cảm thấy học ngoại ngữ rất quan trọng. Thứ nhất, biết nói ngoại ngữ có thể giúp chúng ta tìm được công việc tốt hơn, có nhiều cơ hội hơn. Thứ hai, khi ra nước ngoài du lịch hoặc làm việc, biết ngoại ngữ thì có thể giao tiếp với người nước ngoài, rất tiện lợi. Thứ ba, học ngoại ngữ còn giúp chúng ta hiểu văn hóa của các nước khác. Đối với tôi, học tiếng Trung giúp ích rất nhiều, không những giúp tôi quen được nhiều bạn mới, mà còn khiến tôi thích văn hóa Trung Quốc hơn. Vì vậy tôi cho rằng mỗi người đều nên học một ngoại ngữ.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "你怎么看待网上交友？",
+      "hint": "Nêu cả mặt lợi (mở rộng quan hệ, gặp người cùng sở thích) và mặt rủi ro (lừa đảo, an toàn); lời khuyên.",
+      "samplePhrases": [
+        "对于网上交友，我的看法是……",
+        "网上交友有它的好处……",
+        "不过，我们也要注意安全……"
+      ],
+      "vocabulary": [
+        { "word": "交友", "meaning": "kết bạn", "example": "现在很多人在网上交友。" },
+        { "word": "认识", "meaning": "làm quen, quen biết", "example": "我在网上认识了很多新朋友。" },
+        { "word": "兴趣", "meaning": "sở thích, hứng thú", "example": "网上可以找到有相同兴趣的人。" },
+        { "word": "小心", "meaning": "cẩn thận", "example": "网上交友要小心一点。" },
+        { "word": "骗", "meaning": "lừa, lừa gạt", "example": "有些坏人在网上骗钱。" }
+      ],
+      "ideas": [
+        "Lợi ích: mở rộng quan hệ, làm quen người cùng sở thích ở khắp nơi.",
+        "Tiện cho người nhút nhát hoặc bận rộn, dễ bắt đầu trò chuyện.",
+        "Rủi ro: thông tin có thể giả, dễ bị lừa tiền hoặc lừa tình cảm.",
+        "Lời khuyên: cẩn thận, không tin ngay, không cho thông tin cá nhân quan trọng."
+      ],
+      "sampleAnswer": "对于网上交友，我觉得有好处也有坏处。网上交友的好处是我们可以认识来自不同地方的人，还能找到跟自己有相同兴趣的朋友。对于比较害羞或者很忙的人来说，网上聊天也更方便。不过，我们也要注意安全，因为网上有些人说的不是真的，甚至会骗人。所以我觉得网上交友可以，但是一定要小心，不要随便相信别人，也不要把重要的个人信息告诉陌生人。\n\n(Dịch: Đối với việc kết bạn qua mạng, tôi cảm thấy vừa có lợi vừa có hại. Lợi ích của kết bạn qua mạng là chúng ta có thể quen biết những người đến từ nhiều nơi khác nhau, còn có thể tìm được những người bạn có cùng sở thích với mình. Đối với người khá nhút nhát hoặc rất bận, trò chuyện qua mạng cũng tiện lợi hơn. Tuy nhiên, chúng ta cũng phải chú ý an toàn, bởi vì trên mạng có một số người nói không thật, thậm chí còn lừa người khác. Vì vậy tôi cho rằng kết bạn qua mạng cũng được, nhưng nhất định phải cẩn thận, đừng dễ dàng tin người khác, cũng đừng nói thông tin cá nhân quan trọng cho người lạ.)"
+    }
+  ]
+}

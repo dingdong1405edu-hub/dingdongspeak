@@ -1,0 +1,105 @@
+{
+  "key": "zh-s6-l2",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "社会",
+      "phonetic": "shèhuì",
+      "pos": "n.",
+      "meaning": "xã hội",
+      "example": "现代社会的生活节奏越来越快。",
+      "options": ["xã hội", "kinh tế", "văn hóa", "giáo dục"],
+      "answer": "xã hội"
+    },
+    {
+      "type": "vocab",
+      "word": "环境",
+      "phonetic": "huánjìng",
+      "pos": "n.",
+      "meaning": "môi trường",
+      "example": "保护环境是每个人的责任。",
+      "options": ["môi trường", "tài nguyên", "ô nhiễm", "ảnh hưởng"],
+      "answer": "môi trường"
+    },
+    {
+      "type": "vocab",
+      "word": "污染",
+      "phonetic": "wūrǎn",
+      "pos": "n.",
+      "meaning": "ô nhiễm",
+      "example": "这条河的污染越来越严重了。",
+      "options": ["ô nhiễm", "bảo vệ", "tiết kiệm", "phát triển"],
+      "answer": "ô nhiễm"
+    },
+    {
+      "type": "vocab",
+      "word": "保护",
+      "phonetic": "bǎohù",
+      "pos": "v.",
+      "meaning": "bảo vệ",
+      "example": "我们应该保护森林和动物。",
+      "options": ["bảo vệ", "thay đổi", "giải quyết", "ảnh hưởng"],
+      "answer": "bảo vệ"
+    },
+    {
+      "type": "vocab",
+      "word": "节约",
+      "phonetic": "jiéyuē",
+      "pos": "v.",
+      "meaning": "tiết kiệm",
+      "example": "我们要节约用水，保护资源。",
+      "options": ["tiết kiệm", "phát triển", "ô nhiễm", "giáo dục"],
+      "answer": "tiết kiệm"
+    },
+    {
+      "type": "vocab",
+      "word": "影响",
+      "phonetic": "yǐngxiǎng",
+      "pos": "v.",
+      "meaning": "ảnh hưởng",
+      "example": "环境污染会影响人们的健康。",
+      "options": ["ảnh hưởng", "bảo vệ", "trách nhiệm", "thay đổi"],
+      "answer": "ảnh hưởng"
+    },
+    {
+      "type": "vocab",
+      "word": "经济",
+      "phonetic": "jīngjì",
+      "pos": "n.",
+      "meaning": "kinh tế",
+      "example": "这个国家的经济发展得很快。",
+      "options": ["kinh tế", "xã hội", "văn hóa", "tài nguyên"],
+      "answer": "kinh tế"
+    },
+    {
+      "type": "vocab",
+      "word": "发展",
+      "phonetic": "fāzhǎn",
+      "pos": "v.",
+      "meaning": "phát triển",
+      "example": "科技的发展改变了我们的生活。",
+      "options": ["phát triển", "giải quyết", "tiết kiệm", "ô nhiễm"],
+      "answer": "phát triển"
+    },
+    {
+      "type": "vocab",
+      "word": "文化",
+      "phonetic": "wénhuà",
+      "pos": "n.",
+      "meaning": "văn hóa",
+      "example": "中国有五千年的历史和文化。",
+      "options": ["văn hóa", "kinh tế", "giáo dục", "xã hội"],
+      "answer": "văn hóa"
+    },
+    {
+      "type": "vocab",
+      "word": "解决",
+      "phonetic": "jiějué",
+      "pos": "v.",
+      "meaning": "giải quyết",
+      "example": "我们必须想办法解决这个问题。",
+      "options": ["giải quyết", "thay đổi", "phát triển", "bảo vệ"],
+      "answer": "giải quyết"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "key": "ko-s5-l4",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "～아/어 주다 (làm giúp ai đó)",
+      "explanation": "Cấu trúc V + ～아/어 주다 diễn đạt việc làm một hành động giúp/cho ai đó. Cách chia giống thì hiện tại: gốc động từ có nguyên âm ㅏ/ㅗ → ～아 주다, các trường hợp khác → ～어 주다, động từ 하다 → ～해 주다. Khi nhờ người khác làm giúp mình một cách lịch sự, dùng ～아/어 주세요 (xin hãy ... giúp tôi).",
+      "examples": [
+        "친구가 사진을 찍어 줬어요.",
+        "여기 좀 도와주세요.",
+        "이 단어를 설명해 주세요."
+      ],
+      "tip": "Người Việt hay quên rằng ～아/어 주세요 mới là cách nhờ vả lịch sự; nói trống chỉ '하세요' nghe như ra lệnh. Cũng đừng nhầm 주다 (cho/giúp người khác) với 받다 (nhận).",
+      "question": "친구가 제 가방을 들___ 줬어요. (Bạn tôi xách hộ tôi cái cặp.)",
+      "options": ["어", "아", "여", "해"],
+      "answer": "어"
+    },
+    {
+      "type": "grammar",
+      "rule": "～아/어 보다 (thử làm gì đó)",
+      "explanation": "Cấu trúc V + ～아/어 보다 diễn đạt việc thử làm một hành động, hoặc trải nghiệm điều gì đó. Cách chia: gốc có ㅏ/ㅗ → ～아 보다, khác → ～어 보다, 하다 → ～해 보다. Ở thì quá khứ ～아/어 봤어요 mang nghĩa 'đã từng' làm gì đó.",
+      "examples": [
+        "한국 음식을 먹어 봤어요.",
+        "이 옷을 한번 입어 보세요.",
+        "제주도에 가 본 적이 있어요."
+      ],
+      "tip": "Người Việt thường dịch 'thử' thành 시도하다, nhưng trong giao tiếp tự nhiên phải dùng ～아/어 보다. ～아/어 봤어요 = đã từng (kinh nghiệm), đừng nhầm với chỉ thì quá khứ thông thường.",
+      "question": "이 김치를 한번 먹___ 보세요. (Hãy thử ăn món kim chi này một lần.)",
+      "options": ["어", "아", "여", "이"],
+      "answer": "어"
+    },
+    {
+      "type": "grammar",
+      "rule": "～아/어 주세요 (xin hãy làm giúp tôi)",
+      "explanation": "～아/어 주세요 là cách nhờ vả lịch sự, yêu cầu người nghe làm điều gì đó cho/giúp người nói. Đây là dạng kính ngữ của ～아/어 주다. Cách chia theo nguyên âm gốc động từ giống như thì hiện tại.",
+      "examples": [
+        "천천히 말해 주세요.",
+        "창문을 열어 주세요.",
+        "사진 좀 찍어 주세요."
+      ],
+      "tip": "Khi gốc động từ là 하다, phải dùng 해 주세요 chứ không phải '하 주세요'. Ví dụ 'nói giúp tôi' = 말해 주세요. Người Việt hay quên biến đổi 하 → 해.",
+      "question": "잘 모르겠어요. 다시 한번 설명___ 주세요. (Tôi không hiểu rõ. Xin hãy giải thích lại một lần nữa.)",
+      "options": ["해", "하", "히", "헤"],
+      "answer": "해"
+    },
+    {
+      "type": "grammar",
+      "rule": "Phân biệt ～아/어 주다 và ～아/어 보다",
+      "explanation": "～아/어 주다 nhấn mạnh việc làm hành động VÌ/GIÚP một người khác (lợi ích cho người đó). ～아/어 보다 nhấn mạnh việc THỬ thực hiện hoặc trải nghiệm hành động. Hai cấu trúc khác nhau hoàn toàn về nghĩa nên không thể thay thế cho nhau.",
+      "examples": [
+        "이 책을 읽어 보세요. (Hãy thử đọc cuốn sách này.)",
+        "이 책을 읽어 주세요. (Xin đọc cuốn sách này giúp tôi.)",
+        "한국에 가 봤어요. (Tôi đã từng đến Hàn Quốc.)"
+      ],
+      "tip": "Đừng nhầm hai cấu trúc: '먹어 보세요' = hãy thử ăn, còn '먹어 주세요' = hãy ăn giúp tôi (nghĩa rất khác!). 보다 = thử/trải nghiệm, 주다 = làm giúp.",
+      "question": "어머니가 맛있는 음식을 만들어 ___. (Mẹ đã nấu món ăn ngon cho tôi.)",
+      "options": ["줬어요", "봤어요", "보세요", "주세요"],
+      "answer": "줬어요"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "더우니까 창문 좀 열___ 주세요.",
+      "answer": "어",
+      "options": ["어", "아", "여", "해"],
+      "explanation": "열다 (mở) có gốc là 열-, nguyên âm gốc là ㅕ (không phải ㅏ/ㅗ) nên chia thành 열어 주세요. Câu nghĩa là 'Trời nóng nên xin hãy mở cửa sổ giúp tôi'."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "이 게임이 재미있어요. 한번 ___ 보세요.",
+      "answer": "해",
+      "options": ["해", "하", "헤", "히"],
+      "explanation": "하다 (làm) khi kết hợp với ～아/어 보다 phải biến thành 해 보다. Câu nghĩa là 'Trò chơi này thú vị lắm. Hãy thử chơi một lần đi'."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "저는 한복을 한 번 입___ 봤어요.",
+      "answer": "어",
+      "options": ["어", "아", "여", "해"],
+      "explanation": "입다 (mặc) có gốc 입-, nguyên âm gốc là ㅣ (không phải ㅏ/ㅗ) nên chia thành 입어 보다. ～어 봤어요 mang nghĩa 'đã từng'. Câu nghĩa là 'Tôi đã từng thử mặc hanbok một lần'."
+    },
+    {
+      "type": "arrange",
+      "words": ["가르쳐", "한국어를", "주세요", "저에게"],
+      "answer": "저에게 한국어를 가르쳐 주세요",
+      "hint": "Xin hãy dạy tiếng Hàn cho tôi."
+    },
+    {
+      "type": "arrange",
+      "words": ["먹어", "이", "음식을", "보세요"],
+      "answer": "이 음식을 먹어 보세요",
+      "hint": "Hãy thử ăn món ăn này đi."
+    },
+    {
+      "type": "arrange",
+      "words": ["사진을", "친구가", "찍어", "줬어요"],
+      "answer": "친구가 사진을 찍어 줬어요",
+      "hint": "Bạn tôi đã chụp ảnh giúp tôi."
+    }
+  ]
+}

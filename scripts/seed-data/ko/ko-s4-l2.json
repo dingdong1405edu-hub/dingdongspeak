@@ -1,0 +1,105 @@
+{
+  "key": "ko-s4-l2",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "직업",
+      "phonetic": "jigeop",
+      "pos": "n.",
+      "meaning": "nghề nghiệp",
+      "example": "당신의 직업은 무엇입니까?",
+      "options": ["nghề nghiệp", "sở thích", "công ty", "chuyên ngành"],
+      "answer": "nghề nghiệp"
+    },
+    {
+      "type": "vocab",
+      "word": "회사원",
+      "phonetic": "hoesawon",
+      "pos": "n.",
+      "meaning": "nhân viên công ty",
+      "example": "저는 회사원이라서 매일 출근해요.",
+      "options": ["nhân viên công ty", "giáo viên", "sinh viên", "công nhân nhà máy"],
+      "answer": "nhân viên công ty"
+    },
+    {
+      "type": "vocab",
+      "word": "사무실",
+      "phonetic": "samusil",
+      "pos": "n.",
+      "meaning": "văn phòng",
+      "example": "제 사무실은 삼 층에 있어요.",
+      "options": ["văn phòng", "phòng họp", "nhà ăn", "lớp học"],
+      "answer": "văn phòng"
+    },
+    {
+      "type": "vocab",
+      "word": "출근",
+      "phonetic": "chulgeun",
+      "pos": "n.",
+      "meaning": "việc đi làm (đến công ty)",
+      "example": "보통 아홉 시까지 출근해요.",
+      "options": ["việc đi làm (đến công ty)", "việc tan làm (về)", "việc nghỉ phép", "việc tăng ca"],
+      "answer": "việc đi làm (đến công ty)"
+    },
+    {
+      "type": "vocab",
+      "word": "퇴근",
+      "phonetic": "toegeun",
+      "pos": "n.",
+      "meaning": "việc tan làm (rời công ty)",
+      "example": "오늘은 여섯 시에 퇴근했어요.",
+      "options": ["việc tan làm (rời công ty)", "việc đi làm (đến công ty)", "việc đi công tác", "việc họp hành"],
+      "answer": "việc tan làm (rời công ty)"
+    },
+    {
+      "type": "vocab",
+      "word": "회의",
+      "phonetic": "hoeui",
+      "pos": "n.",
+      "meaning": "cuộc họp",
+      "example": "내일 오전에 중요한 회의가 있어요.",
+      "options": ["cuộc họp", "bữa ăn", "kỳ nghỉ", "hợp đồng"],
+      "answer": "cuộc họp"
+    },
+    {
+      "type": "vocab",
+      "word": "시험",
+      "phonetic": "siheom",
+      "pos": "n.",
+      "meaning": "kỳ thi, bài thi",
+      "example": "다음 주에 한국어 시험이 있어요.",
+      "options": ["kỳ thi, bài thi", "bài tập về nhà", "điểm số", "bài giảng"],
+      "answer": "kỳ thi, bài thi"
+    },
+    {
+      "type": "vocab",
+      "word": "숙제",
+      "phonetic": "sukje",
+      "pos": "n.",
+      "meaning": "bài tập về nhà",
+      "example": "오늘 숙제가 너무 많아요.",
+      "options": ["bài tập về nhà", "kỳ thi", "thời khóa biểu", "giờ ra chơi"],
+      "answer": "bài tập về nhà"
+    },
+    {
+      "type": "vocab",
+      "word": "바쁘다",
+      "phonetic": "bappeuda",
+      "pos": "adj.",
+      "meaning": "bận rộn",
+      "example": "요즘 일이 많아서 정말 바빠요.",
+      "options": ["bận rộn", "rảnh rỗi", "mệt mỏi", "buồn chán"],
+      "answer": "bận rộn"
+    },
+    {
+      "type": "vocab",
+      "word": "돕다",
+      "phonetic": "dopda",
+      "pos": "v.",
+      "meaning": "giúp đỡ",
+      "example": "동료가 어려운 일을 도와줬어요.",
+      "options": ["giúp đỡ", "làm phiền", "từ chối", "hướng dẫn"],
+      "answer": "giúp đỡ"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "key": "ja-s2-l2",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "Trợ từ を (đánh dấu tân ngữ)",
+      "explanation": "を đặt ngay SAU danh từ làm tân ngữ trực tiếp của động từ (đối tượng chịu tác động). Công thức: [Tân ngữ] を [Động từ]. Ví dụ パンを食べます = ăn bánh mì. を chỉ dùng cho tân ngữ, không dùng cho chủ ngữ (chủ ngữ dùng は/が).",
+      "examples": [
+        "ごはんを食べます。",
+        "水を飲みます。",
+        "日本語を勉強します。"
+      ],
+      "tip": "Người Việt hay quên を hoặc dùng nhầm は cho tân ngữ. Hãy nhớ: vật bị 'ăn/uống/làm' luôn đi với を, ví dụ 'パンを食べます' chứ không phải 'パンは食べます'.",
+      "question": "コーヒー___飲みます。(Tôi uống cà phê.)",
+      "options": ["を", "は", "が", "に"],
+      "answer": "を"
+    },
+    {
+      "type": "grammar",
+      "rule": "Thể ます (lịch sự, hiện tại/tương lai)",
+      "explanation": "Thể ます là dạng động từ lịch sự, diễn tả hành động ở hiện tại hoặc tương lai (thói quen, dự định). Khẳng định kết thúc bằng ～ます. Ví dụ 食べます = (sẽ/thường) ăn, 飲みます = (sẽ/thường) uống. Dùng khi nói chuyện lịch sự với người lạ hoặc người trên.",
+      "examples": [
+        "毎日テレビを見ます。",
+        "あした学校へ行きます。",
+        "わたしはお茶を飲みます。"
+      ],
+      "tip": "Người Việt hay dịch 'sẽ' thành một từ riêng, nhưng tiếng Nhật thể ます đã bao hàm cả hiện tại lẫn tương lai. 食べます có thể là 'ăn' hoặc 'sẽ ăn' tùy ngữ cảnh.",
+      "question": "わたしは毎朝パンを___。(Mỗi sáng tôi ăn bánh mì.)",
+      "options": ["食べます", "食べません", "食べました", "食べる"],
+      "answer": "食べます"
+    },
+    {
+      "type": "grammar",
+      "rule": "Phủ định ません",
+      "explanation": "Để phủ định động từ thể ます, đổi ～ます thành ～ません. Diễn tả 'không làm gì' (hiện tại/tương lai). Ví dụ 食べます → 食べません = không ăn, 飲みます → 飲みません = không uống.",
+      "examples": [
+        "わたしは肉を食べません。",
+        "お酒を飲みません。",
+        "あしたは行きません。"
+      ],
+      "tip": "Người Việt hay thêm từ phủ định riêng. Trong tiếng Nhật, chỉ cần đổi đuôi ます thành ません, không cần thêm từ 'không' phía trước động từ.",
+      "question": "わたしはお酒を___。(Tôi không uống rượu.)",
+      "options": ["飲みません", "飲みます", "飲みましょう", "飲んで"],
+      "answer": "飲みません"
+    },
+    {
+      "type": "grammar",
+      "rule": "Câu hỏi với を + ますか",
+      "explanation": "Để hỏi 'có làm gì không / làm gì', dùng thể ます + か ở cuối câu: ～ますか. Tân ngữ vẫn dùng を. Ví dụ 何を食べますか = Bạn ăn gì? / コーヒーを飲みますか = Bạn (có) uống cà phê không?",
+      "examples": [
+        "何を食べますか。",
+        "お茶を飲みますか。",
+        "毎日日本語を勉強しますか。"
+      ],
+      "tip": "Tiếng Nhật không đảo trật tự từ khi hỏi như tiếng Anh; chỉ cần thêm か ở cuối câu. Khi viết không bắt buộc dấu ?, dùng dấu 。 hoặc ？ đều được.",
+      "question": "あなたは何___飲みますか。(Bạn uống gì?)",
+      "options": ["を", "は", "で", "も"],
+      "answer": "を"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "わたしは毎日ごはん___食べます。",
+      "answer": "を",
+      "options": ["を", "は", "に", "で"],
+      "explanation": "ごはん là tân ngữ trực tiếp của 食べます (ăn), nên phải dùng trợ từ を để đánh dấu tân ngữ."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "わたしは肉を___。(Tôi không ăn thịt.)",
+      "answer": "食べません",
+      "options": ["食べません", "食べます", "食べました", "食べましょう"],
+      "explanation": "Câu mang nghĩa phủ định 'không ăn', nên động từ 食べます chuyển sang dạng phủ định 食べません."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "あした、何を___か。(Ngày mai bạn sẽ uống gì?)",
+      "answer": "飲みます",
+      "options": ["飲みます", "飲みません", "飲んで", "飲む"],
+      "explanation": "Câu hỏi lịch sự ở tương lai dùng thể ます + か. 飲む chuyển thành 飲みます, thêm か để tạo câu hỏi."
+    },
+    {
+      "type": "arrange",
+      "words": ["食べます", "を", "パン", "わたしは"],
+      "answer": "わたしはパンを食べます",
+      "hint": "Tôi ăn bánh mì. (Trật tự: Chủ ngữ + Tân ngữ + を + Động từ)"
+    },
+    {
+      "type": "arrange",
+      "words": ["飲みません", "を", "お酒", "わたしは"],
+      "answer": "わたしはお酒を飲みません",
+      "hint": "Tôi không uống rượu. (Động từ ở dạng phủ định ません)"
+    },
+    {
+      "type": "arrange",
+      "words": ["食べますか", "を", "何", "あなたは"],
+      "answer": "あなたは何を食べますか",
+      "hint": "Bạn ăn gì? (Câu hỏi với を và ～ますか)"
+    }
+  ]
+}

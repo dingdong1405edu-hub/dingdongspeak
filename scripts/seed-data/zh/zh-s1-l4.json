@@ -1,0 +1,105 @@
+{
+  "key": "zh-s1-l4",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "爸爸",
+      "phonetic": "bàba",
+      "pos": "n.",
+      "meaning": "bố, ba",
+      "example": "我爸爸是老师。",
+      "options": ["bố, ba", "mẹ", "anh trai", "ông nội"],
+      "answer": "bố, ba"
+    },
+    {
+      "type": "vocab",
+      "word": "妈妈",
+      "phonetic": "māma",
+      "pos": "n.",
+      "meaning": "mẹ, má",
+      "example": "我妈妈很爱我。",
+      "options": ["mẹ, má", "bố", "chị gái", "bà ngoại"],
+      "answer": "mẹ, má"
+    },
+    {
+      "type": "vocab",
+      "word": "哥哥",
+      "phonetic": "gēge",
+      "pos": "n.",
+      "meaning": "anh trai",
+      "example": "我哥哥今年二十岁。",
+      "options": ["anh trai", "em trai", "bố", "con trai"],
+      "answer": "anh trai"
+    },
+    {
+      "type": "vocab",
+      "word": "姐姐",
+      "phonetic": "jiějie",
+      "pos": "n.",
+      "meaning": "chị gái",
+      "example": "我姐姐是医生。",
+      "options": ["chị gái", "em gái", "mẹ", "con gái"],
+      "answer": "chị gái"
+    },
+    {
+      "type": "vocab",
+      "word": "弟弟",
+      "phonetic": "dìdi",
+      "pos": "n.",
+      "meaning": "em trai",
+      "example": "我有一个弟弟。",
+      "options": ["em trai", "anh trai", "con trai", "bạn"],
+      "answer": "em trai"
+    },
+    {
+      "type": "vocab",
+      "word": "妹妹",
+      "phonetic": "mèimei",
+      "pos": "n.",
+      "meaning": "em gái",
+      "example": "我妹妹很喜欢看书。",
+      "options": ["em gái", "chị gái", "con gái", "cháu gái"],
+      "answer": "em gái"
+    },
+    {
+      "type": "vocab",
+      "word": "家",
+      "phonetic": "jiā",
+      "pos": "n.",
+      "meaning": "nhà, gia đình",
+      "example": "我家有五口人。",
+      "options": ["nhà, gia đình", "phòng", "trường học", "công ty"],
+      "answer": "nhà, gia đình"
+    },
+    {
+      "type": "vocab",
+      "word": "有",
+      "phonetic": "yǒu",
+      "pos": "v.",
+      "meaning": "có",
+      "example": "我有两个姐姐。",
+      "options": ["có", "không có", "là", "ở"],
+      "answer": "có"
+    },
+    {
+      "type": "vocab",
+      "word": "没有",
+      "phonetic": "méiyǒu",
+      "pos": "v.",
+      "meaning": "không có",
+      "example": "我没有弟弟。",
+      "options": ["không có", "có", "không phải", "rất nhiều"],
+      "answer": "không có"
+    },
+    {
+      "type": "vocab",
+      "word": "爱",
+      "phonetic": "ài",
+      "pos": "v.",
+      "meaning": "yêu, thương",
+      "example": "我爱我的家人。",
+      "options": ["yêu, thương", "ghét", "thích một chút", "muốn"],
+      "answer": "yêu, thương"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "key": "zh-s1-l2",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "一",
+      "phonetic": "yī",
+      "pos": "n.",
+      "meaning": "một (số 1)",
+      "example": "我有一个哥哥。",
+      "options": ["một (số 1)", "hai (số 2)", "mười (số 10)", "trăm (số 100)"],
+      "answer": "một (số 1)"
+    },
+    {
+      "type": "vocab",
+      "word": "十",
+      "phonetic": "shí",
+      "pos": "n.",
+      "meaning": "mười (số 10)",
+      "example": "现在十点了。",
+      "options": ["mười (số 10)", "bốn (số 4)", "bảy (số 7)", "không (số 0)"],
+      "answer": "mười (số 10)"
+    },
+    {
+      "type": "vocab",
+      "word": "百",
+      "phonetic": "bǎi",
+      "pos": "n.",
+      "meaning": "trăm (số 100)",
+      "example": "这本书一百块钱。",
+      "options": ["trăm (số 100)", "mười (số 10)", "nghìn (số 1000)", "chín (số 9)"],
+      "answer": "trăm (số 100)"
+    },
+    {
+      "type": "vocab",
+      "word": "零",
+      "phonetic": "líng",
+      "pos": "n.",
+      "meaning": "không (số 0)",
+      "example": "现在七点零五分。",
+      "options": ["không (số 0)", "tám (số 8)", "năm (số 5)", "sáu (số 6)"],
+      "answer": "không (số 0)"
+    },
+    {
+      "type": "vocab",
+      "word": "今天",
+      "phonetic": "jīntiān",
+      "pos": "n.",
+      "meaning": "hôm nay",
+      "example": "今天天气很好。",
+      "options": ["hôm nay", "hôm qua", "ngày mai", "bây giờ"],
+      "answer": "hôm nay"
+    },
+    {
+      "type": "vocab",
+      "word": "明天",
+      "phonetic": "míngtiān",
+      "pos": "n.",
+      "meaning": "ngày mai",
+      "example": "明天我去学校。",
+      "options": ["ngày mai", "hôm nay", "hôm qua", "tuần sau"],
+      "answer": "ngày mai"
+    },
+    {
+      "type": "vocab",
+      "word": "昨天",
+      "phonetic": "zuótiān",
+      "pos": "n.",
+      "meaning": "hôm qua",
+      "example": "昨天我没去工作。",
+      "options": ["hôm qua", "hôm nay", "ngày mai", "buổi tối"],
+      "answer": "hôm qua"
+    },
+    {
+      "type": "vocab",
+      "word": "现在",
+      "phonetic": "xiànzài",
+      "pos": "n.",
+      "meaning": "bây giờ, hiện tại",
+      "example": "现在几点？",
+      "options": ["bây giờ, hiện tại", "lúc nãy", "sau này", "buổi sáng"],
+      "answer": "bây giờ, hiện tại"
+    },
+    {
+      "type": "vocab",
+      "word": "点",
+      "phonetic": "diǎn",
+      "pos": "n.",
+      "meaning": "giờ (đơn vị giờ đồng hồ)",
+      "example": "我八点上班。",
+      "options": ["giờ (đơn vị giờ đồng hồ)", "phút", "tuần", "năm"],
+      "answer": "giờ (đơn vị giờ đồng hồ)"
+    },
+    {
+      "type": "vocab",
+      "word": "星期",
+      "phonetic": "xīngqī",
+      "pos": "n.",
+      "meaning": "tuần, thứ (trong tuần)",
+      "example": "今天星期三。",
+      "options": ["tuần, thứ (trong tuần)", "tháng", "năm", "ngày"],
+      "answer": "tuần, thứ (trong tuần)"
+    }
+  ]
+}

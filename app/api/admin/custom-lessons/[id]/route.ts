@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { requireAdmin } from '@/lib/admin-auth'
-import { toLangCode, type LangCode } from '@/lib/languages'
+import { toLangCode, getLang, type LangCode } from '@/lib/languages'
 
-async function generateWordAudio(word: string): Promise<string | null> {
+async function generateWordAudio(word: string, voice: string): Promise<string | null> {
   if (!process.env.DEEPGRAM_API_KEY || !word.trim()) return null
   try {
-    const res = await fetch('https://api.deepgram.com/v1/speak?model=aura-asteria-en&encoding=mp3', {
+    const res = await fetch(`https://api.deepgram.com/v1/speak?model=${voice}&encoding=mp3`, {
       method: 'POST',
       headers: {
         'Authorization': `Token ${process.env.DEEPGRAM_API_KEY}`,
@@ -23,12 +23,15 @@ async function generateWordAudio(word: string): Promise<string | null> {
 }
 
 async function enrichVocabAudio(cards: any[], type: string, language: LangCode): Promise<any[]> {
-  // Deepgram Aura (aura-asteria-en) is English-only — skip audio for zh/ja/ko.
-  if (type !== 'vocabulary' || language !== 'en') return cards
+  // Pre-generate pronunciation audio with the language's Deepgram voice (registry =
+  // single source of truth). Languages without a TTS voice (zh/ko — Aura-2 has no
+  // Mandarin/Korean) resolve to null and are skipped.
+  const voice = getLang(language).ttsVoice
+  if (type !== 'vocabulary' || !voice) return cards
   return Promise.all(
     cards.map(async (card) => {
       if (card.type === 'vocab' && card.word && !card.audioBase64) {
-        card.audioBase64 = await generateWordAudio(card.word)
+        card.audioBase64 = await generateWordAudio(card.word, voice)
       }
       return card
     })

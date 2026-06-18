@@ -1,0 +1,100 @@
+{
+  "key": "ko-s4-l5",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "-지만 diễn đạt TƯƠNG PHẢN (nhưng)",
+      "explanation": "Gắn -지만 vào gốc động từ/tính từ để nối hai vế có ý NGƯỢC NHAU, dịch là 'nhưng, tuy... nhưng'. Cách gắn rất đều: gốc + 지만, không phân biệt có patchim hay không (먹다 → 먹지만, 비싸다 → 비싸지만). Với danh từ thì dùng 이지만/지만 (학생이지만, 친구지만). Thì quá khứ gắn trước: 먹었지만, 갔지만.",
+      "examples": [
+        "이 옷은 예쁘지만 너무 비싸요.",
+        "한국어는 어렵지만 재미있어요.",
+        "어제는 바빴지만 오늘은 한가해요."
+      ],
+      "tip": "Người Việt hay quên rằng -지만 gắn vào GỐC, không cần đuôi 아요/어요. SAI: 비싸요지만. ĐÚNG: 비싸지만. Thì quá khứ đặt trước -지만 (바빴지만), không đặt ở vế sau.",
+      "question": "다음 빈칸에 알맞은 것을 고르세요: 이 식당은 ___ 음식이 맛있어요.",
+      "options": ["비싸지만", "비싸고", "비싸서", "비싸니까"],
+      "answer": "비싸지만"
+    },
+    {
+      "type": "grammar",
+      "rule": "-는데/-(으)ㄴ데 đưa BỐI CẢNH, dẫn dắt",
+      "explanation": "-는데/-(으)ㄴ데 nêu BỐI CẢNH hoặc tình huống ở vế trước để dẫn vào nội dung chính ở vế sau (đề nghị, hỏi, nhận xét). Cách gắn theo từ loại: ĐỘNG TỪ + 는데 (먹다 → 먹는데, 가다 → 가는데); TÍNH TỪ có patchim + 은데, không patchim + ㄴ데 (좋다 → 좋은데, 예쁘다 → 예쁜데); DANH TỪ/이다 → 인데 (학생인데). 있다/없다 dùng như động từ: 있는데, 없는데.",
+      "examples": [
+        "지금 비가 오는데 우산이 없어요.",
+        "이 음식이 맛있는데 한번 드셔 보세요.",
+        "날씨가 좋은데 같이 산책할까요?"
+      ],
+      "tip": "Lỗi phổ biến: chia tính từ giống động từ thành 좋는데. SAI! Tính từ phải dùng -(으)ㄴ데: 좋은데, 예쁜데. Chỉ động từ và 있다/없다 mới dùng 는데.",
+      "question": "다음 빈칸에 알맞은 것을 고르세요: 한국 음식을 ___ 정말 맛있어요.",
+      "options": ["먹는데", "먹은데", "먹지만", "먹어서"],
+      "answer": "먹는데"
+    },
+    {
+      "type": "grammar",
+      "rule": "-(으)ㄴ데 với TÍNH TỪ và 이다",
+      "explanation": "Khi vế trước là TÍNH TỪ, -는데 đổi thành -(으)ㄴ데: tính từ có patchim + 은데 (작다 → 작은데, 많다 → 많은데), không patchim + ㄴ데 (크다 → 큰데, 바쁘다 → 바쁜데). Với danh từ + 이다 thì dùng 인데 (의사인데, 회사원인데). Lưu ý phân biệt với 있다/없다 và 맛있다 là dạng động từ nên dùng 는데 (있는데, 맛있는데).",
+      "examples": [
+        "이 가방은 작은데 아주 편해요.",
+        "그 사람은 의사인데 정말 친절해요.",
+        "방이 큰데 좀 추워요."
+      ],
+      "tip": "맛있다/재미있다 chứa 있다 nên theo dạng động từ → 맛있는데, 재미있는데 (KHÔNG phải 맛있은데). Còn tính từ thường thì dùng -(으)ㄴ데.",
+      "question": "다음 빈칸에 알맞은 것을 고르세요: 이 방은 ___ 조금 비싸요.",
+      "options": ["넓은데", "넓는데", "넓어서", "넓고"],
+      "answer": "넓은데"
+    },
+    {
+      "type": "grammar",
+      "rule": "Phân biệt -지만 và -는데 (tương phản)",
+      "explanation": "Cả hai đều có thể diễn đạt tương phản, nhưng khác sắc thái: -지만 nhấn mạnh sự ĐỐI LẬP RÕ RỆT, trực tiếp giữa hai vế (A nhưng B ngược hẳn). -는데/-(으)ㄴ데 là tương phản NHẸ NHÀNG, mềm mại hơn, thường kèm theo việc nêu bối cảnh để dẫn dắt. So sánh: 비싸지만 샀어요 (đắt NHƯNG vẫn mua — đối lập mạnh) và 비싼데 살까요? (đắt đấy, nhưng có nên mua không? — nêu tình huống rồi gợi ý/hỏi).",
+      "examples": [
+        "시간이 없지만 도와줄게요.",
+        "시간이 없는데 좀 도와주세요.",
+        "한국어가 어렵지만 포기하지 않을 거예요."
+      ],
+      "tip": "Khi vế sau là đề nghị, rủ rê hay câu hỏi (도와주세요, 할까요?), dùng -는데 tự nhiên hơn -지만. Khi chỉ muốn nêu hai ý ngược nhau dứt khoát thì dùng -지만.",
+      "question": "다음 빈칸에 알맞은 것을 고르세요: 날씨가 좋___ 같이 나갈까요?",
+      "options": ["은데", "지만요", "아서", "고요"],
+      "answer": "은데"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "이 커피는 ___ 향이 정말 좋아요.",
+      "answer": "쓰지만",
+      "options": ["쓰지만", "써지만", "쓰는데요", "쓰니까"],
+      "explanation": "Hai vế đối lập rõ (đắng NHƯNG thơm) nên dùng -지만. 쓰다 (đắng) gắn vào gốc thành 쓰지만, không cần đuôi 아요/어요 phía trước."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "지금 밖에 비가 ___ 우산을 가져가세요.",
+      "answer": "오는데",
+      "options": ["오는데", "온데", "오지만", "와서"],
+      "explanation": "Vế trước nêu bối cảnh (trời đang mưa) để dẫn vào lời khuyên ở vế sau, nên dùng -는데. 오다 là động từ → 오는데 (không phải 온데)."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "이 가방이 ___ 한번 사 보세요.",
+      "answer": "좋은데",
+      "options": ["좋은데", "좋는데", "좋지만요", "좋아서요"],
+      "explanation": "좋다 là TÍNH TỪ nên dùng -(으)ㄴ데: gốc có patchim → 좋은데 (KHÔNG phải 좋는데). Vế trước nêu nhận xét làm bối cảnh để gợi ý mua thử ở vế sau."
+    },
+    {
+      "type": "arrange",
+      "words": ["맛있지만", "비싸요", "이", "음식은"],
+      "answer": "이 음식은 맛있지만 비싸요",
+      "hint": "Món ăn này ngon nhưng đắt. (Tương phản rõ rệt: dùng -지만)"
+    },
+    {
+      "type": "arrange",
+      "words": ["우산이", "비가", "없어요", "오는데"],
+      "answer": "비가 오는데 우산이 없어요",
+      "hint": "Trời đang mưa mà tôi lại không có ô. (Nêu bối cảnh bằng -는데; 오다 là động từ nên dùng 오는데)"
+    },
+    {
+      "type": "arrange",
+      "words": ["산책할까요", "같이", "날씨가", "좋은데"],
+      "answer": "날씨가 좋은데 같이 산책할까요",
+      "hint": "Thời tiết đẹp đấy, mình cùng đi dạo nhé? (Tính từ 좋다 → 좋은데, dẫn vào lời rủ rê)"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "key": "ja-s3-l1",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "電車",
+      "phonetic": "でんしゃ / densha",
+      "pos": "n.",
+      "meaning": "tàu điện",
+      "example": "毎日、電車で会社へ行きます。",
+      "options": ["tàu điện", "xe buýt", "máy bay", "xe đạp"],
+      "answer": "tàu điện"
+    },
+    {
+      "type": "vocab",
+      "word": "バス",
+      "phonetic": "ばす / basu",
+      "pos": "n.",
+      "meaning": "xe buýt",
+      "example": "バスに乗って学校へ行きます。",
+      "options": ["xe buýt", "tàu điện", "taxi", "ô tô"],
+      "answer": "xe buýt"
+    },
+    {
+      "type": "vocab",
+      "word": "タクシー",
+      "phonetic": "たくしー / takushii",
+      "pos": "n.",
+      "meaning": "taxi",
+      "example": "雨が降っているので、タクシーで帰ります。",
+      "options": ["taxi", "xe buýt", "tàu điện", "máy bay"],
+      "answer": "taxi"
+    },
+    {
+      "type": "vocab",
+      "word": "飛行機",
+      "phonetic": "ひこうき / hikouki",
+      "pos": "n.",
+      "meaning": "máy bay",
+      "example": "飛行機でベトナムへ帰ります。",
+      "options": ["máy bay", "tàu điện", "xe buýt", "xe đạp"],
+      "answer": "máy bay"
+    },
+    {
+      "type": "vocab",
+      "word": "自転車",
+      "phonetic": "じてんしゃ / jitensha",
+      "pos": "n.",
+      "meaning": "xe đạp",
+      "example": "駅まで自転車で行きます。",
+      "options": ["xe đạp", "ô tô, xe hơi", "xe buýt", "máy bay"],
+      "answer": "xe đạp"
+    },
+    {
+      "type": "vocab",
+      "word": "駅",
+      "phonetic": "えき / eki",
+      "pos": "n.",
+      "meaning": "nhà ga",
+      "example": "次の駅で電車を降ります。",
+      "options": ["nhà ga", "sân bay", "cửa hàng", "bến xe buýt"],
+      "answer": "nhà ga"
+    },
+    {
+      "type": "vocab",
+      "word": "乗る",
+      "phonetic": "のる / noru",
+      "pos": "v.",
+      "meaning": "lên (xe), đi (phương tiện)",
+      "example": "東京駅で新幹線に乗ります。",
+      "options": ["lên (xe), đi (phương tiện)", "xuống (xe)", "đi bộ", "rẽ"],
+      "answer": "lên (xe), đi (phương tiện)"
+    },
+    {
+      "type": "vocab",
+      "word": "降りる",
+      "phonetic": "おりる / oriru",
+      "pos": "v.",
+      "meaning": "xuống (xe)",
+      "example": "私は次の駅で降ります。",
+      "options": ["xuống (xe)", "lên (xe)", "đi bộ", "dừng lại"],
+      "answer": "xuống (xe)"
+    },
+    {
+      "type": "vocab",
+      "word": "右",
+      "phonetic": "みぎ / migi",
+      "pos": "n.",
+      "meaning": "bên phải",
+      "example": "次の角を右に曲がってください。",
+      "options": ["bên phải", "bên trái", "phía trước", "phía sau"],
+      "answer": "bên phải"
+    },
+    {
+      "type": "vocab",
+      "word": "左",
+      "phonetic": "ひだり / hidari",
+      "pos": "n.",
+      "meaning": "bên trái",
+      "example": "銀行はあの店の左にあります。",
+      "options": ["bên trái", "bên phải", "phía trước", "phía sau"],
+      "answer": "bên trái"
+    }
+  ]
+}

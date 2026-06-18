@@ -1,0 +1,149 @@
+{
+  "key": "ja-s4-l6",
+  "cards": [
+    {
+      "type": "speaking",
+      "prompt": "どんな所へ行ったことがありますか。",
+      "hint": "Kể những nơi bạn đã từng đến (trong nước hoặc nước ngoài), nói ngắn gọn nơi đó như thế nào, và bạn đã đi khi nào.",
+      "samplePhrases": [
+        "わたしは～へ行ったことがあります。",
+        "むかし、～に行きました。",
+        "そこはとても～でした。"
+      ],
+      "vocabulary": [
+        { "word": "所", "meaning": "nơi, chỗ", "example": "しずかな所が好きです。" },
+        { "word": "海", "meaning": "biển", "example": "なつに海へ行きました。" },
+        { "word": "山", "meaning": "núi", "example": "山にのぼったことがあります。" },
+        { "word": "ゆうめい", "meaning": "nổi tiếng", "example": "そこはゆうめいな町です。" },
+        { "word": "～たことがあります", "meaning": "đã từng làm gì", "example": "日本へ行ったことがあります。" }
+      ],
+      "ideas": [
+        "Nói một địa điểm cụ thể bạn từng đến (biển, núi, thành phố, nước ngoài).",
+        "Mô tả nơi đó: đẹp, yên tĩnh, đông người, nổi tiếng.",
+        "Cho biết bạn đến đó khi nào và đi với ai.",
+        "Nêu cảm nhận chung của bạn về nơi đó."
+      ],
+      "sampleAnswer": "わたしは日本のきょうとへ行ったことがあります。三年まえに、かぞくといっしょに行きました。きょうとはとてもゆうめいで、古いおてらがたくさんあります。町はしずかできれいでした。とてもいい所だと思います。\n\n(Dịch: Tôi đã từng đến Kyoto của Nhật Bản. Ba năm trước, tôi đã đi cùng gia đình. Kyoto rất nổi tiếng và có rất nhiều ngôi chùa cổ. Thành phố yên tĩnh và đẹp. Tôi nghĩ đó là một nơi rất tuyệt.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "どんな旅行が好きですか。",
+      "hint": "Nói loại hình du lịch bạn thích (biển, núi, thành phố, du lịch một mình hay cùng bạn bè), và lý do tại sao.",
+      "samplePhrases": [
+        "わたしは～旅行が好きです。",
+        "なぜなら、～からです。",
+        "ひとりより、みんなで行くほうが好きです。"
+      ],
+      "vocabulary": [
+        { "word": "旅行", "meaning": "du lịch, chuyến đi", "example": "海外旅行が好きです。" },
+        { "word": "海外", "meaning": "nước ngoài, hải ngoại", "example": "海外へ行きたいです。" },
+        { "word": "ひとりで", "meaning": "một mình", "example": "ひとりで旅行しました。" },
+        { "word": "ゆっくり", "meaning": "thong thả, từ từ", "example": "ゆっくり休みたいです。" },
+        { "word": "しぜん", "meaning": "thiên nhiên", "example": "しぜんがすきです。" }
+      ],
+      "ideas": [
+        "Chọn loại du lịch bạn thích: biển, núi, thành phố, hay nông thôn.",
+        "Nói bạn thích đi một mình, với bạn bè hay với gia đình.",
+        "Giải thích lý do: muốn thư giãn, ngắm thiên nhiên, hay khám phá.",
+        "Có thể nói thích du lịch trong nước hay nước ngoài hơn."
+      ],
+      "sampleAnswer": "わたしは海の旅行が好きです。なぜなら、海でゆっくり休むことができるからです。ひとりよりも、ともだちといっしょに行くほうが好きです。みんなでしゃしんをとったり、おいしいものを食べたりするのはたのしいです。だから、なつの海の旅行がいちばん好きです。\n\n(Dịch: Tôi thích du lịch biển. Bởi vì ở biển tôi có thể nghỉ ngơi thong thả. Tôi thích đi cùng bạn bè hơn là đi một mình. Cùng mọi người chụp ảnh và ăn đồ ngon rất vui. Vì vậy, tôi thích nhất là du lịch biển vào mùa hè.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "思い出に残っている旅行を紹介してください。",
+      "hint": "Giới thiệu một chuyến đi đáng nhớ: bạn đã đi đâu, khi nào, với ai, đã làm gì và tại sao nó đáng nhớ.",
+      "samplePhrases": [
+        "いちばん思い出に残っているのは～です。",
+        "そのとき、～をしました。",
+        "今でもよくおぼえています。"
+      ],
+      "vocabulary": [
+        { "word": "思い出", "meaning": "kỷ niệm", "example": "いい思い出になりました。" },
+        { "word": "残る", "meaning": "đọng lại, còn lại", "example": "心に残る旅行でした。" },
+        { "word": "紹介する", "meaning": "giới thiệu", "example": "町を紹介します。" },
+        { "word": "けしき", "meaning": "phong cảnh", "example": "けしきがきれいでした。" },
+        { "word": "楽しかった", "meaning": "đã rất vui", "example": "とても楽しかったです。" }
+      ],
+      "ideas": [
+        "Chọn một chuyến đi cụ thể và đáng nhớ nhất.",
+        "Nói rõ thời gian, địa điểm và người đi cùng.",
+        "Kể một hoạt động hoặc khoảnh khắc đặc biệt trong chuyến đi.",
+        "Giải thích vì sao chuyến đi đó để lại ấn tượng sâu sắc."
+      ],
+      "sampleAnswer": "いちばん思い出に残っているのは、きょねんの北海道旅行です。冬に、ともだちと三人で行きました。北海道は雪がたくさんふっていて、けしきがとてもきれいでした。みんなで温泉に入ったり、ラーメンを食べたりしました。とても楽しかったので、今でもよくおぼえています。また行きたいです。\n\n(Dịch: Chuyến đi đáng nhớ nhất là chuyến du lịch Hokkaido năm ngoái. Vào mùa đông, tôi đã đi cùng hai người bạn. Hokkaido có rất nhiều tuyết rơi, phong cảnh vô cùng đẹp. Chúng tôi cùng nhau tắm suối nước nóng và ăn ramen. Vì rất vui nên đến giờ tôi vẫn còn nhớ rõ. Tôi muốn đi lại lần nữa.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "旅行のとき、何をするのが好きですか。",
+      "hint": "Nói những việc bạn thích làm khi đi du lịch (ăn đồ địa phương, chụp ảnh, mua sắm, ngắm cảnh, gặp người mới).",
+      "samplePhrases": [
+        "旅行のときは、～のが好きです。",
+        "とくに、～が楽しみです。",
+        "～たり、～たりします。"
+      ],
+      "vocabulary": [
+        { "word": "見物する", "meaning": "tham quan, ngắm cảnh", "example": "おしろを見物しました。" },
+        { "word": "写真をとる", "meaning": "chụp ảnh", "example": "たくさん写真をとりました。" },
+        { "word": "買い物", "meaning": "mua sắm", "example": "おみやげの買い物をします。" },
+        { "word": "おみやげ", "meaning": "quà lưu niệm", "example": "おみやげを買いました。" },
+        { "word": "名物", "meaning": "đặc sản (nổi tiếng)", "example": "その町の名物を食べました。" }
+      ],
+      "ideas": [
+        "Liệt kê vài hoạt động bạn thích: ăn uống, chụp ảnh, mua sắm, ngắm cảnh.",
+        "Dùng mẫu ～たり～たりします để liệt kê hành động.",
+        "Nói hoạt động nào bạn thích nhất và vì sao.",
+        "Có thể nhắc đến việc thử đặc sản hoặc mua quà lưu niệm."
+      ],
+      "sampleAnswer": "旅行のときは、その町の名物を食べるのが好きです。あたらしい料理をたべると、とてもうれしいです。それから、きれいな所で写真をとったり、おみやげを買ったりします。とくに、しぜんのけしきを見物するのが楽しみです。いろいろなけいけんができるから、旅行が大好きです。\n\n(Dịch: Khi đi du lịch, tôi thích ăn đặc sản của vùng đó. Khi được ăn món mới, tôi rất vui. Sau đó, tôi chụp ảnh ở những nơi đẹp và mua quà lưu niệm. Đặc biệt, tôi rất mong được ngắm phong cảnh thiên nhiên. Vì có thể trải nghiệm nhiều điều, nên tôi rất thích du lịch.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "どの国へ行きたいですか。どうしてですか。",
+      "hint": "Nói nước bạn muốn đến và lý do (cảnh đẹp, ẩm thực, văn hóa, học ngôn ngữ, mơ ước từ lâu).",
+      "samplePhrases": [
+        "わたしは～へ行きたいです。",
+        "どうしてかというと、～からです。",
+        "いつか、ぜひ行ってみたいです。"
+      ],
+      "vocabulary": [
+        { "word": "国", "meaning": "đất nước, quốc gia", "example": "どの国が好きですか。" },
+        { "word": "行きたい", "meaning": "muốn đi", "example": "フランスへ行きたいです。" },
+        { "word": "ぶんか", "meaning": "văn hóa", "example": "日本のぶんかにきょうみがあります。" },
+        { "word": "きょうみがある", "meaning": "có hứng thú, quan tâm", "example": "れきしにきょうみがあります。" },
+        { "word": "いつか", "meaning": "một ngày nào đó", "example": "いつか海外で働きたいです。" }
+      ],
+      "ideas": [
+        "Chọn một nước cụ thể bạn muốn đến.",
+        "Giải thích lý do: thích văn hóa, ẩm thực, cảnh đẹp, hay ngôn ngữ.",
+        "Nói bạn muốn làm gì ở nước đó khi đến.",
+        "Có thể nói đó là ước mơ bạn đã ấp ủ từ lâu."
+      ],
+      "sampleAnswer": "わたしは日本へ行きたいです。どうしてかというと、日本のぶんかにとてもきょうみがあるからです。アニメやおてらや、おいしい料理を見たり食べたりしたいです。それに、今、日本語をべんきょうしているので、日本人と日本語で話してみたいです。いつか、ぜひ行ってみたいです。\n\n(Dịch: Tôi muốn đến Nhật Bản. Lý do là vì tôi rất quan tâm đến văn hóa Nhật Bản. Tôi muốn xem và ăn anime, chùa chiền cùng những món ăn ngon. Hơn nữa, vì bây giờ tôi đang học tiếng Nhật, nên tôi muốn thử nói chuyện với người Nhật bằng tiếng Nhật. Một ngày nào đó, nhất định tôi sẽ thử đến đó.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "旅行のとき、何を準備しますか。",
+      "hint": "Nói những thứ bạn chuẩn bị trước khi đi du lịch (hộ chiếu, vé, hành lý, đặt khách sạn, tiền, bản đồ).",
+      "samplePhrases": [
+        "旅行のまえに、～を準備します。",
+        "まず、～をよやくします。",
+        "わすれないように、～もかばんに入れます。"
+      ],
+      "vocabulary": [
+        { "word": "準備する", "meaning": "chuẩn bị", "example": "旅行の準備をします。" },
+        { "word": "パスポート", "meaning": "hộ chiếu", "example": "パスポートを持っていきます。" },
+        { "word": "よやく", "meaning": "đặt chỗ, đặt trước", "example": "ホテルをよやくしました。" },
+        { "word": "にもつ", "meaning": "hành lý", "example": "にもつをじゅんびします。" },
+        { "word": "きっぷ", "meaning": "vé", "example": "ひこうきのきっぷを買いました。" }
+      ],
+      "ideas": [
+        "Liệt kê những thứ cần chuẩn bị: hộ chiếu, vé, tiền, hành lý.",
+        "Nói về việc đặt trước khách sạn và vé máy bay.",
+        "Nhắc đến việc kiểm tra thời tiết và chuẩn bị quần áo phù hợp.",
+        "Nói thứ tự chuẩn bị: trước tiên làm gì, sau đó làm gì."
+      ],
+      "sampleAnswer": "旅行のまえに、わたしはいろいろなものを準備します。まず、ホテルとひこうきのきっぷをよやくします。それから、パスポートとおかねをかばんに入れます。海外へ行くときは、てんきをしらべて、ふくを準備します。わすれものがないように、まえの日にぜんぶチェックします。\n\n(Dịch: Trước khi đi du lịch, tôi chuẩn bị nhiều thứ. Đầu tiên, tôi đặt khách sạn và vé máy bay. Sau đó, tôi cho hộ chiếu và tiền vào túi. Khi đi nước ngoài, tôi kiểm tra thời tiết và chuẩn bị quần áo. Để không quên đồ, tôi kiểm tra tất cả vào ngày hôm trước.)"
+    }
+  ]
+}

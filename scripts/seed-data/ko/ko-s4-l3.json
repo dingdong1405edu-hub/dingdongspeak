@@ -1,0 +1,100 @@
+{
+  "key": "ko-s4-l3",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "-(으)세요 (yêu cầu/đề nghị lịch sự tôn kính)",
+      "explanation": "-(으)세요 dùng để nhờ vả, đề nghị hoặc ra lệnh một cách lịch sự, tôn kính người nghe. Quy tắc: nếu gốc động từ có phụ âm cuối (받침) thì thêm 으세요; nếu kết thúc bằng nguyên âm (không có 받침) thì thêm 세요. Ví dụ 읽다 → 읽으세요, 가다 → 가세요.",
+      "examples": [
+        "여기 앉으세요.",
+        "안녕히 가세요.",
+        "이 책을 읽으세요."
+      ],
+      "tip": "Người Việt hay quên 으 khi gốc động từ có 받침. 받침 → 으세요 (읽으세요), không 받침 → 세요 (가세요). Đừng nói 읽세요.",
+      "question": "다음 중 빈칸에 알맞은 것을 고르세요: 천천히 _____. (먹다)",
+      "options": ["드세요", "먹으세요", "먹세요", "먹어요세요"],
+      "answer": "드세요"
+    },
+    {
+      "type": "grammar",
+      "rule": "-(스)ㅂ니다 / -(스)ㅂ니까? (thể trang trọng 합니다체)",
+      "explanation": "Đây là thể trang trọng nhất, dùng trong thuyết trình, bản tin, môi trường công sở nghiêm túc. Nếu gốc động/tính từ kết thúc bằng nguyên âm thì thêm ㅂ니다 (가다 → 갑니다); nếu có 받침 thì thêm 습니다 (먹다 → 먹습니다). Câu hỏi đổi thành -(스)ㅂ니까?.",
+      "examples": [
+        "저는 회사에 갑니다.",
+        "지금 점심을 먹습니다.",
+        "어디에서 일하십니까?"
+      ],
+      "tip": "받침 → 습니다 (먹습니다), không 받침 → ㅂ니다 (갑니다). Câu hỏi trang trọng kết thúc bằng 까? chứ không phải 다?: 갑니까?, không phải 갑니다?.",
+      "question": "다음 중 알맞은 정중한 문장을 고르세요. (읽다)",
+      "options": ["저는 책을 읽습니다.", "저는 책을 읽ㅂ니다.", "저는 책을 읽습니까.", "저는 책을 읽으ㅂ니다."],
+      "answer": "저는 책을 읽습니다."
+    },
+    {
+      "type": "grammar",
+      "rule": "-(으)시- (đuôi tôn kính trong câu trần thuật)",
+      "explanation": "Để tỏ sự tôn kính với chủ ngữ (người lớn tuổi, cấp trên), ta chèn đuôi tôn kính -(으)시- vào động từ. Có 받침 → 으시 (읽다 → 읽으세요/읽으십니다), không 받침 → 시 (가다 → 가세요/가십니다). Ở thể 합니다체 thành -(으)십니다.",
+      "examples": [
+        "선생님이 교실에 가십니다.",
+        "할머니가 신문을 읽으세요.",
+        "아버지께서 회사에 다니십니다."
+      ],
+      "tip": "Khi chủ ngữ đáng kính, người Việt hay quên 시. Phải chia tôn kính: 선생님이 가요 (thường) → 선생님이 가세요/가십니다 (tôn kính). Với 께서 (trợ từ chủ ngữ tôn kính) thì luôn dùng 시.",
+      "question": "다음 중 할아버지를 높이는 올바른 문장을 고르세요.",
+      "options": ["할아버지께서 신문을 읽으세요.", "할아버지께서 신문을 읽어요.", "할아버지가 신문을 읽세요.", "할아버지께서 신문을 읽다세요."],
+      "answer": "할아버지께서 신문을 읽으세요."
+    },
+    {
+      "type": "grammar",
+      "rule": "Động từ tôn kính đặc biệt 계시다 / 잡수시다 / 주무시다",
+      "explanation": "Một số động từ có dạng tôn kính riêng, không chỉ thêm -(으)시-: 있다 (có/ở) → 계시다; 먹다 (ăn) → 드시다 hoặc 잡수시다; 자다 (ngủ) → 주무시다. Dùng các từ này khi chủ ngữ là người đáng kính.",
+      "examples": [
+        "할머니께서 방에 계세요.",
+        "아버지께서 진지를 잡수세요.",
+        "할아버지께서는 일찍 주무세요."
+      ],
+      "tip": "Không nói 할머니가 있어요 mà phải 할머니께서 계세요. 먹다 với người lớn dùng 드시다/잡수시다, 자다 dùng 주무시다, không dùng 먹으세요/자세요.",
+      "question": "다음 중 어른께 '주무세요'를 바르게 쓴 문장을 고르세요.",
+      "options": ["할아버지, 안녕히 주무세요.", "할아버지, 안녕히 자세요.", "할아버지, 안녕히 잡수세요.", "할아버지, 안녕히 계세요."],
+      "answer": "할아버지, 안녕히 주무세요."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "손님, 여기에 _____. (앉다)",
+      "answer": "앉으세요",
+      "options": ["앉으세요", "앉세요", "앉아세요", "앉습니다세요"],
+      "explanation": "앉다 có phụ âm cuối ㄵ (받침) nên thêm 으세요 → 앉으세요. Câu nghĩa: 'Quý khách, mời ngồi ở đây ạ.'"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "저는 매일 아침 일곱 시에 회사에 _____. (가다, 합니다체)",
+      "answer": "갑니다",
+      "options": ["갑니다", "가습니다", "갑니까", "가으세요"],
+      "explanation": "가다 kết thúc bằng nguyên âm (không có 받침) nên ở thể 합니다체 dùng ㅂ니다 → 갑니다. Câu nghĩa: 'Mỗi sáng tôi đến công ty lúc bảy giờ.'"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "할머니께서는 지금 방에 _____. (있다, 높임말)",
+      "answer": "계세요",
+      "options": ["계세요", "있으세요", "있어요", "주무세요"],
+      "explanation": "있다 có dạng tôn kính riêng là 계시다, nên với người đáng kính dùng 계세요 chứ không phải 있어요/있으세요. Câu nghĩa: 'Bà hiện đang ở trong phòng ạ.'"
+    },
+    {
+      "type": "arrange",
+      "words": ["여기", "앉으세요", "잠깐"],
+      "answer": "여기 잠깐 앉으세요",
+      "hint": "Câu nghĩa: 'Mời ngồi đây một lát ạ.' (đề nghị lịch sự với -(으)세요)"
+    },
+    {
+      "type": "arrange",
+      "words": ["일합니다", "은행에서", "저는"],
+      "answer": "저는 은행에서 일합니다",
+      "hint": "Câu nghĩa: 'Tôi làm việc ở ngân hàng.' (thể trang trọng 합니다체)"
+    },
+    {
+      "type": "arrange",
+      "words": ["잡수세요", "진지를", "할아버지께서"],
+      "answer": "할아버지께서 진지를 잡수세요",
+      "hint": "Câu nghĩa: 'Ông dùng bữa ạ.' (động từ tôn kính đặc biệt 잡수시다)"
+    }
+  ]
+}

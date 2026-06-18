@@ -1,0 +1,100 @@
+{
+  "key": "zh-s1-l5",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "这/那 + 个 + danh từ",
+      "explanation": "Đại từ chỉ định 这 (này) và 那 (kia/đó) khi đứng trước danh từ thường phải có lượng từ ở giữa. Lượng từ phổ biến nhất là 个. Cấu trúc: 这/那 + lượng từ + danh từ. Ví dụ: 这个人 (người này), 那个东西 (cái đó).",
+      "examples": [
+        "这个人是我的老师。",
+        "那个东西很贵。",
+        "我喜欢这个苹果。"
+      ],
+      "tip": "Người Việt hay quên lượng từ, nói sai *这人, *那书. Phải có lượng từ: 这个人, 那本书.",
+      "question": "Chọn cách nói đúng cho \"quyển sách này\":",
+      "options": ["这本书", "这书", "这个书本", "本这书"],
+      "answer": "这本书"
+    },
+    {
+      "type": "grammar",
+      "rule": "Lượng từ 本 cho sách",
+      "explanation": "Mỗi danh từ đi với một lượng từ riêng. 个 dùng chung cho người và nhiều vật, nhưng sách vở phải dùng 本. Cấu trúc: số/这/那 + 本 + sách. Ví dụ: 一本书 (một quyển sách), 这本书 (quyển sách này).",
+      "examples": [
+        "我有三本书。",
+        "这本书很有意思。",
+        "那本书是老师的。"
+      ],
+      "tip": "Người Việt hay dùng 个 cho mọi thứ. Với sách phải dùng 本, không nói *一个书.",
+      "question": "Điền lượng từ đúng: 我买了两 ___ 书。",
+      "options": ["本", "个", "岁", "口"],
+      "answer": "本"
+    },
+    {
+      "type": "grammar",
+      "rule": "几 và 多少 hỏi số lượng",
+      "explanation": "Cả 几 và 多少 đều hỏi số lượng. 几 dùng cho số nhỏ (thường dưới 10) và bắt buộc có lượng từ phía sau: 几个? 几本? 多少 dùng cho số lớn, không bắt buộc lượng từ: 多少钱?",
+      "examples": [
+        "你家有几口人？",
+        "你有几个朋友？",
+        "这个多少钱？"
+      ],
+      "tip": "Sau 几 luôn có lượng từ (几个人), còn sau 多少 thường không cần (多少钱).",
+      "question": "Câu nào dùng đúng để hỏi giá tiền (số lớn)?",
+      "options": ["这个多少钱？", "这个几钱？", "这个几个钱？", "这个多少个钱？"],
+      "answer": "这个多少钱？"
+    },
+    {
+      "type": "grammar",
+      "rule": "的 chỉ sở hữu",
+      "explanation": "Trợ từ 的 đặt giữa người sở hữu và vật để diễn đạt \"của\". Cấu trúc: A + 的 + B = B của A. Ví dụ: 我的书 (sách của tôi), 老师的名字 (tên của thầy giáo).",
+      "examples": [
+        "这是我的书。",
+        "那个手机是他的。",
+        "老师的女儿很可爱。"
+      ],
+      "tip": "Người Việt hay quên 的, nói *我书. Phải nói 我的书 (sách của tôi).",
+      "question": "Chọn câu đúng nghĩa \"Đây là sách của tôi\":",
+      "options": ["这是我的书。", "这是我书。", "这是书我的。", "这是我书的。"],
+      "answer": "这是我的书。"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "这 ___ 人是我的老师。",
+      "answer": "个",
+      "options": ["个", "本", "岁", "口"],
+      "explanation": "Chỉ người dùng lượng từ 个: 这个人 (người này). 本 dùng cho sách, 岁 cho tuổi, 口 cho số người trong nhà."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "你家有 ___ 口人？",
+      "answer": "几",
+      "options": ["几", "多少", "本", "个"],
+      "explanation": "Hỏi số người trong nhà (số nhỏ) dùng 几 + lượng từ: 几口人。 多少 dùng cho số lớn và thường không kèm lượng từ."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "这是我 ___ 手机。",
+      "answer": "的",
+      "options": ["的", "个", "本", "了"],
+      "explanation": "的 chỉ sở hữu: 我的手机 (điện thoại của tôi). Không dùng lượng từ 个/本 ở đây vì đã có 的 nối người sở hữu với vật."
+    },
+    {
+      "type": "arrange",
+      "words": ["书", "这", "我的", "本", "是"],
+      "answer": "这本书是我的",
+      "hint": "Quyển sách này là của tôi."
+    },
+    {
+      "type": "arrange",
+      "words": ["几", "你", "朋友", "个", "有"],
+      "answer": "你有几个朋友",
+      "hint": "Bạn có mấy người bạn?"
+    },
+    {
+      "type": "arrange",
+      "words": ["人", "那", "老师", "个", "是"],
+      "answer": "那个人是老师",
+      "hint": "Người kia là giáo viên."
+    }
+  ]
+}

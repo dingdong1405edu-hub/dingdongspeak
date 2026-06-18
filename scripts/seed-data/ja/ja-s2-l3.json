@@ -1,0 +1,105 @@
+{
+  "key": "ja-s2-l3",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "かう",
+      "phonetic": "かう / kau",
+      "pos": "v.",
+      "meaning": "mua",
+      "example": "デパートでくつを買います。",
+      "options": ["mua", "bán", "trả tiền", "mượn"],
+      "answer": "mua"
+    },
+    {
+      "type": "vocab",
+      "word": "みせ",
+      "phonetic": "みせ / mise",
+      "pos": "n.",
+      "meaning": "cửa hàng, tiệm",
+      "example": "あの店はとても新しいです。",
+      "options": ["cửa hàng, tiệm", "nhà ga", "ngân hàng", "công ty"],
+      "answer": "cửa hàng, tiệm"
+    },
+    {
+      "type": "vocab",
+      "word": "いくら",
+      "phonetic": "いくら / ikura",
+      "pos": "phrase",
+      "meaning": "bao nhiêu tiền",
+      "example": "このかばんはいくらですか。",
+      "options": ["bao nhiêu tiền", "khi nào", "ở đâu", "cái nào"],
+      "answer": "bao nhiêu tiền"
+    },
+    {
+      "type": "vocab",
+      "word": "えん",
+      "phonetic": "えん / en",
+      "pos": "n.",
+      "meaning": "yên (đồng tiền Nhật)",
+      "example": "このパンは百五十円です。",
+      "options": ["yên (đồng tiền Nhật)", "đô la", "giá cả", "tiền lẻ"],
+      "answer": "yên (đồng tiền Nhật)"
+    },
+    {
+      "type": "vocab",
+      "word": "たかい",
+      "phonetic": "たかい / takai",
+      "pos": "adj.",
+      "meaning": "đắt; cao",
+      "example": "このとけいは高いです。",
+      "options": ["đắt; cao", "rẻ", "to lớn", "mới"],
+      "answer": "đắt; cao"
+    },
+    {
+      "type": "vocab",
+      "word": "やすい",
+      "phonetic": "やすい / yasui",
+      "pos": "adj.",
+      "meaning": "rẻ",
+      "example": "この店の野菜は安いです。",
+      "options": ["rẻ", "đắt", "nhỏ", "ngon"],
+      "answer": "rẻ"
+    },
+    {
+      "type": "vocab",
+      "word": "おおきい",
+      "phonetic": "おおきい / ookii",
+      "pos": "adj.",
+      "meaning": "to, lớn",
+      "example": "もっと大きいサイズはありますか。",
+      "options": ["to, lớn", "nhỏ", "đắt", "dài"],
+      "answer": "to, lớn"
+    },
+    {
+      "type": "vocab",
+      "word": "ちいさい",
+      "phonetic": "ちいさい / chiisai",
+      "pos": "adj.",
+      "meaning": "nhỏ, bé",
+      "example": "この靴は少し小さいです。",
+      "options": ["nhỏ, bé", "to lớn", "rẻ", "ngắn"],
+      "answer": "nhỏ, bé"
+    },
+    {
+      "type": "vocab",
+      "word": "ください",
+      "phonetic": "ください / kudasai",
+      "pos": "phrase",
+      "meaning": "cho tôi (xin); làm ơn",
+      "example": "これを二つください。",
+      "options": ["cho tôi (xin); làm ơn", "cảm ơn", "xin lỗi", "không cần"],
+      "answer": "cho tôi (xin); làm ơn"
+    },
+    {
+      "type": "vocab",
+      "word": "おかね",
+      "phonetic": "おかね / okane",
+      "pos": "n.",
+      "meaning": "tiền",
+      "example": "お金がありません。",
+      "options": ["tiền", "ví", "giá", "thẻ"],
+      "answer": "tiền"
+    }
+  ]
+}

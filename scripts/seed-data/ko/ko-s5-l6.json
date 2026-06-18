@@ -1,0 +1,149 @@
+{
+  "key": "ko-s5-l6",
+  "cards": [
+    {
+      "type": "speaking",
+      "prompt": "앞으로 무슨 일을 하고 싶어요?",
+      "hint": "Nói về nghề nghiệp bạn mơ ước, lý do bạn thích nghề đó, và bạn đang chuẩn bị gì cho công việc tương lai.",
+      "samplePhrases": [
+        "저는 앞으로 ~이/가 되고 싶어요.",
+        "왜냐하면 ~을/를 좋아하기 때문이에요.",
+        "그래서 지금 ~을/를 준비하고 있어요."
+      ],
+      "vocabulary": [
+        { "word": "직업", "meaning": "nghề nghiệp", "example": "제 꿈의 직업은 선생님이에요." },
+        { "word": "되다", "meaning": "trở thành", "example": "저는 의사가 되고 싶어요." },
+        { "word": "준비하다", "meaning": "chuẩn bị", "example": "지금 시험을 준비하고 있어요." },
+        { "word": "꿈", "meaning": "ước mơ", "example": "제 꿈을 꼭 이루고 싶어요." },
+        { "word": "노력하다", "meaning": "nỗ lực, cố gắng", "example": "꿈을 위해서 열심히 노력해요." }
+      ],
+      "ideas": [
+        "Nói rõ nghề nghiệp bạn muốn làm (giáo viên, lập trình viên, bác sĩ...).",
+        "Giải thích lý do bạn thích nghề đó.",
+        "Kể bạn đang chuẩn bị hoặc học gì để đạt được mục tiêu.",
+        "Nói về mong muốn của bạn trong tương lai."
+      ],
+      "sampleAnswer": "저는 앞으로 한국어 선생님이 되고 싶어요. 왜냐하면 외국어를 가르치는 일을 좋아하기 때문이에요. 그래서 지금 매일 한국어를 열심히 공부하고 있어요. 꿈을 이루기 위해서 앞으로도 계속 노력할 거예요.\n\n(Dịch: Trong tương lai tôi muốn trở thành giáo viên tiếng Hàn. Bởi vì tôi thích công việc dạy ngoại ngữ. Vì vậy bây giờ mỗi ngày tôi đang chăm chỉ học tiếng Hàn. Để thực hiện ước mơ, sau này tôi cũng sẽ tiếp tục cố gắng.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "어떤 공부 계획이 있어요?",
+      "hint": "Nói về môn bạn muốn học, mục tiêu học tập, và bạn dự định học như thế nào (hằng ngày, ở đâu).",
+      "samplePhrases": [
+        "저는 ~을/를 공부할 계획이에요.",
+        "매일 ~시간 동안 공부하려고 해요.",
+        "올해 안에 ~을/를 끝내고 싶어요."
+      ],
+      "vocabulary": [
+        { "word": "계획", "meaning": "kế hoạch", "example": "이번 달 공부 계획을 세웠어요." },
+        { "word": "목표", "meaning": "mục tiêu", "example": "제 목표는 시험에 합격하는 거예요." },
+        { "word": "복습하다", "meaning": "ôn tập", "example": "수업 후에 항상 복습해요." },
+        { "word": "단어", "meaning": "từ vựng", "example": "하루에 단어 열 개를 외워요." },
+        { "word": "합격하다", "meaning": "đỗ, đậu (kỳ thi)", "example": "토픽 시험에 합격하고 싶어요." }
+      ],
+      "ideas": [
+        "Nói về môn học hoặc kỹ năng bạn muốn cải thiện.",
+        "Đặt một mục tiêu cụ thể (đỗ kỳ thi, học bao nhiêu từ).",
+        "Mô tả thói quen học hằng ngày của bạn.",
+        "Nói về thời gian hoặc địa điểm bạn học."
+      ],
+      "sampleAnswer": "저는 올해 한국어 실력을 더 키울 계획이에요. 제 목표는 토픽 시험에 합격하는 거예요. 그래서 매일 한 시간씩 단어를 외우고 문법을 복습하려고 해요. 그리고 주말에는 한국 드라마를 보면서 듣기 연습을 할 거예요.\n\n(Dịch: Năm nay tôi có kế hoạch nâng cao hơn nữa trình độ tiếng Hàn. Mục tiêu của tôi là đậu kỳ thi TOPIK. Vì vậy mỗi ngày tôi định học từ vựng và ôn tập ngữ pháp mỗi lần một tiếng. Và vào cuối tuần tôi sẽ vừa xem phim Hàn vừa luyện nghe.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "어디로 여행을 갈 계획이에요?",
+      "hint": "Nói về nơi bạn dự định đi du lịch, thời gian đi, đi với ai, và bạn muốn làm gì ở đó.",
+      "samplePhrases": [
+        "저는 ~에 여행을 갈 계획이에요.",
+        "~와/과 함께 가려고 해요.",
+        "거기에서 ~을/를 하고 싶어요."
+      ],
+      "vocabulary": [
+        { "word": "여행", "meaning": "du lịch", "example": "방학에 제주도로 여행을 가요." },
+        { "word": "구경하다", "meaning": "tham quan, ngắm cảnh", "example": "유명한 곳을 구경하고 싶어요." },
+        { "word": "예약하다", "meaning": "đặt (chỗ, vé)", "example": "호텔을 미리 예약했어요." },
+        { "word": "경치", "meaning": "phong cảnh", "example": "그곳의 경치가 정말 아름다워요." },
+        { "word": "맛집", "meaning": "quán ăn ngon", "example": "여기 맛집에 가 보고 싶어요." }
+      ],
+      "ideas": [
+        "Chọn một địa điểm cụ thể (Hàn Quốc, Đà Nẵng, đảo Jeju...).",
+        "Nói về thời gian và người đi cùng.",
+        "Kể những việc bạn muốn làm ở đó (tham quan, ăn uống).",
+        "Nói về sự chuẩn bị như đặt vé, đặt khách sạn."
+      ],
+      "sampleAnswer": "저는 다음 휴가에 한국 서울로 여행을 갈 계획이에요. 친구하고 같이 가려고 해요. 거기에서 경복궁을 구경하고 맛있는 한국 음식을 먹고 싶어요. 그래서 벌써 비행기 표와 호텔을 예약했어요.\n\n(Dịch: Kỳ nghỉ tới tôi có kế hoạch đi du lịch đến Seoul, Hàn Quốc. Tôi định đi cùng với bạn. Ở đó tôi muốn tham quan cung Gyeongbok và ăn món Hàn ngon. Vì vậy tôi đã đặt vé máy bay và khách sạn trước rồi.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "한국어를 잘하고 싶어요? 왜요?",
+      "hint": "Nói bạn có muốn giỏi tiếng Hàn không, lý do (công việc, sở thích, du lịch), và bạn sẽ cố gắng thế nào.",
+      "samplePhrases": [
+        "네, 저는 한국어를 잘하고 싶어요.",
+        "왜냐하면 ~기 때문이에요.",
+        "그래서 ~을/를 열심히 하고 있어요."
+      ],
+      "vocabulary": [
+        { "word": "잘하다", "meaning": "giỏi, làm tốt", "example": "그 사람은 한국어를 잘해요." },
+        { "word": "이유", "meaning": "lý do", "example": "한국어를 배우는 이유가 있어요." },
+        { "word": "이해하다", "meaning": "hiểu", "example": "한국 노래 가사를 이해하고 싶어요." },
+        { "word": "대화하다", "meaning": "trò chuyện, đối thoại", "example": "한국 친구하고 대화하고 싶어요." },
+        { "word": "도움이 되다", "meaning": "có ích, giúp ích", "example": "한국어가 일에 도움이 돼요." }
+      ],
+      "ideas": [
+        "Trả lời rõ ràng bạn có muốn giỏi tiếng Hàn không.",
+        "Nêu lý do liên quan đến công việc hoặc ước mơ.",
+        "Nêu lý do liên quan đến sở thích (phim, nhạc, du lịch Hàn).",
+        "Nói bạn đang cố gắng học như thế nào."
+      ],
+      "sampleAnswer": "네, 저는 한국어를 정말 잘하고 싶어요. 왜냐하면 한국 회사에서 일하고 싶기 때문이에요. 그리고 한국 드라마와 노래를 자막 없이 이해하고 싶어요. 그래서 매일 한국어를 공부하고 한국 친구하고 대화 연습을 하고 있어요.\n\n(Dịch: Vâng, tôi thật sự muốn giỏi tiếng Hàn. Bởi vì tôi muốn làm việc ở công ty Hàn Quốc. Và tôi muốn hiểu phim và bài hát Hàn mà không cần phụ đề. Vì vậy mỗi ngày tôi đang học tiếng Hàn và luyện nói chuyện với bạn người Hàn.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "주말에 무슨 계획이 있어요?",
+      "hint": "Nói về kế hoạch cuối tuần này: làm gì, ở đâu, với ai, và tại sao bạn mong chờ điều đó.",
+      "samplePhrases": [
+        "이번 주말에 저는 ~을/를 할 거예요.",
+        "토요일에는 ~고, 일요일에는 ~을/를 하려고 해요.",
+        "~와/과 함께 ~을/를 할 계획이에요."
+      ],
+      "vocabulary": [
+        { "word": "주말", "meaning": "cuối tuần", "example": "주말에 보통 집에서 쉬어요." },
+        { "word": "쉬다", "meaning": "nghỉ ngơi", "example": "이번 주말에는 푹 쉬고 싶어요." },
+        { "word": "만나다", "meaning": "gặp gỡ", "example": "친구를 만나서 영화를 봐요." },
+        { "word": "운동하다", "meaning": "tập thể dục", "example": "아침에 공원에서 운동해요." },
+        { "word": "약속", "meaning": "cuộc hẹn", "example": "토요일에 친구하고 약속이 있어요." }
+      ],
+      "ideas": [
+        "Nói về hoạt động bạn dự định làm vào thứ Bảy.",
+        "Nói về hoạt động bạn dự định làm vào Chủ nhật.",
+        "Kể bạn đi với ai và đi đâu.",
+        "Nói lý do bạn mong chờ cuối tuần này."
+      ],
+      "sampleAnswer": "이번 주말에 저는 친구하고 약속이 있어요. 토요일에는 친구를 만나서 시내에서 쇼핑을 하고 맛있는 음식을 먹을 거예요. 일요일에는 집에서 푹 쉬면서 한국어 복습을 하려고 해요. 오랜만에 친구를 만나서 정말 기대돼요.\n\n(Dịch: Cuối tuần này tôi có cuộc hẹn với bạn. Thứ Bảy tôi sẽ gặp bạn rồi đi mua sắm ở trung tâm thành phố và ăn món ngon. Chủ nhật tôi định nghỉ ngơi thoải mái ở nhà và ôn tập tiếng Hàn. Lâu rồi mới gặp bạn nên tôi rất mong chờ.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "나중에 어느 도시에서 살고 싶어요?",
+      "hint": "Nói về thành phố bạn muốn sống sau này, lý do (khí hậu, công việc, cuộc sống), và bạn hình dung cuộc sống ở đó thế nào.",
+      "samplePhrases": [
+        "저는 나중에 ~에서 살고 싶어요.",
+        "그 도시는 ~기 때문이에요.",
+        "거기에서 ~게 살고 싶어요."
+      ],
+      "vocabulary": [
+        { "word": "도시", "meaning": "thành phố", "example": "저는 큰 도시에서 살고 싶어요." },
+        { "word": "살다", "meaning": "sống, sinh sống", "example": "지금 하노이에서 살고 있어요." },
+        { "word": "편리하다", "meaning": "tiện lợi", "example": "그 도시는 교통이 편리해요." },
+        { "word": "조용하다", "meaning": "yên tĩnh", "example": "저는 조용한 곳을 좋아해요." },
+        { "word": "분위기", "meaning": "không khí, bầu không khí", "example": "그 도시의 분위기가 마음에 들어요." }
+      ],
+      "ideas": [
+        "Chọn một thành phố cụ thể (Seoul, Đà Nẵng, một thành phố nhỏ...).",
+        "Nói lý do liên quan đến công việc hoặc tiện ích.",
+        "Nói lý do liên quan đến khí hậu, không khí, cuộc sống.",
+        "Hình dung cuộc sống của bạn ở thành phố đó."
+      ],
+      "sampleAnswer": "저는 나중에 한국 부산에서 살고 싶어요. 왜냐하면 부산은 바다가 가깝고 분위기가 아름답기 때문이에요. 그리고 큰 도시라서 교통도 편리하고 일자리도 많아요. 그곳에서 바다를 보면서 편하게 살고 싶어요.\n\n(Dịch: Sau này tôi muốn sống ở Busan, Hàn Quốc. Bởi vì Busan gần biển và không khí rất đẹp. Hơn nữa vì là thành phố lớn nên giao thông cũng tiện lợi và việc làm cũng nhiều. Tôi muốn sống thoải mái ở đó vừa ngắm biển.)"
+    }
+  ]
+}

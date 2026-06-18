@@ -1,0 +1,105 @@
+{
+  "key": "zh-s5-l1",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "高兴",
+      "phonetic": "gāoxìng",
+      "pos": "adj.",
+      "meaning": "vui, vui mừng",
+      "example": "认识你我很高兴。",
+      "options": ["vui, vui mừng", "tức giận", "buồn bã", "lo lắng"],
+      "answer": "vui, vui mừng"
+    },
+    {
+      "type": "vocab",
+      "word": "难过",
+      "phonetic": "nánguò",
+      "pos": "adj.",
+      "meaning": "buồn, đau lòng",
+      "example": "听到这个消息，她很难过。",
+      "options": ["buồn, đau lòng", "vui vẻ", "hào hứng", "bình tĩnh"],
+      "answer": "buồn, đau lòng"
+    },
+    {
+      "type": "vocab",
+      "word": "生气",
+      "phonetic": "shēngqì",
+      "pos": "v.",
+      "meaning": "tức giận, nổi giận",
+      "example": "你别生气，我跟你解释一下。",
+      "options": ["tức giận, nổi giận", "vui mừng", "ngạc nhiên", "xấu hổ"],
+      "answer": "tức giận, nổi giận"
+    },
+    {
+      "type": "vocab",
+      "word": "担心",
+      "phonetic": "dānxīn",
+      "pos": "v.",
+      "meaning": "lo lắng, lo ngại",
+      "example": "妈妈很担心我的身体。",
+      "options": ["lo lắng, lo ngại", "vui sướng", "hài lòng", "tự tin"],
+      "answer": "lo lắng, lo ngại"
+    },
+    {
+      "type": "vocab",
+      "word": "害怕",
+      "phonetic": "hàipà",
+      "pos": "v.",
+      "meaning": "sợ, sợ hãi",
+      "example": "我有点儿害怕一个人在家。",
+      "options": ["sợ, sợ hãi", "thích thú", "tức giận", "buồn chán"],
+      "answer": "sợ, sợ hãi"
+    },
+    {
+      "type": "vocab",
+      "word": "紧张",
+      "phonetic": "jǐnzhāng",
+      "pos": "adj.",
+      "meaning": "căng thẳng, hồi hộp",
+      "example": "考试的时候我特别紧张。",
+      "options": ["căng thẳng, hồi hộp", "thoải mái", "buồn ngủ", "hạnh phúc"],
+      "answer": "căng thẳng, hồi hộp"
+    },
+    {
+      "type": "vocab",
+      "word": "性格",
+      "phonetic": "xìnggé",
+      "pos": "n.",
+      "meaning": "tính cách",
+      "example": "他的性格很开朗。",
+      "options": ["tính cách", "ngoại hình", "tâm trạng", "thói quen"],
+      "answer": "tính cách"
+    },
+    {
+      "type": "vocab",
+      "word": "热情",
+      "phonetic": "rèqíng",
+      "pos": "adj.",
+      "meaning": "nhiệt tình, nồng nhiệt",
+      "example": "这里的服务员都很热情。",
+      "options": ["nhiệt tình, nồng nhiệt", "lạnh lùng", "lười biếng", "nghiêm túc"],
+      "answer": "nhiệt tình, nồng nhiệt"
+    },
+    {
+      "type": "vocab",
+      "word": "认真",
+      "phonetic": "rènzhēn",
+      "pos": "adj.",
+      "meaning": "nghiêm túc, chăm chú",
+      "example": "她学习非常认真。",
+      "options": ["nghiêm túc, chăm chú", "qua loa, cẩu thả", "vui vẻ", "tự tin"],
+      "answer": "nghiêm túc, chăm chú"
+    },
+    {
+      "type": "vocab",
+      "word": "自信",
+      "phonetic": "zìxìn",
+      "pos": "adj.",
+      "meaning": "tự tin",
+      "example": "你要对自己有自信。",
+      "options": ["tự tin", "xấu hổ, rụt rè", "lo lắng", "cẩu thả"],
+      "answer": "tự tin"
+    }
+  ]
+}

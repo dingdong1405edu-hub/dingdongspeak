@@ -1,0 +1,100 @@
+{
+  "key": "ja-s4-l3",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "Thể khả năng (可能形) - nhóm 2 và する/くる",
+      "explanation": "Thể khả năng diễn đạt 'có thể làm được'. Động từ nhóm 2 (ăn=たべる): bỏ る, thêm られる → たべられる. Động từ する → できる, くる → こられる. Khi dùng thể khả năng, tân ngữ thường đổi trợ từ を thành が.",
+      "examples": [
+        "わたしは すしが 食べられます。",
+        "日本語が 話せますか。",
+        "ここで カードが 使えます。"
+      ],
+      "tip": "Người Việt hay quên đổi を thành が khi dùng thể khả năng. Ví dụ nói 'すしを 食べられます' thì câu chuẩn hơn là 'すしが 食べられます'.",
+      "question": "「食べる」の可能形は どれですか。",
+      "options": ["食べられる", "食べれる", "食べできる", "食べる"],
+      "answer": "食べられる"
+    },
+    {
+      "type": "grammar",
+      "rule": "Thể khả năng (可能形) - động từ nhóm 1",
+      "explanation": "Động từ nhóm 1 (nhóm う): đổi âm cuối hàng う sang hàng え rồi thêm る. のむ → のめる (uống được), かく → かける (viết được), はなす → はなせる (nói được).",
+      "examples": [
+        "わたしは おさけが 飲めます。",
+        "かんじが 書けますか。",
+        "えいごが 話せます。"
+      ],
+      "tip": "Người Việt dễ nhầm 'のむ' thành 'のまれる'. のまれる là thể bị động, còn 'có thể uống' là のめる.",
+      "question": "「飲む」の可能形は どれですか。",
+      "options": ["飲める", "飲まれる", "飲みできる", "飲もる"],
+      "answer": "飲める"
+    },
+    {
+      "type": "grammar",
+      "rule": "する → できる (có thể làm)",
+      "explanation": "Động từ する có dạng khả năng bất quy tắc là できる. Vì vậy 'べんきょうする' (học) → 'べんきょうが できる' (có thể học). できる cũng dùng với danh từ + が.",
+      "examples": [
+        "わたしは りょうりが できます。",
+        "ピアノが できますか。",
+        "テニスが できません。"
+      ],
+      "tip": "Đừng nói 'する できる' hay 'しられる'. Thể khả năng của する luôn là できる.",
+      "question": "「日本語を べんきょうする」を 可能の意味にすると?",
+      "options": ["日本語が できます", "日本語を できます", "日本語が しられます", "日本語を されます"],
+      "answer": "日本語が できます"
+    },
+    {
+      "type": "grammar",
+      "rule": "～たいです (muốn làm)",
+      "explanation": "～たいです gắn vào gốc ます của động từ để diễn đạt mong muốn của bản thân. たべます → たべたいです (muốn ăn). Tân ngữ có thể dùng を hoặc が. Phủ định: たべたくないです (không muốn ăn).",
+      "examples": [
+        "日本へ 行きたいです。",
+        "おすしが 食べたいです。",
+        "今日は 何も したくないです。"
+      ],
+      "tip": "～たい chỉ dùng cho mong muốn của bản thân (ngôi thứ nhất). Không dùng trực tiếp '～たいです' để nói về người khác như '彼は行きたいです'.",
+      "question": "「日本へ 行く」を「muốn đi」にすると?",
+      "options": ["日本へ 行きたいです", "日本へ 行けます", "日本へ 行きたいでした", "日本へ 行くたいです"],
+      "answer": "日本へ 行きたいです"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "わたしは ひらがな___ 読めます。",
+      "answer": "が",
+      "options": ["が", "を", "に", "で"],
+      "explanation": "Khi dùng thể khả năng (読めます = đọc được), tân ngữ đổi trợ từ を thành が. Nên dùng 'ひらがなが 読めます'."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "あした 休みなので、ゆっくり ___です。",
+      "answer": "休みたい",
+      "options": ["休みたい", "休めたい", "休みできる", "休まれたい"],
+      "explanation": "～たいです diễn đạt mong muốn. やすむ → gốc ます là やすみ → やすみたいです (muốn nghỉ ngơi)."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "かんじが むずかしいので、まだ じょうずに ___ません。",
+      "answer": "書け",
+      "options": ["書け", "書き", "書か", "書ける"],
+      "explanation": "かく là động từ nhóm 1, thể khả năng là かける. Dạng phủ định lịch sự bỏ る thêm ません → かけません (không viết được)."
+    },
+    {
+      "type": "arrange",
+      "words": ["わたしは", "が", "できます", "うんてん"],
+      "answer": "わたしはうんてんができます",
+      "hint": "Tôi có thể lái xe. (する → できる, dùng trợ từ が)"
+    },
+    {
+      "type": "arrange",
+      "words": ["コーヒー", "飲みたい", "あつい", "です", "が"],
+      "answer": "あついコーヒーが飲みたいです",
+      "hint": "Tôi muốn uống cà phê nóng. (～たいです, tân ngữ + が)"
+    },
+    {
+      "type": "arrange",
+      "words": ["すしが", "あなたは", "か", "食べられます"],
+      "answer": "あなたはすしが食べられますか",
+      "hint": "Bạn có thể ăn sushi không? (thể khả năng nhóm 2 + が + か)"
+    }
+  ]
+}

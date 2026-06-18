@@ -1,0 +1,125 @@
+{
+  "key": "ja-s4-l2",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "仕事",
+      "phonetic": "しごと / shigoto",
+      "pos": "n.",
+      "meaning": "công việc",
+      "example": "わたしの仕事はとても忙しいです。",
+      "options": ["công việc", "công ty", "trường học", "kỳ thi"],
+      "answer": "công việc"
+    },
+    {
+      "type": "vocab",
+      "word": "会社",
+      "phonetic": "かいしゃ / kaisha",
+      "pos": "n.",
+      "meaning": "công ty",
+      "example": "毎朝、電車で会社へ行きます。",
+      "options": ["công ty", "công việc", "văn phòng", "cuộc họp"],
+      "answer": "công ty"
+    },
+    {
+      "type": "vocab",
+      "word": "会社員",
+      "phonetic": "かいしゃいん / kaishain",
+      "pos": "n.",
+      "meaning": "nhân viên công ty",
+      "example": "兄は大きい会社の会社員です。",
+      "options": ["nhân viên công ty", "giáo viên", "học sinh", "bác sĩ"],
+      "answer": "nhân viên công ty"
+    },
+    {
+      "type": "vocab",
+      "word": "事務所",
+      "phonetic": "じむしょ / jimusho",
+      "pos": "n.",
+      "meaning": "văn phòng",
+      "example": "事務所で書類を書いています。",
+      "options": ["văn phòng", "công ty", "trường học", "bệnh viện"],
+      "answer": "văn phòng"
+    },
+    {
+      "type": "vocab",
+      "word": "勉強",
+      "phonetic": "べんきょう / benkyou",
+      "pos": "n.",
+      "meaning": "việc học, sự học tập",
+      "example": "毎日、日本語の勉強をします。",
+      "options": ["việc học, sự học tập", "công việc", "bài tập về nhà", "cuộc họp"],
+      "answer": "việc học, sự học tập"
+    },
+    {
+      "type": "vocab",
+      "word": "学校",
+      "phonetic": "がっこう / gakkou",
+      "pos": "n.",
+      "meaning": "trường học",
+      "example": "妹は毎日、学校へ行きます。",
+      "options": ["trường học", "công ty", "văn phòng", "thư viện"],
+      "answer": "trường học"
+    },
+    {
+      "type": "vocab",
+      "word": "テスト",
+      "phonetic": "てすと / tesuto",
+      "pos": "n.",
+      "meaning": "bài kiểm tra, bài thi",
+      "example": "明日、数学のテストがあります。",
+      "options": ["bài kiểm tra, bài thi", "bài tập về nhà", "cuộc họp", "vấn đề"],
+      "answer": "bài kiểm tra, bài thi"
+    },
+    {
+      "type": "vocab",
+      "word": "宿題",
+      "phonetic": "しゅくだい / shukudai",
+      "pos": "n.",
+      "meaning": "bài tập về nhà",
+      "example": "今晩、宿題をしなければなりません。",
+      "options": ["bài tập về nhà", "bài kiểm tra", "cuộc họp", "công việc"],
+      "answer": "bài tập về nhà"
+    },
+    {
+      "type": "vocab",
+      "word": "忙しい",
+      "phonetic": "いそがしい / isogashii",
+      "pos": "adj.",
+      "meaning": "bận rộn",
+      "example": "今週は仕事が忙しいです。",
+      "options": ["bận rộn", "rảnh rỗi", "khó", "mệt"],
+      "answer": "bận rộn"
+    },
+    {
+      "type": "vocab",
+      "word": "手伝う",
+      "phonetic": "てつだう / tetsudau",
+      "pos": "v.",
+      "meaning": "giúp đỡ",
+      "example": "友達の仕事を手伝います。",
+      "options": ["giúp đỡ", "nghỉ ngơi", "học", "làm việc"],
+      "answer": "giúp đỡ"
+    },
+    {
+      "type": "vocab",
+      "word": "問題",
+      "phonetic": "もんだい / mondai",
+      "pos": "n.",
+      "meaning": "vấn đề, câu hỏi",
+      "example": "このテストの問題は難しいです。",
+      "options": ["vấn đề, câu hỏi", "câu trả lời", "bài tập về nhà", "cuộc họp"],
+      "answer": "vấn đề, câu hỏi"
+    },
+    {
+      "type": "vocab",
+      "word": "会議",
+      "phonetic": "かいぎ / kaigi",
+      "pos": "n.",
+      "meaning": "cuộc họp",
+      "example": "午後から大切な会議があります。",
+      "options": ["cuộc họp", "công ty", "văn phòng", "công việc"],
+      "answer": "cuộc họp"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "key": "zh-s5-l2",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "的 (định ngữ + danh từ)",
+      "explanation": "的 đứng giữa định ngữ và danh từ, dùng để bổ nghĩa cho danh từ phía sau. Cấu trúc: tính từ/danh từ/cụm + 的 + danh từ. Ví dụ: 漂亮的衣服 (bộ quần áo đẹp), 我的书 (sách của tôi). 的 luôn theo sau là một danh từ.",
+      "examples": [
+        "这是一件漂亮的衣服。",
+        "他是我最好的朋友。",
+        "桌子上有一本有意思的书。"
+      ],
+      "tip": "Người Việt hay nhầm ba chữ 'de'. Nhớ: 的 + DANH TỪ (đồ vật, người). Nếu sau chỗ trống là danh từ thì dùng 的.",
+      "question": "请选择正确的 'de'：他有一双漂亮___眼睛。",
+      "options": ["的", "得", "地", "了"],
+      "answer": "的"
+    },
+    {
+      "type": "grammar",
+      "rule": "得 (bổ ngữ trình độ)",
+      "explanation": "得 đứng sau động từ hoặc tính từ, nối với bổ ngữ chỉ mức độ/trình độ. Cấu trúc: động từ + 得 + bổ ngữ (thường là tính từ). Ví dụ: 跑得很快 (chạy rất nhanh), 说得很好 (nói rất giỏi). 得 đánh giá hành động làm ra sao.",
+      "examples": [
+        "他跑得很快。",
+        "你说得对！",
+        "妹妹唱歌唱得非常好。"
+      ],
+      "tip": "Người Việt thường dùng nhầm 的 thay 得. Nhớ: ĐỘNG TỪ + 得 + đánh giá. Khi nói 'làm việc gì đó NHƯ THẾ NÀO' thì dùng 得.",
+      "question": "请选择正确的 'de'：他汉语说___很流利。",
+      "options": ["得", "的", "地", "在"],
+      "answer": "得"
+    },
+    {
+      "type": "grammar",
+      "rule": "地 (trạng ngữ + động từ)",
+      "explanation": "地 đứng sau trạng ngữ (thường là tính từ hai âm tiết), bổ nghĩa cho động từ phía sau, miêu tả cách thức thực hiện hành động. Cấu trúc: tính từ/trạng từ + 地 + động từ. Ví dụ: 认真地学习 (học một cách chăm chỉ), 高兴地说 (vui vẻ nói).",
+      "examples": [
+        "她认真地学习中文。",
+        "孩子们高兴地笑了。",
+        "请慢慢地说。"
+      ],
+      "tip": "Người Việt hay quên 地 và dùng nhầm 的. Nhớ: trạng ngữ + 地 + ĐỘNG TỪ. Khi miêu tả 'một cách...' đứng trước động từ thì dùng 地.",
+      "question": "请选择正确的 'de'：老师认真___给我们上课。",
+      "options": ["地", "的", "得", "了"],
+      "answer": "地"
+    },
+    {
+      "type": "grammar",
+      "rule": "Phân biệt 的 / 得 / 地",
+      "explanation": "Ba chữ đều đọc là 'de' nhưng dùng khác nhau: 的 + danh từ (định ngữ); động từ + 得 + bổ ngữ trình độ; trạng ngữ + 地 + động từ. Phải nhìn vào từ phía sau để chọn đúng chữ.",
+      "examples": [
+        "这是我的书。",
+        "他写字写得很好。",
+        "他们快乐地唱歌。"
+      ],
+      "tip": "Mẹo: sau 的 là danh từ, sau 地 là động từ, trước 得 là động từ/tính từ và sau là mức độ. Người Việt nên kiểm tra từ loại đứng trước và sau chỗ trống.",
+      "question": "下面哪个句子是正确的？",
+      "options": [
+        "他跑得很快。",
+        "他跑的很快。",
+        "他跑地很快。",
+        "他得跑很快。"
+      ],
+      "answer": "他跑得很快。"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "她穿着一件红色___裙子。",
+      "answer": "的",
+      "options": ["的", "得", "地", "了"],
+      "explanation": "Sau chỗ trống là danh từ 裙子 (váy), trước là định ngữ 红色 (màu đỏ), nên dùng 的: 红色的裙子 (chiếc váy màu đỏ)."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "弟弟今天起___很早。",
+      "answer": "得",
+      "options": ["得", "的", "地", "在"],
+      "explanation": "Cấu trúc động từ 起 (dậy) + 得 + bổ ngữ trình độ 很早 (rất sớm), đánh giá hành động dậy như thế nào, nên dùng 得: 起得很早."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "他们安静___坐在教室里。",
+      "answer": "地",
+      "options": ["地", "的", "得", "了"],
+      "explanation": "Trạng ngữ 安静 (yên tĩnh) + 地 + động từ 坐 (ngồi), miêu tả cách thức của hành động, nên dùng 地: 安静地坐."
+    },
+    {
+      "type": "arrange",
+      "words": ["跑", "他", "很", "得", "快"],
+      "answer": "他跑得很快",
+      "hint": "Anh ấy chạy rất nhanh (động từ + 得 + mức độ)."
+    },
+    {
+      "type": "arrange",
+      "words": ["认真", "学生", "地", "学习", "这个"],
+      "answer": "这个学生认真地学习",
+      "hint": "Học sinh này học một cách chăm chỉ (trạng ngữ + 地 + động từ)."
+    },
+    {
+      "type": "arrange",
+      "words": ["朋友", "好", "是", "我", "的", "最", "她"],
+      "answer": "她是我最好的朋友",
+      "hint": "Cô ấy là người bạn tốt nhất của tôi (định ngữ + 的 + danh từ)."
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "key": "ko-s1-l3",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "N + 이에요/예요 (thể thân mật lịch sự)",
+      "explanation": "Đây là vị ngữ danh từ nghĩa 'là', dùng trong giao tiếp hằng ngày lịch sự. Quy tắc: nếu danh từ kết thúc bằng phụ âm cuối (받침) thì dùng 이에요; nếu kết thúc bằng nguyên âm (không có 받침) thì dùng 예요.",
+      "examples": [
+        "저는 학생이에요.",
+        "이거는 가방이에요.",
+        "제 친구는 의사예요."
+      ],
+      "tip": "Người Việt hay dùng nhầm 이에요 cho từ kết thúc bằng nguyên âm. Hãy nhớ: có 받침 → 이에요, không 받침 → 예요. Ví dụ 의사 (không 받침) phải là 의사예요, không phải 의사이에요.",
+      "question": "다음 중 빈칸에 알맞은 것을 고르세요: 저는 회사원___.",
+      "options": ["이에요", "예요", "이예요", "에요"],
+      "answer": "이에요"
+    },
+    {
+      "type": "grammar",
+      "rule": "N + 예요 (sau nguyên âm)",
+      "explanation": "Khi danh từ kết thúc bằng nguyên âm (không có 받침), ta dùng 예요 để diễn đạt 'là' ở thể thân mật lịch sự (해요체).",
+      "examples": [
+        "저는 가수예요.",
+        "여기는 학교예요.",
+        "그 사람은 배우예요."
+      ],
+      "tip": "Người Việt dễ viết sai thành 이에요 sau nguyên âm. Từ 가수 kết thúc bằng nguyên âm 우 nên phải là 가수예요.",
+      "question": "다음 중 알맞은 문장을 고르세요.",
+      "options": ["저는 의사예요.", "저는 의사이에요.", "저는 의사에요.", "저는 의사여요."],
+      "answer": "저는 의사예요."
+    },
+    {
+      "type": "grammar",
+      "rule": "N + 입니다 / 입니까? (thể trang trọng)",
+      "explanation": "입니다 là vị ngữ danh từ 'là' ở thể trang trọng (합니다체), dùng trong tình huống nghiêm túc, thuyết trình, tin tức. Câu hỏi đổi thành 입니까?. Dùng được cho cả danh từ có và không có 받침.",
+      "examples": [
+        "저는 한국 사람입니다.",
+        "이것은 책입니다.",
+        "직업이 무엇입니까?"
+      ],
+      "tip": "입니다 đọc là [imnida] vì ㅂ trước ㄴ biến thành [m]. Câu hỏi trang trọng dùng 입니까? chứ không phải 입니다?.",
+      "question": "정중하게 질문하는 문장을 고르세요: '거기는 도서관___?'",
+      "options": ["입니까", "입니다", "이에요까", "예요까"],
+      "answer": "입니까"
+    },
+    {
+      "type": "grammar",
+      "rule": "N + 이/가 아니에요 (phủ định 'không phải là')",
+      "explanation": "Để nói 'không phải là N', ta dùng N + 이/가 아니에요. Nếu danh từ có 받침 thì thêm 이 (N이 아니에요); nếu không có 받침 thì thêm 가 (N가 아니에요). Thể trang trọng là 아닙니다.",
+      "examples": [
+        "저는 학생이 아니에요.",
+        "이거는 우유가 아니에요.",
+        "그 사람은 선생님이 아니에요."
+      ],
+      "tip": "Đừng nói 학생 아니에요 mà thiếu trợ từ. Phải có 이/가: có 받침 → 이 아니에요, không 받침 → 가 아니에요.",
+      "question": "다음 중 올바른 부정문을 고르세요.",
+      "options": ["저는 의사가 아니에요.", "저는 의사이 아니에요.", "저는 의사 아니가에요.", "저는 의사가 아니이에요."],
+      "answer": "저는 의사가 아니에요."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "저는 회사원___.",
+      "answer": "이에요",
+      "options": ["이에요", "예요", "이예요", "가 아니에요"],
+      "explanation": "회사원 kết thúc bằng phụ âm cuối ㄴ (받침), nên dùng 이에요. Câu nghĩa: 'Tôi là nhân viên công ty.'"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "이 사람은 제 친구___.",
+      "answer": "예요",
+      "options": ["예요", "이에요", "입니까", "이 아니에요"],
+      "explanation": "친구 kết thúc bằng nguyên âm 우 (không có 받침), nên dùng 예요. Câu nghĩa: 'Người này là bạn của tôi.'"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "저는 일본 사람이 아니에요. 한국 사람___.",
+      "answer": "이에요",
+      "options": ["이에요", "예요", "가 아니에요", "입니까"],
+      "explanation": "사람 kết thúc bằng phụ âm cuối ㅁ (받침), nên dùng 이에요. Câu nghĩa: 'Tôi không phải người Nhật. Tôi là người Hàn Quốc.'"
+    },
+    {
+      "type": "arrange",
+      "words": ["베트남", "사람이에요", "저는"],
+      "answer": "저는 베트남 사람이에요",
+      "hint": "Câu nghĩa: 'Tôi là người Việt Nam.' (thể thân mật lịch sự)"
+    },
+    {
+      "type": "arrange",
+      "words": ["사람입니다", "저는", "한국"],
+      "answer": "저는 한국 사람입니다",
+      "hint": "Câu nghĩa: 'Tôi là người Hàn Quốc.' (thể trang trọng)"
+    },
+    {
+      "type": "arrange",
+      "words": ["아니에요", "의사가", "친구는", "제"],
+      "answer": "제 친구는 의사가 아니에요",
+      "hint": "Câu nghĩa: 'Bạn của tôi không phải là bác sĩ.'"
+    }
+  ]
+}

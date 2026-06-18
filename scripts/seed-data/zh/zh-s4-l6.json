@@ -1,0 +1,144 @@
+{
+  "key": "zh-s4-l6",
+  "cards": [
+    {
+      "type": "speaking",
+      "prompt": "你去过哪些地方？",
+      "hint": "Kể tên những nơi bạn từng đến (trong nước và nước ngoài), dùng cấu trúc 去过. Có thể nói nơi nào bạn thích nhất.",
+      "samplePhrases": [
+        "我去过……",
+        "我还没去过……",
+        "我最喜欢的地方是……"
+      ],
+      "vocabulary": [
+        { "word": "去过", "meaning": "đã từng đi/đến", "example": "我去过北京和上海。" },
+        { "word": "地方", "meaning": "nơi, chỗ", "example": "这个地方很漂亮。" },
+        { "word": "城市", "meaning": "thành phố", "example": "北京是一个大城市。" },
+        { "word": "国外", "meaning": "nước ngoài", "example": "我还没去过国外。" }
+      ],
+      "ideas": [
+        "Dùng cấu trúc 去过 để nói những nơi đã từng đến.",
+        "Kể vài thành phố hoặc đất nước cụ thể.",
+        "Nói thêm nơi bạn thích nhất và lý do.",
+        "Có thể nhắc đến nơi bạn vẫn chưa đến nhưng muốn đi."
+      ],
+      "sampleAnswer": "我去过中国的很多地方，比如北京、上海和西安。我也去过越南南部的几个城市。我最喜欢的地方是北京，因为那里有很多名胜古迹。我还没去过欧洲，希望以后有机会。\n\n(Dịch: Tôi đã đến nhiều nơi ở Trung Quốc, ví dụ như Bắc Kinh, Thượng Hải và Tây An. Tôi cũng từng đến vài thành phố ở miền Nam Việt Nam. Nơi tôi thích nhất là Bắc Kinh, vì ở đó có rất nhiều danh lam thắng cảnh. Tôi vẫn chưa đến châu Âu, hy vọng sau này sẽ có cơ hội.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "你喜欢怎么旅游？",
+      "hint": "Nói bạn thích đi du lịch bằng phương tiện nào, đi một mình hay đi cùng ai, thích tự do hay đi theo tour.",
+      "samplePhrases": [
+        "我喜欢坐……去旅游。",
+        "我喜欢跟……一起旅游。",
+        "我觉得这样旅游很……"
+      ],
+      "vocabulary": [
+        { "word": "旅游", "meaning": "du lịch", "example": "我很喜欢旅游。" },
+        { "word": "坐飞机", "meaning": "đi máy bay", "example": "去国外旅游一般坐飞机。" },
+        { "word": "自由", "meaning": "tự do, thoải mái", "example": "自己旅游比较自由。" },
+        { "word": "一起", "meaning": "cùng nhau", "example": "我喜欢和朋友一起旅游。" }
+      ],
+      "ideas": [
+        "Cho biết bạn thích đi bằng phương tiện gì (máy bay, tàu, xe).",
+        "Nói bạn thích đi một mình, đi với bạn bè hay gia đình.",
+        "So sánh đi tự túc và đi theo tour, nói lý do.",
+        "Có thể nói thêm bạn thích đi nhanh hay đi chậm để khám phá."
+      ],
+      "sampleAnswer": "我喜欢跟朋友一起旅游，因为这样比较有意思。我不太喜欢跟旅游团，我觉得自己安排时间更自由。去远的地方我喜欢坐飞机，又快又方便。旅游的时候我喜欢慢慢地看，不喜欢太忙。\n\n(Dịch: Tôi thích đi du lịch cùng bạn bè, vì như vậy thú vị hơn. Tôi không thích đi theo tour lắm, tôi thấy tự sắp xếp thời gian thì thoải mái hơn. Đi xa thì tôi thích đi máy bay, vừa nhanh vừa tiện. Khi đi du lịch tôi thích ngắm cảnh từ từ, không thích quá vội vàng.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "请介绍一次难忘的旅行。",
+      "hint": "Kể về một chuyến đi đáng nhớ: đi đâu, khi nào, đi với ai, đã làm gì và vì sao nó đáng nhớ.",
+      "samplePhrases": [
+        "我去年去……旅游。",
+        "那次旅行让我很难忘。",
+        "最让我难忘的是……"
+      ],
+      "vocabulary": [
+        { "word": "难忘", "meaning": "khó quên, đáng nhớ", "example": "那是一次难忘的旅行。" },
+        { "word": "风景", "meaning": "phong cảnh", "example": "那里的风景非常美。" },
+        { "word": "照片", "meaning": "tấm ảnh", "example": "我拍了很多照片。" },
+        { "word": "经历", "meaning": "trải nghiệm, từng trải qua", "example": "这是一次很特别的经历。" }
+      ],
+      "ideas": [
+        "Nói rõ thời gian và địa điểm của chuyến đi.",
+        "Kể bạn đi cùng ai và đã làm những gì.",
+        "Mô tả cảnh đẹp hoặc món ăn ngon mà bạn nhớ nhất.",
+        "Giải thích vì sao chuyến đi đó khó quên đối với bạn."
+      ],
+      "sampleAnswer": "去年夏天我和家人一起去了下龙湾旅游。那是一次很难忘的旅行。我们坐船看海，海上有很多漂亮的小岛，风景非常美。我们还吃了很多新鲜的海鲜，拍了很多照片。这次旅行让我很开心，到现在我还常常想起来。\n\n(Dịch: Mùa hè năm ngoái tôi cùng gia đình đi du lịch vịnh Hạ Long. Đó là một chuyến đi rất đáng nhớ. Chúng tôi đi thuyền ngắm biển, trên biển có nhiều hòn đảo nhỏ rất đẹp, phong cảnh vô cùng tuyệt vời. Chúng tôi còn ăn nhiều hải sản tươi ngon và chụp rất nhiều ảnh. Chuyến đi này khiến tôi rất vui, đến giờ tôi vẫn thường nhớ lại.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "你旅游的时候喜欢做什么？",
+      "hint": "Nói những hoạt động bạn thích khi đi du lịch: ngắm cảnh, ăn món địa phương, chụp ảnh, mua quà, gặp người mới.",
+      "samplePhrases": [
+        "旅游的时候，我喜欢……",
+        "我最喜欢的是……",
+        "我也喜欢……"
+      ],
+      "vocabulary": [
+        { "word": "拍照", "meaning": "chụp ảnh", "example": "我喜欢一边走一边拍照。" },
+        { "word": "尝", "meaning": "nếm, thử (món ăn)", "example": "我想尝尝当地的小吃。" },
+        { "word": "特色", "meaning": "đặc sắc, đặc trưng", "example": "这家饭店的特色菜很好吃。" },
+        { "word": "纪念品", "meaning": "đồ lưu niệm, quà kỷ niệm", "example": "我买了一些纪念品送给朋友。" }
+      ],
+      "ideas": [
+        "Kể vài hoạt động cụ thể bạn thích khi đi du lịch.",
+        "Nói bạn thích thử món ăn đặc sản địa phương.",
+        "Nhắc đến việc chụp ảnh, mua quà lưu niệm.",
+        "Có thể nói bạn thích tìm hiểu văn hóa hoặc gặp người mới."
+      ],
+      "sampleAnswer": "旅游的时候，我喜欢做很多事情。我最喜欢的是尝当地的特色小吃，每个地方的味道都不一样。我也喜欢拍照，把漂亮的风景拍下来。除了这些，我还喜欢买一些纪念品送给家人和朋友。我觉得这样的旅游又有意思又有意义。\n\n(Dịch: Khi đi du lịch, tôi thích làm rất nhiều việc. Điều tôi thích nhất là nếm thử các món ăn đặc sản địa phương, mỗi nơi có một hương vị khác nhau. Tôi cũng thích chụp ảnh, lưu lại những phong cảnh đẹp. Ngoài ra, tôi còn thích mua đồ lưu niệm để tặng người thân và bạn bè. Tôi thấy đi du lịch như vậy vừa thú vị vừa có ý nghĩa.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "你想去哪个国家？为什么？",
+      "hint": "Nói đất nước bạn muốn đến và giải thích lý do (phong cảnh, ẩm thực, văn hóa, ngôn ngữ, mong muốn cá nhân).",
+      "samplePhrases": [
+        "我最想去……",
+        "因为我听说那里……",
+        "如果有机会，我一定要去……"
+      ],
+      "vocabulary": [
+        { "word": "国家", "meaning": "quốc gia, đất nước", "example": "我想去很多不同的国家。" },
+        { "word": "因为", "meaning": "bởi vì", "example": "我喜欢中国，因为那里的文化很有意思。" },
+        { "word": "文化", "meaning": "văn hóa", "example": "我对中国文化很感兴趣。" },
+        { "word": "机会", "meaning": "cơ hội", "example": "如果有机会，我想去日本。" }
+      ],
+      "ideas": [
+        "Nói rõ một đất nước cụ thể bạn muốn đến.",
+        "Dùng 因为 để giải thích lý do.",
+        "Nhắc đến phong cảnh, ẩm thực hoặc văn hóa của nước đó.",
+        "Có thể nói bạn muốn đi để học ngôn ngữ hoặc trải nghiệm mới."
+      ],
+      "sampleAnswer": "我最想去日本旅游。因为我听说日本很干净，风景也很漂亮，特别是樱花的时候。我对日本的文化和美食也很感兴趣，很想尝尝那里的料理。如果以后有机会，我一定要去日本看一看。\n\n(Dịch: Tôi muốn đến Nhật Bản du lịch nhất. Vì tôi nghe nói Nhật Bản rất sạch sẽ, phong cảnh cũng rất đẹp, nhất là vào mùa hoa anh đào. Tôi cũng rất hứng thú với văn hóa và ẩm thực Nhật Bản, rất muốn thử các món ăn ở đó. Nếu sau này có cơ hội, tôi nhất định sẽ đến Nhật Bản tham quan.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "去旅游要准备什么？",
+      "hint": "Liệt kê những thứ cần chuẩn bị trước khi đi du lịch: giấy tờ, hành lý, tiền, vé, lên kế hoạch và tìm hiểu nơi đến.",
+      "samplePhrases": [
+        "去旅游以前，要准备……",
+        "首先，……；然后，……",
+        "别忘了带……"
+      ],
+      "vocabulary": [
+        { "word": "准备", "meaning": "chuẩn bị", "example": "去旅游以前要准备好东西。" },
+        { "word": "护照", "meaning": "hộ chiếu", "example": "去国外旅游要带护照。" },
+        { "word": "行李", "meaning": "hành lý", "example": "我的行李不太多。" },
+        { "word": "计划", "meaning": "kế hoạch", "example": "出发以前要做好计划。" },
+        { "word": "查", "meaning": "tra cứu, kiểm tra", "example": "我先在网上查一下天气。" }
+      ],
+      "ideas": [
+        "Nói cần chuẩn bị giấy tờ như hộ chiếu, vé máy bay.",
+        "Nhắc đến hành lý: quần áo, thuốc, đồ dùng cá nhân.",
+        "Nói nên lên kế hoạch và tìm hiểu trước về nơi đến.",
+        "Có thể dùng 首先, 然后 để sắp xếp các bước cho rõ ràng."
+      ],
+      "sampleAnswer": "去旅游以前，我们要准备很多东西。首先，要准备好护照、机票和一些钱。然后，要收拾行李，比如衣服、药和日用品。出发以前，我还会上网查一下那里的天气和好玩的地方，做好旅游计划。准备得越好，旅游就越方便。\n\n(Dịch: Trước khi đi du lịch, chúng ta phải chuẩn bị rất nhiều thứ. Đầu tiên, phải chuẩn bị hộ chiếu, vé máy bay và một ít tiền. Sau đó, phải sắp xếp hành lý, ví dụ như quần áo, thuốc và đồ dùng hằng ngày. Trước khi khởi hành, tôi còn lên mạng tra cứu thời tiết và những nơi vui chơi ở đó để lên kế hoạch du lịch. Chuẩn bị càng tốt thì đi du lịch càng thuận tiện.)"
+    }
+  ]
+}

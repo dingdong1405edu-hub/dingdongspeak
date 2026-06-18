@@ -1,0 +1,105 @@
+{
+  "key": "ko-s2-l3",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "돈",
+      "phonetic": "don",
+      "pos": "n.",
+      "meaning": "tiền",
+      "example": "오늘 돈을 많이 썼어요.",
+      "options": ["tiền", "giá cả", "cửa hàng", "chợ"],
+      "answer": "tiền"
+    },
+    {
+      "type": "vocab",
+      "word": "원",
+      "phonetic": "won",
+      "pos": "n.",
+      "meaning": "won (đơn vị tiền Hàn)",
+      "example": "이 과일은 삼천 원이에요.",
+      "options": ["won (đơn vị tiền Hàn)", "tiền lẻ", "thẻ ngân hàng", "hóa đơn"],
+      "answer": "won (đơn vị tiền Hàn)"
+    },
+    {
+      "type": "vocab",
+      "word": "사다",
+      "phonetic": "sada",
+      "pos": "v.",
+      "meaning": "mua",
+      "example": "시장에서 사과를 샀어요.",
+      "options": ["mua", "bán", "trả tiền", "đổi"],
+      "answer": "mua"
+    },
+    {
+      "type": "vocab",
+      "word": "팔다",
+      "phonetic": "palda",
+      "pos": "v.",
+      "meaning": "bán",
+      "example": "그 가게는 옷을 팔아요.",
+      "options": ["bán", "mua", "cho mượn", "tặng"],
+      "answer": "bán"
+    },
+    {
+      "type": "vocab",
+      "word": "싸다",
+      "phonetic": "ssada",
+      "pos": "adj.",
+      "meaning": "rẻ",
+      "example": "이 시장은 물건이 정말 싸요.",
+      "options": ["rẻ", "đắt", "ngon", "mới"],
+      "answer": "rẻ"
+    },
+    {
+      "type": "vocab",
+      "word": "비싸다",
+      "phonetic": "bissada",
+      "pos": "adj.",
+      "meaning": "đắt",
+      "example": "백화점 가방은 너무 비싸요.",
+      "options": ["đắt", "rẻ", "nặng", "to"],
+      "answer": "đắt"
+    },
+    {
+      "type": "vocab",
+      "word": "얼마예요",
+      "phonetic": "eolmayeyo",
+      "pos": "phrase",
+      "meaning": "bao nhiêu tiền?",
+      "example": "이 사과는 얼마예요?",
+      "options": ["bao nhiêu tiền?", "cái này là gì?", "ở đâu vậy?", "khi nào ạ?"],
+      "answer": "bao nhiêu tiền?"
+    },
+    {
+      "type": "vocab",
+      "word": "가게",
+      "phonetic": "gage",
+      "pos": "n.",
+      "meaning": "cửa hàng",
+      "example": "집 앞에 작은 가게가 있어요.",
+      "options": ["cửa hàng", "chợ", "trung tâm thương mại", "nhà hàng"],
+      "answer": "cửa hàng"
+    },
+    {
+      "type": "vocab",
+      "word": "시장",
+      "phonetic": "sijang",
+      "pos": "n.",
+      "meaning": "chợ",
+      "example": "주말에 어머니하고 시장에 가요.",
+      "options": ["chợ", "cửa hàng tiện lợi", "siêu thị", "bưu điện"],
+      "answer": "chợ"
+    },
+    {
+      "type": "vocab",
+      "word": "백화점",
+      "phonetic": "baekhwajeom",
+      "pos": "n.",
+      "meaning": "trung tâm thương mại (cửa hàng bách hóa)",
+      "example": "백화점에서 옷을 구경했어요.",
+      "options": ["trung tâm thương mại (cửa hàng bách hóa)", "chợ truyền thống", "cửa hàng nhỏ", "ngân hàng"],
+      "answer": "trung tâm thương mại (cửa hàng bách hóa)"
+    }
+  ]
+}

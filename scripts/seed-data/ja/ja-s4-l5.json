@@ -1,0 +1,100 @@
+{
+  "key": "ja-s4-l5",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "Thể lịch sự です／ます (teineikei)",
+      "explanation": "Thể lịch sự dùng です sau danh từ/tính từ và ～ます sau động từ. Đây là văn phong chuẩn mực, dùng với người mới quen, người trên, ở nơi công cộng hoặc nơi làm việc. Vd: 食べます (ăn), 学生です (là học sinh), 高いです (đắt).",
+      "examples": [
+        "わたしは大学生です。",
+        "毎朝コーヒーを飲みます。",
+        "この料理はとてもおいしいです。"
+      ],
+      "tip": "Người Việt hay quên gắn です sau tính từ い (vd nói 高い khi cần lịch sự). Trong văn phong lịch sự, tính từ い vẫn phải thêm です: 高いです.",
+      "question": "（敬語で）わたしは毎日日本語を（　）。",
+      "options": ["勉強します", "勉強する", "勉強した", "勉強しろ"],
+      "answer": "勉強します"
+    },
+    {
+      "type": "grammar",
+      "rule": "Thể thường／giản dị (futsuukei)",
+      "explanation": "Thể thường dùng động từ nguyên dạng (từ điển), だ thay cho です, và bỏ です sau tính từ. Dùng với bạn bè, gia đình, người thân thiết hoặc khi viết nhật ký, ghi chú. Vd: 食べる (ăn), 学生だ (là học sinh), 高い (đắt).",
+      "examples": [
+        "明日は学校に行く。",
+        "これはわたしの本だ。",
+        "今日はとても暑い。"
+      ],
+      "tip": "Với tính từ い ở thể thường KHÔNG dùng だ: nói 暑い (đúng), KHÔNG nói 暑いだ (sai). だ chỉ dùng cho danh từ và tính từ な.",
+      "question": "（普通形で）友だちと映画を（　）。",
+      "options": ["見る", "見ます", "見ました", "見ません"],
+      "answer": "見る"
+    },
+    {
+      "type": "grammar",
+      "rule": "Rủ rê ～ましょう (chúng ta hãy...)",
+      "explanation": "～ましょう gắn vào gốc ます của động từ để rủ rê hoặc đề nghị cùng làm gì đó ('chúng ta hãy...'). Cũng dùng để hưởng ứng lời mời. Vd: 行きます → 行きましょう (chúng ta hãy đi), 食べます → 食べましょう (hãy ăn nào).",
+      "examples": [
+        "いっしょに昼ご飯を食べましょう。",
+        "そろそろ始めましょう。",
+        "週末に公園へ行きましょう。"
+      ],
+      "tip": "～ましょう là rủ CẢ HAI cùng làm, khác với ～てください (nhờ người khác làm). Đừng dùng ～ましょう khi chỉ muốn nhờ riêng đối phương.",
+      "question": "つかれましたね。少し（　）。",
+      "options": ["休みましょう", "休みました", "休みません", "休んでいる"],
+      "answer": "休みましょう"
+    },
+    {
+      "type": "grammar",
+      "rule": "Mời rủ ～ませんか (bạn có... không?)",
+      "explanation": "～ませんか (thể phủ định của ～ます + か) dùng để mời, rủ một cách lịch sự và nhẹ nhàng ('bạn có... không?', 'cùng... nhé?'). Lịch sự hơn ～ましょう vì để đối phương tự do từ chối. Vd: お茶を飲みませんか (uống trà không?).",
+      "examples": [
+        "いっしょに映画を見ませんか。",
+        "今晩、食事に行きませんか。",
+        "コーヒーでも飲みませんか。"
+      ],
+      "tip": "Khi được rủ bằng ～ませんか, nếu đồng ý thường đáp lại bằng ～ましょう (vd: ええ、行きましょう). Đừng đáp lại bằng はい、行きませんか.",
+      "question": "今度の日曜日、いっしょにテニスを（　）。",
+      "options": ["しませんか", "しました", "しないでした", "するか"],
+      "answer": "しませんか"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "つかれたから、ちょっと休み___。",
+      "answer": "ましょう",
+      "options": ["ましょう", "ました", "ません", "なさい"],
+      "explanation": "Câu rủ rê cùng nghỉ ngơi ('mệt rồi nên cùng nghỉ một chút nào'), nên dùng ～ましょう gắn vào gốc ます của 休みます."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "週末、いっしょに買い物に行き___か。",
+      "answer": "ません",
+      "options": ["ません", "ました", "ましょう", "ないです"],
+      "explanation": "～ませんか là cách mời rủ lịch sự ('cuối tuần cùng đi mua sắm không?'). Vì có か ở cuối nên chỗ trống phải là ～ません."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "（友だちに）明日、ひまだから映画を見___。",
+      "answer": "る",
+      "options": ["る", "ます", "ました", "ましょう"],
+      "explanation": "Nói với bạn bè (thể thường) nên dùng động từ nguyên dạng 見る, không dùng thể lịch sự ～ます."
+    },
+    {
+      "type": "arrange",
+      "words": ["昼ご飯", "食べましょう", "いっしょに", "を"],
+      "answer": "いっしょに昼ご飯を食べましょう",
+      "hint": "Chúng ta hãy cùng ăn trưa nào."
+    },
+    {
+      "type": "arrange",
+      "words": ["映画", "ませんか", "見", "を", "いっしょに"],
+      "answer": "いっしょに映画を見ませんか",
+      "hint": "Cùng xem phim không?"
+    },
+    {
+      "type": "arrange",
+      "words": ["学校", "わたしは", "行く", "明日", "に"],
+      "answer": "わたしは明日学校に行く",
+      "hint": "Ngày mai tôi đi học. (thể thường)"
+    }
+  ]
+}

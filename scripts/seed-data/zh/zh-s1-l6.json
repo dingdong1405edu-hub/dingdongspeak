@@ -1,0 +1,134 @@
+{
+  "key": "zh-s1-l6",
+  "cards": [
+    {
+      "type": "speaking",
+      "prompt": "你叫什么名字？",
+      "hint": "Nói rõ họ tên của bạn, có thể nói thêm tên thường gọi hoặc cách viết tên.",
+      "samplePhrases": [
+        "我叫……",
+        "我的名字是……",
+        "你可以叫我……"
+      ],
+      "vocabulary": [
+        { "word": "叫", "meaning": "gọi (tên là)", "example": "我叫王明。" },
+        { "word": "名字", "meaning": "tên", "example": "你的名字很好听。" },
+        { "word": "姓", "meaning": "họ (là)", "example": "我姓王。" }
+      ],
+      "ideas": [
+        "Nói họ trước, tên sau theo cách của người Trung Quốc.",
+        "Có thể giới thiệu cả tên đầy đủ và tên thường gọi.",
+        "Có thể nói thêm ý nghĩa hoặc cách viết tên của bạn."
+      ],
+      "sampleAnswer": "你好！我叫王明。我姓王，名字是明。我的中文名字很简单。认识你很高兴。\n\n(Dịch: Xin chào! Tôi tên là Vương Minh. Tôi họ Vương, tên là Minh. Tên tiếng Trung của tôi rất đơn giản. Rất vui được làm quen với bạn.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "你是哪国人？",
+      "hint": "Nói rõ bạn là người nước nào và đến từ thành phố nào.",
+      "samplePhrases": [
+        "我是越南人。",
+        "我来自……",
+        "我的国家是越南。"
+      ],
+      "vocabulary": [
+        { "word": "哪国人", "meaning": "người nước nào", "example": "你是哪国人？" },
+        { "word": "越南人", "meaning": "người Việt Nam", "example": "我是越南人。" },
+        { "word": "来自", "meaning": "đến từ", "example": "我来自河内。" }
+      ],
+      "ideas": [
+        "Nói quốc tịch của bạn trước (người Việt Nam).",
+        "Có thể nói thêm thành phố hoặc quê hương.",
+        "Có thể hỏi lại đối phương là người nước nào."
+      ],
+      "sampleAnswer": "我是越南人。我来自越南河内。河内是越南的首都，很漂亮。你是哪国人？\n\n(Dịch: Tôi là người Việt Nam. Tôi đến từ Hà Nội, Việt Nam. Hà Nội là thủ đô của Việt Nam, rất đẹp. Bạn là người nước nào?)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "你今年多大？",
+      "hint": "Nói tuổi của bạn năm nay, có thể nói thêm năm sinh.",
+      "samplePhrases": [
+        "我今年……岁。",
+        "我二十岁。",
+        "我属……"
+      ],
+      "vocabulary": [
+        { "word": "今年", "meaning": "năm nay", "example": "我今年二十岁。" },
+        { "word": "多大", "meaning": "bao nhiêu tuổi", "example": "你今年多大？" },
+        { "word": "岁", "meaning": "tuổi", "example": "他今年十八岁。" }
+      ],
+      "ideas": [
+        "Trả lời tuổi bằng cấu trúc 今年 + số + 岁.",
+        "Có thể nói thêm năm sinh của bạn.",
+        "Có thể hỏi lại tuổi của người khác."
+      ],
+      "sampleAnswer": "我今年二十岁。我是学生，还在上大学。你今年多大？我们可能差不多大。\n\n(Dịch: Năm nay tôi hai mươi tuổi. Tôi là sinh viên, vẫn đang học đại học. Năm nay bạn bao nhiêu tuổi? Có lẽ chúng ta xấp xỉ tuổi nhau.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "你是学生吗？你做什么工作？",
+      "hint": "Nói bạn là sinh viên hay đi làm, và nói rõ nghề nghiệp hoặc ngành học.",
+      "samplePhrases": [
+        "我是学生。",
+        "我不是学生，我工作。",
+        "我是……（nghề nghiệp）"
+      ],
+      "vocabulary": [
+        { "word": "学生", "meaning": "học sinh, sinh viên", "example": "我是大学生。" },
+        { "word": "工作", "meaning": "công việc; làm việc", "example": "你做什么工作？" },
+        { "word": "老师", "meaning": "giáo viên", "example": "我妈妈是老师。" },
+        { "word": "公司", "meaning": "công ty", "example": "我在一家公司工作。" }
+      ],
+      "ideas": [
+        "Cho biết bạn là sinh viên hay người đi làm.",
+        "Nếu là sinh viên, có thể nói học ngành gì hoặc trường nào.",
+        "Nếu đi làm, nói rõ nghề nghiệp và nơi làm việc."
+      ],
+      "sampleAnswer": "我是学生，我在大学学习中文。我很喜欢学中文。我妈妈是老师，她在一个学校工作。你呢？\n\n(Dịch: Tôi là sinh viên, tôi học tiếng Trung ở trường đại học. Tôi rất thích học tiếng Trung. Mẹ tôi là giáo viên, bà làm việc ở một trường học. Còn bạn thì sao?)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "你家有几口人？",
+      "hint": "Nói gia đình bạn có mấy người và đó là những ai.",
+      "samplePhrases": [
+        "我家有……口人。",
+        "我家有爸爸、妈妈和我。",
+        "我有一个哥哥／姐姐。"
+      ],
+      "vocabulary": [
+        { "word": "家", "meaning": "nhà, gia đình", "example": "我家在河内。" },
+        { "word": "口", "meaning": "lượng từ chỉ số người trong nhà", "example": "我家有四口人。" },
+        { "word": "爸爸", "meaning": "bố", "example": "我爸爸很忙。" },
+        { "word": "妈妈", "meaning": "mẹ", "example": "我妈妈喜欢做饭。" }
+      ],
+      "ideas": [
+        "Nói tổng số người trong gia đình bằng 有……口人.",
+        "Kể tên các thành viên: bố, mẹ, anh, chị, em.",
+        "Có thể nói thêm bạn yêu gia đình mình."
+      ],
+      "sampleAnswer": "我家有四口人，爸爸、妈妈、一个弟弟和我。我爸爸工作，我妈妈在家。我们很爱我们的家。你家有几口人？\n\n(Dịch: Gia đình tôi có bốn người: bố, mẹ, một em trai và tôi. Bố tôi đi làm, mẹ tôi ở nhà. Chúng tôi rất yêu gia đình mình. Gia đình bạn có mấy người?)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "你会说中文吗？",
+      "hint": "Nói bạn có biết nói tiếng Trung không, ở mức độ nào, và còn biết tiếng nào khác.",
+      "samplePhrases": [
+        "我会说一点儿中文。",
+        "我正在学中文。",
+        "我还会说英语。"
+      ],
+      "vocabulary": [
+        { "word": "会", "meaning": "biết (làm gì)", "example": "我会说中文。" },
+        { "word": "说", "meaning": "nói", "example": "请说慢一点儿。" },
+        { "word": "中文", "meaning": "tiếng Trung", "example": "我喜欢中文。" },
+        { "word": "一点儿", "meaning": "một chút", "example": "我会说一点儿中文。" }
+      ],
+      "ideas": [
+        "Cho biết bạn biết nói tiếng Trung ở mức độ nào.",
+        "Nói bạn đang học tiếng Trung như thế nào.",
+        "Có thể nói thêm bạn biết những ngôn ngữ nào khác."
+      ],
+      "sampleAnswer": "我会说一点儿中文。我正在学习中文，但是说得不太好。我也会说越南语和一点儿英语。我想说好中文。\n\n(Dịch: Tôi biết nói một chút tiếng Trung. Tôi đang học tiếng Trung, nhưng nói chưa được tốt lắm. Tôi cũng biết nói tiếng Việt và một chút tiếng Anh. Tôi muốn nói tiếng Trung giỏi.)"
+    }
+  ]
+}

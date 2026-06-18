@@ -1,0 +1,105 @@
+{
+  "key": "ja-s2-l5",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "朝",
+      "phonetic": "あさ / asa",
+      "pos": "n.",
+      "meaning": "buổi sáng",
+      "example": "朝は六時に起きます。",
+      "options": ["buổi sáng", "buổi trưa", "buổi tối", "buổi chiều"],
+      "answer": "buổi sáng"
+    },
+    {
+      "type": "vocab",
+      "word": "昼",
+      "phonetic": "ひる / hiru",
+      "pos": "n.",
+      "meaning": "buổi trưa, ban ngày",
+      "example": "昼ごはんは十二時に食べます。",
+      "options": ["buổi trưa, ban ngày", "buổi sáng", "ban đêm", "nửa đêm"],
+      "answer": "buổi trưa, ban ngày"
+    },
+    {
+      "type": "vocab",
+      "word": "夜",
+      "phonetic": "よる / yoru",
+      "pos": "n.",
+      "meaning": "buổi tối, ban đêm",
+      "example": "夜は十一時に寝ます。",
+      "options": ["buổi tối, ban đêm", "buổi sáng", "buổi trưa", "buổi chiều"],
+      "answer": "buổi tối, ban đêm"
+    },
+    {
+      "type": "vocab",
+      "word": "午前",
+      "phonetic": "ごぜん / gozen",
+      "pos": "n.",
+      "meaning": "buổi sáng (trước trưa), giờ AM",
+      "example": "会議は午前九時からです。",
+      "options": ["buổi sáng (trước trưa), giờ AM", "buổi chiều, giờ PM", "nửa đêm", "cuối tuần"],
+      "answer": "buổi sáng (trước trưa), giờ AM"
+    },
+    {
+      "type": "vocab",
+      "word": "午後",
+      "phonetic": "ごご / gogo",
+      "pos": "n.",
+      "meaning": "buổi chiều, giờ PM",
+      "example": "午後三時に友だちと会います。",
+      "options": ["buổi chiều, giờ PM", "buổi sáng (trước trưa), giờ AM", "buổi tối", "mỗi ngày"],
+      "answer": "buổi chiều, giờ PM"
+    },
+    {
+      "type": "vocab",
+      "word": "月曜日",
+      "phonetic": "げつようび / getsuyoubi",
+      "pos": "n.",
+      "meaning": "thứ Hai",
+      "example": "月曜日から学校が始まります。",
+      "options": ["thứ Hai", "thứ Bảy", "Chủ nhật", "thứ Sáu"],
+      "answer": "thứ Hai"
+    },
+    {
+      "type": "vocab",
+      "word": "土曜日",
+      "phonetic": "どようび / doyoubi",
+      "pos": "n.",
+      "meaning": "thứ Bảy",
+      "example": "土曜日は買い物に行きます。",
+      "options": ["thứ Bảy", "thứ Hai", "Chủ nhật", "mỗi ngày"],
+      "answer": "thứ Bảy"
+    },
+    {
+      "type": "vocab",
+      "word": "日曜日",
+      "phonetic": "にちようび / nichiyoubi",
+      "pos": "n.",
+      "meaning": "Chủ nhật",
+      "example": "日曜日は家でゆっくりします。",
+      "options": ["Chủ nhật", "thứ Bảy", "thứ Hai", "tuần này"],
+      "answer": "Chủ nhật"
+    },
+    {
+      "type": "vocab",
+      "word": "毎日",
+      "phonetic": "まいにち / mainichi",
+      "pos": "n.",
+      "meaning": "mỗi ngày, hằng ngày",
+      "example": "毎日日本語を勉強します。",
+      "options": ["mỗi ngày, hằng ngày", "cuối tuần", "tuần trước", "tuần sau"],
+      "answer": "mỗi ngày, hằng ngày"
+    },
+    {
+      "type": "vocab",
+      "word": "週末",
+      "phonetic": "しゅうまつ / shuumatsu",
+      "pos": "n.",
+      "meaning": "cuối tuần",
+      "example": "週末は何をしますか。",
+      "options": ["cuối tuần", "mỗi ngày", "tuần trước", "buổi sáng"],
+      "answer": "cuối tuần"
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "key": "zh-s5-l4",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "Bổ ngữ kết quả 完 — hoàn thành xong việc",
+      "explanation": "Bổ ngữ kết quả đặt NGAY SAU động từ để chỉ kết quả của hành động. 完 (wán) nghĩa là 'xong, hết', diễn đạt hành động đã hoàn thành trọn vẹn. Cấu trúc: động từ + 完 (+ 了). Ví dụ: 吃完了 = đã ăn xong, 看完 = đọc/xem xong. Phủ định dùng 没: 没吃完 = chưa ăn xong.",
+      "examples": [
+        "我吃完饭了。",
+        "他看完这本书了。",
+        "作业还没写完。"
+      ],
+      "tip": "Người Việt hay nói 'xong' bằng từ riêng đặt cuối câu. Trong tiếng Trung, 完 phải đứng NGAY SAU động từ (吃完, 看完), không tách rời. Phủ định dùng 没...完, không dùng 不.",
+      "question": "Chọn câu đúng nghĩa 'Tôi đã làm xong bài tập rồi'.",
+      "options": [
+        "我做完作业了。",
+        "我完做作业了。",
+        "我做作业完了。",
+        "我作业做了完。"
+      ],
+      "answer": "我做完作业了。"
+    },
+    {
+      "type": "grammar",
+      "rule": "Bổ ngữ kết quả 到 / 见 — đạt được / nhận biết",
+      "explanation": "到 (dào) sau động từ chỉ hành động đạt được kết quả/mục tiêu: 找到 = tìm thấy, 买到 = mua được, 看到 = nhìn thấy. 见 (jiàn) dùng với động từ giác quan, chỉ kết quả 'cảm nhận được': 看见 = nhìn thấy, 听见 = nghe thấy. Cả hai đều đặt ngay sau động từ.",
+      "examples": [
+        "我找到我的手机了。",
+        "我在路上看见他了。",
+        "你听见我说话了吗？"
+      ],
+      "tip": "看 chỉ là 'nhìn' (hành động), còn 看见/看到 mới là 'nhìn THẤY' (có kết quả). Người Việt hay quên thêm 见/到 nên câu thiếu nghĩa 'thấy/được'.",
+      "question": "Chọn câu đúng nghĩa 'Tôi nghe thấy tiếng anh ấy rồi'.",
+      "options": [
+        "我听见他的声音了。",
+        "我见听他的声音了。",
+        "我听他的声音见了。",
+        "我听他见的声音了。"
+      ],
+      "answer": "我听见他的声音了。"
+    },
+    {
+      "type": "grammar",
+      "rule": "Bổ ngữ kết quả 好 / 懂 — hoàn tất tốt / hiểu được",
+      "explanation": "好 (hǎo) sau động từ chỉ hành động đã làm xong và đạt trạng thái tốt, sẵn sàng: 做好 = làm xong (chu đáo), 准备好 = chuẩn bị xong. 懂 (dǒng) chỉ kết quả 'hiểu được': 听懂 = nghe hiểu, 看懂 = đọc/xem hiểu. Phủ định: 没做好, 没听懂.",
+      "examples": [
+        "饭已经做好了。",
+        "老师说的话我听懂了。",
+        "这篇文章我没看懂。"
+      ],
+      "tip": "听懂 khác 听见: 听见 chỉ là 'nghe thấy' (có âm thanh), còn 听懂 mới là 'nghe HIỂU' (hiểu nội dung). Đừng dùng nhầm 见 thay cho 懂.",
+      "question": "Chọn câu đúng nghĩa 'Câu này tôi đã nghe hiểu rồi'.",
+      "options": [
+        "这句话我听懂了。",
+        "这句话我懂听了。",
+        "这句话我听了懂。",
+        "这句话我听完懂了。"
+      ],
+      "answer": "这句话我听懂了。"
+    },
+    {
+      "type": "grammar",
+      "rule": "Bổ ngữ xu hướng 来 / 去 — hướng về / rời xa người nói",
+      "explanation": "Bổ ngữ xu hướng 来/去 đặt sau động từ chỉ phương hướng di chuyển. 来 (lái) chỉ hướng VỀ phía người nói, 去 (qù) chỉ hướng RỜI XA người nói. Kết hợp với 进/出/回/上/下: 进来 = đi vào (đến chỗ tôi), 出去 = đi ra (rời tôi), 回来 = quay về, 回去 = quay đi.",
+      "examples": [
+        "请进来吧！",
+        "他出去了，一会儿回来。",
+        "外面冷，快回来吧。"
+      ],
+      "tip": "Chọn 来 hay 去 tùy vị trí NGƯỜI NÓI: nếu hành động hướng về phía mình thì dùng 来 (进来), nếu rời xa mình thì dùng 去 (出去). Người Việt hay nhầm vì tiếng Việt không phân biệt rõ điểm này.",
+      "question": "Bạn đang ở trong phòng, mời khách đi vào. Chọn câu đúng.",
+      "options": [
+        "请进来！",
+        "请进去！",
+        "请来进！",
+        "请去进！"
+      ],
+      "answer": "请进来！"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "这本小说我已经看___了，很好看。",
+      "answer": "完",
+      "options": ["完", "懂", "见", "来"],
+      "explanation": "Diễn đạt 'đã đọc xong' cả quyển tiểu thuyết dùng bổ ngữ kết quả 完: 看完 = đọc/xem xong. 完 đặt ngay sau động từ 看 để chỉ hành động hoàn thành trọn vẹn."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "老师讲的语法，你听___了吗？",
+      "answer": "懂",
+      "options": ["懂", "完", "到", "去"],
+      "explanation": "Hỏi 'có nghe HIỂU không' dùng bổ ngữ kết quả 懂: 听懂 = nghe hiểu. Ở đây nhấn mạnh việc hiểu nội dung, nên dùng 懂 chứ không phải 见 (chỉ nghe thấy) hay 完 (nghe hết)."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "外面下雨了，我们快回___吧！",
+      "answer": "去",
+      "options": ["去", "来", "完", "到"],
+      "explanation": "Người nói đang ở ngoài và muốn quay trở về (rời khỏi vị trí hiện tại để về nhà) dùng bổ ngữ xu hướng 去: 回去 = quay về (đi khỏi đây). Nếu hướng về phía người nói thì mới dùng 回来."
+    },
+    {
+      "type": "arrange",
+      "words": ["了", "我", "找到", "钥匙", "我的"],
+      "answer": "我找到我的钥匙了",
+      "hint": "Tôi tìm thấy chìa khóa của tôi rồi."
+    },
+    {
+      "type": "arrange",
+      "words": ["听懂", "老师", "的话", "我", "了"],
+      "answer": "我听懂老师的话了",
+      "hint": "Tôi đã nghe hiểu lời thầy giáo nói rồi."
+    },
+    {
+      "type": "arrange",
+      "words": ["进来", "请", "里面", "坐"],
+      "answer": "请进来里面坐",
+      "hint": "Mời đi vào trong ngồi."
+    }
+  ]
+}

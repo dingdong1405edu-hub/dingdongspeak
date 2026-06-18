@@ -1,0 +1,105 @@
+{
+  "key": "ko-s1-l1",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "안녕하세요",
+      "phonetic": "annyeonghaseyo",
+      "pos": "phrase",
+      "meaning": "Xin chào",
+      "example": "안녕하세요? 만나서 반갑습니다.",
+      "options": ["Xin chào", "Tạm biệt", "Cảm ơn", "Xin lỗi"],
+      "answer": "Xin chào"
+    },
+    {
+      "type": "vocab",
+      "word": "안녕히 가세요",
+      "phonetic": "annyeonghi gaseyo",
+      "pos": "phrase",
+      "meaning": "Tạm biệt (nói với người ra về)",
+      "example": "안녕히 가세요. 또 만나요.",
+      "options": ["Tạm biệt (nói với người ra về)", "Xin chào", "Không sao đâu", "Cảm ơn rất nhiều"],
+      "answer": "Tạm biệt (nói với người ra về)"
+    },
+    {
+      "type": "vocab",
+      "word": "안녕히 계세요",
+      "phonetic": "annyeonghi gyeseyo",
+      "pos": "phrase",
+      "meaning": "Tạm biệt (nói với người ở lại)",
+      "example": "선생님, 안녕히 계세요.",
+      "options": ["Tạm biệt (nói với người ở lại)", "Xin chào buổi sáng", "Rất vui được gặp", "Xin lỗi"],
+      "answer": "Tạm biệt (nói với người ở lại)"
+    },
+    {
+      "type": "vocab",
+      "word": "감사합니다",
+      "phonetic": "gamsahamnida",
+      "pos": "phrase",
+      "meaning": "Cảm ơn (trang trọng)",
+      "example": "도와주셔서 감사합니다.",
+      "options": ["Cảm ơn (trang trọng)", "Xin lỗi (trang trọng)", "Tạm biệt", "Vâng, đúng rồi"],
+      "answer": "Cảm ơn (trang trọng)"
+    },
+    {
+      "type": "vocab",
+      "word": "죄송합니다",
+      "phonetic": "joesonghamnida",
+      "pos": "phrase",
+      "meaning": "Xin lỗi (trang trọng)",
+      "example": "늦어서 죄송합니다.",
+      "options": ["Xin lỗi (trang trọng)", "Cảm ơn (trang trọng)", "Không có gì", "Hẹn gặp lại"],
+      "answer": "Xin lỗi (trang trọng)"
+    },
+    {
+      "type": "vocab",
+      "word": "괜찮아요",
+      "phonetic": "gwaenchanayo",
+      "pos": "phrase",
+      "meaning": "Không sao đâu / Ổn mà",
+      "example": "괜찮아요, 걱정하지 마세요.",
+      "options": ["Không sao đâu / Ổn mà", "Cảm ơn nhiều", "Xin lỗi", "Rất tệ"],
+      "answer": "Không sao đâu / Ổn mà"
+    },
+    {
+      "type": "vocab",
+      "word": "네",
+      "phonetic": "ne",
+      "pos": "adv.",
+      "meaning": "Vâng / Dạ (đồng ý)",
+      "example": "네, 알겠습니다.",
+      "options": ["Vâng / Dạ (đồng ý)", "Không", "Có lẽ", "Cảm ơn"],
+      "answer": "Vâng / Dạ (đồng ý)"
+    },
+    {
+      "type": "vocab",
+      "word": "아니요",
+      "phonetic": "aniyo",
+      "pos": "adv.",
+      "meaning": "Không (phủ định)",
+      "example": "아니요, 저는 학생이 아니에요.",
+      "options": ["Không (phủ định)", "Vâng, đúng vậy", "Tất nhiên rồi", "Xin lỗi"],
+      "answer": "Không (phủ định)"
+    },
+    {
+      "type": "vocab",
+      "word": "이름",
+      "phonetic": "ireum",
+      "pos": "n.",
+      "meaning": "Tên",
+      "example": "제 이름은 민수예요.",
+      "options": ["Tên", "Bạn bè", "Người", "Thầy giáo"],
+      "answer": "Tên"
+    },
+    {
+      "type": "vocab",
+      "word": "선생님",
+      "phonetic": "seonsaengnim",
+      "pos": "n.",
+      "meaning": "Thầy / Cô giáo",
+      "example": "선생님, 질문이 있어요.",
+      "options": ["Thầy / Cô giáo", "Bạn bè", "Tên", "Học sinh"],
+      "answer": "Thầy / Cô giáo"
+    }
+  ]
+}

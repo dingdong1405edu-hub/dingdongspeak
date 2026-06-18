@@ -1,0 +1,143 @@
+{
+  "key": "ko-s1-l6",
+  "cards": [
+    {
+      "type": "speaking",
+      "prompt": "이름이 뭐예요?",
+      "hint": "Nói tên của bạn. Có thể giới thiệu cả họ và tên, hoặc thêm cách chào trước khi nói tên.",
+      "samplePhrases": [
+        "안녕하세요. 제 이름은 ___이에요.",
+        "저는 ___예요.",
+        "제 이름은 ___이라고 해요."
+      ],
+      "vocabulary": [
+        { "word": "이름", "meaning": "tên", "example": "제 이름은 민수예요." },
+        { "word": "저", "meaning": "tôi (khiêm tốn)", "example": "저는 학생이에요." },
+        { "word": "안녕하세요", "meaning": "xin chào", "example": "안녕하세요. 만나서 반가워요." },
+        { "word": "반갑다", "meaning": "vui (khi gặp)", "example": "만나서 반가워요." }
+      ],
+      "ideas": [
+        "Bắt đầu bằng câu chào 안녕하세요",
+        "Nói rõ tên của mình bằng 제 이름은 ... 이에요/예요",
+        "Có thể thêm câu làm quen 만나서 반가워요",
+        "Giữ câu ngắn gọn và lịch sự ở mức TOPIK1"
+      ],
+      "sampleAnswer": "안녕하세요. 제 이름은 응웬 민이에요. 저는 베트남 사람이에요. 만나서 반가워요.\n\n(Dịch: Xin chào. Tên tôi là Nguyễn Minh. Tôi là người Việt Nam. Rất vui được gặp bạn.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "어느 나라 사람이에요?",
+      "hint": "Nói quốc tịch của bạn. Dùng mẫu '[tên nước] 사람이에요'. Có thể nói thêm bạn đến từ thành phố nào.",
+      "samplePhrases": [
+        "저는 베트남 사람이에요.",
+        "저는 ___에서 왔어요.",
+        "한국 사람이 아니에요. 베트남 사람이에요."
+      ],
+      "vocabulary": [
+        { "word": "나라", "meaning": "đất nước", "example": "어느 나라 사람이에요?" },
+        { "word": "사람", "meaning": "người", "example": "저는 베트남 사람이에요." },
+        { "word": "베트남", "meaning": "Việt Nam", "example": "베트남은 아주 더워요." },
+        { "word": "한국", "meaning": "Hàn Quốc", "example": "한국 친구가 있어요." }
+      ],
+      "ideas": [
+        "Nói quốc tịch bằng '나라 + 사람이에요'",
+        "Có thể nói thành phố quê hương bằng 저는 ...에서 왔어요",
+        "So sánh nhẹ với Hàn Quốc nếu muốn",
+        "Thêm một câu về đất nước của bạn"
+      ],
+      "sampleAnswer": "저는 베트남 사람이에요. 하노이에서 왔어요. 한국 사람이 아니에요. 베트남은 한국보다 더 더워요.\n\n(Dịch: Tôi là người Việt Nam. Tôi đến từ Hà Nội. Tôi không phải người Hàn Quốc. Việt Nam nóng hơn Hàn Quốc.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "무슨 일을 해요? 학생이에요?",
+      "hint": "Nói nghề nghiệp của bạn. Nếu là học sinh/sinh viên thì nói 학생이에요, nếu đi làm thì nói nghề của mình.",
+      "samplePhrases": [
+        "저는 학생이에요.",
+        "저는 회사원이에요.",
+        "저는 ___에서 일해요."
+      ],
+      "vocabulary": [
+        { "word": "일", "meaning": "công việc", "example": "무슨 일을 해요?" },
+        { "word": "학생", "meaning": "học sinh, sinh viên", "example": "저는 대학생이에요." },
+        { "word": "회사원", "meaning": "nhân viên công ty", "example": "제 형은 회사원이에요." },
+        { "word": "일하다", "meaning": "làm việc", "example": "저는 은행에서 일해요." }
+      ],
+      "ideas": [
+        "Trả lời có/không phải học sinh trước",
+        "Nói rõ nghề nghiệp bằng '저는 ...이에요/예요'",
+        "Có thể nói nơi làm việc hoặc nơi học bằng ...에서",
+        "Thêm cảm nghĩ về công việc nếu muốn"
+      ],
+      "sampleAnswer": "네, 저는 학생이에요. 대학교에서 한국어를 공부해요. 한국어 공부가 재미있어요. 그리고 가끔 카페에서 일해요.\n\n(Dịch: Vâng, tôi là sinh viên. Tôi học tiếng Hàn ở trường đại học. Việc học tiếng Hàn rất thú vị. Và thỉnh thoảng tôi làm thêm ở quán cà phê.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "몇 살이에요?",
+      "hint": "Nói tuổi của bạn. Dùng số thuần Hàn + 살. Ví dụ: 스무 살, 스물한 살, 서른 살.",
+      "samplePhrases": [
+        "저는 스무 살이에요.",
+        "저는 스물세 살이에요.",
+        "올해 ___ 살이에요."
+      ],
+      "vocabulary": [
+        { "word": "살", "meaning": "tuổi (đếm tuổi)", "example": "저는 스무 살이에요." },
+        { "word": "몇", "meaning": "mấy, bao nhiêu", "example": "몇 살이에요?" },
+        { "word": "올해", "meaning": "năm nay", "example": "올해 스물두 살이에요." },
+        { "word": "스무", "meaning": "hai mươi", "example": "스무 살이에요." }
+      ],
+      "ideas": [
+        "Dùng số thuần Hàn khi nói tuổi (하나~스물...)",
+        "Nhớ 스무 살, không phải 스물 살",
+        "Có thể thêm 올해 (năm nay) cho tự nhiên",
+        "Hỏi lại tuổi đối phương để hội thoại"
+      ],
+      "sampleAnswer": "저는 올해 스물두 살이에요. 생일은 오월이에요. 친구들도 보통 스물두 살이나 스물세 살이에요.\n\n(Dịch: Năm nay tôi hai mươi hai tuổi. Sinh nhật tôi vào tháng năm. Các bạn của tôi cũng thường hai mươi hai hoặc hai mươi ba tuổi.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "가족이 몇 명이에요?",
+      "hint": "Nói gia đình bạn có mấy người. Dùng số thuần Hàn + 명. Kể thêm gia đình gồm những ai.",
+      "samplePhrases": [
+        "우리 가족은 네 명이에요.",
+        "저는 형제가 ___ 명 있어요.",
+        "아버지, 어머니, 그리고 저예요."
+      ],
+      "vocabulary": [
+        { "word": "가족", "meaning": "gia đình", "example": "우리 가족은 네 명이에요." },
+        { "word": "명", "meaning": "người (đếm người)", "example": "친구가 세 명 있어요." },
+        { "word": "동생", "meaning": "em (trai/gái)", "example": "저는 동생이 있어요." },
+        { "word": "부모님", "meaning": "bố mẹ", "example": "부모님은 베트남에 계세요." }
+      ],
+      "ideas": [
+        "Nói số người bằng số thuần Hàn + 명",
+        "Liệt kê thành viên: 아버지, 어머니, 동생...",
+        "Có thể nói ai làm gì hoặc ở đâu",
+        "Dùng 우리 가족 cho tự nhiên"
+      ],
+      "sampleAnswer": "우리 가족은 네 명이에요. 아버지, 어머니, 동생, 그리고 저예요. 아버지는 회사원이고 어머니는 선생님이에요. 동생은 고등학생이에요.\n\n(Dịch: Gia đình tôi có bốn người. Bố, mẹ, em và tôi. Bố là nhân viên công ty còn mẹ là giáo viên. Em tôi là học sinh trung học.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "한국어를 할 수 있어요?",
+      "hint": "Nói bạn có nói được tiếng Hàn không, ở mức độ nào. Dùng 할 수 있어요 / 조금 할 수 있어요.",
+      "samplePhrases": [
+        "네, 한국어를 조금 할 수 있어요.",
+        "한국어를 배우고 있어요.",
+        "아직 잘 못해요. 하지만 열심히 공부해요."
+      ],
+      "vocabulary": [
+        { "word": "한국어", "meaning": "tiếng Hàn", "example": "한국어를 배워요." },
+        { "word": "조금", "meaning": "một chút", "example": "한국어를 조금 해요." },
+        { "word": "배우다", "meaning": "học", "example": "저는 한국어를 배워요." },
+        { "word": "할 수 있다", "meaning": "có thể làm được", "example": "한국어를 할 수 있어요." }
+      ],
+      "ideas": [
+        "Trả lời được hay chưa được, ở mức nào",
+        "Dùng 조금 (một chút) nếu mới học",
+        "Nói bạn đang học bằng 배우고 있어요",
+        "Thể hiện quyết tâm bằng 열심히 공부해요"
+      ],
+      "sampleAnswer": "네, 한국어를 조금 할 수 있어요. 지금 한국어를 배우고 있어요. 아직 어렵지만 정말 재미있어요. 그래서 매일 열심히 공부해요.\n\n(Dịch: Vâng, tôi nói được tiếng Hàn một chút. Bây giờ tôi đang học tiếng Hàn. Tuy vẫn còn khó nhưng rất thú vị. Vì vậy tôi chăm chỉ học mỗi ngày.)"
+    }
+  ]
+}

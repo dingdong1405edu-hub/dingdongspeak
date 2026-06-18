@@ -1,0 +1,150 @@
+{
+  "key": "ko-s6-l3",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "반말 (Cách nói trống) — bỏ đuôi 요",
+      "explanation": "반말 là cách nói thân mật, suồng sã dùng với bạn bè thân, người ít tuổi hơn hoặc trong gia đình. Cách đơn giản nhất để tạo 반말 từ thể 해요 (해요체) là bỏ '요' ở cuối: 먹어요 → 먹어, 가요 → 가, 좋아요 → 좋아. Lưu ý: KHÔNG dùng 반말 với người lớn tuổi hơn, cấp trên hay người mới gặp.",
+      "examples": [
+        "지금 뭐 해? (Bây giờ làm gì đấy?)",
+        "나 밥 먹어. (Tớ đang ăn cơm.)",
+        "이거 진짜 좋아. (Cái này thật sự thích/tốt đấy.)"
+      ],
+      "tip": "Người Việt hay quên rằng 반말 chỉ dùng với người ngang hàng hoặc nhỏ hơn. Dùng nhầm 반말 với người lớn tuổi sẽ bị coi là vô lễ. Khi chưa thân, hãy dùng 존댓말 (～요).",
+      "question": "Câu '저는 학교에 가요' chuyển sang 반말 đúng là gì?",
+      "options": [
+        "나는 학교에 가",
+        "저는 학교에 가",
+        "나는 학교에 가요",
+        "저는 학교에 간다요"
+      ],
+      "answer": "나는 학교에 가"
+    },
+    {
+      "type": "grammar",
+      "rule": "반말 với 이다 (이야/야) và câu hỏi",
+      "explanation": "Với động từ 이다 (là), 반말 dùng '이야' sau danh từ có patchim và '야' sau danh từ không có patchim: 학생이다 → 학생이야, 친구다 → 친구야. Câu hỏi 반말 chỉ cần lên giọng cuối câu, viết thêm dấu '?': 학생이야? (Là học sinh à?), 친구야? (Là bạn à?).",
+      "examples": [
+        "나는 베트남 사람이야. (Tớ là người Việt Nam.)",
+        "이 사람이 네 친구야? (Người này là bạn cậu à?)",
+        "그건 내 거야. (Cái đó là của tớ.)"
+      ],
+      "tip": "Người Việt hay dùng nhầm '이야' cho cả danh từ không có patchim. Hãy nhớ: có patchim → 이야 (학생이야), không patchim → 야 (친구야).",
+      "question": "Điền đúng đuôi 이다 dạng 반말: '저 사람은 의사＿＿.' (의사 = bác sĩ, không có patchim)",
+      "options": [
+        "야",
+        "이야",
+        "예요",
+        "이에요"
+      ],
+      "answer": "야"
+    },
+    {
+      "type": "grammar",
+      "rule": "～게 되다 (trở nên / đi đến chỗ làm gì)",
+      "explanation": "～게 되다 gắn vào gốc động từ/tính từ, diễn tả một sự thay đổi hoặc kết quả xảy ra do hoàn cảnh, không phải do ý chí chủ động của người nói. Nghĩa: 'trở nên ~', 'rốt cuộc/cuối cùng ~', 'đi đến chỗ ~'. Ví dụ: 알다 (biết) → 알게 되다 (đi đến chỗ biết được), 좋아하다 (thích) → 좋아하게 되다 (trở nên thích).",
+      "examples": [
+        "한국에 와서 김치를 좋아하게 됐어요. (Đến Hàn Quốc rồi tôi đâm ra thích kimchi.)",
+        "이사를 가게 됐어요. (Cuối cùng tôi phải chuyển nhà rồi.)",
+        "그 사실을 알게 되었어요. (Tôi đã đi đến chỗ biết được sự thật đó.)"
+      ],
+      "tip": "Người Việt hay nhầm ～게 되다 với hành động chủ động. ～게 되다 nhấn mạnh kết quả do hoàn cảnh, không phải 'tôi tự quyết'. So sánh: 가요 (tôi đi) ≠ 가게 됐어요 (rốt cuộc tôi phải đi / việc tôi đi đã thành hiện thực).",
+      "question": "Chọn câu diễn đạt đúng nghĩa 'Nhờ học tiếng Hàn, tôi đã đi đến chỗ hiểu được văn hóa Hàn':",
+      "options": [
+        "한국어를 배워서 한국 문화를 이해하게 됐어요",
+        "한국어를 배워서 한국 문화를 이해해요",
+        "한국어를 배워서 한국 문화를 이해하고 싶어요",
+        "한국어를 배워서 한국 문화를 이해하게 해요"
+      ],
+      "answer": "한국어를 배워서 한국 문화를 이해하게 됐어요"
+    },
+    {
+      "type": "grammar",
+      "rule": "～게 되다 ở thì quá khứ (～게 됐어요/되었어요)",
+      "explanation": "Khi nói về một kết quả/thay đổi đã xảy ra, dùng dạng quá khứ của 되다: 되다 → 됐어요 (= 되었어요). Cấu trúc: gốc động từ + 게 됐어요. Đây là dạng rất thường gặp để kể về việc 'rốt cuộc đã thành ra ~'. Ví dụ: 만나다 → 만나게 됐어요 (rốt cuộc đã gặp được).",
+      "examples": [
+        "우연히 그 사람을 만나게 됐어요. (Tình cờ tôi đã gặp được người đó.)",
+        "회사를 그만두게 됐어요. (Cuối cùng tôi đã nghỉ việc.)",
+        "여기서 살게 됐어요. (Rốt cuộc tôi đã sống ở đây.)"
+      ],
+      "tip": "Người Việt hay viết '되었어요' và '됐어요' như hai từ khác nhau, nhưng chúng giống hệt nhau về nghĩa — '됐어요' chỉ là dạng rút gọn của '되었어요'.",
+      "question": "Dạng quá khứ thân mật-lịch sự đúng của '되다' trong '～게 되다' là gì?",
+      "options": [
+        "됐어요",
+        "되어요",
+        "될 거예요",
+        "되겠어요"
+      ],
+      "answer": "됐어요"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "친구한테는 반말로 말해. 우리 같이 밥 ___? (Với bạn thì nói trống. Bọn mình cùng ăn cơm nhé?)",
+      "answer": "먹어",
+      "options": [
+        "먹어",
+        "먹어요",
+        "먹습니다",
+        "먹는다요"
+      ],
+      "explanation": "Đây là 반말 nên bỏ '요' ở cuối: 먹어요 → 먹어. Câu hỏi 반말 chỉ cần lên giọng, thêm dấu '?'."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "한국 드라마를 자주 봐서 한국어를 잘하___ 됐어요. (Vì hay xem phim Hàn nên tôi đã đi đến chỗ giỏi tiếng Hàn.)",
+      "answer": "게",
+      "options": [
+        "게",
+        "고",
+        "서",
+        "면"
+      ],
+      "explanation": "Cấu trúc '～게 되다' diễn tả kết quả/thay đổi do hoàn cảnh: 잘하다 + 게 되다 → 잘하게 됐어요 (đã trở nên giỏi)."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "이 사람은 내 동생___. (Người này là em tôi.)",
+      "answer": "이야",
+      "options": [
+        "이야",
+        "야",
+        "예요",
+        "입니다"
+      ],
+      "explanation": "동생 kết thúc bằng patchim 'ㅇ', nên dùng '이야' trong 반말: 동생이야 (là em tôi)."
+    },
+    {
+      "type": "arrange",
+      "words": [
+        "한국에",
+        "됐어요",
+        "살게",
+        "와서"
+      ],
+      "answer": "한국에 와서 살게 됐어요",
+      "hint": "Đến Hàn Quốc rồi (rốt cuộc) tôi đã sống ở đây. (cấu trúc ～게 됐어요)"
+    },
+    {
+      "type": "arrange",
+      "words": [
+        "지금",
+        "해",
+        "뭐",
+        "너"
+      ],
+      "answer": "너 지금 뭐 해",
+      "hint": "Cậu bây giờ đang làm gì đấy? (câu hỏi 반말, lên giọng cuối câu)"
+    },
+    {
+      "type": "arrange",
+      "words": [
+        "좋아하게",
+        "김치를",
+        "됐어요",
+        "이제"
+      ],
+      "answer": "이제 김치를 좋아하게 됐어요",
+      "hint": "Giờ thì tôi đã đâm ra thích kimchi rồi. (cấu trúc ～게 됐어요)"
+    }
+  ]
+}

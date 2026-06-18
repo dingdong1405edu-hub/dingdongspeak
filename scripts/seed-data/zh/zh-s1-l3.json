@@ -1,0 +1,151 @@
+{
+  "key": "zh-s1-l3",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "Câu khẳng định với 是 (A 是 B)",
+      "explanation": "动词 是 (shì) nghĩa là \"là\". Cấu trúc cơ bản: Chủ ngữ + 是 + Danh từ, dùng để xác định danh tính hoặc thuộc tính. Ví dụ \"我是学生\" = \"Tôi là học sinh\". 是 không thay đổi theo ngôi.",
+      "examples": [
+        "我是老师。",
+        "他是我的朋友。",
+        "这是中文书。"
+      ],
+      "tip": "Người Việt hay thêm 很 hoặc bỏ 是. Trước danh từ phải dùng 是, nhưng trước tính từ (như 高, 好) thì KHÔNG dùng 是 mà dùng 很.",
+      "question": "Chọn câu đúng nghĩa \"Cô ấy là giáo viên\":",
+      "options": [
+        "她是老师。",
+        "她老师是。",
+        "她很老师。",
+        "是她老师。"
+      ],
+      "answer": "她是老师。"
+    },
+    {
+      "type": "grammar",
+      "rule": "Phủ định với 不是",
+      "explanation": "Để phủ định câu có 是, thêm 不 (bù) trước 是, tạo thành 不是 (bú shì) nghĩa là \"không phải là\". Cấu trúc: Chủ ngữ + 不是 + Danh từ.",
+      "examples": [
+        "我不是学生。",
+        "他不是中国人。",
+        "这不是我的书。"
+      ],
+      "tip": "Người Việt hay đặt 不 sai vị trí. 不 phải đứng NGAY TRƯỚC 是, không đứng sau hoặc cuối câu.",
+      "question": "Điền vào: \"Tôi không phải là bác sĩ\" — 我 ___ 医生。",
+      "options": [
+        "不是",
+        "是不",
+        "没是",
+        "不"
+      ],
+      "answer": "不是"
+    },
+    {
+      "type": "grammar",
+      "rule": "Câu hỏi có/không với 吗",
+      "explanation": "Thêm trợ từ 吗 (ma) vào cuối câu khẳng định để tạo câu hỏi có/không (yes/no). Cấu trúc: Câu khẳng định + 吗? Người trả lời dùng 是 (phải) hoặc 不是 (không phải).",
+      "examples": [
+        "你是学生吗？",
+        "他是你的朋友吗？",
+        "这是茶吗？"
+      ],
+      "tip": "Người Việt hay quên 吗 hoặc thêm cả 吗 và đảo trật tự. Khi đã có 吗 thì trật tự câu GIỮ NGUYÊN như câu khẳng định, chỉ thêm 吗 ở cuối.",
+      "question": "Câu hỏi \"Bạn là người Việt Nam phải không?\" là:",
+      "options": [
+        "你是越南人吗？",
+        "你吗是越南人？",
+        "吗你是越南人？",
+        "你是吗越南人？"
+      ],
+      "answer": "你是越南人吗？"
+    },
+    {
+      "type": "grammar",
+      "rule": "Câu hỏi nối tiếp với 呢",
+      "explanation": "Trợ từ 呢 (ne) đặt sau danh từ/đại từ để hỏi lại cùng một câu hỏi đã nêu trước đó, nghĩa \"... thì sao?\", \"còn ... thì?\". Ví dụ: \"我是学生，你呢？\" = \"Tôi là học sinh, còn bạn thì sao?\".",
+      "examples": [
+        "我很好，你呢？",
+        "他是老师，她呢？",
+        "我是中国人，你呢？"
+      ],
+      "tip": "Người Việt hay dùng 吗 thay cho 呢. 吗 hỏi câu hoàn chỉnh có/không; còn 呢 chỉ đặt sau danh từ để hỏi lại, không cần lặp lại cả câu.",
+      "question": "\"Tôi là học sinh, còn bạn thì sao?\" dịch là:",
+      "options": [
+        "我是学生，你呢？",
+        "我是学生，你吗？",
+        "我是学生，呢你？",
+        "我是学生，你是呢？"
+      ],
+      "answer": "我是学生，你呢？"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "他 ___ 我的老师，他是我的朋友。",
+      "answer": "不是",
+      "options": [
+        "不是",
+        "是",
+        "吗",
+        "呢"
+      ],
+      "explanation": "Vế sau nói \"anh ấy là bạn tôi\", nên vế trước mang nghĩa phủ định \"không phải là thầy giáo của tôi\". Dùng 不是 (không phải là)."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "你是中国人 ___ ？",
+      "answer": "吗",
+      "options": [
+        "吗",
+        "呢",
+        "不",
+        "是"
+      ],
+      "explanation": "Đây là câu hỏi có/không (\"Bạn là người Trung Quốc phải không?\"), nên thêm 吗 ở cuối câu khẳng định."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "我是学生，你 ___ ？",
+      "answer": "呢",
+      "options": [
+        "呢",
+        "吗",
+        "是",
+        "不是"
+      ],
+      "explanation": "Câu trước đã nêu \"Tôi là học sinh\", nay hỏi lại \"còn bạn thì sao?\" nên dùng 呢 sau đại từ 你."
+    },
+    {
+      "type": "arrange",
+      "words": [
+        "是",
+        "老师",
+        "我",
+        "不"
+      ],
+      "answer": "我不是老师",
+      "hint": "Tôi không phải là giáo viên."
+    },
+    {
+      "type": "arrange",
+      "words": [
+        "吗",
+        "你",
+        "学生",
+        "是"
+      ],
+      "answer": "你是学生吗",
+      "hint": "Bạn là học sinh phải không?"
+    },
+    {
+      "type": "arrange",
+      "words": [
+        "呢",
+        "好",
+        "我",
+        "很",
+        "你"
+      ],
+      "answer": "我很好你呢",
+      "hint": "Tôi khỏe, còn bạn thì sao?"
+    }
+  ]
+}

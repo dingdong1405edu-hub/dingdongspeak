@@ -1,0 +1,105 @@
+{
+  "key": "ko-s4-l4",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "여행",
+      "phonetic": "yeohaeng",
+      "pos": "n.",
+      "meaning": "du lịch, chuyến đi",
+      "example": "저는 다음 주에 제주도로 여행을 가요.",
+      "options": ["du lịch, chuyến đi", "công việc", "cuộc họp", "kỳ nghỉ lễ"],
+      "answer": "du lịch, chuyến đi"
+    },
+    {
+      "type": "vocab",
+      "word": "비행기",
+      "phonetic": "bihaenggi",
+      "pos": "n.",
+      "meaning": "máy bay",
+      "example": "비행기가 곧 출발해요.",
+      "options": ["máy bay", "tàu hỏa", "tàu thủy", "xe buýt"],
+      "answer": "máy bay"
+    },
+    {
+      "type": "vocab",
+      "word": "공항",
+      "phonetic": "gonghang",
+      "pos": "n.",
+      "meaning": "sân bay",
+      "example": "친구를 만나러 공항에 갔어요.",
+      "options": ["sân bay", "nhà ga", "bến xe", "bến cảng"],
+      "answer": "sân bay"
+    },
+    {
+      "type": "vocab",
+      "word": "기차역",
+      "phonetic": "gichayeok",
+      "pos": "n.",
+      "meaning": "nhà ga tàu hỏa",
+      "example": "기차역에서 표를 샀어요.",
+      "options": ["nhà ga tàu hỏa", "sân bay", "bến xe buýt", "trạm tàu điện ngầm"],
+      "answer": "nhà ga tàu hỏa"
+    },
+    {
+      "type": "vocab",
+      "word": "호텔",
+      "phonetic": "hotel",
+      "pos": "n.",
+      "meaning": "khách sạn",
+      "example": "이 호텔은 바다 근처에 있어요.",
+      "options": ["khách sạn", "nhà hàng", "siêu thị", "bệnh viện"],
+      "answer": "khách sạn"
+    },
+    {
+      "type": "vocab",
+      "word": "여권",
+      "phonetic": "yeogwon",
+      "pos": "n.",
+      "meaning": "hộ chiếu",
+      "example": "외국에 갈 때 여권이 필요해요.",
+      "options": ["hộ chiếu", "vé", "thẻ ngân hàng", "chứng minh thư"],
+      "answer": "hộ chiếu"
+    },
+    {
+      "type": "vocab",
+      "word": "짐",
+      "phonetic": "jim",
+      "pos": "n.",
+      "meaning": "hành lý",
+      "example": "짐이 많아서 택시를 탔어요.",
+      "options": ["hành lý", "bản đồ", "phòng", "ảnh"],
+      "answer": "hành lý"
+    },
+    {
+      "type": "vocab",
+      "word": "지도",
+      "phonetic": "jido",
+      "pos": "n.",
+      "meaning": "bản đồ",
+      "example": "지도를 보고 길을 찾았어요.",
+      "options": ["bản đồ", "hộ chiếu", "vé", "ảnh"],
+      "answer": "bản đồ"
+    },
+    {
+      "type": "vocab",
+      "word": "관광지",
+      "phonetic": "gwangwangji",
+      "pos": "n.",
+      "meaning": "điểm tham quan, danh lam thắng cảnh",
+      "example": "이 도시에는 유명한 관광지가 많아요.",
+      "options": ["điểm tham quan, danh lam thắng cảnh", "khách sạn", "sân bay", "cửa hàng lưu niệm"],
+      "answer": "điểm tham quan, danh lam thắng cảnh"
+    },
+    {
+      "type": "vocab",
+      "word": "예약",
+      "phonetic": "yeyak",
+      "pos": "n.",
+      "meaning": "việc đặt chỗ, đặt trước",
+      "example": "호텔 방을 예약했어요.",
+      "options": ["việc đặt chỗ, đặt trước", "sự xuất phát", "sự đến nơi", "việc hủy"],
+      "answer": "việc đặt chỗ, đặt trước"
+    }
+  ]
+}

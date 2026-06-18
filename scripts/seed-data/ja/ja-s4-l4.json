@@ -1,0 +1,105 @@
+{
+  "key": "ja-s4-l4",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "旅行",
+      "phonetic": "りょこう / ryokō",
+      "pos": "n.",
+      "meaning": "du lịch, chuyến đi",
+      "example": "夏休みに家族と旅行に行きます。",
+      "options": ["du lịch, chuyến đi", "công việc", "cuộc họp", "buổi học"],
+      "answer": "du lịch, chuyến đi"
+    },
+    {
+      "type": "vocab",
+      "word": "飛行機",
+      "phonetic": "ひこうき / hikōki",
+      "pos": "n.",
+      "meaning": "máy bay",
+      "example": "東京まで飛行機で行きます。",
+      "options": ["máy bay", "tàu điện", "xe buýt", "tàu thủy"],
+      "answer": "máy bay"
+    },
+    {
+      "type": "vocab",
+      "word": "空港",
+      "phonetic": "くうこう / kūkō",
+      "pos": "n.",
+      "meaning": "sân bay",
+      "example": "空港で友だちを待っています。",
+      "options": ["sân bay", "nhà ga", "bến cảng", "bến xe"],
+      "answer": "sân bay"
+    },
+    {
+      "type": "vocab",
+      "word": "駅",
+      "phonetic": "えき / eki",
+      "pos": "n.",
+      "meaning": "nhà ga, ga tàu",
+      "example": "駅の前で会いましょう。",
+      "options": ["nhà ga, ga tàu", "sân bay", "khách sạn", "cửa hàng"],
+      "answer": "nhà ga, ga tàu"
+    },
+    {
+      "type": "vocab",
+      "word": "ホテル",
+      "phonetic": "ホテル / hoteru",
+      "pos": "n.",
+      "meaning": "khách sạn",
+      "example": "今夜は駅の近くのホテルに泊まります。",
+      "options": ["khách sạn", "nhà hàng", "công ty", "bệnh viện"],
+      "answer": "khách sạn"
+    },
+    {
+      "type": "vocab",
+      "word": "部屋",
+      "phonetic": "へや / heya",
+      "pos": "n.",
+      "meaning": "căn phòng",
+      "example": "この部屋はとても広くてきれいです。",
+      "options": ["căn phòng", "tòa nhà", "ban công", "hành lang"],
+      "answer": "căn phòng"
+    },
+    {
+      "type": "vocab",
+      "word": "パスポート",
+      "phonetic": "パスポート / pasupōto",
+      "pos": "n.",
+      "meaning": "hộ chiếu",
+      "example": "海外へ行くときはパスポートが必要です。",
+      "options": ["hộ chiếu", "vé máy bay", "bản đồ", "hành lý"],
+      "answer": "hộ chiếu"
+    },
+    {
+      "type": "vocab",
+      "word": "荷物",
+      "phonetic": "にもつ / nimotsu",
+      "pos": "n.",
+      "meaning": "hành lý, đồ đạc",
+      "example": "荷物が重いので、タクシーに乗ります。",
+      "options": ["hành lý, đồ đạc", "hộ chiếu", "tấm bản đồ", "chiếc vé"],
+      "answer": "hành lý, đồ đạc"
+    },
+    {
+      "type": "vocab",
+      "word": "切符",
+      "phonetic": "きっぷ / kippu",
+      "pos": "n.",
+      "meaning": "vé (tàu, xe)",
+      "example": "駅で電車の切符を買いました。",
+      "options": ["vé (tàu, xe)", "tiền lẻ", "bản đồ", "hành lý"],
+      "answer": "vé (tàu, xe)"
+    },
+    {
+      "type": "vocab",
+      "word": "予約",
+      "phonetic": "よやく / yoyaku",
+      "pos": "n.",
+      "meaning": "việc đặt chỗ, đặt trước",
+      "example": "インターネットでホテルの予約をしました。",
+      "options": ["việc đặt chỗ, đặt trước", "sự xuất phát", "chuyến đi", "kế hoạch"],
+      "answer": "việc đặt chỗ, đặt trước"
+    }
+  ]
+}

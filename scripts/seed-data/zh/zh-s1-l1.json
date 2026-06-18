@@ -1,0 +1,105 @@
+{
+  "key": "zh-s1-l1",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "你好",
+      "phonetic": "nǐ hǎo",
+      "pos": "phrase",
+      "meaning": "xin chào",
+      "example": "你好！我是王老师。",
+      "options": ["xin chào", "tạm biệt", "cảm ơn", "xin lỗi"],
+      "answer": "xin chào"
+    },
+    {
+      "type": "vocab",
+      "word": "您好",
+      "phonetic": "nín hǎo",
+      "pos": "phrase",
+      "meaning": "xin chào (kính trọng)",
+      "example": "老师，您好！",
+      "options": ["xin chào (kính trọng)", "chào buổi sáng", "chúc ngủ ngon", "hẹn gặp lại"],
+      "answer": "xin chào (kính trọng)"
+    },
+    {
+      "type": "vocab",
+      "word": "谢谢",
+      "phonetic": "xièxie",
+      "pos": "v.",
+      "meaning": "cảm ơn",
+      "example": "谢谢你的帮助。",
+      "options": ["cảm ơn", "xin lỗi", "không có gì", "làm ơn"],
+      "answer": "cảm ơn"
+    },
+    {
+      "type": "vocab",
+      "word": "不客气",
+      "phonetic": "bú kèqi",
+      "pos": "phrase",
+      "meaning": "không có gì (đáp lại cảm ơn)",
+      "example": "不客气，这是我应该做的。",
+      "options": ["không có gì (đáp lại cảm ơn)", "không sao đâu", "rất vui được gặp", "xin chào"],
+      "answer": "không có gì (đáp lại cảm ơn)"
+    },
+    {
+      "type": "vocab",
+      "word": "对不起",
+      "phonetic": "duìbuqǐ",
+      "pos": "phrase",
+      "meaning": "xin lỗi",
+      "example": "对不起，我来晚了。",
+      "options": ["xin lỗi", "cảm ơn", "không sao", "tạm biệt"],
+      "answer": "xin lỗi"
+    },
+    {
+      "type": "vocab",
+      "word": "没关系",
+      "phonetic": "méi guānxi",
+      "pos": "phrase",
+      "meaning": "không sao đâu",
+      "example": "没关系，别担心。",
+      "options": ["không sao đâu", "xin lỗi", "cảm ơn", "tạm biệt"],
+      "answer": "không sao đâu"
+    },
+    {
+      "type": "vocab",
+      "word": "再见",
+      "phonetic": "zàijiàn",
+      "pos": "phrase",
+      "meaning": "tạm biệt",
+      "example": "老师再见！明天见。",
+      "options": ["tạm biệt", "xin chào", "cảm ơn", "chào mừng"],
+      "answer": "tạm biệt"
+    },
+    {
+      "type": "vocab",
+      "word": "老师",
+      "phonetic": "lǎoshī",
+      "pos": "n.",
+      "meaning": "thầy/cô giáo",
+      "example": "我的中文老师很好。",
+      "options": ["thầy/cô giáo", "học sinh", "bạn bè", "bạn học"],
+      "answer": "thầy/cô giáo"
+    },
+    {
+      "type": "vocab",
+      "word": "朋友",
+      "phonetic": "péngyou",
+      "pos": "n.",
+      "meaning": "bạn bè",
+      "example": "他是我的好朋友。",
+      "options": ["bạn bè", "thầy giáo", "gia đình", "bạn học"],
+      "answer": "bạn bè"
+    },
+    {
+      "type": "vocab",
+      "word": "名字",
+      "phonetic": "míngzi",
+      "pos": "n.",
+      "meaning": "tên",
+      "example": "你叫什么名字？",
+      "options": ["tên", "tuổi", "nghề nghiệp", "quốc gia"],
+      "answer": "tên"
+    }
+  ]
+}

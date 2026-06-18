@@ -1,0 +1,105 @@
+{
+  "key": "ko-s6-l2",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "사회",
+      "phonetic": "sahoe",
+      "pos": "n.",
+      "meaning": "xã hội",
+      "example": "우리는 더 좋은 사회를 만들기 위해 노력해야 합니다.",
+      "options": ["xã hội", "kinh tế", "văn hóa", "giáo dục"],
+      "answer": "xã hội"
+    },
+    {
+      "type": "vocab",
+      "word": "환경",
+      "phonetic": "hwangyeong",
+      "pos": "n.",
+      "meaning": "môi trường",
+      "example": "환경을 지키는 것은 우리 모두의 책임입니다.",
+      "options": ["môi trường", "sự ô nhiễm", "tài nguyên", "sự phát triển"],
+      "answer": "môi trường"
+    },
+    {
+      "type": "vocab",
+      "word": "오염",
+      "phonetic": "oyeom",
+      "pos": "n.",
+      "meaning": "sự ô nhiễm",
+      "example": "공장 때문에 강물 오염이 점점 심해지고 있습니다.",
+      "options": ["sự ô nhiễm", "sự bảo vệ", "sự tiết kiệm", "ảnh hưởng"],
+      "answer": "sự ô nhiễm"
+    },
+    {
+      "type": "vocab",
+      "word": "보호",
+      "phonetic": "boho",
+      "pos": "n.",
+      "meaning": "sự bảo vệ",
+      "example": "우리는 자연 보호를 위해 쓰레기를 줄여야 합니다.",
+      "options": ["sự bảo vệ", "sự thay đổi", "trách nhiệm", "kinh tế"],
+      "answer": "sự bảo vệ"
+    },
+    {
+      "type": "vocab",
+      "word": "절약",
+      "phonetic": "jeoryak",
+      "pos": "n.",
+      "meaning": "sự tiết kiệm",
+      "example": "전기 절약을 위해 사용하지 않는 불을 꺼 주세요.",
+      "options": ["sự tiết kiệm", "ảnh hưởng", "sự phát triển", "văn hóa"],
+      "answer": "sự tiết kiệm"
+    },
+    {
+      "type": "vocab",
+      "word": "영향",
+      "phonetic": "yeonghyang",
+      "pos": "n.",
+      "meaning": "ảnh hưởng",
+      "example": "날씨는 우리 생활에 큰 영향을 줍니다.",
+      "options": ["ảnh hưởng", "xã hội", "sự ô nhiễm", "giáo dục"],
+      "answer": "ảnh hưởng"
+    },
+    {
+      "type": "vocab",
+      "word": "경제",
+      "phonetic": "gyeongje",
+      "pos": "n.",
+      "meaning": "kinh tế",
+      "example": "요즘 경제가 어려워서 사람들이 돈을 적게 씁니다.",
+      "options": ["kinh tế", "môi trường", "trách nhiệm", "tài nguyên"],
+      "answer": "kinh tế"
+    },
+    {
+      "type": "vocab",
+      "word": "발전",
+      "phonetic": "baljeon",
+      "pos": "n.",
+      "meaning": "sự phát triển",
+      "example": "기술의 발전으로 생활이 더 편리해졌습니다.",
+      "options": ["sự phát triển", "sự bảo vệ", "sự tiết kiệm", "ảnh hưởng"],
+      "answer": "sự phát triển"
+    },
+    {
+      "type": "vocab",
+      "word": "문화",
+      "phonetic": "munhwa",
+      "pos": "n.",
+      "meaning": "văn hóa",
+      "example": "한국 문화를 배우기 위해 한국에 왔습니다.",
+      "options": ["văn hóa", "xã hội", "kinh tế", "giáo dục"],
+      "answer": "văn hóa"
+    },
+    {
+      "type": "vocab",
+      "word": "교육",
+      "phonetic": "gyoyuk",
+      "pos": "n.",
+      "meaning": "giáo dục",
+      "example": "부모님은 자녀 교육에 관심이 많습니다.",
+      "options": ["giáo dục", "văn hóa", "môi trường", "sự thay đổi"],
+      "answer": "giáo dục"
+    }
+  ]
+}

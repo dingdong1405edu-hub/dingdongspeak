@@ -1,0 +1,100 @@
+{
+  "key": "ko-s3-l4",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "V + 고 싶다 (muốn làm gì)",
+      "explanation": "Dùng để diễn đạt mong muốn của chính người nói. Bỏ đuôi 다 của động từ rồi gắn 고 싶다. Ví dụ: 가다 → 가고 싶어요 (muốn đi), 먹다 → 먹고 싶어요 (muốn ăn). Câu hỏi lịch sự dùng 고 싶어요?.",
+      "examples": [
+        "저는 한국에 가고 싶어요.",
+        "지금 물을 마시고 싶어요.",
+        "주말에 영화를 보고 싶어요."
+      ],
+      "tip": "Người Việt hay quên đổi 싶다 sang dạng kính ngữ 싶어요 khi nói. Ngoài ra 고 싶다 chỉ dùng cho ngôi thứ nhất (tôi); khi nói về người khác phải dùng 고 싶어하다.",
+      "question": "Tôi muốn ăn cơm Hàn Quốc. → 저는 한국 음식을 ___.",
+      "options": ["먹고 싶어요", "먹어요", "먹을 거예요", "먹고 싶어해요"],
+      "answer": "먹고 싶어요"
+    },
+    {
+      "type": "grammar",
+      "rule": "V + (으)ㄹ 거예요 (sẽ làm / dự định)",
+      "explanation": "Diễn đạt ý định hoặc việc sẽ xảy ra trong tương lai. Nếu gốc động từ KHÔNG có patchim → gắn ㄹ 거예요 (가다 → 갈 거예요). Nếu gốc động từ CÓ patchim → gắn 을 거예요 (먹다 → 먹을 거예요).",
+      "examples": [
+        "내일 친구를 만날 거예요.",
+        "저녁에 책을 읽을 거예요.",
+        "주말에 집에서 쉴 거예요."
+      ],
+      "tip": "Người Việt hay nhầm: gốc có patchim phải dùng 을 거예요, gốc không patchim mới dùng ㄹ 거예요. Đừng dùng 을 거예요 cho động từ không có patchim.",
+      "question": "Gốc động từ 읽다 (đọc) có patchim, vậy dạng tương lai đúng là gì?",
+      "options": ["읽을 거예요", "읽ㄹ 거예요", "읽 거예요", "읽고 싶어요"],
+      "answer": "읽을 거예요"
+    },
+    {
+      "type": "grammar",
+      "rule": "Phân biệt 고 싶다 và (으)ㄹ 거예요",
+      "explanation": "고 싶다 nhấn mạnh MONG MUỐN (muốn làm gì đó). (으)ㄹ 거예요 nhấn mạnh DỰ ĐỊNH / KẾ HOẠCH tương lai (sẽ làm gì). Tùy ngữ cảnh hỏi mà chọn đuôi cho đúng.",
+      "examples": [
+        "뭐 하고 싶어요? – 쉬고 싶어요.",
+        "내일 뭐 할 거예요? – 도서관에 갈 거예요.",
+        "방학 때 여행을 가고 싶어요. 그래서 부산에 갈 거예요."
+      ],
+      "tip": "Khi câu hỏi là 'sẽ làm gì?' (할 거예요?) thì trả lời bằng (으)ㄹ 거예요, không trả lời bằng 고 싶어요.",
+      "question": "Hỏi về kế hoạch: '내일 뭐 ___?' (Ngày mai bạn sẽ làm gì?)",
+      "options": ["할 거예요", "하고 싶어요", "해요", "했어요"],
+      "answer": "할 거예요"
+    },
+    {
+      "type": "grammar",
+      "rule": "Chọn đuôi đúng theo patchim",
+      "explanation": "Với (으)ㄹ 거예요: 만나다 (không patchim) → 만날 거예요; 받다 (có patchim) → 받을 거예요. Hãy kiểm tra âm cuối của gốc động từ trước khi chọn.",
+      "examples": [
+        "공원에서 친구를 만날 거예요.",
+        "선물을 받을 거예요.",
+        "오후에 운동할 거예요."
+      ],
+      "tip": "하다 → 할 거예요 (vì 하 không có patchim). Đừng viết thành 하을 거예요.",
+      "question": "Câu nào đúng ngữ pháp tương lai?",
+      "options": ["주말에 영화를 볼 거예요.", "주말에 영화를 보을 거예요.", "주말에 영화를 보 거예요.", "주말에 영화를 볼고 싶어요."],
+      "answer": "주말에 영화를 볼 거예요."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "저는 한국어를 잘하고 ___.",
+      "answer": "싶어요",
+      "options": ["싶어요", "싶어해요", "있어요", "거예요"],
+      "explanation": "고 싶다 + đuôi kính ngữ → 고 싶어요. Vì chủ ngữ là 저 (tôi) nên dùng 싶어요, không dùng 싶어해요 (dành cho người khác)."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "내일 저는 도서관에서 책을 ___ 거예요.",
+      "answer": "읽을",
+      "options": ["읽을", "읽", "읽고", "읽었"],
+      "explanation": "Gốc 읽다 có patchim (ㄱ), nên dạng tương lai là 읽을 거예요. Vì vậy chỗ trống điền 읽을."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "주말에 친구를 ___ 거예요.",
+      "answer": "만날",
+      "options": ["만날", "만나을", "만나고", "만나는"],
+      "explanation": "Gốc 만나다 KHÔNG có patchim, nên gắn ㄹ 거예요 → 만날 거예요. Không dùng 만나을."
+    },
+    {
+      "type": "arrange",
+      "words": ["가고", "한국에", "싶어요", "저는"],
+      "answer": "저는 한국에 가고 싶어요",
+      "hint": "Tôi muốn đi Hàn Quốc."
+    },
+    {
+      "type": "arrange",
+      "words": ["거예요", "영화를", "볼", "주말에"],
+      "answer": "주말에 영화를 볼 거예요",
+      "hint": "Cuối tuần tôi sẽ xem phim."
+    },
+    {
+      "type": "arrange",
+      "words": ["읽을", "책을", "내일", "거예요", "도서관에서"],
+      "answer": "내일 도서관에서 책을 읽을 거예요",
+      "hint": "Ngày mai tôi sẽ đọc sách ở thư viện."
+    }
+  ]
+}

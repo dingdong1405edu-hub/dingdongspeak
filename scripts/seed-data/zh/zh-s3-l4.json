@@ -1,0 +1,100 @@
+{
+  "key": "zh-s3-l4",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "想 và 要 (muốn / sẽ làm)",
+      "explanation": "想 + động từ nghĩa là 'muốn, dự định' (thiên về mong muốn, ý nghĩ). 要 + động từ nghĩa là 'muốn / sẽ' (ý chí mạnh hơn, mang tính kế hoạch chắc chắn). Phủ định của cả hai thường dùng 不想 (không muốn). Chú ý: phủ định của 要 (muốn làm gì) là 不想, không phải 不要.",
+      "examples": [
+        "我想喝茶。",
+        "明天我要去北京。",
+        "我不想去。"
+      ],
+      "tip": "Người Việt hay nói 我不要去 để diễn đạt 'tôi không muốn đi', nhưng 不要 thường mang nghĩa 'đừng / cấm'. Muốn nói 'không muốn làm gì' phải dùng 不想.",
+      "question": "明天我________去上海，已经买了火车票。",
+      "options": ["要", "想", "可以", "会"],
+      "answer": "要"
+    },
+    {
+      "type": "grammar",
+      "rule": "会 (biết làm do học được)",
+      "explanation": "会 + động từ diễn đạt 'biết làm một việc gì đó nhờ đã học/luyện tập' (như biết bơi, biết nói tiếng Trung, biết lái xe). Phủ định là 不会. Ngoài ra 会 còn dùng để dự đoán khả năng xảy ra trong tương lai: 明天会下雨 (ngày mai có thể sẽ mưa).",
+      "examples": [
+        "我会说汉语。",
+        "他不会开车。",
+        "明天会下雨吗？"
+      ],
+      "tip": "Khi nói 'biết làm gì vì đã học', dùng 会, KHÔNG dùng 能 hay 可以. Ví dụ 'biết bơi' là 会游泳, không nói 能游泳 (能游泳 nghĩa là đủ sức/được phép bơi).",
+      "question": "她学了三年汉语，现在________说一点儿汉语了。",
+      "options": ["会", "可以", "想", "要"],
+      "answer": "会"
+    },
+    {
+      "type": "grammar",
+      "rule": "能 (có khả năng / điều kiện cho phép)",
+      "explanation": "能 + động từ diễn đạt 'có đủ năng lực, điều kiện hoặc sức khỏe để làm gì' tại thời điểm cụ thể. Khác với 会 (biết làm do học), 能 nhấn mạnh khả năng/điều kiện thực tế. Phủ định là 不能. Ví dụ: 我会游泳，但是今天生病了，不能游泳 (Tôi biết bơi, nhưng hôm nay ốm nên không thể bơi).",
+      "examples": [
+        "我今天太累了，不能去。",
+        "你能帮我吗？",
+        "他病了，明天不能上班。"
+      ],
+      "tip": "Phân biệt: 会 = biết cách làm (đã học); 能 = có sức/điều kiện để làm lúc này. 'Tôi biết bơi nhưng hôm nay không bơi được' phải dùng cả hai: 我会游泳，但今天不能游泳。",
+      "question": "对不起，我今天有事，不________去你家了。",
+      "options": ["能", "会", "想", "可以"],
+      "answer": "能"
+    },
+    {
+      "type": "grammar",
+      "rule": "可以 (được phép / có thể)",
+      "explanation": "可以 + động từ diễn đạt 'được phép làm' (xin phép, cho phép) hoặc 'có thể làm' (đề nghị, gợi ý). Khi xin phép thường hỏi: 我可以……吗？ Phủ định khi không cho phép thường dùng 不能 hoặc 不可以. So với 能, 可以 nghiêng nhiều hơn về sự cho phép theo quy định.",
+      "examples": [
+        "这里可以抽烟吗？",
+        "你可以坐这儿。",
+        "老师，我可以进来吗？"
+      ],
+      "tip": "Để xin phép ('Tôi có thể ... được không?'), người Việt nên dùng 可以...吗 chứ không dịch máy móc. Khi từ chối, câu trả lời thường là 不行 hoặc 不可以, ít khi lặp lại 不可以 một mình.",
+      "question": "请问，这儿________停车吗？",
+      "options": ["可以", "会", "想", "要"],
+      "answer": "可以"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "我妹妹五岁就________弹钢琴了，弹得很好。",
+      "answer": "会",
+      "options": ["会", "能", "可以", "要"],
+      "explanation": "Diễn đạt 'biết làm gì nhờ đã học' (biết đánh đàn piano) nên dùng 会. Đây là kỹ năng học được, không phải khả năng/điều kiện tạm thời nên không dùng 能 hay 可以."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "今天我身体不舒服，不________去运动。",
+      "answer": "能",
+      "options": ["能", "会", "想", "可以"],
+      "explanation": "Vì lý do sức khỏe (điều kiện thực tế lúc này) không thể đi vận động, nên dùng 不能. 不会 sẽ có nghĩa 'không biết cách vận động', không hợp ngữ cảnh."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "老师，我________问您一个问题吗？",
+      "answer": "可以",
+      "options": ["可以", "会", "想", "要"],
+      "explanation": "Đây là câu xin phép ('Em có thể hỏi thầy một câu được không?'), nên dùng cấu trúc 可以……吗 để xin phép."
+    },
+    {
+      "type": "arrange",
+      "words": ["我", "学", "汉语", "想"],
+      "answer": "我想学汉语",
+      "hint": "Tôi muốn học tiếng Trung."
+    },
+    {
+      "type": "arrange",
+      "words": ["这里", "吗", "可以", "拍照"],
+      "answer": "这里可以拍照吗",
+      "hint": "Ở đây có thể chụp ảnh được không?"
+    },
+    {
+      "type": "arrange",
+      "words": ["开车", "不", "他", "会", "还"],
+      "answer": "他还不会开车",
+      "hint": "Anh ấy vẫn chưa biết lái xe."
+    }
+  ]
+}

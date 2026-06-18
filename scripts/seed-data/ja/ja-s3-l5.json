@@ -1,0 +1,105 @@
+{
+  "key": "ja-s3-l5",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "しゅみ",
+      "phonetic": "しゅみ / shumi",
+      "pos": "n.",
+      "meaning": "sở thích",
+      "example": "わたしのしゅみはえいがを見ることです。",
+      "options": ["sở thích", "công việc", "thói quen xấu", "ước mơ"],
+      "answer": "sở thích"
+    },
+    {
+      "type": "vocab",
+      "word": "スポーツ",
+      "phonetic": "スポーツ / supōtsu",
+      "pos": "n.",
+      "meaning": "thể thao",
+      "example": "わたしはスポーツが大好きです。",
+      "options": ["thể thao", "âm nhạc", "du lịch", "trò chơi"],
+      "answer": "thể thao"
+    },
+    {
+      "type": "vocab",
+      "word": "やきゅう",
+      "phonetic": "やきゅう / yakyū",
+      "pos": "n.",
+      "meaning": "bóng chày",
+      "example": "日本ではやきゅうがとても人気です。",
+      "options": ["bóng chày", "bóng đá", "bơi lội", "quần vợt"],
+      "answer": "bóng chày"
+    },
+    {
+      "type": "vocab",
+      "word": "サッカー",
+      "phonetic": "サッカー / sakkā",
+      "pos": "n.",
+      "meaning": "bóng đá",
+      "example": "友だちと公園でサッカーをします。",
+      "options": ["bóng đá", "bóng chày", "bóng rổ", "bóng chuyền"],
+      "answer": "bóng đá"
+    },
+    {
+      "type": "vocab",
+      "word": "すいえい",
+      "phonetic": "すいえい / suiei",
+      "pos": "n.",
+      "meaning": "bơi lội",
+      "example": "夏は海ですいえいをするのが好きです。",
+      "options": ["bơi lội", "chạy bộ", "leo núi", "đạp xe"],
+      "answer": "bơi lội"
+    },
+    {
+      "type": "vocab",
+      "word": "えいが",
+      "phonetic": "えいが / eiga",
+      "pos": "n.",
+      "meaning": "phim, điện ảnh",
+      "example": "週末によくえいがを見に行きます。",
+      "options": ["phim, điện ảnh", "âm nhạc", "sách", "ảnh chụp"],
+      "answer": "phim, điện ảnh"
+    },
+    {
+      "type": "vocab",
+      "word": "おんがく",
+      "phonetic": "おんがく / ongaku",
+      "pos": "n.",
+      "meaning": "âm nhạc",
+      "example": "勉強しながらおんがくを聞きます。",
+      "options": ["âm nhạc", "bài hát", "phim", "trò chơi"],
+      "answer": "âm nhạc"
+    },
+    {
+      "type": "vocab",
+      "word": "うた",
+      "phonetic": "うた / uta",
+      "pos": "n.",
+      "meaning": "bài hát",
+      "example": "カラオケで日本のうたを歌います。",
+      "options": ["bài hát", "âm nhạc", "tiếng nói", "tiếng cười"],
+      "answer": "bài hát"
+    },
+    {
+      "type": "vocab",
+      "word": "どくしょ",
+      "phonetic": "どくしょ / dokusho",
+      "pos": "n.",
+      "meaning": "việc đọc sách",
+      "example": "わたしのしゅみはどくしょです。",
+      "options": ["việc đọc sách", "việc viết chữ", "việc vẽ tranh", "việc du lịch"],
+      "answer": "việc đọc sách"
+    },
+    {
+      "type": "vocab",
+      "word": "りょこう",
+      "phonetic": "りょこう / ryokō",
+      "pos": "n.",
+      "meaning": "du lịch",
+      "example": "来月、家族と日本へりょこうに行きます。",
+      "options": ["du lịch", "công việc", "thể thao", "mua sắm"],
+      "answer": "du lịch"
+    }
+  ]
+}

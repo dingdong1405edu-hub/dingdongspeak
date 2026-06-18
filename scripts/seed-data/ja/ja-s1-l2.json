@@ -1,0 +1,105 @@
+{
+  "key": "ja-s1-l2",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "いち",
+      "phonetic": "いち / ichi",
+      "pos": "n.",
+      "meaning": "số một (1)",
+      "example": "いちじに かえります。",
+      "options": ["số một (1)", "số hai (2)", "số ba (3)", "số mười (10)"],
+      "answer": "số một (1)"
+    },
+    {
+      "type": "vocab",
+      "word": "ご",
+      "phonetic": "ご / go",
+      "pos": "n.",
+      "meaning": "số năm (5)",
+      "example": "ごじに あいましょう。",
+      "options": ["số năm (5)", "số bốn (4)", "số sáu (6)", "số chín (9)"],
+      "answer": "số năm (5)"
+    },
+    {
+      "type": "vocab",
+      "word": "じゅう",
+      "phonetic": "じゅう / juu",
+      "pos": "n.",
+      "meaning": "số mười (10)",
+      "example": "じゅっぷん やすみます。",
+      "options": ["số mười (10)", "số bảy (7)", "số tám (8)", "một trăm (100)"],
+      "answer": "số mười (10)"
+    },
+    {
+      "type": "vocab",
+      "word": "ひゃく",
+      "phonetic": "ひゃく / hyaku",
+      "pos": "n.",
+      "meaning": "một trăm (100)",
+      "example": "これは ひゃくえんです。",
+      "options": ["một trăm (100)", "số mười (10)", "một nghìn (1000)", "số chín (9)"],
+      "answer": "một trăm (100)"
+    },
+    {
+      "type": "vocab",
+      "word": "きょう",
+      "phonetic": "きょう / kyou",
+      "pos": "n.",
+      "meaning": "hôm nay",
+      "example": "きょうは いい てんきです。",
+      "options": ["hôm nay", "ngày mai", "hôm qua", "bây giờ"],
+      "answer": "hôm nay"
+    },
+    {
+      "type": "vocab",
+      "word": "あした",
+      "phonetic": "あした / ashita",
+      "pos": "n.",
+      "meaning": "ngày mai",
+      "example": "あした がっこうへ いきます。",
+      "options": ["ngày mai", "hôm nay", "hôm qua", "buổi sáng"],
+      "answer": "ngày mai"
+    },
+    {
+      "type": "vocab",
+      "word": "きのう",
+      "phonetic": "きのう / kinou",
+      "pos": "n.",
+      "meaning": "hôm qua",
+      "example": "きのうは やすみでした。",
+      "options": ["hôm qua", "ngày mai", "hôm nay", "tuần trước"],
+      "answer": "hôm qua"
+    },
+    {
+      "type": "vocab",
+      "word": "いま",
+      "phonetic": "いま / ima",
+      "pos": "n.",
+      "meaning": "bây giờ, hiện tại",
+      "example": "いま なんじですか。",
+      "options": ["bây giờ, hiện tại", "lúc nãy", "sau này", "buổi tối"],
+      "answer": "bây giờ, hiện tại"
+    },
+    {
+      "type": "vocab",
+      "word": "じ",
+      "phonetic": "じ / ji",
+      "pos": "n.",
+      "meaning": "giờ (đơn vị thời gian)",
+      "example": "しちじに おきます。",
+      "options": ["giờ (đơn vị thời gian)", "phút", "ngày", "thứ trong tuần"],
+      "answer": "giờ (đơn vị thời gian)"
+    },
+    {
+      "type": "vocab",
+      "word": "ようび",
+      "phonetic": "ようび / youbi",
+      "pos": "n.",
+      "meaning": "thứ (trong tuần)",
+      "example": "きょうは なんようびですか。",
+      "options": ["thứ (trong tuần)", "giờ", "phút", "tháng"],
+      "answer": "thứ (trong tuần)"
+    }
+  ]
+}

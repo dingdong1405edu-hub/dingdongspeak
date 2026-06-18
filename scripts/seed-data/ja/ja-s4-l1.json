@@ -1,0 +1,105 @@
+{
+  "key": "ja-s4-l1",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "～から (vì — nêu lý do)",
+      "explanation": "から gắn sau thể thường hoặc thể lịch sự để nêu lý do, nguyên nhân (mang tính chủ quan: ý kiến, quyết định, rủ rê). Cấu trúc: [lý do] から、[kết quả]. Trước mệnh lệnh / lời mời (てください, ましょう) thường dùng から.",
+      "examples": [
+        "時間がないから、急ぎます。",
+        "おいしいから、たくさん食べました。",
+        "寒いから、コートを着ます。"
+      ],
+      "tip": "Người Việt hay đặt から ở đầu vế như 'Vì'. Trong tiếng Nhật から đứng SAU vế lý do, không đứng đầu câu.",
+      "question": "お金がない___、買えません。",
+      "options": ["から", "のに", "でも", "まで"],
+      "answer": "から"
+    },
+    {
+      "type": "grammar",
+      "rule": "～ので và cách nối な (vì — lịch sự)",
+      "explanation": "ので nêu lý do nhẹ nhàng, lịch sự, khách quan hơn から. Với danh từ và tính từ な, phải nối qua な: 静かなので, 学生なので (KHÔNG dùng だ + ので).",
+      "examples": [
+        "電車が遅れたので、遅刻しました。",
+        "今日は日曜日なので、銀行は休みです。",
+        "頭が痛いので、早く帰ります。"
+      ],
+      "tip": "Sai phổ biến: 病気だので. Đúng: 病気なので. Danh từ / tính từ な luôn nối với ので qua な.",
+      "question": "ここは静か___ので、勉強しやすいです。",
+      "options": ["な", "だ", "の", "に"],
+      "answer": "な"
+    },
+    {
+      "type": "grammar",
+      "rule": "～が (nhưng — tương phản)",
+      "explanation": "が đặt giữa câu nối hai vế trái ngược nhau, nghĩa 'nhưng'. Lịch sự hơn けど. Cấu trúc: [vế 1]が、[vế 2 trái ngược].",
+      "examples": [
+        "日本語は難しいですが、面白いです。",
+        "高いですが、買います。",
+        "練習しましたが、まだ上手じゃありません。"
+      ],
+      "tip": "が giữa câu nghĩa 'nhưng' (khác trợ từ chủ ngữ が). Văn nói thân mật thường thay bằng けど.",
+      "question": "この店は安いです___、あまりおいしくないです。",
+      "options": ["が", "から", "ので", "と"],
+      "answer": "が"
+    },
+    {
+      "type": "grammar",
+      "rule": "Phân biệt から/ので và が",
+      "explanation": "から/ので nối nguyên nhân → kết quả (vì... nên...); が nối hai ý trái ngược (nhưng). Chọn liên từ theo quan hệ ý nghĩa giữa hai vế.",
+      "examples": [
+        "安いから、買います。",
+        "安いですが、買いません。",
+        "雨なので、行きません。"
+      ],
+      "tip": "Vế sau là KẾT QUẢ hợp lý của vế trước → から/ので. Vế sau TRÁI NGƯỢC với mong đợi → が.",
+      "question": "Chọn câu nghĩa 'Tuy đắt nhưng (vẫn) ngon':",
+      "options": [
+        "高いですが、おいしいです。",
+        "高いから、おいしいです。",
+        "高いので、おいしいです。",
+        "高いまで、おいしいです。"
+      ],
+      "answer": "高いですが、おいしいです。"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "おなかがすいた___、何か食べましょう。",
+      "answer": "から",
+      "options": ["から", "が", "まで", "のに"],
+      "explanation": "Vế trước là lý do (đói bụng), vế sau là lời rủ (ăn gì đó nhé). Trước lời rủ ましょう dùng から."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "今日は忙しいです___、明日なら大丈夫です。",
+      "answer": "が",
+      "options": ["が", "から", "ので", "と"],
+      "explanation": "Hai vế trái ngược nhau (hôm nay bận / ngày mai thì được), nên dùng が với nghĩa 'nhưng'."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "この本は読みました___、よく分かりませんでした。",
+      "answer": "が",
+      "options": ["が", "から", "ので", "と"],
+      "explanation": "Hai vế trái ngược nhau ('đã đọc NHƯNG không hiểu'), nên dùng が để diễn đạt tương phản."
+    },
+    {
+      "type": "arrange",
+      "words": ["から", "時間が", "急ぎます", "ない"],
+      "answer": "時間がないから急ぎます",
+      "hint": "Vì không có thời gian nên tôi vội. (Nêu lý do bằng から)"
+    },
+    {
+      "type": "arrange",
+      "words": ["が", "高いです", "買います"],
+      "answer": "高いですが買います",
+      "hint": "Tuy đắt nhưng tôi vẫn mua. (Tương phản bằng が)"
+    },
+    {
+      "type": "arrange",
+      "words": ["なので", "雨", "行きません"],
+      "answer": "雨なので行きません",
+      "hint": "Vì trời mưa nên tôi không đi. (Danh từ 雨 + なので)"
+    }
+  ]
+}

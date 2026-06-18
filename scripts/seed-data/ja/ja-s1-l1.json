@@ -1,0 +1,105 @@
+{
+  "key": "ja-s1-l1",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "こんにちは",
+      "phonetic": "こんにちは / konnichiwa",
+      "pos": "phrase",
+      "meaning": "Xin chào (ban ngày)",
+      "example": "こんにちは、お元気ですか。",
+      "options": ["Xin chào (ban ngày)", "Chào buổi sáng", "Chào buổi tối", "Tạm biệt"],
+      "answer": "Xin chào (ban ngày)"
+    },
+    {
+      "type": "vocab",
+      "word": "おはようございます",
+      "phonetic": "おはようございます / ohayou gozaimasu",
+      "pos": "phrase",
+      "meaning": "Chào buổi sáng (lịch sự)",
+      "example": "先生、おはようございます。",
+      "options": ["Chào buổi sáng (lịch sự)", "Chúc ngủ ngon", "Xin chào (ban ngày)", "Cảm ơn"],
+      "answer": "Chào buổi sáng (lịch sự)"
+    },
+    {
+      "type": "vocab",
+      "word": "こんばんは",
+      "phonetic": "こんばんは / konbanwa",
+      "pos": "phrase",
+      "meaning": "Chào buổi tối",
+      "example": "こんばんは、今日は寒いですね。",
+      "options": ["Chào buổi tối", "Chào buổi sáng", "Xin chào (ban ngày)", "Hẹn gặp lại"],
+      "answer": "Chào buổi tối"
+    },
+    {
+      "type": "vocab",
+      "word": "ありがとうございます",
+      "phonetic": "ありがとうございます / arigatou gozaimasu",
+      "pos": "phrase",
+      "meaning": "Cảm ơn (lịch sự)",
+      "example": "手伝ってくれてありがとうございます。",
+      "options": ["Cảm ơn (lịch sự)", "Xin lỗi", "Không có gì", "Làm phiền rồi"],
+      "answer": "Cảm ơn (lịch sự)"
+    },
+    {
+      "type": "vocab",
+      "word": "すみません",
+      "phonetic": "すみません / sumimasen",
+      "pos": "phrase",
+      "meaning": "Xin lỗi / Làm ơn cho hỏi",
+      "example": "すみません、駅はどこですか。",
+      "options": ["Xin lỗi / Làm ơn cho hỏi", "Cảm ơn", "Tạm biệt", "Rất vui được gặp"],
+      "answer": "Xin lỗi / Làm ơn cho hỏi"
+    },
+    {
+      "type": "vocab",
+      "word": "ごめんなさい",
+      "phonetic": "ごめんなさい / gomen nasai",
+      "pos": "phrase",
+      "meaning": "Xin lỗi (thành thật)",
+      "example": "遅れてごめんなさい。",
+      "options": ["Xin lỗi (thành thật)", "Cảm ơn nhiều", "Chào buổi tối", "Bạn bè"],
+      "answer": "Xin lỗi (thành thật)"
+    },
+    {
+      "type": "vocab",
+      "word": "さようなら",
+      "phonetic": "さようなら / sayounara",
+      "pos": "phrase",
+      "meaning": "Tạm biệt",
+      "example": "さようなら、また明日。",
+      "options": ["Tạm biệt", "Xin chào", "Cảm ơn", "Xin lỗi"],
+      "answer": "Tạm biệt"
+    },
+    {
+      "type": "vocab",
+      "word": "はじめまして",
+      "phonetic": "はじめまして / hajimemashite",
+      "pos": "phrase",
+      "meaning": "Rất vui được làm quen (lần đầu gặp)",
+      "example": "はじめまして、田中です。",
+      "options": ["Rất vui được làm quen (lần đầu gặp)", "Tạm biệt", "Chào buổi sáng", "Xin lỗi"],
+      "answer": "Rất vui được làm quen (lần đầu gặp)"
+    },
+    {
+      "type": "vocab",
+      "word": "よろしくおねがいします",
+      "phonetic": "よろしくおねがいします / yoroshiku onegaishimasu",
+      "pos": "phrase",
+      "meaning": "Mong được giúp đỡ / Rất mong được hợp tác",
+      "example": "これからよろしくおねがいします。",
+      "options": ["Mong được giúp đỡ / Rất mong được hợp tác", "Cảm ơn rất nhiều", "Hẹn gặp lại", "Không sao đâu"],
+      "answer": "Mong được giúp đỡ / Rất mong được hợp tác"
+    },
+    {
+      "type": "vocab",
+      "word": "せんせい",
+      "phonetic": "せんせい / sensei",
+      "pos": "n.",
+      "meaning": "Thầy / cô giáo",
+      "example": "山田せんせいは日本語の先生です。",
+      "options": ["Thầy / cô giáo", "Bạn bè", "Tôi", "Bạn (ngôi thứ hai)"],
+      "answer": "Thầy / cô giáo"
+    }
+  ]
+}

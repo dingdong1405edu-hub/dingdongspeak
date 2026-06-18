@@ -1,0 +1,105 @@
+{
+  "key": "zh-s5-l5",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "健康",
+      "phonetic": "jiànkāng",
+      "pos": "adj.",
+      "meaning": "khỏe mạnh, sức khỏe",
+      "example": "多运动对身体健康很有好处。",
+      "options": ["khỏe mạnh, sức khỏe", "đẹp đẽ", "thông minh", "giàu có"],
+      "answer": "khỏe mạnh, sức khỏe"
+    },
+    {
+      "type": "vocab",
+      "word": "锻炼",
+      "phonetic": "duànliàn",
+      "pos": "v.",
+      "meaning": "rèn luyện, tập thể dục",
+      "example": "他每天早上都去公园锻炼身体。",
+      "options": ["rèn luyện, tập thể dục", "nghỉ ngơi", "ngủ trưa", "ăn cơm"],
+      "answer": "rèn luyện, tập thể dục"
+    },
+    {
+      "type": "vocab",
+      "word": "感冒",
+      "phonetic": "gǎnmào",
+      "pos": "v.",
+      "meaning": "cảm, bị cảm cúm",
+      "example": "天气变冷了，我感冒了。",
+      "options": ["cảm, bị cảm cúm", "khỏe lại", "buồn ngủ", "đói bụng"],
+      "answer": "cảm, bị cảm cúm"
+    },
+    {
+      "type": "vocab",
+      "word": "发烧",
+      "phonetic": "fāshāo",
+      "pos": "v.",
+      "meaning": "sốt, lên cơn sốt",
+      "example": "孩子发烧了，快带他去医院吧。",
+      "options": ["sốt, lên cơn sốt", "ho", "đau đầu", "chảy mũi"],
+      "answer": "sốt, lên cơn sốt"
+    },
+    {
+      "type": "vocab",
+      "word": "咳嗽",
+      "phonetic": "késou",
+      "pos": "v.",
+      "meaning": "ho",
+      "example": "他咳嗽得很厉害，应该去看医生。",
+      "options": ["ho", "hắt hơi", "ngáp", "nôn"],
+      "answer": "ho"
+    },
+    {
+      "type": "vocab",
+      "word": "舒服",
+      "phonetic": "shūfu",
+      "pos": "adj.",
+      "meaning": "dễ chịu, thoải mái",
+      "example": "我今天有点不舒服，想休息一下。",
+      "options": ["dễ chịu, thoải mái", "vui vẻ", "bận rộn", "lo lắng"],
+      "answer": "dễ chịu, thoải mái"
+    },
+    {
+      "type": "vocab",
+      "word": "检查",
+      "phonetic": "jiǎnchá",
+      "pos": "v.",
+      "meaning": "kiểm tra, khám",
+      "example": "医生给我检查了身体。",
+      "options": ["kiểm tra, khám", "điều trị", "kê đơn thuốc", "đăng ký"],
+      "answer": "kiểm tra, khám"
+    },
+    {
+      "type": "vocab",
+      "word": "住院",
+      "phonetic": "zhùyuàn",
+      "pos": "v.",
+      "meaning": "nhập viện, nằm viện",
+      "example": "他病得很重，需要住院几天。",
+      "options": ["nhập viện, nằm viện", "xuất viện", "khám bệnh", "uống thuốc"],
+      "answer": "nhập viện, nằm viện"
+    },
+    {
+      "type": "vocab",
+      "word": "疼",
+      "phonetic": "téng",
+      "pos": "adj.",
+      "meaning": "đau",
+      "example": "我的头很疼，吃了药才好一点。",
+      "options": ["đau", "ngứa", "mệt", "lạnh"],
+      "answer": "đau"
+    },
+    {
+      "type": "vocab",
+      "word": "减肥",
+      "phonetic": "jiǎnféi",
+      "pos": "v.",
+      "meaning": "giảm cân",
+      "example": "为了减肥，她每天都跑步。",
+      "options": ["giảm cân", "tăng cân", "ăn kiêng quá mức", "tập tạ"],
+      "answer": "giảm cân"
+    }
+  ]
+}

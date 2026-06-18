@@ -1,0 +1,100 @@
+{
+  "key": "ko-s4-l1",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "-아서/어서 chỉ NGUYÊN NHÂN (vì... nên...)",
+      "explanation": "Gắn vào gốc động từ/tính từ để diễn đạt LÝ DO: vế trước là nguyên nhân, vế sau là kết quả. Quy tắc nối: gốc có ㅏ/ㅗ → -아서; các nguyên âm khác → -어서; 하다 → 해서. Ví dụ: 바쁘다 → 바빠서, 먹다 → 먹어서, 공부하다 → 공부해서. Lưu ý: vế trước KHÔNG chia thì quá khứ/tương lai, thì được thể hiện ở vế sau.",
+      "examples": [
+        "비가 와서 집에 있었어요.",
+        "배가 아파서 학교에 못 갔어요.",
+        "시간이 없어서 밥을 못 먹었어요."
+      ],
+      "tip": "Người Việt hay thêm 았/었 vào vế trước (vd: 비가 왔어서). SAI! Với nguyên nhân, vế -아서/어서 luôn ở dạng KHÔNG chia thì; thì chỉ đặt ở vế sau.",
+      "question": "다음 빈칸에 알맞은 것을 고르세요: 어제 너무 ___ 일찍 잤어요.",
+      "options": ["피곤해서", "피곤하고", "피곤했어서", "피곤하지만"],
+      "answer": "피곤해서"
+    },
+    {
+      "type": "grammar",
+      "rule": "-아서/어서 chỉ TRÌNH TỰ (làm... rồi...)",
+      "explanation": "-아서/어서 còn diễn đạt hai hành động NỐI TIẾP nhau, trong đó hành động sau LIÊN QUAN/dựa trên hành động trước (cùng một đối tượng, cùng địa điểm). Dịch là 'rồi, sau đó'. Ví dụ: 친구를 만나서 영화를 봤어요 (gặp bạn RỒI cùng xem phim — gặp chính người bạn đó). Khác với -고 là hai việc rời rạc, không phụ thuộc nhau.",
+      "examples": [
+        "친구를 만나서 같이 밥을 먹었어요.",
+        "도서관에 가서 책을 읽어요.",
+        "앉아서 이야기해요."
+      ],
+      "tip": "-아서/어서 trình tự dùng khi hành động sau gắn chặt với hành động trước (cùng đối tượng/nơi chốn). Hai việc không liên quan thì dùng -고.",
+      "question": "다음 빈칸에 알맞은 것을 고르세요: 시장에 ___ 과일을 샀어요.",
+      "options": ["가서", "가고", "가지만", "가는데"],
+      "answer": "가서"
+    },
+    {
+      "type": "grammar",
+      "rule": "Phân biệt -아서/어서 và -고 (trình tự)",
+      "explanation": "Cả -고 và -아서/어서 đều có thể nối hai hành động theo thứ tự, nhưng khác nhau: -고 nối hai việc ĐỘC LẬP, không phụ thuộc nhau (làm A, rồi làm B riêng). -아서/어서 thì hành động sau DỰA TRÊN hành động trước (cùng đối tượng/địa điểm). So sánh: 친구를 만나고 집에 갔어요 (gặp bạn xong, rồi về nhà) vs 친구를 만나서 영화를 봤어요 (gặp bạn rồi CÙNG người bạn đó xem phim).",
+      "examples": [
+        "손을 씻고 밥을 먹어요.",
+        "옷을 사서 입었어요.",
+        "숙제를 하고 텔레비전을 봐요."
+      ],
+      "tip": "'Mua áo rồi mặc CHIẾC áo đó' → 사서 입다 (cùng đối tượng). 'Làm bài xong rồi xem tivi' (hai việc khác nhau) → 하고. Chọn -고 hay -아서 tùy vào hai việc có gắn với nhau không.",
+      "question": "다음 빈칸에 알맞은 것을 고르세요: 백화점에서 신발을 ___ 신었어요.",
+      "options": ["사서", "사고", "사지만", "샀어서"],
+      "answer": "사서"
+    },
+    {
+      "type": "grammar",
+      "rule": "-아서/어서 không dùng với câu mệnh lệnh/đề nghị",
+      "explanation": "Khi vế sau là câu MỆNH LỆNH (-(으)세요) hoặc RỦ RÊ (-(으)ㅂ시다) thì vế nguyên nhân KHÔNG dùng -아서/어서, mà phải dùng -(으)니까. Ví dụ ĐÚNG: 비가 오니까 우산을 가져가세요 (vì trời mưa nên hãy mang ô). SAI: 비가 와서 우산을 가져가세요. Còn với câu trần thuật thông thường thì -아서/어서 dùng bình thường.",
+      "examples": [
+        "시간이 없으니까 빨리 가세요.",
+        "더우니까 창문을 여세요.",
+        "날씨가 좋으니까 같이 산책합시다."
+      ],
+      "tip": "Vế sau là câu cầu khiến/rủ (-세요, -ㅂ시다) thì lý do phải dùng -(으)니까, KHÔNG dùng -아서/어서.",
+      "question": "다음 빈칸에 알맞은 것을 고르세요: 길이 ___ 지하철을 타세요.",
+      "options": ["막히니까", "막혀서", "막히고", "막혔어서"],
+      "answer": "막히니까"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "감기에 ___ 병원에 갔어요.",
+      "answer": "걸려서",
+      "options": ["걸려서", "걸리고", "걸렸어서", "걸리지만"],
+      "explanation": "Đây là quan hệ nguyên nhân (vì bị cảm nên đi bệnh viện). 걸리다 có gốc ㅣ → -어서 thành 걸려서. Vế nguyên nhân không chia thì quá khứ nên KHÔNG dùng 걸렸어서."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "친구를 ___ 같이 커피를 마셨어요.",
+      "answer": "만나서",
+      "options": ["만나서", "만나고", "만나지만", "만나니까"],
+      "explanation": "Đây là trình tự với cùng một đối tượng (gặp bạn RỒI cùng người bạn đó uống cà phê), nên dùng 만나서. 만나다 có gốc ㅏ → -아서 thành 만나서."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "오늘은 일이 ___ 일찍 퇴근하세요.",
+      "answer": "없으니까",
+      "options": ["없으니까", "없어서", "없었어서", "없고"],
+      "explanation": "Vế sau là câu mệnh lệnh (-세요: hãy tan làm sớm) nên lý do phải dùng -(으)니까, không dùng -아서/어서. 없다 → 없으니까."
+    },
+    {
+      "type": "arrange",
+      "words": ["집에", "비가", "와서", "있었어요"],
+      "answer": "비가 와서 집에 있었어요",
+      "hint": "Vì trời mưa nên tôi đã ở nhà. (Quan hệ nguyên nhân: dùng -아서, vế trước không chia thì)"
+    },
+    {
+      "type": "arrange",
+      "words": ["읽어요", "가서", "도서관에", "책을"],
+      "answer": "도서관에 가서 책을 읽어요",
+      "hint": "Tôi đến thư viện rồi đọc sách. (Trình tự cùng địa điểm: đến nơi đó RỒI đọc sách, dùng -아서)"
+    },
+    {
+      "type": "arrange",
+      "words": ["창문을", "더우니까", "여세요"],
+      "answer": "더우니까 창문을 여세요",
+      "hint": "Vì nóng nên hãy mở cửa sổ. (Vế sau là mệnh lệnh -세요 nên lý do dùng -(으)니까)"
+    }
+  ]
+}

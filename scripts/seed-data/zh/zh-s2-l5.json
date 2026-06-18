@@ -1,0 +1,105 @@
+{
+  "key": "zh-s2-l5",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "早上",
+      "phonetic": "zǎoshang",
+      "pos": "n.",
+      "meaning": "buổi sáng (sớm)",
+      "example": "我早上七点起床。",
+      "options": ["buổi sáng (sớm)", "buổi trưa", "buổi tối", "buổi chiều"],
+      "answer": "buổi sáng (sớm)"
+    },
+    {
+      "type": "vocab",
+      "word": "中午",
+      "phonetic": "zhōngwǔ",
+      "pos": "n.",
+      "meaning": "buổi trưa",
+      "example": "中午我们一起吃饭吧。",
+      "options": ["buổi trưa", "buổi sáng", "nửa đêm", "buổi chiều"],
+      "answer": "buổi trưa"
+    },
+    {
+      "type": "vocab",
+      "word": "下午",
+      "phonetic": "xiàwǔ",
+      "pos": "n.",
+      "meaning": "buổi chiều",
+      "example": "下午我有一节中文课。",
+      "options": ["buổi chiều", "buổi sáng", "buổi tối", "buổi trưa"],
+      "answer": "buổi chiều"
+    },
+    {
+      "type": "vocab",
+      "word": "晚上",
+      "phonetic": "wǎnshang",
+      "pos": "n.",
+      "meaning": "buổi tối",
+      "example": "晚上我喜欢看电影。",
+      "options": ["buổi tối", "buổi chiều", "buổi sáng", "ban ngày"],
+      "answer": "buổi tối"
+    },
+    {
+      "type": "vocab",
+      "word": "上午",
+      "phonetic": "shàngwǔ",
+      "pos": "n.",
+      "meaning": "buổi sáng (trước trưa)",
+      "example": "上午十点我有一个会。",
+      "options": ["buổi sáng (trước trưa)", "buổi chiều", "buổi tối", "nửa đêm"],
+      "answer": "buổi sáng (trước trưa)"
+    },
+    {
+      "type": "vocab",
+      "word": "星期一",
+      "phonetic": "xīngqīyī",
+      "pos": "n.",
+      "meaning": "thứ Hai",
+      "example": "星期一我要上班。",
+      "options": ["thứ Hai", "thứ Sáu", "Chủ nhật", "thứ Ba"],
+      "answer": "thứ Hai"
+    },
+    {
+      "type": "vocab",
+      "word": "星期六",
+      "phonetic": "xīngqīliù",
+      "pos": "n.",
+      "meaning": "thứ Bảy",
+      "example": "星期六我不工作。",
+      "options": ["thứ Bảy", "thứ Hai", "Chủ nhật", "thứ Năm"],
+      "answer": "thứ Bảy"
+    },
+    {
+      "type": "vocab",
+      "word": "星期日",
+      "phonetic": "xīngqīrì",
+      "pos": "n.",
+      "meaning": "Chủ nhật",
+      "example": "星期日我们去公园玩。",
+      "options": ["Chủ nhật", "thứ Bảy", "thứ Hai", "thứ Tư"],
+      "answer": "Chủ nhật"
+    },
+    {
+      "type": "vocab",
+      "word": "现在几点",
+      "phonetic": "xiànzài jǐ diǎn",
+      "pos": "phrase",
+      "meaning": "bây giờ mấy giờ",
+      "example": "现在几点？我们快迟到了。",
+      "options": ["bây giờ mấy giờ", "hôm nay thứ mấy", "bao nhiêu tiền", "mấy người"],
+      "answer": "bây giờ mấy giờ"
+    },
+    {
+      "type": "vocab",
+      "word": "半",
+      "phonetic": "bàn",
+      "pos": "n.",
+      "meaning": "rưỡi (nửa giờ)",
+      "example": "现在是八点半。",
+      "options": ["rưỡi (nửa giờ)", "mười lăm phút", "một tiếng đồng hồ", "một phút"],
+      "answer": "rưỡi (nửa giờ)"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "key": "ko-s5-l3",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "언어",
+      "phonetic": "eoneo",
+      "pos": "n.",
+      "meaning": "ngôn ngữ",
+      "example": "한국어는 배우기 어려운 언어예요.",
+      "options": ["ngôn ngữ", "văn hóa", "lịch sử", "âm nhạc"],
+      "answer": "ngôn ngữ"
+    },
+    {
+      "type": "vocab",
+      "word": "문법",
+      "phonetic": "munbeop",
+      "pos": "n.",
+      "meaning": "ngữ pháp",
+      "example": "한국어 문법이 너무 복잡해요.",
+      "options": ["ngữ pháp", "từ vựng", "phát âm", "chính tả"],
+      "answer": "ngữ pháp"
+    },
+    {
+      "type": "vocab",
+      "word": "문장",
+      "phonetic": "munjang",
+      "pos": "n.",
+      "meaning": "câu (câu văn)",
+      "example": "이 문장을 한국어로 번역해 주세요.",
+      "options": ["câu (câu văn)", "đoạn văn", "chữ cái", "dấu câu"],
+      "answer": "câu (câu văn)"
+    },
+    {
+      "type": "vocab",
+      "word": "사전",
+      "phonetic": "sajeon",
+      "pos": "n.",
+      "meaning": "từ điển",
+      "example": "모르는 단어는 사전에서 찾아요.",
+      "options": ["từ điển", "sách giáo khoa", "vở ghi", "tạp chí"],
+      "answer": "từ điển"
+    },
+    {
+      "type": "vocab",
+      "word": "복습",
+      "phonetic": "bokseup",
+      "pos": "n.",
+      "meaning": "ôn tập (ôn lại bài cũ)",
+      "example": "시험 전에 복습을 해야 해요.",
+      "options": ["ôn tập (ôn lại bài cũ)", "chuẩn bị bài mới", "nghỉ ngơi", "thi cử"],
+      "answer": "ôn tập (ôn lại bài cũ)"
+    },
+    {
+      "type": "vocab",
+      "word": "발음",
+      "phonetic": "bareum",
+      "pos": "n.",
+      "meaning": "phát âm",
+      "example": "한국어 발음이 정말 정확하네요.",
+      "options": ["phát âm", "ngữ pháp", "ngữ điệu", "chữ viết"],
+      "answer": "phát âm"
+    },
+    {
+      "type": "vocab",
+      "word": "단어",
+      "phonetic": "daneo",
+      "pos": "n.",
+      "meaning": "từ vựng (từ)",
+      "example": "매일 새로운 단어를 열 개씩 외워요.",
+      "options": ["từ vựng (từ)", "câu hỏi", "bài học", "chữ số"],
+      "answer": "từ vựng (từ)"
+    },
+    {
+      "type": "vocab",
+      "word": "숙제",
+      "phonetic": "sukje",
+      "pos": "n.",
+      "meaning": "bài tập về nhà",
+      "example": "오늘 숙제가 너무 많아요.",
+      "options": ["bài tập về nhà", "bài kiểm tra", "thời khóa biểu", "kỳ nghỉ"],
+      "answer": "bài tập về nhà"
+    },
+    {
+      "type": "vocab",
+      "word": "성적",
+      "phonetic": "seongjeok",
+      "pos": "n.",
+      "meaning": "thành tích, điểm số",
+      "example": "이번 학기에 성적이 많이 올랐어요.",
+      "options": ["thành tích, điểm số", "học phí", "học bổng", "bằng cấp"],
+      "answer": "thành tích, điểm số"
+    },
+    {
+      "type": "vocab",
+      "word": "외우다",
+      "phonetic": "oeuda",
+      "pos": "v.",
+      "meaning": "học thuộc lòng, ghi nhớ",
+      "example": "단어를 많이 외워서 머리가 아파요.",
+      "options": ["học thuộc lòng, ghi nhớ", "quên đi", "viết ra", "đọc to"],
+      "answer": "học thuộc lòng, ghi nhớ"
+    }
+  ]
+}

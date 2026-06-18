@@ -1,0 +1,149 @@
+{
+  "key": "ja-s3-l6",
+  "cards": [
+    {
+      "type": "speaking",
+      "prompt": "何時に起きますか。",
+      "hint": "Nói giờ bạn thức dậy; có ngủ dậy sớm hay muộn; thường thức dậy bằng cách nào (chuông báo thức).",
+      "samplePhrases": [
+        "わたしは毎朝…",
+        "いつも…時ごろに起きます。",
+        "週末は…"
+      ],
+      "vocabulary": [
+        { "word": "起きる", "meaning": "thức dậy", "example": "毎朝六時に起きます。" },
+        { "word": "早い", "meaning": "sớm", "example": "わたしは朝が早いです。" },
+        { "word": "目覚まし時計", "meaning": "đồng hồ báo thức", "example": "目覚まし時計で起きます。" },
+        { "word": "ごろ", "meaning": "khoảng (thời điểm)", "example": "七時ごろに起きます。" },
+        { "word": "平日", "meaning": "ngày thường (trong tuần)", "example": "平日は早く起きます。" }
+      ],
+      "ideas": [
+        "Nói giờ thức dậy cụ thể vào ngày thường",
+        "So sánh giờ dậy ngày thường và cuối tuần",
+        "Cho biết bạn dậy sớm hay khó dậy",
+        "Cách bạn thức dậy: chuông báo thức hay tự dậy"
+      ],
+      "sampleAnswer": "わたしは平日、毎朝六時に起きます。目覚まし時計で起きますが、ときどきもう少し寝ます。仕事があるので、早く起きなければなりません。でも週末は八時ごろまで寝ます。\n\n(Dịch: Vào ngày thường, mỗi sáng tôi thức dậy lúc 6 giờ. Tôi dậy bằng đồng hồ báo thức, nhưng thỉnh thoảng tôi ngủ thêm một chút. Vì có việc nên tôi phải dậy sớm. Nhưng cuối tuần thì tôi ngủ đến khoảng 8 giờ.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "朝、何をしますか。",
+      "hint": "Kể các việc bạn làm buổi sáng: rửa mặt, ăn sáng, uống cà phê, chuẩn bị đi làm/học theo thứ tự.",
+      "samplePhrases": [
+        "朝起きてから…",
+        "まず…、それから…",
+        "いつも…を食べます。"
+      ],
+      "vocabulary": [
+        { "word": "顔を洗う", "meaning": "rửa mặt", "example": "起きてすぐ顔を洗います。" },
+        { "word": "朝ご飯", "meaning": "bữa sáng", "example": "毎朝、朝ご飯を食べます。" },
+        { "word": "歯を磨く", "meaning": "đánh răng", "example": "ご飯のあとで歯を磨きます。" },
+        { "word": "準備する", "meaning": "chuẩn bị", "example": "出かける準備をします。" },
+        { "word": "それから", "meaning": "sau đó", "example": "顔を洗って、それから朝ご飯を食べます。" }
+      ],
+      "ideas": [
+        "Kể trình tự việc làm buổi sáng (mới dậy thì làm gì trước)",
+        "Bữa sáng ăn gì, uống gì",
+        "Chuẩn bị đi làm/đi học như thế nào",
+        "Buổi sáng bận rộn hay thong thả"
+      ],
+      "sampleAnswer": "朝起きてから、まず顔を洗います。それから朝ご飯を食べて、コーヒーを飲みます。歯を磨いて、服を着て、会社へ行く準備をします。わたしの朝はとても忙しいです。\n\n(Dịch: Sau khi thức dậy vào buổi sáng, trước tiên tôi rửa mặt. Sau đó tôi ăn sáng và uống cà phê. Tôi đánh răng, mặc quần áo và chuẩn bị đi đến công ty. Buổi sáng của tôi rất bận rộn.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "学校や会社へどうやって行きますか。",
+      "hint": "Nói phương tiện đi lại (tàu, xe buýt, đi bộ), mất bao lâu, đi cùng ai không.",
+      "samplePhrases": [
+        "わたしは…で行きます。",
+        "うちから…まで…分かかります。",
+        "毎日…に乗ります。"
+      ],
+      "vocabulary": [
+        { "word": "電車", "meaning": "tàu điện", "example": "電車で会社へ行きます。" },
+        { "word": "乗る", "meaning": "lên (xe), đi (phương tiện)", "example": "駅でバスに乗ります。" },
+        { "word": "かかる", "meaning": "mất (thời gian)", "example": "三十分かかります。" },
+        { "word": "歩く", "meaning": "đi bộ", "example": "駅まで歩きます。" },
+        { "word": "乗り換える", "meaning": "đổi (tàu/xe)", "example": "東京駅で乗り換えます。" }
+      ],
+      "ideas": [
+        "Phương tiện chính bạn dùng để đi học/đi làm",
+        "Thời gian đi mất bao lâu",
+        "Có phải đổi tàu/xe hay đi bộ một đoạn không",
+        "Cảm nhận: đường có đông không, có mệt không"
+      ],
+      "sampleAnswer": "わたしは毎日電車で会社へ行きます。うちから駅まで十分ぐらい歩いて、それから電車に乗ります。途中で一回乗り換えます。全部で四十分ぐらいかかります。朝の電車はとても込んでいます。\n\n(Dịch: Mỗi ngày tôi đi tàu điện đến công ty. Từ nhà đến ga tôi đi bộ khoảng 10 phút, rồi lên tàu. Giữa đường tôi phải đổi tàu một lần. Tổng cộng mất khoảng 40 phút. Tàu buổi sáng rất đông.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "週末は何をするのが好きですか。",
+      "hint": "Kể sở thích cuối tuần: nghỉ ngơi, gặp bạn, đi chơi, xem phim; vì sao thích.",
+      "samplePhrases": [
+        "週末はたいてい…",
+        "わたしは…のが好きです。",
+        "ときどき友だちと…"
+      ],
+      "vocabulary": [
+        { "word": "週末", "meaning": "cuối tuần", "example": "週末は家でゆっくりします。" },
+        { "word": "ゆっくりする", "meaning": "thư giãn, nghỉ ngơi", "example": "家でゆっくりするのが好きです。" },
+        { "word": "出かける", "meaning": "ra ngoài, đi chơi", "example": "友だちと出かけます。" },
+        { "word": "映画", "meaning": "phim", "example": "映画を見るのが好きです。" },
+        { "word": "趣味", "meaning": "sở thích", "example": "わたしの趣味は料理です。" }
+      ],
+      "ideas": [
+        "Hoạt động cuối tuần bạn thích nhất",
+        "Ở nhà nghỉ ngơi hay ra ngoài đi chơi",
+        "Đi cùng ai (bạn bè, gia đình)",
+        "Lý do bạn thích hoạt động đó"
+      ],
+      "sampleAnswer": "週末はたいてい家でゆっくりするのが好きです。映画を見たり、本を読んだりします。でも、いい天気の日はときどき友だちと出かけて、買い物をします。一週間働いて疲れているので、週末はリラックスしたいです。\n\n(Dịch: Cuối tuần tôi thường thích nghỉ ngơi thư giãn ở nhà. Tôi xem phim, đọc sách. Nhưng vào những ngày thời tiết đẹp thì thỉnh thoảng tôi ra ngoài đi chơi với bạn và đi mua sắm. Vì làm việc cả tuần nên mệt, cuối tuần tôi muốn thư giãn.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "今日の天気はどうですか。",
+      "hint": "Mô tả thời tiết hôm nay: nắng/mưa, nóng/lạnh; cảm nhận của bạn về thời tiết đó.",
+      "samplePhrases": [
+        "今日は…です。",
+        "とても…ですね。",
+        "…がふっています。"
+      ],
+      "vocabulary": [
+        { "word": "天気", "meaning": "thời tiết", "example": "今日はいい天気です。" },
+        { "word": "晴れ", "meaning": "trời nắng, quang đãng", "example": "今日は晴れです。" },
+        { "word": "雨", "meaning": "mưa", "example": "雨がふっています。" },
+        { "word": "暑い", "meaning": "nóng", "example": "今日はとても暑いです。" },
+        { "word": "曇り", "meaning": "trời nhiều mây", "example": "朝は曇りでした。" }
+      ],
+      "ideas": [
+        "Hôm nay trời nắng, mưa hay nhiều mây",
+        "Trời nóng hay lạnh, có gió không",
+        "Cảm nhận của bạn về thời tiết hôm nay",
+        "Thời tiết này hợp làm gì (đi chơi, ở nhà...)"
+      ],
+      "sampleAnswer": "今日はとてもいい天気です。空が青くて、晴れています。少し暑いですが、風があって気持ちがいいです。こんな日は外を散歩したいです。明日は雨がふるそうです。\n\n(Dịch: Hôm nay thời tiết rất đẹp. Bầu trời xanh và trời nắng. Hơi nóng một chút nhưng có gió nên dễ chịu. Những ngày như thế này tôi muốn đi dạo bên ngoài. Nghe nói ngày mai trời sẽ mưa.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "最近どうですか。忙しいですか。",
+      "hint": "Nói dạo này bạn thế nào: bận hay rảnh, vì sao bận (công việc/học tập), sức khỏe ra sao.",
+      "samplePhrases": [
+        "最近は…",
+        "仕事が…ので、…",
+        "おかげさまで…"
+      ],
+      "vocabulary": [
+        { "word": "最近", "meaning": "dạo này, gần đây", "example": "最近はとても忙しいです。" },
+        { "word": "忙しい", "meaning": "bận rộn", "example": "今週は仕事が忙しいです。" },
+        { "word": "疲れる", "meaning": "mệt mỏi", "example": "毎日少し疲れます。" },
+        { "word": "元気", "meaning": "khỏe, có sức sống", "example": "おかげさまで元気です。" },
+        { "word": "おかげさまで", "meaning": "nhờ trời, may mắn là (lời lịch sự)", "example": "おかげさまで、元気にしています。" }
+      ],
+      "ideas": [
+        "Dạo này bạn bận hay rảnh",
+        "Lý do: công việc, học tập, dự án...",
+        "Tình trạng sức khỏe, có mệt không",
+        "Có dự định nghỉ ngơi hay làm gì sắp tới không"
+      ],
+      "sampleAnswer": "最近はとても忙しいです。仕事が多くて、毎日残業しています。少し疲れていますが、おかげさまで元気です。来週は休みを取って、ゆっくり休みたいです。\n\n(Dịch: Dạo này tôi rất bận. Công việc nhiều, ngày nào cũng phải làm thêm giờ. Hơi mệt một chút nhưng may là tôi vẫn khỏe. Tuần sau tôi định xin nghỉ phép để nghỉ ngơi thật thoải mái.)"
+    }
+  ]
+}

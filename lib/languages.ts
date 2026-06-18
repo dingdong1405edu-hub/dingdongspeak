@@ -215,7 +215,8 @@ export const LANGUAGES: Record<LangCode, LangConfig> = {
     idiomTerm: 'yojijukugo / kotowaza (thành ngữ)',
     noWordSpacing: true,
     stt: { model: 'nova-2', language: 'ja' },
-    ttsVoice: null,
+    // Deepgram Aura-2 supports Japanese examiner/vocab TTS (aura-2 *-ja voices).
+    ttsVoice: 'aura-2-uzume-ja',
     topics: [
       'Giới thiệu bản thân', 'Gia đình', 'Sở thích', 'Học tập', 'Công việc',
       'Ẩm thực Nhật Bản', 'Du lịch', 'Mua sắm', 'Thời tiết', 'Sức khỏe',

@@ -1,0 +1,105 @@
+{
+  "key": "ja-s1-l4",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "父",
+      "phonetic": "ちち / chichi",
+      "pos": "n.",
+      "meaning": "bố (của tôi)",
+      "example": "父は会社員です。",
+      "options": ["bố (của tôi)", "mẹ (của tôi)", "anh trai", "ông"],
+      "answer": "bố (của tôi)"
+    },
+    {
+      "type": "vocab",
+      "word": "母",
+      "phonetic": "はは / haha",
+      "pos": "n.",
+      "meaning": "mẹ (của tôi)",
+      "example": "母はりょうりが上手です。",
+      "options": ["mẹ (của tôi)", "bố (của tôi)", "chị gái", "bà"],
+      "answer": "mẹ (của tôi)"
+    },
+    {
+      "type": "vocab",
+      "word": "兄",
+      "phonetic": "あに / ani",
+      "pos": "n.",
+      "meaning": "anh trai (của tôi)",
+      "example": "兄は東京にすんでいます。",
+      "options": ["anh trai (của tôi)", "em trai", "bố", "con trai"],
+      "answer": "anh trai (của tôi)"
+    },
+    {
+      "type": "vocab",
+      "word": "姉",
+      "phonetic": "あね / ane",
+      "pos": "n.",
+      "meaning": "chị gái (của tôi)",
+      "example": "姉は先生です。",
+      "options": ["chị gái (của tôi)", "em gái", "mẹ", "con gái"],
+      "answer": "chị gái (của tôi)"
+    },
+    {
+      "type": "vocab",
+      "word": "弟",
+      "phonetic": "おとうと / otōto",
+      "pos": "n.",
+      "meaning": "em trai (của tôi)",
+      "example": "弟はまだ学生です。",
+      "options": ["em trai (của tôi)", "anh trai", "em gái", "con trai"],
+      "answer": "em trai (của tôi)"
+    },
+    {
+      "type": "vocab",
+      "word": "妹",
+      "phonetic": "いもうと / imōto",
+      "pos": "n.",
+      "meaning": "em gái (của tôi)",
+      "example": "妹は十五さいです。",
+      "options": ["em gái (của tôi)", "chị gái", "em trai", "con gái"],
+      "answer": "em gái (của tôi)"
+    },
+    {
+      "type": "vocab",
+      "word": "両親",
+      "phonetic": "りょうしん / ryōshin",
+      "pos": "n.",
+      "meaning": "bố mẹ (của tôi)",
+      "example": "両親はベトナムにいます。",
+      "options": ["bố mẹ (của tôi)", "ông bà", "anh chị em", "gia đình"],
+      "answer": "bố mẹ (của tôi)"
+    },
+    {
+      "type": "vocab",
+      "word": "家族",
+      "phonetic": "かぞく / kazoku",
+      "pos": "n.",
+      "meaning": "gia đình",
+      "example": "わたしの家族は四人です。",
+      "options": ["gia đình", "bố mẹ", "họ hàng", "ông bà"],
+      "answer": "gia đình"
+    },
+    {
+      "type": "vocab",
+      "word": "祖父",
+      "phonetic": "そふ / sofu",
+      "pos": "n.",
+      "meaning": "ông (của tôi)",
+      "example": "祖父は八十さいです。",
+      "options": ["ông (của tôi)", "bà (của tôi)", "bố", "anh trai"],
+      "answer": "ông (của tôi)"
+    },
+    {
+      "type": "vocab",
+      "word": "祖母",
+      "phonetic": "そぼ / sobo",
+      "pos": "n.",
+      "meaning": "bà (của tôi)",
+      "example": "祖母はとても元気です。",
+      "options": ["bà (của tôi)", "ông (của tôi)", "mẹ", "chị gái"],
+      "answer": "bà (của tôi)"
+    }
+  ]
+}

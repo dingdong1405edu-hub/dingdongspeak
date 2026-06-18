@@ -1,0 +1,100 @@
+{
+  "key": "ko-s1-l5",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "Trợ từ chủ đề 은/는",
+      "explanation": "은/는 là trợ từ chủ đề, gắn vào danh từ để nêu \"chủ đề\" của câu (cái mà ta sẽ nói tới), thường dùng khi giới thiệu, so sánh hoặc nói về thông tin đã biết. Quy tắc: danh từ có patchim (kết thúc bằng phụ âm) dùng 은, danh từ không có patchim (kết thúc bằng nguyên âm) dùng 는. Ví dụ: 선생님 + 은 → 선생님은, 저 + 는 → 저는.",
+      "examples": [
+        "저는 베트남 사람이에요.",
+        "이것은 책이에요.",
+        "한국어는 재미있어요."
+      ],
+      "tip": "Người Việt hay chọn nhầm theo nghĩa. Hãy nhìn âm cuối của danh từ: có patchim → 은, không patchim → 는. 선생님 có patchim nên là 선생님은, không phải 선생님는.",
+      "question": "Chọn dạng đúng: \"___\" với từ 학생 (học sinh):",
+      "options": ["학생은", "학생는", "학생이", "학생를"],
+      "answer": "학생은"
+    },
+    {
+      "type": "grammar",
+      "rule": "Trợ từ chủ ngữ 이/가",
+      "explanation": "이/가 là trợ từ chủ ngữ, đánh dấu chủ ngữ thực hiện hành động hoặc mang tính chất, thường dùng khi nêu thông tin mới, nhấn mạnh \"ai/cái gì\", hoặc trả lời câu hỏi 누가/뭐가. Quy tắc: danh từ có patchim dùng 이, không có patchim dùng 가. Ví dụ: 책 + 이 → 책이, 친구 + 가 → 친구가.",
+      "examples": [
+        "친구가 와요.",
+        "책이 있어요.",
+        "날씨가 좋아요."
+      ],
+      "tip": "Lưu ý: 저(tôi) + 가 → 제가, 너(bạn) + 가 → 네가, 누구 + 가 → 누가. Đây là dạng biến đổi đặc biệt, đừng nói *저가, *누구가.",
+      "question": "Chọn dạng đúng: \"___\" với từ 친구 (bạn bè):",
+      "options": ["친구가", "친구이", "친구은", "친구를"],
+      "answer": "친구가"
+    },
+    {
+      "type": "grammar",
+      "rule": "Phân biệt 은/는 và 이/가",
+      "explanation": "은/는 nêu chủ đề và thông tin đã biết hoặc để so sánh; 이/가 đánh dấu chủ ngữ mang thông tin mới hoặc nhấn mạnh. Khi giới thiệu bản thân thường dùng 은/는 (저는...). Khi trả lời \"ai làm/cái gì có\" thì dùng 이/가. Ví dụ so sánh: 저는 학생이에요 (giới thiệu về tôi) ↔ 누가 학생이에요? - 제가 학생이에요 (nhấn mạnh chính tôi).",
+      "examples": [
+        "저는 마이예요.",
+        "누가 왔어요? - 친구가 왔어요.",
+        "이름이 뭐예요?"
+      ],
+      "tip": "Khi tự giới thiệu tên, chọn 은/는: 저는 마이예요. Khi hỏi/trả lời \"ai, cái gì\" thì chọn 이/가: 누가 왔어요?",
+      "question": "Câu giới thiệu bản thân nào đúng và tự nhiên nhất?",
+      "options": ["저는 마이예요.", "제가 마이예요.", "저은 마이예요.", "저를 마이예요."],
+      "answer": "저는 마이예요."
+    },
+    {
+      "type": "grammar",
+      "rule": "Dạng đặc biệt: 제가, 누가",
+      "explanation": "Khi gắn trợ từ chủ ngữ 가, một số đại từ biến đổi đặc biệt: 저 → 제가 (tôi, khiêm nhường), 나 → 내가 (tôi, thân mật), 누구 → 누가 (ai). Không nói *저가, *나가, *누구가. Với 은/는 thì giữ nguyên: 저는, 나는.",
+      "examples": [
+        "제가 할게요.",
+        "누가 선생님이에요?",
+        "내가 갈게."
+      ],
+      "tip": "Nhớ cặp đôi: chủ ngữ 제가/누가 (có 가), nhưng chủ đề 저는/누구는. Đừng nói *저가 했어요, phải là 제가 했어요.",
+      "question": "Điền đúng: \"___ 선생님이에요?\" (Ai là giáo viên?)",
+      "options": ["누가", "누구가", "누구는", "누구를"],
+      "answer": "누가"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "저 ___ 베트남 사람이에요.",
+      "answer": "는",
+      "options": ["는", "은", "가", "이"],
+      "explanation": "저 (tôi) kết thúc bằng nguyên âm (không patchim) và đây là câu giới thiệu bản thân, nên dùng trợ từ chủ đề 는: 저는. Không dùng 은 (vì không patchim) hay 가/이 ở đây."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "책상 위에 책 ___ 있어요.",
+      "answer": "이",
+      "options": ["이", "가", "은", "는"],
+      "explanation": "Câu nêu sự tồn tại của thông tin mới (có quyển sách), dùng trợ từ chủ ngữ với 있어요. 책 có patchim (ㄱ) nên chọn 이: 책이 있어요. 가 dùng cho từ không patchim."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "친구 ___ 학교에 와요.",
+      "answer": "가",
+      "options": ["가", "이", "은", "는"],
+      "explanation": "친구 (bạn) kết thúc bằng nguyên âm (không patchim) và là chủ ngữ thực hiện hành động đến trường, nên dùng trợ từ chủ ngữ 가: 친구가 와요. 이 dùng cho từ có patchim."
+    },
+    {
+      "type": "arrange",
+      "words": ["사람이에요", "저는", "한국"],
+      "answer": "저는 한국 사람이에요",
+      "hint": "Tôi là người Hàn Quốc."
+    },
+    {
+      "type": "arrange",
+      "words": ["좋아요", "오늘", "날씨가"],
+      "answer": "오늘 날씨가 좋아요",
+      "hint": "Hôm nay thời tiết đẹp."
+    },
+    {
+      "type": "arrange",
+      "words": ["선생님이에요", "누가", "우리"],
+      "answer": "누가 우리 선생님이에요",
+      "hint": "Ai là giáo viên của chúng ta?"
+    }
+  ]
+}

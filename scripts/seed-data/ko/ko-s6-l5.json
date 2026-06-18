@@ -1,0 +1,120 @@
+{
+  "key": "ko-s6-l5",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "～(으)ㄹ 수 있다/없다 (có thể / không thể)",
+      "explanation": "Cấu trúc diễn đạt khả năng hoặc sự cho phép. Gắn vào gốc động từ: nếu gốc động từ KHÔNG có patchim thì dùng ～ㄹ 수 있다/없다 (ví dụ: 가다 → 갈 수 있다), nếu CÓ patchim thì dùng ～을 수 있다/없다 (ví dụ: 먹다 → 먹을 수 있다). 있다 nghĩa là 'có thể', 없다 nghĩa là 'không thể'.",
+      "examples": [
+        "저는 한국어를 할 수 있어요.",
+        "오늘은 바빠서 갈 수 없어요.",
+        "이 음식은 매워서 먹을 수 없어요."
+      ],
+      "tip": "Người Việt hay quên quy tắc patchim: gốc có patchim phải dùng 을 수 있다 (먹을 수 있다), không nói 먹ㄹ 수 있다. Ngoài ra đừng nhầm 수 (cách viết đúng) với 쑤.",
+      "question": "수영을 배워서 이제 바다에서 _______.",
+      "options": [
+        "수영할 수 있어요",
+        "수영을 수 있어요",
+        "수영할 수 없어요",
+        "수영하야 해요"
+      ],
+      "answer": "수영할 수 있어요"
+    },
+    {
+      "type": "grammar",
+      "rule": "～아/어야 하다 (phải / cần phải)",
+      "explanation": "Cấu trúc diễn đạt nghĩa vụ, sự bắt buộc ('phải làm gì'). Chia gốc động/tính từ theo nguyên âm: gốc có ㅏ/ㅗ → ～아야 하다 (받다 → 받아야 하다), các nguyên âm khác → ～어야 하다 (먹다 → 먹어야 하다), 하다 → 해야 하다. Có thể thay 하다 bằng 되다 với nghĩa tương đương: ～아/어야 되다.",
+      "examples": [
+        "내일 시험이 있어서 공부해야 해요.",
+        "약속을 지켜야 해요.",
+        "병원에서는 조용히 해야 돼요."
+      ],
+      "tip": "Người Việt hay viết tách sai thành '먹어 야 해요'; phải dính liền '먹어야 해요'. Cũng đừng nhầm 하다 với 한다 ở đây.",
+      "question": "한국에서 일하려면 한국어를 잘 _______.",
+      "options": [
+        "해야 해요",
+        "할 수 있어요",
+        "하야 해요",
+        "해 수 있어요"
+      ],
+      "answer": "해야 해요"
+    },
+    {
+      "type": "grammar",
+      "rule": "Phân biệt ～(으)ㄹ 수 있다 và ～아/어야 하다",
+      "explanation": "～(으)ㄹ 수 있다/없다 nói về KHẢ NĂNG ('có thể / không thể' làm gì). ～아/어야 하다/되다 nói về NGHĨA VỤ ('phải' làm gì). Hai cấu trúc khác nhau hoàn toàn về nghĩa, không thể thay thế cho nhau.",
+      "examples": [
+        "저는 운전할 수 있어요. (khả năng)",
+        "여기서는 천천히 운전해야 해요. (nghĩa vụ)",
+        "표가 없으면 들어갈 수 없어요. (không thể)"
+      ],
+      "tip": "Đừng dịch 'phải' thành 수 있다. 'Tôi phải đi' = 가야 해요, KHÔNG phải 갈 수 있어요 (= tôi có thể đi).",
+      "question": "다음 중 '나는 매일 약을 먹어야 해요'의 뜻으로 알맞은 것은?",
+      "options": [
+        "Tôi phải uống thuốc mỗi ngày.",
+        "Tôi có thể uống thuốc mỗi ngày.",
+        "Tôi không thể uống thuốc mỗi ngày.",
+        "Tôi muốn uống thuốc mỗi ngày."
+      ],
+      "answer": "Tôi phải uống thuốc mỗi ngày."
+    },
+    {
+      "type": "grammar",
+      "rule": "～(으)ㄹ 수 없다 và phủ định nghĩa vụ",
+      "explanation": "～(으)ㄹ 수 없다 nghĩa là 'không thể' (bất khả năng). Để nói 'không được phép' thường dùng ～(으)면 안 되다. Còn ～아/어야 하다 dùng cho điều bắt buộc phải làm. Cần chọn đúng cấu trúc theo ngữ cảnh.",
+      "examples": [
+        "여기에서는 사진을 찍을 수 없어요.",
+        "수업 시간에는 휴대폰을 사용하면 안 돼요.",
+        "비자를 받아야 한국에 갈 수 있어요."
+      ],
+      "tip": "Người Việt hay nhầm: '갈 수 없어요' = không thể đi (do điều kiện), còn '가면 안 돼요' = không được phép đi (do quy định).",
+      "question": "운전면허증이 없어서 차를 _______.",
+      "options": [
+        "운전할 수 없어요",
+        "운전해야 해요",
+        "운전할 수 있어요",
+        "운전하야 돼요"
+      ],
+      "answer": "운전할 수 없어요"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "저는 피아노를 칠 줄 알아서 피아노를 ___ 수 있어요.",
+      "answer": "칠",
+      "options": ["칠", "치는", "친", "칠을"],
+      "explanation": "Động từ 치다 (chơi/đánh đàn) có gốc 치- không có patchim, nên dùng ～ㄹ 수 있다: 칠 수 있어요. Vì vậy chỗ trống điền '칠'."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "내일 아침에 일찍 출발해야 해서 오늘은 일찍 ___ 해요.",
+      "answer": "자야",
+      "options": ["자야", "잘 수", "자도", "자기"],
+      "explanation": "자다 (ngủ) có gốc 자- với nguyên âm ㅏ, nên chia ～아야 하다 → 자야 해요 (phải ngủ). Đây là cấu trúc nghĩa vụ, không phải khả năng."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "이 식당은 사람이 너무 많아서 예약하지 않으면 ___ 수 없어요.",
+      "answer": "들어갈",
+      "options": ["들어갈", "들어가야", "들어가는", "들어가서"],
+      "explanation": "들어가다 (đi vào) gốc 들어가- không patchim → ～ㄹ 수 없다 = 들어갈 수 없어요 (không thể vào). Chỗ trống điền '들어갈'."
+    },
+    {
+      "type": "arrange",
+      "words": ["저는", "수", "운전할", "있어요"],
+      "answer": "저는 운전할 수 있어요",
+      "hint": "Tôi có thể lái xe."
+    },
+    {
+      "type": "arrange",
+      "words": ["약속을", "지켜야", "우리는", "해요"],
+      "answer": "우리는 약속을 지켜야 해요",
+      "hint": "Chúng ta phải giữ lời hứa."
+    },
+    {
+      "type": "arrange",
+      "words": ["매워서", "이", "먹을", "음식은", "수", "없어요"],
+      "answer": "이 음식은 매워서 먹을 수 없어요",
+      "hint": "Món ăn này cay quá nên không thể ăn được."
+    }
+  ]
+}

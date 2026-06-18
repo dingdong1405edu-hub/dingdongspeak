@@ -1,0 +1,105 @@
+{
+  "key": "ko-s5-l5",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "건강",
+      "phonetic": "geongang",
+      "pos": "n.",
+      "meaning": "sức khỏe",
+      "example": "건강을 위해 매일 운동을 해요.",
+      "options": ["sức khỏe", "thói quen", "thuốc", "việc nhập viện"],
+      "answer": "sức khỏe"
+    },
+    {
+      "type": "vocab",
+      "word": "운동",
+      "phonetic": "undong",
+      "pos": "n.",
+      "meaning": "vận động, thể dục",
+      "example": "살을 빼려고 매일 아침에 운동을 해요.",
+      "options": ["vận động, thể dục", "cảm lạnh", "điều trị", "kiểm tra"],
+      "answer": "vận động, thể dục"
+    },
+    {
+      "type": "vocab",
+      "word": "감기",
+      "phonetic": "gamgi",
+      "pos": "n.",
+      "meaning": "cảm lạnh, cảm cúm",
+      "example": "감기에 걸려서 학교에 못 갔어요.",
+      "options": ["cảm lạnh, cảm cúm", "sức khỏe", "ho", "thói quen"],
+      "answer": "cảm lạnh, cảm cúm"
+    },
+    {
+      "type": "vocab",
+      "word": "열",
+      "phonetic": "yeol",
+      "pos": "n.",
+      "meaning": "sốt, nhiệt độ",
+      "example": "어젯밤부터 열이 나고 머리가 아파요.",
+      "options": ["sốt, nhiệt độ", "ho", "thuốc", "vận động"],
+      "answer": "sốt, nhiệt độ"
+    },
+    {
+      "type": "vocab",
+      "word": "기침",
+      "phonetic": "gichim",
+      "pos": "n.",
+      "meaning": "ho, cơn ho",
+      "example": "기침이 심해서 병원에 갔어요.",
+      "options": ["ho, cơn ho", "sốt", "kiểm tra", "điều trị"],
+      "answer": "ho, cơn ho"
+    },
+    {
+      "type": "vocab",
+      "word": "편하다",
+      "phonetic": "pyeonhada",
+      "pos": "adj.",
+      "meaning": "thoải mái, dễ chịu",
+      "example": "푹 쉬었더니 몸이 한결 편해요.",
+      "options": ["thoải mái, dễ chịu", "đau ốm", "căng thẳng", "đáng sợ"],
+      "answer": "thoải mái, dễ chịu"
+    },
+    {
+      "type": "vocab",
+      "word": "검사",
+      "phonetic": "geomsa",
+      "pos": "n.",
+      "meaning": "sự kiểm tra, xét nghiệm",
+      "example": "건강 검사를 받으러 병원에 가요.",
+      "options": ["sự kiểm tra, xét nghiệm", "thuốc", "thói quen", "cảm lạnh"],
+      "answer": "sự kiểm tra, xét nghiệm"
+    },
+    {
+      "type": "vocab",
+      "word": "입원",
+      "phonetic": "ibwon",
+      "pos": "n.",
+      "meaning": "việc nhập viện",
+      "example": "할머니가 입원을 하셔서 병원에 갔어요.",
+      "options": ["việc nhập viện", "sự kiểm tra", "điều trị", "vận động"],
+      "answer": "việc nhập viện"
+    },
+    {
+      "type": "vocab",
+      "word": "아프다",
+      "phonetic": "apeuda",
+      "pos": "adj.",
+      "meaning": "đau, ốm, bị bệnh",
+      "example": "배가 너무 아파서 약을 먹었어요.",
+      "options": ["đau, ốm, bị bệnh", "thoải mái", "khỏe mạnh", "thân thiện"],
+      "answer": "đau, ốm, bị bệnh"
+    },
+    {
+      "type": "vocab",
+      "word": "치료",
+      "phonetic": "chiryo",
+      "pos": "n.",
+      "meaning": "sự điều trị, chữa trị",
+      "example": "꾸준히 치료를 받으면 곧 나을 거예요.",
+      "options": ["sự điều trị, chữa trị", "việc nhập viện", "thói quen", "sốt"],
+      "answer": "sự điều trị, chữa trị"
+    }
+  ]
+}

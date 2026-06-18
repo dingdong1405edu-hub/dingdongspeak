@@ -1,0 +1,105 @@
+{
+  "key": "zh-s2-l1",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "米饭",
+      "phonetic": "mǐfàn",
+      "pos": "n.",
+      "meaning": "cơm",
+      "example": "我喜欢吃米饭。",
+      "options": ["cơm", "mì sợi", "rau", "trứng gà"],
+      "answer": "cơm"
+    },
+    {
+      "type": "vocab",
+      "word": "面条",
+      "phonetic": "miàntiáo",
+      "pos": "n.",
+      "meaning": "mì sợi",
+      "example": "今天中午我想吃面条。",
+      "options": ["mì sợi", "cơm", "trái cây", "trà"],
+      "answer": "mì sợi"
+    },
+    {
+      "type": "vocab",
+      "word": "鸡蛋",
+      "phonetic": "jīdàn",
+      "pos": "n.",
+      "meaning": "trứng gà",
+      "example": "我早上吃一个鸡蛋。",
+      "options": ["trứng gà", "sữa", "táo", "nước"],
+      "answer": "trứng gà"
+    },
+    {
+      "type": "vocab",
+      "word": "苹果",
+      "phonetic": "píngguǒ",
+      "pos": "n.",
+      "meaning": "quả táo",
+      "example": "这个苹果很好吃。",
+      "options": ["quả táo", "rau", "cà phê", "mì sợi"],
+      "answer": "quả táo"
+    },
+    {
+      "type": "vocab",
+      "word": "水果",
+      "phonetic": "shuǐguǒ",
+      "pos": "n.",
+      "meaning": "trái cây",
+      "example": "我喜欢吃水果。",
+      "options": ["trái cây", "cơm", "nước", "trà"],
+      "answer": "trái cây"
+    },
+    {
+      "type": "vocab",
+      "word": "茶",
+      "phonetic": "chá",
+      "pos": "n.",
+      "meaning": "trà",
+      "example": "妈妈喜欢喝茶。",
+      "options": ["trà", "cà phê", "sữa", "nước"],
+      "answer": "trà"
+    },
+    {
+      "type": "vocab",
+      "word": "咖啡",
+      "phonetic": "kāfēi",
+      "pos": "n.",
+      "meaning": "cà phê",
+      "example": "我早上喝一杯咖啡。",
+      "options": ["cà phê", "trà", "sữa", "trái cây"],
+      "answer": "cà phê"
+    },
+    {
+      "type": "vocab",
+      "word": "牛奶",
+      "phonetic": "niúnǎi",
+      "pos": "n.",
+      "meaning": "sữa bò",
+      "example": "孩子每天喝牛奶。",
+      "options": ["sữa bò", "cà phê", "trà", "nước"],
+      "answer": "sữa bò"
+    },
+    {
+      "type": "vocab",
+      "word": "喝",
+      "phonetic": "hē",
+      "pos": "v.",
+      "meaning": "uống",
+      "example": "我想喝一杯茶。",
+      "options": ["uống", "ăn", "thích", "ngon"],
+      "answer": "uống"
+    },
+    {
+      "type": "vocab",
+      "word": "好吃",
+      "phonetic": "hǎochī",
+      "pos": "adj.",
+      "meaning": "ngon (đồ ăn)",
+      "example": "这家饭店的菜很好吃。",
+      "options": ["ngon (đồ ăn)", "uống", "thích", "nhà hàng"],
+      "answer": "ngon (đồ ăn)"
+    }
+  ]
+}

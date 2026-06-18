@@ -19,13 +19,30 @@ npx prisma db push
 - **Luyện nói** (`/practice`) và **Thi thử** (`/mock-test`): câu hỏi, câu mẫu, từ vựng, chấm điểm đều do AI sinh theo ngôn ngữ đích (Groq Llama). Nhận xét/nghĩa giữ tiếng Việt.
 - **Ghi âm → nhận dạng (STT)**: Deepgram `nova-2` cho zh/ja/ko (tiếng Anh dùng `nova-3`).
 - **Thang điểm**: tiếng Anh = Band 0–9 (IELTS); Trung/Nhật/Hàn = 0–100. Tự đổi nhãn/màu theo `lib/languages.ts`.
+- **TTS (đọc đề + phát âm từ vựng)**: tiếng Anh (Deepgram Aura) và **tiếng Nhật (Deepgram Aura-2, giọng `aura-2-uzume-ja`)**. Trung/Hàn **chưa có** TTS (Deepgram chưa hỗ trợ tiếng Trung/Hàn) → `/api/speech/tts` trả 204, câu hỏi hiển thị dạng chữ. Giọng lấy từ `ttsVoice` trong `lib/languages.ts`.
 - **Font CJK**: Noto Sans SC/JP/KR nạp qua Google Fonts; `<body data-lang>` chọn font đúng.
 - **Đổi ngôn ngữ**: nút 🌐 trên navbar (hoặc thẻ chọn ở trang chủ). Lưu vào cookie `dds_lang` + `User.learningLanguage`.
 
-## Cần tự bổ sung nội dung (không bắt buộc để chạy)
+## Nội dung lộ trình "Learn" cho Trung / Nhật / Hàn (đã seed sẵn)
 
-- **Lộ trình "Learn" cơ bản** (`/learn`) cho zh/ja/ko hiện **trống** vì bài học (`Stage`/`CustomLesson`) tách theo `language`. Tạo nội dung trong **Admin → Stages / Lessons** (đã có ô chọn ngôn ngữ + sinh bằng AI), hoặc viết seed script tương tự `scripts/seed-*.ts` có truyền `language`.
-- **TTS (đọc câu hỏi)** cho zh/ja/ko: hiện **chưa có** (Deepgram Aura chỉ tiếng Anh) — câu hỏi hiển thị dạng chữ. Muốn có giọng đọc thì tích hợp TTS cloud (Google/Azure) trong `app/api/speech/tts/route.ts` + map giọng trong `lib/languages.ts` (`ttsVoice`).
+Lộ trình **Learn** (`/learn`) đọc `Stage` + `CustomLesson` lọc theo `language`. Bộ nội dung **Trung (zh)**, **Nhật (ja)** và **Hàn (ko)** đã được tạo sẵn (native, kèm pinyin/furigana+romaji/romaja, nghĩa & gợi ý tiếng Việt) trong `scripts/seed-data/`:
+
+- `scripts/seed-data/curriculum-{zh,ja,ko}.json` — định nghĩa stage + bài học (zh & ko: 6 stage × 6 bài, HSK1–4 / TOPIK1–3; ja: 4 stage × 6 bài, N5–N4). Mỗi bài là từ vựng / ngữ pháp / luyện nói.
+- `scripts/seed-data/<zh|ja|ko>/<lessonKey>.json` — thẻ (cards) đã sinh sẵn cho từng bài.
+
+**Khi deploy, Railway tự seed**: `railway.toml` có `preDeployCommand` chạy `prisma db push` + `node scripts/seed-multilang.mjs` mỗi lần deploy (idempotent).
+
+Chạy thủ công (cần `DATABASE_URL`):
+
+```bash
+npx prisma db push                       # tạo cột language (deploy tự chạy)
+node scripts/seed-multilang.mjs          # seed zh + ja + ko
+# hoặc một ngôn ngữ: node scripts/seed-multilang.mjs zh
+```
+
+Muốn thêm bài: bổ sung lesson vào `curriculum-<lang>.json`, tạo file thẻ tương ứng trong `scripts/seed-data/<lang>/`, rồi chạy lại seed. Hoặc tạo trực tiếp trong **Admin → Stages / Lessons** (có ô chọn ngôn ngữ + sinh bằng AI).
+
+- **TTS tiếng Trung/Hàn**: muốn có giọng đọc đề cho zh/ko thì tích hợp TTS cloud khác (Google/Azure) trong `app/api/speech/tts/route.ts` + map giọng trong `lib/languages.ts` (`ttsVoice`); Deepgram hiện chỉ có giọng cho Anh & Nhật.
 
 ## Lưu ý khác
 

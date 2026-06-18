@@ -1,0 +1,143 @@
+{
+  "key": "ko-s3-l6",
+  "cards": [
+    {
+      "type": "speaking",
+      "prompt": "몇 시에 일어나요?",
+      "hint": "Nói giờ bạn thức dậy, dùng '시' (giờ) và '분' (phút). Có thể thêm thức dậy sớm hay muộn, và cảm giác buổi sáng.",
+      "samplePhrases": [
+        "저는 보통 일곱 시에 일어나요.",
+        "주말에는 아홉 시쯤 일어나요.",
+        "아침에 일찍 일어나는 게 좀 힘들어요."
+      ],
+      "vocabulary": [
+        { "word": "일어나다", "meaning": "thức dậy, dậy", "example": "매일 아침 여섯 시 반에 일어나요." },
+        { "word": "보통", "meaning": "thường thường, thông thường", "example": "보통 평일에는 일찍 일어나요." },
+        { "word": "일찍", "meaning": "sớm", "example": "내일은 일찍 일어나야 해요." },
+        { "word": "쯤", "meaning": "khoảng, độ chừng (giờ)", "example": "여덟 시쯤 일어나요." }
+      ],
+      "ideas": [
+        "Nói giờ thức dậy ngày thường: ví dụ 7 giờ.",
+        "Nói giờ thức dậy cuối tuần khác ngày thường.",
+        "Cho biết bạn là người dậy sớm hay dậy muộn.",
+        "Thêm cảm giác: buổi sáng có buồn ngủ không."
+      ],
+      "sampleAnswer": "저는 평일에 보통 일곱 시에 일어나요. 회사에 가야 해서 일찍 일어나요. 그런데 주말에는 아홉 시쯤 일어나요. 아침에 일어나는 게 조금 힘들지만 일어나서 물을 마시면 괜찮아요.\n\n(Dịch: Ngày thường tôi thường dậy lúc 7 giờ. Vì phải đi làm nên tôi dậy sớm. Nhưng cuối tuần thì tôi dậy khoảng 9 giờ. Buổi sáng thức dậy hơi mệt nhưng dậy xong uống nước thì lại ổn.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "아침에 뭐 해요?",
+      "hint": "Kể các việc làm buổi sáng theo trình tự: rửa mặt, ăn sáng, chuẩn bị đi làm/học. Dùng '그리고', '그다음에' để nối.",
+      "samplePhrases": [
+        "아침에 일어나서 세수를 해요.",
+        "그리고 아침을 먹어요.",
+        "그다음에 옷을 입고 회사에 가요."
+      ],
+      "vocabulary": [
+        { "word": "세수하다", "meaning": "rửa mặt", "example": "일어나서 먼저 세수해요." },
+        { "word": "아침을 먹다", "meaning": "ăn sáng", "example": "보통 빵하고 우유로 아침을 먹어요." },
+        { "word": "준비하다", "meaning": "chuẩn bị", "example": "학교 갈 준비를 해요." },
+        { "word": "그다음에", "meaning": "sau đó, tiếp theo", "example": "샤워를 하고 그다음에 밥을 먹어요." }
+      ],
+      "ideas": [
+        "Nói việc đầu tiên làm khi thức dậy (rửa mặt, đánh răng).",
+        "Cho biết bạn ăn gì vào bữa sáng.",
+        "Kể bạn chuẩn bị đi làm/đi học thế nào.",
+        "Dùng từ nối để các việc theo thứ tự."
+      ],
+      "sampleAnswer": "저는 아침에 일어나서 먼저 세수를 해요. 그리고 간단하게 아침을 먹어요. 보통 빵하고 커피를 먹어요. 그다음에 옷을 입고 회사에 갈 준비를 해요. 아침에는 시간이 별로 없어서 좀 바빠요.\n\n(Dịch: Buổi sáng thức dậy tôi rửa mặt trước. Rồi tôi ăn sáng đơn giản. Tôi thường ăn bánh mì và uống cà phê. Sau đó tôi mặc quần áo và chuẩn bị đi làm. Buổi sáng không có nhiều thời gian nên hơi bận.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "학교나 회사에 어떻게 가요?",
+      "hint": "Nói phương tiện đi lại (xe buýt, tàu điện ngầm, đi bộ) và thời gian mất bao lâu. Dùng '(으)로' để chỉ phương tiện.",
+      "samplePhrases": [
+        "저는 지하철로 회사에 가요.",
+        "집에서 학교까지 삼십 분쯤 걸려요.",
+        "가끔 날씨가 좋으면 걸어서 가요."
+      ],
+      "vocabulary": [
+        { "word": "지하철", "meaning": "tàu điện ngầm", "example": "지하철로 출근해요." },
+        { "word": "버스", "meaning": "xe buýt", "example": "버스를 타고 학교에 가요." },
+        { "word": "걸어서 가다", "meaning": "đi bộ", "example": "회사가 가까워서 걸어서 가요." },
+        { "word": "걸리다", "meaning": "mất (thời gian)", "example": "한 시간쯤 걸려요." }
+      ],
+      "ideas": [
+        "Cho biết bạn dùng phương tiện gì (xe buýt, tàu điện, đi bộ).",
+        "Nói từ nhà đến nơi đó mất bao lâu.",
+        "Có phải đổi tuyến/đổi xe không.",
+        "Nói thêm khi nào thì bạn đi bộ hoặc đi xe khác."
+      ],
+      "sampleAnswer": "저는 보통 지하철로 회사에 가요. 집 근처에 지하철역이 있어서 편해요. 집에서 회사까지 사십 분쯤 걸려요. 한 번 갈아타야 해서 조금 복잡해요. 가끔 날씨가 좋으면 버스를 타고 가기도 해요.\n\n(Dịch: Tôi thường đi tàu điện ngầm đến công ty. Gần nhà có ga tàu điện nên rất tiện. Từ nhà đến công ty mất khoảng 40 phút. Vì phải đổi tàu một lần nên hơi phức tạp. Thỉnh thoảng trời đẹp thì tôi cũng đi xe buýt.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "주말에 뭐 하는 걸 좋아해요?",
+      "hint": "Nói sở thích cuối tuần: xem phim, gặp bạn, tập thể thao... Dùng 'V + 는 걸 좋아해요' (thích làm gì).",
+      "samplePhrases": [
+        "주말에 영화 보는 걸 좋아해요.",
+        "친구를 만나서 같이 밥을 먹어요.",
+        "집에서 쉬면서 음악을 들어요."
+      ],
+      "vocabulary": [
+        { "word": "주말", "meaning": "cuối tuần", "example": "이번 주말에 등산을 가요." },
+        { "word": "만나다", "meaning": "gặp gỡ", "example": "주말에 친구를 만나요." },
+        { "word": "쉬다", "meaning": "nghỉ ngơi", "example": "주말에는 집에서 쉬어요." },
+        { "word": "-는 걸 좋아하다", "meaning": "thích làm việc gì", "example": "저는 책 읽는 걸 좋아해요." }
+      ],
+      "ideas": [
+        "Nói một hoạt động bạn thích làm vào cuối tuần.",
+        "Bạn làm việc đó một mình hay với ai.",
+        "Cho biết lý do bạn thích việc đó.",
+        "Thêm một hoạt động khác để có đủ ý."
+      ],
+      "sampleAnswer": "저는 주말에 영화 보는 걸 좋아해요. 보통 친구를 만나서 같이 영화관에 가요. 영화를 보고 나서 맛있는 음식을 먹어요. 그리고 가끔 집에서 쉬면서 음악을 듣는 것도 좋아해요. 주말은 정말 즐거워요.\n\n(Dịch: Cuối tuần tôi thích xem phim. Tôi thường gặp bạn rồi cùng nhau đến rạp chiếu phim. Sau khi xem phim xong thì ăn món ngon. Và thỉnh thoảng tôi cũng thích ở nhà nghỉ ngơi và nghe nhạc. Cuối tuần thật vui.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "오늘 날씨가 어때요?",
+      "hint": "Mô tả thời tiết hôm nay: nóng, lạnh, ấm, có mưa/nắng. Dùng tính từ '덥다, 춥다, 따뜻하다, 맑다' và '-아서/어서' để thêm cảm nhận.",
+      "samplePhrases": [
+        "오늘은 날씨가 아주 좋아요.",
+        "하늘이 맑고 따뜻해요.",
+        "비가 와서 조금 추워요."
+      ],
+      "vocabulary": [
+        { "word": "날씨", "meaning": "thời tiết", "example": "오늘 날씨가 어때요?" },
+        { "word": "따뜻하다", "meaning": "ấm áp", "example": "봄이라서 날씨가 따뜻해요." },
+        { "word": "맑다", "meaning": "trong, quang đãng (trời)", "example": "오늘은 하늘이 맑아요." },
+        { "word": "비가 오다", "meaning": "trời mưa", "example": "아침부터 비가 와요." }
+      ],
+      "ideas": [
+        "Nói hôm nay trời nóng, lạnh hay ấm.",
+        "Cho biết trời nắng, mưa hay có gió.",
+        "Nói cảm nhận của bạn về thời tiết đó.",
+        "Bạn thích thời tiết hôm nay không."
+      ],
+      "sampleAnswer": "오늘은 날씨가 정말 좋아요. 하늘이 맑고 따뜻해요. 바람도 시원하게 불어서 기분이 좋아요. 이런 날에는 밖에서 산책하고 싶어요. 어제는 비가 와서 추웠는데 오늘은 훨씬 더 좋아요.\n\n(Dịch: Hôm nay thời tiết thật đẹp. Trời quang đãng và ấm áp. Gió cũng thổi mát mẻ nên tôi thấy vui. Những ngày như thế này tôi muốn đi dạo ở ngoài. Hôm qua trời mưa nên lạnh nhưng hôm nay dễ chịu hơn nhiều.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "요즘 어떻게 지내요?",
+      "hint": "Kể dạo này bạn sống thế nào: bận hay rảnh, đang làm gì, sức khỏe ra sao. Dùng '요즘', '바쁘다', '-고 있다'.",
+      "samplePhrases": [
+        "요즘 잘 지내요.",
+        "회사 일이 많아서 좀 바빠요.",
+        "요즘 한국어를 공부하고 있어요."
+      ],
+      "vocabulary": [
+        { "word": "요즘", "meaning": "dạo này, gần đây", "example": "요즘 어떻게 지내요?" },
+        { "word": "지내다", "meaning": "sống, sinh hoạt (qua ngày)", "example": "잘 지내고 있어요." },
+        { "word": "바쁘다", "meaning": "bận rộn", "example": "요즘 일이 많아서 바빠요." },
+        { "word": "-고 있다", "meaning": "đang làm gì (tiếp diễn)", "example": "한국어를 배우고 있어요." }
+      ],
+      "ideas": [
+        "Nói dạo này bạn khỏe và sống tốt không.",
+        "Cho biết bạn đang bận hay rảnh.",
+        "Kể một việc bạn đang làm dạo này (học, làm việc).",
+        "Thêm cảm nhận chung về cuộc sống gần đây."
+      ],
+      "sampleAnswer": "저는 요즘 잘 지내요. 회사 일이 많아서 조금 바쁘지만 재미있어요. 그리고 요즘 한국어를 열심히 공부하고 있어요. 주말에는 친구도 만나고 운동도 해서 건강해요. 바쁘지만 즐겁게 지내고 있어요.\n\n(Dịch: Dạo này tôi sống khá tốt. Việc ở công ty nhiều nên hơi bận nhưng thú vị. Và dạo này tôi đang chăm chỉ học tiếng Hàn. Cuối tuần tôi gặp bạn và tập thể thao nên khỏe mạnh. Tuy bận nhưng tôi sống vui vẻ.)"
+    }
+  ]
+}

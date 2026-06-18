@@ -1,0 +1,146 @@
+{
+  "key": "zh-s2-l6",
+  "cards": [
+    {
+      "type": "speaking",
+      "prompt": "你想吃什么？",
+      "hint": "Nói món bạn muốn ăn; có thể nói thêm vì sao thích món đó hoặc gọi thêm một món.",
+      "samplePhrases": [
+        "我想吃……",
+        "我喜欢吃……",
+        "请给我一个……"
+      ],
+      "vocabulary": [
+        { "word": "想", "meaning": "muốn", "example": "我想吃米饭。" },
+        { "word": "米饭", "meaning": "cơm", "example": "我想吃一碗米饭。" },
+        { "word": "面条", "meaning": "mì", "example": "我喜欢吃面条。" },
+        { "word": "饺子", "meaning": "sủi cảo", "example": "我想吃饺子。" },
+        { "word": "好吃", "meaning": "ngon", "example": "这个菜很好吃。" }
+      ],
+      "ideas": [
+        "Nói tên món chính bạn muốn ăn (cơm, mì, sủi cảo...).",
+        "Nói lý do: vì món đó rất ngon hoặc bạn rất đói.",
+        "Gọi thêm một món phụ hoặc rau.",
+        "Hỏi lại người khác muốn ăn gì."
+      ],
+      "sampleAnswer": "我想吃米饭和鸡肉。我也想吃一点儿青菜。我有点儿饿了，这家饭馆的菜很好吃。你想吃什么？\n\n(Dịch: Tôi muốn ăn cơm và thịt gà. Tôi cũng muốn ăn một chút rau xanh. Tôi hơi đói rồi, món ăn của nhà hàng này rất ngon. Bạn muốn ăn gì?)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "这个多少钱？",
+      "hint": "Hỏi giá một món đồ; có thể chỉ vào đồ vật và hỏi giá một cái hay tất cả.",
+      "samplePhrases": [
+        "这个多少钱？",
+        "一个多少钱？",
+        "请问，这个……钱？"
+      ],
+      "vocabulary": [
+        { "word": "多少钱", "meaning": "bao nhiêu tiền", "example": "这个多少钱？" },
+        { "word": "块", "meaning": "đồng (tệ, khẩu ngữ)", "example": "这个十块钱。" },
+        { "word": "请问", "meaning": "xin hỏi", "example": "请问，这个多少钱？" },
+        { "word": "个", "meaning": "cái (lượng từ)", "example": "一个五块钱。" }
+      ],
+      "ideas": [
+        "Dùng 请问 cho lịch sự trước khi hỏi giá.",
+        "Chỉ vào món đồ và hỏi 这个多少钱.",
+        "Hỏi giá một cái hay nhiều cái.",
+        "Nghe và nhắc lại con số giá tiền."
+      ],
+      "sampleAnswer": "请问，这个多少钱？一个多少钱？我想买两个。如果不太贵，我就买。\n\n(Dịch: Xin hỏi, cái này bao nhiêu tiền? Một cái bao nhiêu tiền? Tôi muốn mua hai cái. Nếu không quá đắt thì tôi sẽ mua.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "太贵了，能便宜一点吗？",
+      "hint": "Mặc cả; nói món đồ đắt, xin giảm giá và đề nghị một mức giá bạn muốn trả.",
+      "samplePhrases": [
+        "太贵了！",
+        "能便宜一点吗？",
+        "……块钱可以吗？"
+      ],
+      "vocabulary": [
+        { "word": "贵", "meaning": "đắt", "example": "这个太贵了。" },
+        { "word": "便宜", "meaning": "rẻ", "example": "能便宜一点吗？" },
+        { "word": "一点", "meaning": "một chút", "example": "便宜一点吧。" },
+        { "word": "可以", "meaning": "được, có thể", "example": "二十块可以吗？" }
+      ],
+      "ideas": [
+        "Nói món đồ quá đắt: 太贵了.",
+        "Lịch sự xin giảm giá: 能便宜一点吗.",
+        "Đưa ra mức giá bạn muốn trả.",
+        "Cảm ơn khi người bán đồng ý giảm giá."
+      ],
+      "sampleAnswer": "太贵了，能便宜一点吗？我很喜欢这个，可是有点儿贵。三十块钱可以吗？谢谢你！\n\n(Dịch: Đắt quá, có thể rẻ hơn một chút không? Tôi rất thích cái này, nhưng hơi đắt. Ba mươi đồng được không? Cảm ơn bạn!)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "你要喝什么？",
+      "hint": "Nói đồ uống bạn muốn; có thể nói nóng hay lạnh và gọi thêm cho người khác.",
+      "samplePhrases": [
+        "我要喝……",
+        "我想喝一杯……",
+        "请给我一杯……"
+      ],
+      "vocabulary": [
+        { "word": "喝", "meaning": "uống", "example": "你要喝什么？" },
+        { "word": "茶", "meaning": "trà", "example": "我要喝茶。" },
+        { "word": "咖啡", "meaning": "cà phê", "example": "我想喝咖啡。" },
+        { "word": "水", "meaning": "nước", "example": "请给我一杯水。" },
+        { "word": "杯", "meaning": "ly, cốc (lượng từ)", "example": "一杯热茶。" }
+      ],
+      "ideas": [
+        "Nói tên đồ uống bạn muốn (trà, cà phê, nước...).",
+        "Nói thêm nóng hay lạnh: 热的 / 冰的.",
+        "Gọi đúng số lượng bằng lượng từ 杯.",
+        "Hỏi lại người khác muốn uống gì."
+      ],
+      "sampleAnswer": "我要喝一杯热茶。我不太喜欢喝咖啡。请给我一杯水，谢谢。你要喝什么？\n\n(Dịch: Tôi muốn uống một ly trà nóng. Tôi không thích uống cà phê lắm. Cho tôi một ly nước nhé, cảm ơn. Bạn muốn uống gì?)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "一共多少钱？",
+      "hint": "Hỏi tổng số tiền phải trả; có thể nói cách thanh toán và xin hóa đơn.",
+      "samplePhrases": [
+        "一共多少钱？",
+        "我可以用……付钱吗？",
+        "给你钱。"
+      ],
+      "vocabulary": [
+        { "word": "一共", "meaning": "tổng cộng", "example": "一共多少钱？" },
+        { "word": "付钱", "meaning": "trả tiền", "example": "我现在付钱。" },
+        { "word": "找钱", "meaning": "thối lại tiền", "example": "请找我钱。" },
+        { "word": "手机", "meaning": "điện thoại", "example": "我用手机付钱。" }
+      ],
+      "ideas": [
+        "Hỏi tổng số tiền: 一共多少钱.",
+        "Nói cách thanh toán: tiền mặt hay điện thoại.",
+        "Đưa tiền và xin thối lại nếu cần.",
+        "Cảm ơn sau khi trả tiền xong."
+      ],
+      "sampleAnswer": "一共多少钱？我可以用手机付钱吗？给你一百块，请找我钱。谢谢！\n\n(Dịch: Tổng cộng bao nhiêu tiền? Tôi có thể trả bằng điện thoại không? Đưa bạn một trăm đồng, làm ơn thối lại tiền cho tôi. Cảm ơn!)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "你喜欢什么颜色？",
+      "hint": "Nói màu bạn thích; có thể nói thêm màu bạn không thích và lý do.",
+      "samplePhrases": [
+        "我喜欢……色。",
+        "我最喜欢的颜色是……",
+        "我不太喜欢……色。"
+      ],
+      "vocabulary": [
+        { "word": "颜色", "meaning": "màu sắc", "example": "你喜欢什么颜色？" },
+        { "word": "红色", "meaning": "màu đỏ", "example": "我喜欢红色。" },
+        { "word": "蓝色", "meaning": "màu xanh dương", "example": "蓝色很好看。" },
+        { "word": "白色", "meaning": "màu trắng", "example": "我想买白色的。" },
+        { "word": "好看", "meaning": "đẹp (nhìn)", "example": "这个颜色很好看。" }
+      ],
+      "ideas": [
+        "Nói màu bạn thích nhất.",
+        "Nói lý do: màu đó đẹp hoặc hợp với bạn.",
+        "Nói một màu bạn không thích.",
+        "Liên hệ với việc chọn mua quần áo theo màu."
+      ],
+      "sampleAnswer": "我最喜欢的颜色是蓝色，因为蓝色很好看。我也喜欢白色的衣服。我不太喜欢红色。你喜欢什么颜色？\n\n(Dịch: Màu tôi thích nhất là màu xanh dương, vì màu xanh rất đẹp. Tôi cũng thích quần áo màu trắng. Tôi không thích màu đỏ lắm. Bạn thích màu gì?)"
+    }
+  ]
+}

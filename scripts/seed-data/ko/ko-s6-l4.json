@@ -1,0 +1,105 @@
+{
+  "key": "ko-s6-l4",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "인터넷",
+      "phonetic": "inteonet",
+      "pos": "n.",
+      "meaning": "Internet",
+      "example": "저는 매일 인터넷으로 뉴스를 봐요.",
+      "options": ["Internet", "Điện thoại di động", "Máy tính", "Màn hình"],
+      "answer": "Internet"
+    },
+    {
+      "type": "vocab",
+      "word": "휴대폰",
+      "phonetic": "hyudaepon",
+      "pos": "n.",
+      "meaning": "Điện thoại di động",
+      "example": "수업 시간에는 휴대폰을 꺼 주세요.",
+      "options": ["Điện thoại di động", "Internet", "Mật khẩu", "Thông tin"],
+      "answer": "Điện thoại di động"
+    },
+    {
+      "type": "vocab",
+      "word": "컴퓨터",
+      "phonetic": "keompyuteo",
+      "pos": "n.",
+      "meaning": "Máy tính",
+      "example": "새 컴퓨터를 사서 일이 더 빨라졌어요.",
+      "options": ["Máy tính", "Trang web", "Email", "Chương trình"],
+      "answer": "Máy tính"
+    },
+    {
+      "type": "vocab",
+      "word": "정보",
+      "phonetic": "jeongbo",
+      "pos": "n.",
+      "meaning": "Thông tin",
+      "example": "인터넷에서 여행 정보를 찾았어요.",
+      "options": ["Thông tin", "Mật khẩu", "Tin nhắn", "Tài liệu"],
+      "answer": "Thông tin"
+    },
+    {
+      "type": "vocab",
+      "word": "문자",
+      "phonetic": "munja",
+      "pos": "n.",
+      "meaning": "Tin nhắn",
+      "example": "친구에게 문자를 보냈어요.",
+      "options": ["Tin nhắn", "Thông tin", "Internet", "Kỹ thuật"],
+      "answer": "Tin nhắn"
+    },
+    {
+      "type": "vocab",
+      "word": "이메일",
+      "phonetic": "imeil",
+      "pos": "n.",
+      "meaning": "Thư điện tử (email)",
+      "example": "회사에서 매일 이메일을 확인해요.",
+      "options": ["Thư điện tử (email)", "Trang web", "Tin nhắn", "Màn hình"],
+      "answer": "Thư điện tử (email)"
+    },
+    {
+      "type": "vocab",
+      "word": "다운로드",
+      "phonetic": "daunrodeu",
+      "pos": "n.",
+      "meaning": "Tải xuống",
+      "example": "이 사진을 다운로드 받을 수 있어요?",
+      "options": ["Tải xuống", "Tìm kiếm", "Mật khẩu", "Chương trình"],
+      "answer": "Tải xuống"
+    },
+    {
+      "type": "vocab",
+      "word": "비밀번호",
+      "phonetic": "bimilbeonho",
+      "pos": "n.",
+      "meaning": "Mật khẩu",
+      "example": "비밀번호를 잊어버려서 들어갈 수 없어요.",
+      "options": ["Mật khẩu", "Tài liệu", "Thông tin", "Màn hình"],
+      "answer": "Mật khẩu"
+    },
+    {
+      "type": "vocab",
+      "word": "검색",
+      "phonetic": "geomsaek",
+      "pos": "n.",
+      "meaning": "Tìm kiếm",
+      "example": "인터넷에서 단어를 검색해 보세요.",
+      "options": ["Tìm kiếm", "Tải xuống", "Kỹ thuật", "Email"],
+      "answer": "Tìm kiếm"
+    },
+    {
+      "type": "vocab",
+      "word": "기술",
+      "phonetic": "gisul",
+      "pos": "n.",
+      "meaning": "Kỹ thuật, công nghệ",
+      "example": "요즘 컴퓨터 기술이 빠르게 발전하고 있어요.",
+      "options": ["Kỹ thuật, công nghệ", "Tin nhắn", "Trang web", "Mật khẩu"],
+      "answer": "Kỹ thuật, công nghệ"
+    }
+  ]
+}

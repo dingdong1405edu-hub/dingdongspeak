@@ -1,0 +1,154 @@
+{
+  "key": "ja-s1-l5",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "Trợ từ sở hữu / bổ nghĩa の (A の B)",
+      "explanation": "の nối hai danh từ theo thứ tự 'A の B', trong đó A bổ nghĩa cho B (sở hữu, thuộc về, loại). Dịch ngược lại tiếng Việt: 'B của A'. Ví dụ わたしの本 = sách của tôi, 日本語の先生 = giáo viên tiếng Nhật.",
+      "examples": [
+        "これはわたしの本です。",
+        "田中さんのかばんはあれです。",
+        "日本語の先生はやさしいです。"
+      ],
+      "tip": "Người Việt hay đảo ngược thứ tự: muốn nói 'sách của tôi' thì viết là わたしの本 (người sở hữu đứng TRƯỚC の), KHÔNG phải 本のわたし. Đừng quên の giữa hai danh từ.",
+      "question": "Chọn câu đúng nghĩa 'Đây là điện thoại của tôi.'",
+      "options": [
+        "これはわたしのでんわです。",
+        "これはでんわのわたしです。",
+        "これはわたしでんわです。",
+        "これはわたしのでんわか。"
+      ],
+      "answer": "これはわたしのでんわです。"
+    },
+    {
+      "type": "grammar",
+      "rule": "Đại từ chỉ định これ / それ / あれ",
+      "explanation": "これ = cái này (gần người nói), それ = cái đó (gần người nghe), あれ = cái kia (xa cả hai). Chúng đứng độc lập, KHÔNG đi kèm danh từ ngay sau. Dùng để chỉ vật.",
+      "examples": [
+        "これはほんです。",
+        "それはわたしのかさです。",
+        "あれはなんですか。"
+      ],
+      "tip": "Người Việt hay lẫn lộn それ và あれ. それ dùng khi vật ở GẦN người nghe; あれ dùng khi vật ở XA cả người nói lẫn người nghe.",
+      "question": "Vật ở xa cả người nói và người nghe. Hỏi 'Cái kia là gì?' nói thế nào?",
+      "options": [
+        "あれはなんですか。",
+        "これはなんですか。",
+        "それはなんですか。",
+        "あのはなんですか。"
+      ],
+      "answer": "あれはなんですか。"
+    },
+    {
+      "type": "grammar",
+      "rule": "この / その / あの + danh từ",
+      "explanation": "この・その・あの phải đi LIỀN với một danh từ phía sau: この本 (cuốn sách này), その人 (người đó), あの店 (cửa hàng kia). Khác với これ/それ/あれ vốn đứng một mình.",
+      "examples": [
+        "この本はおもしろいです。",
+        "その人は先生です。",
+        "あのみせはたかいです。"
+      ],
+      "tip": "Không nói これ本 hay あれ店. Khi đứng TRƯỚC danh từ phải dùng この/その/あの; khi đứng MỘT MÌNH mới dùng これ/それ/あれ.",
+      "question": "Điền dạng đúng: '____ かばんはわたしのです。' (cái cặp NÀY là của tôi)",
+      "options": [
+        "この",
+        "これ",
+        "ここ",
+        "こんな"
+      ],
+      "answer": "この"
+    },
+    {
+      "type": "grammar",
+      "rule": "Chỉ nơi chốn ここ / そこ / あそこ",
+      "explanation": "ここ = chỗ này (nơi người nói đứng), そこ = chỗ đó (gần người nghe), あそこ = chỗ kia (xa cả hai). Đây là đại từ chỉ ĐỊA ĐIỂM, đứng độc lập như danh từ.",
+      "examples": [
+        "ここはきょうしつです。",
+        "トイレはそこです。",
+        "えきはあそこです。"
+      ],
+      "tip": "ここ/そこ/あそこ chỉ NƠI CHỐN, khác với これ/それ/あれ chỉ VẬT. Đừng dùng あれ để hỏi địa điểm; hỏi 'chỗ kia là đâu' phải dùng あそこ.",
+      "question": "Nhà vệ sinh ở gần người nghe. Nói 'Nhà vệ sinh ở chỗ đó.' thế nào?",
+      "options": [
+        "トイレはそこです。",
+        "トイレはあそこです。",
+        "トイレはここです。",
+        "トイレはそれです。"
+      ],
+      "answer": "トイレはそこです。"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "これはわたし___ かさです。",
+      "answer": "の",
+      "options": [
+        "の",
+        "は",
+        "が",
+        "を"
+      ],
+      "explanation": "Để diễn đạt sở hữu 'cái ô của tôi', dùng trợ từ の nối わたし với かさ: わたしのかさ."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "___ はわたしのほんです。あれもわたしのです。",
+      "answer": "これ",
+      "options": [
+        "これ",
+        "この",
+        "ここ",
+        "こんな"
+      ],
+      "explanation": "Vế sau có あれ (đứng một mình), nên chỗ trống cũng cần đại từ đứng một mình chỉ vật ở gần: これ. この phải đi kèm danh từ nên không đúng."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "えきはどこですか。えきは___ です。",
+      "answer": "あそこ",
+      "options": [
+        "あそこ",
+        "あれ",
+        "あの",
+        "それ"
+      ],
+      "explanation": "Trả lời địa điểm 'nhà ga' ở xa cả hai người nên dùng đại từ chỉ nơi chốn あそこ (chỗ kia). あれ và それ chỉ vật, あの phải đi kèm danh từ."
+    },
+    {
+      "type": "arrange",
+      "words": [
+        "は",
+        "の",
+        "これ",
+        "です",
+        "わたし",
+        "本"
+      ],
+      "answer": "これはわたしの本です",
+      "hint": "Đây là sách của tôi."
+    },
+    {
+      "type": "arrange",
+      "words": [
+        "は",
+        "なん",
+        "あれ",
+        "か",
+        "です"
+      ],
+      "answer": "あれはなんですか",
+      "hint": "Cái kia là gì?"
+    },
+    {
+      "type": "arrange",
+      "words": [
+        "本",
+        "おもしろい",
+        "は",
+        "この",
+        "です"
+      ],
+      "answer": "この本はおもしろいです",
+      "hint": "Cuốn sách này thú vị."
+    }
+  ]
+}

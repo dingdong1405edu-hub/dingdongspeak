@@ -1,0 +1,100 @@
+{
+  "key": "ja-s1-l3",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "Câu khẳng định: A は B です",
+      "explanation": "Mẫu câu cơ bản nhất của tiếng Nhật. 'は' (đọc là 'wa') là trợ từ chủ đề, đứng sau chủ ngữ A. 'です' đứng cuối câu, mang nghĩa 'là' và thể hiện sự lịch sự. A は B です nghĩa là 'A là B'.",
+      "examples": [
+        "わたしはベトナム人です。",
+        "たなかさんは先生です。",
+        "これは本です。"
+      ],
+      "tip": "Người Việt hay đọc nhầm trợ từ は thành 'ha'. Khi は làm trợ từ chủ đề thì phải đọc là 'wa', không phải 'ha'.",
+      "question": "わたし___がくせいです。",
+      "options": ["は", "を", "が", "の"],
+      "answer": "は"
+    },
+    {
+      "type": "grammar",
+      "rule": "Câu hỏi với trợ từ か",
+      "explanation": "Để biến câu khẳng định thành câu hỏi, ta chỉ cần thêm trợ từ 'か' vào cuối câu (sau です). Không cần đảo trật tự từ. Khi viết thường dùng dấu 。 thay cho dấu ?.",
+      "examples": [
+        "あなたは学生ですか。",
+        "たなかさんは日本人ですか。",
+        "これはペンですか。"
+      ],
+      "tip": "Người Việt hay quên thêm か và chỉ lên giọng như tiếng Việt. Trong câu hỏi lịch sự bắt buộc phải có か ở cuối.",
+      "question": "あなたは先生です___。",
+      "options": ["か", "は", "ね", "よ"],
+      "answer": "か"
+    },
+    {
+      "type": "grammar",
+      "rule": "Câu phủ định: じゃありません / ではありません",
+      "explanation": "Để nói 'A không phải là B', ta thay です bằng 'じゃありません' (văn nói) hoặc 'ではありません' (trang trọng hơn). Cấu trúc: A は B じゃありません。",
+      "examples": [
+        "わたしは学生じゃありません。",
+        "これは水ではありません。",
+        "たなかさんは先生じゃありません。"
+      ],
+      "tip": "Lưu ý 'では' ở đây đọc là 'de wa'. Người mới học hay nhầm đọc thành 'de ha'. じゃ chính là dạng rút gọn của では.",
+      "question": "わたしは日本人___。(tôi không phải người Nhật)",
+      "options": ["じゃありません", "です", "ですか", "ません"],
+      "answer": "じゃありません"
+    },
+    {
+      "type": "grammar",
+      "rule": "Trả lời câu hỏi はい / いいえ",
+      "explanation": "Với câu hỏi có です・か, ta trả lời 'はい、〜です。' (vâng, đúng) hoặc 'いいえ、〜じゃありません。' (không, không phải). はい nghĩa là 'vâng/có', いいえ nghĩa là 'không'.",
+      "examples": [
+        "はい、そうです。",
+        "いいえ、学生じゃありません。",
+        "はい、わたしはベトナム人です。"
+      ],
+      "tip": "Người Việt hay dùng 'はい' và 'いいえ' ngược nhau. Nhớ: はい = vâng/đúng, いいえ = không.",
+      "question": "「あなたは先生ですか。」 ─ 「いいえ、先生___。」",
+      "options": ["じゃありません", "です", "ですか", "は"],
+      "answer": "じゃありません"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "わたし___かいしゃいんです。",
+      "answer": "は",
+      "options": ["は", "が", "を", "に"],
+      "explanation": "Sau chủ ngữ わたし (tôi) dùng trợ từ chủ đề は (đọc là 'wa'). Câu nghĩa là 'Tôi là nhân viên công ty'."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "これはほん___。(Đây là quyển sách phải không?)",
+      "answer": "ですか",
+      "options": ["ですか", "です", "じゃありません", "ますか"],
+      "explanation": "Đây là câu hỏi nên cuối câu dùng です + か. Câu nghĩa là 'Đây là quyển sách phải không?'."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "リンさんは日本人___。ベトナム人です。",
+      "answer": "じゃありません",
+      "options": ["じゃありません", "です", "ですか", "は"],
+      "explanation": "Câu phủ định 'không phải là' dùng じゃありません thay cho です. Câu nghĩa là 'Linh không phải người Nhật. Là người Việt'."
+    },
+    {
+      "type": "arrange",
+      "words": ["です", "わたし", "がくせい", "は"],
+      "answer": "わたしはがくせいです",
+      "hint": "Tôi là học sinh."
+    },
+    {
+      "type": "arrange",
+      "words": ["ですか", "あなた", "せんせい", "は"],
+      "answer": "あなたはせんせいですか",
+      "hint": "Bạn là giáo viên phải không?"
+    },
+    {
+      "type": "arrange",
+      "words": ["じゃありません", "にほんじん", "わたし", "は"],
+      "answer": "わたしはにほんじんじゃありません",
+      "hint": "Tôi không phải là người Nhật."
+    }
+  ]
+}

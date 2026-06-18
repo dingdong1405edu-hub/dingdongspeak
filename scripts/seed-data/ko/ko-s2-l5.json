@@ -1,0 +1,105 @@
+{
+  "key": "ko-s2-l5",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "요일",
+      "phonetic": "yoil",
+      "pos": "n.",
+      "meaning": "thứ (trong tuần)",
+      "example": "오늘이 무슨 요일이에요?",
+      "options": ["thứ (trong tuần)", "buổi sáng", "ngày tháng", "giờ phút"],
+      "answer": "thứ (trong tuần)"
+    },
+    {
+      "type": "vocab",
+      "word": "월요일",
+      "phonetic": "woryoil",
+      "pos": "n.",
+      "meaning": "thứ Hai",
+      "example": "월요일에 학교에 가요.",
+      "options": ["thứ Hai", "thứ Bảy", "Chủ nhật", "cuối tuần"],
+      "answer": "thứ Hai"
+    },
+    {
+      "type": "vocab",
+      "word": "토요일",
+      "phonetic": "toyoil",
+      "pos": "n.",
+      "meaning": "thứ Bảy",
+      "example": "토요일에 친구를 만나요.",
+      "options": ["thứ Bảy", "thứ Hai", "thứ Năm", "Chủ nhật"],
+      "answer": "thứ Bảy"
+    },
+    {
+      "type": "vocab",
+      "word": "일요일",
+      "phonetic": "iryoil",
+      "pos": "n.",
+      "meaning": "Chủ nhật",
+      "example": "일요일에는 보통 집에서 쉬어요.",
+      "options": ["Chủ nhật", "thứ Bảy", "thứ Hai", "thứ Sáu"],
+      "answer": "Chủ nhật"
+    },
+    {
+      "type": "vocab",
+      "word": "오전",
+      "phonetic": "ojeon",
+      "pos": "n.",
+      "meaning": "buổi sáng (trước trưa), A.M.",
+      "example": "오전 아홉 시에 회의가 있어요.",
+      "options": ["buổi sáng (trước trưa), A.M.", "buổi chiều (sau trưa), P.M.", "buổi tối", "bữa trưa"],
+      "answer": "buổi sáng (trước trưa), A.M."
+    },
+    {
+      "type": "vocab",
+      "word": "오후",
+      "phonetic": "ohu",
+      "pos": "n.",
+      "meaning": "buổi chiều (sau trưa), P.M.",
+      "example": "오후 세 시에 만나요.",
+      "options": ["buổi chiều (sau trưa), P.M.", "buổi sáng (trước trưa), A.M.", "buổi sáng sớm", "ban đêm"],
+      "answer": "buổi chiều (sau trưa), P.M."
+    },
+    {
+      "type": "vocab",
+      "word": "아침",
+      "phonetic": "achim",
+      "pos": "n.",
+      "meaning": "buổi sáng; bữa sáng",
+      "example": "아침에 빵을 먹어요.",
+      "options": ["buổi sáng; bữa sáng", "buổi tối; bữa tối", "buổi trưa; bữa trưa", "ban đêm"],
+      "answer": "buổi sáng; bữa sáng"
+    },
+    {
+      "type": "vocab",
+      "word": "저녁",
+      "phonetic": "jeonyeok",
+      "pos": "n.",
+      "meaning": "buổi tối; bữa tối",
+      "example": "저녁에 가족과 밥을 먹어요.",
+      "options": ["buổi tối; bữa tối", "buổi sáng; bữa sáng", "buổi trưa; bữa trưa", "thứ (trong tuần)"],
+      "answer": "buổi tối; bữa tối"
+    },
+    {
+      "type": "vocab",
+      "word": "어제",
+      "phonetic": "eoje",
+      "pos": "n.",
+      "meaning": "hôm qua",
+      "example": "어제 영화를 봤어요.",
+      "options": ["hôm qua", "hôm nay", "ngày mai", "cuối tuần"],
+      "answer": "hôm qua"
+    },
+    {
+      "type": "vocab",
+      "word": "내일",
+      "phonetic": "naeil",
+      "pos": "n.",
+      "meaning": "ngày mai",
+      "example": "내일 한국어를 공부할 거예요.",
+      "options": ["ngày mai", "hôm qua", "hôm nay", "buổi sáng"],
+      "answer": "ngày mai"
+    }
+  ]
+}

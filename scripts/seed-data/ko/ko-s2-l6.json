@@ -1,0 +1,149 @@
+{
+  "key": "ko-s2-l6",
+  "cards": [
+    {
+      "type": "speaking",
+      "prompt": "뭐 먹을래요?",
+      "hint": "Hãy nói món bạn muốn ăn (cơm, mì, kimbap...), hỏi lại bạn của mình muốn ăn gì, và đề nghị cùng gọi món.",
+      "samplePhrases": [
+        "저는 비빔밥을 먹을래요.",
+        "김밥하고 라면 주세요.",
+        "같이 불고기 먹어요!"
+      ],
+      "vocabulary": [
+        { "word": "먹다", "meaning": "ăn", "example": "저는 밥을 먹어요." },
+        { "word": "비빔밥", "meaning": "cơm trộn (bibimbap)", "example": "비빔밥이 정말 맛있어요." },
+        { "word": "김밥", "meaning": "cơm cuộn (gimbap)", "example": "김밥 두 개 주세요." },
+        { "word": "라면", "meaning": "mì ramyeon", "example": "저는 라면을 좋아해요." },
+        { "word": "맛있다", "meaning": "ngon", "example": "이 음식이 맛있어요." }
+      ],
+      "ideas": [
+        "Nói rõ tên món ăn Hàn Quốc bạn thích (비빔밥, 불고기, 김밥...).",
+        "Dùng cấu trúc '~을/를 먹을래요' để diễn đạt ý muốn.",
+        "Hỏi ngược lại đối phương: '당신은 뭐 먹을래요?'.",
+        "Thêm lý do ngắn: vì ngon, vì đói bụng."
+      ],
+      "sampleAnswer": "저는 비빔밥을 먹을래요. 비빔밥이 정말 맛있어요. 그리고 라면도 먹고 싶어요. 당신은 뭐 먹을래요? 우리 같이 먹어요!\n\n(Dịch: Mình muốn ăn cơm trộn. Cơm trộn rất ngon. Và mình cũng muốn ăn mì ramyeon nữa. Còn bạn muốn ăn gì? Chúng ta cùng ăn nhé!)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "이거 얼마예요?",
+      "hint": "Hãy hỏi giá của một món đồ, nghe giá rồi nhắc lại, và nói bạn sẽ mua mấy cái.",
+      "samplePhrases": [
+        "이거 얼마예요?",
+        "이천 원이에요?",
+        "이거 하나 주세요."
+      ],
+      "vocabulary": [
+        { "word": "얼마", "meaning": "bao nhiêu (tiền)", "example": "이거 얼마예요?" },
+        { "word": "원", "meaning": "won (tiền Hàn)", "example": "이천 원이에요." },
+        { "word": "이거", "meaning": "cái này", "example": "이거 주세요." },
+        { "word": "하나", "meaning": "một (cái)", "example": "사과 하나 주세요." },
+        { "word": "주세요", "meaning": "cho tôi (xin)", "example": "물 주세요." }
+      ],
+      "ideas": [
+        "Chỉ vào món đồ và hỏi giá: '이거 얼마예요?'.",
+        "Nhắc lại giá để xác nhận: '삼천 원이에요?'.",
+        "Nói số lượng muốn mua bằng số đếm thuần Hàn (하나, 둘...).",
+        "Kết thúc bằng '주세요' để yêu cầu mua."
+      ],
+      "sampleAnswer": "안녕하세요. 이거 얼마예요? 아, 삼천 원이에요? 그럼 이거 하나 주세요. 여기 돈 있어요. 감사합니다.\n\n(Dịch: Xin chào. Cái này bao nhiêu tiền ạ? À, ba nghìn won ạ? Vậy cho tôi một cái này. Tiền đây ạ. Cảm ơn.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "너무 비싸요. 깎아 주세요.",
+      "hint": "Hãy nói món đồ quá đắt, lịch sự xin giảm giá, và đề nghị một mức giá bạn mong muốn.",
+      "samplePhrases": [
+        "너무 비싸요.",
+        "조금만 깎아 주세요.",
+        "만 원에 주세요."
+      ],
+      "vocabulary": [
+        { "word": "비싸다", "meaning": "đắt", "example": "이 옷이 너무 비싸요." },
+        { "word": "너무", "meaning": "quá, rất", "example": "날씨가 너무 더워요." },
+        { "word": "깎다", "meaning": "giảm giá, bớt", "example": "조금 깎아 주세요." },
+        { "word": "조금", "meaning": "một chút", "example": "조금만 주세요." },
+        { "word": "싸다", "meaning": "rẻ", "example": "이 가게는 싸요." }
+      ],
+      "ideas": [
+        "Nhận xét giá quá cao: '너무 비싸요'.",
+        "Xin giảm giá lịch sự bằng '깎아 주세요'.",
+        "Đề nghị mức giá cụ thể bạn muốn trả (만 원, 오천 원...).",
+        "Cảm ơn người bán khi họ đồng ý."
+      ],
+      "sampleAnswer": "이 옷이 너무 비싸요. 조금만 깎아 주세요. 만 원에 주세요. 네? 알겠어요. 그럼 이거 살게요. 감사합니다.\n\n(Dịch: Cái áo này đắt quá. Giảm giá một chút cho tôi đi. Bán cho tôi mười nghìn won nhé. Sao ạ? Tôi hiểu rồi. Vậy tôi mua cái này. Cảm ơn.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "뭐 마실래요?",
+      "hint": "Hãy nói đồ uống bạn muốn (cà phê, nước, trà...), hỏi lại bạn của mình, và gọi đồ uống.",
+      "samplePhrases": [
+        "저는 커피를 마실래요.",
+        "물 한 잔 주세요.",
+        "당신은 뭐 마실래요?"
+      ],
+      "vocabulary": [
+        { "word": "마시다", "meaning": "uống", "example": "물을 마셔요." },
+        { "word": "커피", "meaning": "cà phê", "example": "저는 커피를 좋아해요." },
+        { "word": "물", "meaning": "nước", "example": "물 주세요." },
+        { "word": "차", "meaning": "trà", "example": "녹차를 마실래요." },
+        { "word": "잔", "meaning": "ly, cốc (đơn vị)", "example": "커피 한 잔 주세요." }
+      ],
+      "ideas": [
+        "Nói rõ đồ uống bạn muốn dùng cấu trúc '~을/를 마실래요'.",
+        "Thêm số lượng và đơn vị: '한 잔', '두 잔'.",
+        "Hỏi lại đối phương: '당신은 뭐 마실래요?'.",
+        "Nói lý do thích đồ uống đó (nóng, ngon, thích...)."
+      ],
+      "sampleAnswer": "저는 커피를 마실래요. 따뜻한 커피 한 잔 주세요. 당신은 뭐 마실래요? 물도 마실래요? 그럼 물 두 잔도 주세요.\n\n(Dịch: Mình muốn uống cà phê. Cho mình một ly cà phê nóng. Còn bạn muốn uống gì? Bạn có uống nước không? Vậy cho thêm hai ly nước nữa nhé.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "모두 얼마예요?",
+      "hint": "Hãy hỏi tổng giá tiền tất cả các món, nghe tổng số tiền, và trả tiền.",
+      "samplePhrases": [
+        "모두 얼마예요?",
+        "전부 얼마예요?",
+        "여기 있어요."
+      ],
+      "vocabulary": [
+        { "word": "모두", "meaning": "tất cả, tổng cộng", "example": "모두 얼마예요?" },
+        { "word": "전부", "meaning": "toàn bộ, tất cả", "example": "전부 만 원이에요." },
+        { "word": "계산하다", "meaning": "tính tiền, thanh toán", "example": "계산할게요." },
+        { "word": "카드", "meaning": "thẻ (tín dụng)", "example": "카드로 계산할게요." },
+        { "word": "거스름돈", "meaning": "tiền thừa", "example": "거스름돈 받으세요." }
+      ],
+      "ideas": [
+        "Hỏi tổng số tiền: '모두 얼마예요?'.",
+        "Nhắc lại tổng tiền để xác nhận.",
+        "Nói cách thanh toán: tiền mặt hay thẻ (카드로).",
+        "Cảm ơn và nhận tiền thừa."
+      ],
+      "sampleAnswer": "사장님, 모두 얼마예요? 아, 전부 만 오천 원이에요? 여기 돈 있어요. 카드로 계산할게요. 감사합니다.\n\n(Dịch: Chủ ơi, tất cả bao nhiêu tiền ạ? À, tổng cộng mười lăm nghìn won ạ? Tiền đây ạ. Tôi sẽ thanh toán bằng thẻ. Cảm ơn.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "무슨 색을 좋아해요?",
+      "hint": "Hãy nói màu bạn thích, giải thích lý do, và hỏi lại màu yêu thích của bạn mình.",
+      "samplePhrases": [
+        "저는 파란색을 좋아해요.",
+        "빨간색이 예뻐요.",
+        "당신은 무슨 색을 좋아해요?"
+      ],
+      "vocabulary": [
+        { "word": "색", "meaning": "màu sắc", "example": "이 색이 예뻐요." },
+        { "word": "좋아하다", "meaning": "thích", "example": "저는 꽃을 좋아해요." },
+        { "word": "파란색", "meaning": "màu xanh dương", "example": "하늘이 파란색이에요." },
+        { "word": "빨간색", "meaning": "màu đỏ", "example": "사과가 빨간색이에요." },
+        { "word": "예쁘다", "meaning": "đẹp, xinh", "example": "이 옷이 예뻐요." }
+      ],
+      "ideas": [
+        "Nói màu yêu thích dùng cấu trúc '~색을 좋아해요'.",
+        "Giải thích lý do: vì đẹp, vì hợp với bạn...",
+        "Kể thêm một, hai màu khác bạn cũng thích.",
+        "Hỏi ngược lại đối phương: '당신은 무슨 색을 좋아해요?'."
+      ],
+      "sampleAnswer": "저는 파란색을 좋아해요. 파란색이 정말 예뻐요. 그리고 하얀색도 좋아해요. 당신은 무슨 색을 좋아해요? 빨간색을 좋아해요?\n\n(Dịch: Mình thích màu xanh dương. Màu xanh dương rất đẹp. Và mình cũng thích màu trắng nữa. Còn bạn thích màu gì? Bạn thích màu đỏ à?)"
+    }
+  ]
+}

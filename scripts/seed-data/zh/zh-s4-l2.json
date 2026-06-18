@@ -1,0 +1,105 @@
+{
+  "key": "zh-s4-l2",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "工作",
+      "phonetic": "gōngzuò",
+      "pos": "n.",
+      "meaning": "công việc, làm việc",
+      "example": "我每天工作八个小时。",
+      "options": ["công việc, làm việc", "kỳ nghỉ", "tiền lương", "cuộc họp"],
+      "answer": "công việc, làm việc"
+    },
+    {
+      "type": "vocab",
+      "word": "公司",
+      "phonetic": "gōngsī",
+      "pos": "n.",
+      "meaning": "công ty",
+      "example": "他在一家大公司上班。",
+      "options": ["công ty", "trường học", "bệnh viện", "nhà hàng"],
+      "answer": "công ty"
+    },
+    {
+      "type": "vocab",
+      "word": "同事",
+      "phonetic": "tóngshì",
+      "pos": "n.",
+      "meaning": "đồng nghiệp",
+      "example": "我的同事都很热情。",
+      "options": ["đồng nghiệp", "bạn học", "hàng xóm", "khách hàng"],
+      "answer": "đồng nghiệp"
+    },
+    {
+      "type": "vocab",
+      "word": "上班",
+      "phonetic": "shàngbān",
+      "pos": "v.",
+      "meaning": "đi làm, bắt đầu giờ làm",
+      "example": "我每天早上八点上班。",
+      "options": ["đi làm, bắt đầu giờ làm", "tan làm, về nhà", "nghỉ phép", "tăng ca"],
+      "answer": "đi làm, bắt đầu giờ làm"
+    },
+    {
+      "type": "vocab",
+      "word": "学习",
+      "phonetic": "xuéxí",
+      "pos": "v.",
+      "meaning": "học, học tập",
+      "example": "我正在学习汉语。",
+      "options": ["học, học tập", "dạy học", "vui chơi", "nghỉ ngơi"],
+      "answer": "học, học tập"
+    },
+    {
+      "type": "vocab",
+      "word": "考试",
+      "phonetic": "kǎoshì",
+      "pos": "n.",
+      "meaning": "kỳ thi, thi cử",
+      "example": "下个星期我们有一个考试。",
+      "options": ["kỳ thi, thi cử", "bài tập về nhà", "lớp học", "điểm số"],
+      "answer": "kỳ thi, thi cử"
+    },
+    {
+      "type": "vocab",
+      "word": "作业",
+      "phonetic": "zuòyè",
+      "pos": "n.",
+      "meaning": "bài tập về nhà",
+      "example": "今天的作业很多。",
+      "options": ["bài tập về nhà", "kỳ thi", "thời khóa biểu", "sách giáo khoa"],
+      "answer": "bài tập về nhà"
+    },
+    {
+      "type": "vocab",
+      "word": "努力",
+      "phonetic": "nǔlì",
+      "pos": "adj.",
+      "meaning": "chăm chỉ, nỗ lực",
+      "example": "他学习很努力。",
+      "options": ["chăm chỉ, nỗ lực", "lười biếng", "mệt mỏi", "vui vẻ"],
+      "answer": "chăm chỉ, nỗ lực"
+    },
+    {
+      "type": "vocab",
+      "word": "帮助",
+      "phonetic": "bāngzhù",
+      "pos": "v.",
+      "meaning": "giúp đỡ",
+      "example": "谢谢你帮助我。",
+      "options": ["giúp đỡ", "làm phiền", "cảm ơn", "giới thiệu"],
+      "answer": "giúp đỡ"
+    },
+    {
+      "type": "vocab",
+      "word": "复习",
+      "phonetic": "fùxí",
+      "pos": "v.",
+      "meaning": "ôn tập, ôn lại",
+      "example": "考试以前要好好复习。",
+      "options": ["ôn tập, ôn lại", "học từ mới", "làm bài tập", "nghỉ ngơi"],
+      "answer": "ôn tập, ôn lại"
+    }
+  ]
+}

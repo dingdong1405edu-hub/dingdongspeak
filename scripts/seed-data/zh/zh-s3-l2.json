@@ -1,0 +1,120 @@
+{
+  "key": "zh-s3-l2",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "Câu so sánh cơ bản A 比 B + tính từ",
+      "explanation": "Để so sánh hai đối tượng, dùng cấu trúc 'A 比 B + tính từ', nghĩa là 'A ... hơn B'. Lưu ý: tính từ đứng SAU không được thêm 很/非常 ở phía trước. Ví dụ nói '哥哥比我高' (Anh cao hơn tôi), KHÔNG nói '哥哥比我很高'.",
+      "examples": [
+        "哥哥比我高。",
+        "今天比昨天热。",
+        "这本书比那本书贵。"
+      ],
+      "tip": "Người Việt hay thêm 很 vào trước tính từ vì quen với 'rất'. Nhưng trong câu 比, KHÔNG được dùng 很/非常 trước tính từ.",
+      "question": "Hãy chọn câu so sánh ĐÚNG có nghĩa 'Hôm nay nóng hơn hôm qua'.",
+      "options": [
+        "今天比昨天热。",
+        "今天比昨天很热。",
+        "今天昨天比热。",
+        "今天热比昨天。"
+      ],
+      "answer": "今天比昨天热。"
+    },
+    {
+      "type": "grammar",
+      "rule": "比 + tính từ + 一点 / 得多",
+      "explanation": "Để chỉ mức độ chênh lệch trong câu 比, ta thêm bổ ngữ SAU tính từ: '一点(儿)' nghĩa là 'hơn một chút', còn '得多' hoặc '多了' nghĩa là 'hơn nhiều'. Cấu trúc: A 比 B + tính từ + 一点 / 得多.",
+      "examples": [
+        "这件衣服比那件便宜一点。",
+        "他比我大得多。",
+        "今天比昨天冷多了。"
+      ],
+      "tip": "Người Việt hay đặt '一点/得多' SAI vị trí (trước tính từ). Nhớ: bổ ngữ mức độ phải đứng SAU tính từ.",
+      "question": "Chọn câu có nghĩa 'Anh ấy lớn hơn tôi nhiều'.",
+      "options": [
+        "他比我大得多。",
+        "他比我得多大。",
+        "他得多比我大。",
+        "他大比我得多。"
+      ],
+      "answer": "他比我大得多。"
+    },
+    {
+      "type": "grammar",
+      "rule": "So sánh phủ định: A 没有 B (那么) + tính từ",
+      "explanation": "Để nói 'A không bằng B' (A kém hơn B), KHÔNG dùng '不比' mà dùng 'A 没有 B + tính từ', có thể thêm '那么/这么' trước tính từ. Nghĩa: 'A không ... bằng B'. Ví dụ '我没有他高' = Tôi không cao bằng anh ấy.",
+      "examples": [
+        "我没有他高。",
+        "这个房间没有那个房间大。",
+        "今天没有昨天那么冷。"
+      ],
+      "tip": "Đừng dịch máy móc 'không hơn' thành '不比'. Để diễn đạt 'không bằng', người bản ngữ dùng '没有'.",
+      "question": "Chọn câu có nghĩa 'Tôi không cao bằng anh ấy'.",
+      "options": [
+        "我没有他高。",
+        "我不比他高。",
+        "我比他没有高。",
+        "我没有高他。"
+      ],
+      "answer": "我没有他高。"
+    },
+    {
+      "type": "grammar",
+      "rule": "So sánh ngang bằng: A 跟/和 B 一样 + (tính từ)",
+      "explanation": "Để nói 'A giống/bằng B', dùng 'A 跟 B 一样' hoặc 'A 和 B 一样', nghĩa là 'A giống B'. Có thể thêm tính từ phía sau: 'A 跟 B 一样 + tính từ' = 'A ... bằng B'. Ví dụ '我跟他一样高' = Tôi cao bằng anh ấy.",
+      "examples": [
+        "我跟他一样高。",
+        "这两件衣服的颜色和那件一样。",
+        "他的手机跟我的一样贵。"
+      ],
+      "tip": "Người Việt hay quên chữ '一样' và chỉ viết '跟...'. Phải có '一样' mới đủ nghĩa 'giống nhau/bằng nhau'.",
+      "question": "Chọn câu có nghĩa 'Tôi cao bằng anh ấy'.",
+      "options": [
+        "我跟他一样高。",
+        "我跟他高一样。",
+        "我一样他高。",
+        "我跟他高。"
+      ],
+      "answer": "我跟他一样高。"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "这件衣服 ___ 那件便宜。",
+      "answer": "比",
+      "options": ["比", "和", "没有", "跟"],
+      "explanation": "Câu khẳng định 'A ... hơn B' dùng '比'. Nghĩa: Cái áo này rẻ hơn cái áo kia."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "我 ___ 他高，他比我矮一点。",
+      "answer": "比",
+      "options": ["比", "没有", "一样", "和"],
+      "explanation": "Vế sau 'anh ấy thấp hơn tôi một chút', nên vế đầu phải là 'Tôi cao hơn anh ấy', dùng '比'. Nghĩa: Tôi cao hơn anh ấy."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "今天没有昨天 ___ 冷。",
+      "answer": "那么",
+      "options": ["那么", "比", "一样", "得多"],
+      "explanation": "Trong câu phủ định 'A 没有 B + tính từ', thường thêm '那么' trước tính từ. Nghĩa: Hôm nay không lạnh bằng hôm qua."
+    },
+    {
+      "type": "arrange",
+      "words": ["哥哥", "高", "我", "比"],
+      "answer": "哥哥比我高",
+      "hint": "Anh trai cao hơn tôi. (Dùng cấu trúc A 比 B + tính từ)"
+    },
+    {
+      "type": "arrange",
+      "words": ["这个", "大", "那个", "没有", "房间", "房间"],
+      "answer": "这个房间没有那个房间大",
+      "hint": "Phòng này không to bằng phòng kia. (Dùng A 没有 B + tính từ)"
+    },
+    {
+      "type": "arrange",
+      "words": ["一样", "我", "跟", "高", "他"],
+      "answer": "我跟他一样高",
+      "hint": "Tôi cao bằng anh ấy. (Dùng A 跟 B 一样 + tính từ)"
+    }
+  ]
+}

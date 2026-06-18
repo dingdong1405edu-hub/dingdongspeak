@@ -1,0 +1,135 @@
+{
+  "key": "zh-s4-l5",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "Cấu trúc cơ bản câu chữ 把",
+      "explanation": "Câu chữ 把 dùng để nhấn mạnh việc xử lý/tác động lên một đối tượng và kết quả của hành động đó. Cấu trúc: Chủ ngữ + 把 + tân ngữ (xác định) + động từ + thành phần khác (bổ ngữ/kết quả). Động từ KHÔNG được đứng một mình, phải có thành phần đi kèm như 了, bổ ngữ kết quả, bổ ngữ xu hướng hoặc 在/到 + nơi chốn.",
+      "examples": [
+        "我把书放在桌子上了。",
+        "请把门关上。",
+        "他把作业做完了。"
+      ],
+      "tip": "Người Việt hay quên thêm thành phần sau động từ. Không nói '我把书放' mà phải nói '我把书放在桌子上'. Động từ trong câu chữ 把 không bao giờ đứng trơ một mình.",
+      "question": "请选择正确的句子。",
+      "options": [
+        "我把书放在桌子上了。",
+        "我把书放。",
+        "我放书把桌子上。",
+        "我把放书桌子上了。"
+      ],
+      "answer": "我把书放在桌子上了。"
+    },
+    {
+      "type": "grammar",
+      "rule": "Vị trí của tân ngữ trong câu chữ 把",
+      "explanation": "Trong câu chữ 把, tân ngữ được đưa lên trước động từ (đặt sau 把), khác với câu thông thường tân ngữ đứng sau động từ. Tân ngữ này phải là đối tượng cụ thể, xác định mà người nói và người nghe đều biết.",
+      "examples": [
+        "你把这些菜吃完吧。",
+        "我把手机放在包里了。",
+        "她把房间打扫干净了。"
+      ],
+      "tip": "Người Việt quen đặt tân ngữ sau động từ theo trật tự câu thường. Trong câu 把, tân ngữ luôn đứng giữa 把 và động từ: 把 + tân ngữ + động từ.",
+      "question": "他 ______ 干净了。",
+      "options": [
+        "把衣服洗",
+        "洗把衣服",
+        "把洗衣服",
+        "衣服把洗"
+      ],
+      "answer": "把衣服洗"
+    },
+    {
+      "type": "grammar",
+      "rule": "Phủ định và trạng ngữ trong câu chữ 把",
+      "explanation": "Trong câu chữ 把, các từ phủ định (没/别/不) và trạng ngữ (như từ chỉ thời gian, năng nguyện động từ 要/想/能) phải đặt TRƯỚC 把, không được đặt sau. Ví dụ: 我没把作业做完 (đúng), không nói 我把作业没做完.",
+      "examples": [
+        "我没把窗户关上。",
+        "你别把书放在这儿。",
+        "请你把空调关上。"
+      ],
+      "tip": "Người Việt hay đặt 没/别 sau 把 do dịch sát theo tiếng Việt. Hãy nhớ: 没/别/不/要/想 đứng TRƯỚC 把.",
+      "question": "我 ______ 关上。",
+      "options": [
+        "没把门",
+        "把没门",
+        "把门没",
+        "门没把"
+      ],
+      "answer": "没把门"
+    },
+    {
+      "type": "grammar",
+      "rule": "Câu chữ 把 với bổ ngữ kết quả 在/到/给",
+      "explanation": "Câu chữ 把 thường dùng với động từ + 在/到 + nơi chốn để chỉ đối tượng được đặt vào đâu, hoặc động từ + 给 + người để chỉ đối tượng được trao cho ai. Ví dụ: 把书放在桌子上 (đặt sách lên bàn), 把礼物送给他 (tặng quà cho anh ấy).",
+      "examples": [
+        "请把名字写在这儿。",
+        "我把车开到学校了。",
+        "他把这本书送给我了。"
+      ],
+      "tip": "Khi nói đặt đồ vào nơi nào, phải dùng kết cấu 把 + đồ vật + động từ + 在/到 + nơi chốn. Đừng quên 在 hoặc 到 sau động từ.",
+      "question": "请把你的名字 ______ 这儿。",
+      "options": [
+        "写在",
+        "在写",
+        "写了",
+        "写把"
+      ],
+      "answer": "写在"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "我 ___ 书放在桌子上了。",
+      "answer": "把",
+      "options": [
+        "把",
+        "被",
+        "给",
+        "在"
+      ],
+      "explanation": "Cấu trúc câu chữ 把: Chủ ngữ + 把 + tân ngữ + động từ + thành phần khác. Ở đây dùng 把 để đưa '书' lên trước động từ '放', nhấn mạnh việc xử lý quyển sách."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "请把门关 ___ ，外面太冷了。",
+      "answer": "上",
+      "options": [
+        "上",
+        "了",
+        "在",
+        "着"
+      ],
+      "explanation": "Động từ trong câu chữ 把 phải có thành phần đi kèm. '关上' (đóng lại) dùng bổ ngữ xu hướng '上' để chỉ kết quả cửa được đóng kín."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "他把作业做 ___ 了，现在可以休息了。",
+      "answer": "完",
+      "options": [
+        "完",
+        "在",
+        "上",
+        "给"
+      ],
+      "explanation": "Câu chữ 把 cần bổ ngữ sau động từ. '做完' (làm xong) dùng bổ ngữ kết quả '完' để chỉ bài tập đã được hoàn thành."
+    },
+    {
+      "type": "arrange",
+      "words": ["桌子上", "把", "放在", "我", "书", "了"],
+      "answer": "我把书放在桌子上了",
+      "hint": "Tôi đã đặt sách lên bàn rồi. (Cấu trúc: Chủ ngữ + 把 + tân ngữ + động từ + 在 + nơi chốn + 了)"
+    },
+    {
+      "type": "arrange",
+      "words": ["关上", "把", "请", "门"],
+      "answer": "请把门关上",
+      "hint": "Xin hãy đóng cửa lại. (Cấu trúc: 请 + 把 + tân ngữ + động từ + bổ ngữ)"
+    },
+    {
+      "type": "arrange",
+      "words": ["打扫", "把", "她", "干净", "房间", "了"],
+      "answer": "她把房间打扫干净了",
+      "hint": "Cô ấy đã dọn dẹp căn phòng sạch sẽ rồi. (Cấu trúc: Chủ ngữ + 把 + tân ngữ + động từ + bổ ngữ kết quả + 了)"
+    }
+  ]
+}

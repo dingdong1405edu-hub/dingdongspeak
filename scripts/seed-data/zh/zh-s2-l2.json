@@ -1,0 +1,120 @@
+{
+  "key": "zh-s2-l2",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "X 在 + nơi chốn (chỉ vị trí)",
+      "explanation": "Động từ 在 (zài) dùng để nói ai/cái gì đang ở đâu, theo cấu trúc: Chủ ngữ + 在 + nơi chốn. Ví dụ 我在家 = Tôi ở nhà. Khác với tiếng Việt, sau 在 phải là một địa điểm cụ thể.",
+      "examples": [
+        "我在学校。",
+        "妈妈在家。",
+        "老师在教室里。"
+      ],
+      "tip": "Người Việt hay quên 在 và nói trực tiếp 'Tôi nhà'. Trong tiếng Trung bắt buộc phải có 在 trước nơi chốn.",
+      "question": "Chọn câu đúng để nói 'Tôi ở công ty'.",
+      "options": [
+        "我在公司。",
+        "我公司在。",
+        "我是公司。",
+        "我有公司。"
+      ],
+      "answer": "我在公司。"
+    },
+    {
+      "type": "grammar",
+      "rule": "Hỏi vị trí với 在哪儿？",
+      "explanation": "Để hỏi ai/cái gì ở đâu, dùng: Chủ ngữ + 在哪儿？ (zài nǎr). 哪儿 nghĩa là 'đâu'. Khi trả lời, thay 哪儿 bằng địa điểm cụ thể.",
+      "examples": [
+        "你在哪儿？",
+        "洗手间在哪儿？",
+        "他现在在哪儿？"
+      ],
+      "tip": "Đừng đảo thành '哪儿在你'. 在 luôn đứng trước 哪儿, và cả cụm này đặt sau chủ ngữ.",
+      "question": "Muốn hỏi 'Nhà vệ sinh ở đâu?' thì nói thế nào?",
+      "options": [
+        "洗手间在哪儿？",
+        "哪儿洗手间在？",
+        "洗手间有哪儿？",
+        "洗手间是哪儿？"
+      ],
+      "answer": "洗手间在哪儿？"
+    },
+    {
+      "type": "grammar",
+      "rule": "有 / 没有 (sở hữu và tồn tại)",
+      "explanation": "有 (yǒu) nghĩa là 'có' (sở hữu hoặc tồn tại). Phủ định của 有 luôn là 没有 (méiyǒu), KHÔNG dùng 不有. Ví dụ: 我有钱 (Tôi có tiền) / 我没有钱 (Tôi không có tiền).",
+      "examples": [
+        "我有一个哥哥。",
+        "桌子上有一本书。",
+        "我没有手机。"
+      ],
+      "tip": "Lỗi phổ biến nhất: dùng 不有 để phủ định. Phải nhớ phủ định của 有 là 没有.",
+      "question": "Câu nào phủ định đúng cho '我有时间'?",
+      "options": [
+        "我没有时间。",
+        "我不有时间。",
+        "我没时间有。",
+        "我有不时间。"
+      ],
+      "answer": "我没有时间。"
+    },
+    {
+      "type": "grammar",
+      "rule": "Nơi chốn + 有 + người/vật (tồn tại)",
+      "explanation": "Để diễn đạt 'ở chỗ nào đó có cái gì', dùng cấu trúc: Nơi chốn + 有 + người/vật. Ví dụ 房间里有人 = Trong phòng có người. Nơi chốn đứng đầu câu, 有 đứng giữa.",
+      "examples": [
+        "家里有三个人。",
+        "教室里有很多学生。",
+        "书包里有两本书。"
+      ],
+      "tip": "Đừng nói '有家里三个人'. Nơi chốn phải đứng TRƯỚC 有.",
+      "question": "Chọn câu đúng nghĩa 'Trên bàn có một cốc nước'.",
+      "options": [
+        "桌子上有一杯水。",
+        "有桌子上一杯水。",
+        "一杯水桌子上有。",
+        "桌子上在一杯水。"
+      ],
+      "answer": "桌子上有一杯水。"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "我的手机___桌子上。",
+      "answer": "在",
+      "options": ["在", "有", "是", "里"],
+      "explanation": "Nói 'cái gì ở đâu' (vật cụ thể + ở + nơi chốn) thì dùng 在: 我的手机在桌子上 = Điện thoại của tôi ở trên bàn."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "我们家___四口人。",
+      "answer": "有",
+      "options": ["有", "在", "是", "上"],
+      "explanation": "Diễn đạt 'nhà tôi có bốn người' (tồn tại số lượng người/vật) thì dùng 有: 我们家有四口人."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "书在书包___。",
+      "answer": "里",
+      "options": ["里", "在", "有", "上"],
+      "explanation": "里 (lǐ) nghĩa là 'bên trong'. 书包里 = trong cặp sách. Sau danh từ chỉ nơi chốn thường thêm 里/上/下 để chỉ rõ vị trí."
+    },
+    {
+      "type": "arrange",
+      "words": ["在", "爸爸", "公司"],
+      "answer": "爸爸在公司",
+      "hint": "Bố ở công ty."
+    },
+    {
+      "type": "arrange",
+      "words": ["有", "里", "猫", "房间", "一只"],
+      "answer": "房间里有一只猫",
+      "hint": "Trong phòng có một con mèo."
+    },
+    {
+      "type": "arrange",
+      "words": ["在", "哪儿", "你", "的", "学校"],
+      "answer": "你的学校在哪儿",
+      "hint": "Trường của bạn ở đâu?"
+    }
+  ]
+}

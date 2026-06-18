@@ -1,0 +1,137 @@
+{
+  "key": "ja-s2-l6",
+  "cards": [
+    {
+      "type": "speaking",
+      "prompt": "何を食べますか。",
+      "hint": "Nói món bạn muốn ăn, dùng trợ từ を và động từ 食べます. Có thể thêm lý do hoặc cảm nhận (ngon, thích).",
+      "samplePhrases": [
+        "わたしは～を食べます。",
+        "～が食べたいです。",
+        "～にします。"
+      ],
+      "vocabulary": [
+        { "word": "ラーメン", "meaning": "mì ramen", "example": "ラーメンを食べます。" },
+        { "word": "すし", "meaning": "sushi", "example": "わたしはすしが好きです。" },
+        { "word": "おいしい", "meaning": "ngon", "example": "このラーメンはおいしいです。" },
+        { "word": "～にします", "meaning": "chọn (món)~", "example": "じゃあ、てんぷらにします。" }
+      ],
+      "ideas": [
+        "Nói tên món chính muốn ăn (ramen, sushi, cơm...)",
+        "Giải thích vì sao chọn món đó (ngon, thích, đói)",
+        "Có thể hỏi lại người nghe muốn ăn gì"
+      ],
+      "sampleAnswer": "わたしはラーメンを食べます。ここのラーメンはとてもおいしいです。それから、ぎょうざも食べたいです。あなたは何を食べますか。\n\n(Dịch: Tôi sẽ ăn ramen. Ramen ở đây rất ngon. Ngoài ra, tôi cũng muốn ăn cả há cảo nữa. Còn bạn ăn gì?)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "これはいくらですか。",
+      "hint": "Hỏi giá một món đồ. Hãy chỉ vào món đồ, hỏi giá và nói cảm nhận về giá (rẻ/đắt).",
+      "samplePhrases": [
+        "これはいくらですか。",
+        "それはいくらですか。",
+        "～円ですか。"
+      ],
+      "vocabulary": [
+        { "word": "いくら", "meaning": "bao nhiêu tiền", "example": "これはいくらですか。" },
+        { "word": "円", "meaning": "yên (tiền Nhật)", "example": "五百円です。" },
+        { "word": "やすい", "meaning": "rẻ", "example": "これはやすいです。" },
+        { "word": "たかい", "meaning": "đắt", "example": "それはちょっとたかいです。" }
+      ],
+      "ideas": [
+        "Chỉ vào món đồ và hỏi giá bằng いくら",
+        "Nghe giá và nhắc lại số tiền (~円)",
+        "Đưa ra nhận xét: rẻ hay đắt"
+      ],
+      "sampleAnswer": "すみません、これはいくらですか。ああ、八百円ですか。ちょっと高いですね。じゃあ、それはいくらですか。\n\n(Dịch: Xin lỗi, cái này bao nhiêu tiền ạ? À, 800 yên à? Hơi đắt nhỉ. Vậy cái kia bao nhiêu tiền ạ?)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "ちょっと高いです。安くなりますか。",
+      "hint": "Mặc cả lịch sự: nói món đồ hơi đắt và hỏi có giảm giá được không. Có thể đề nghị mức giá mong muốn.",
+      "samplePhrases": [
+        "ちょっと高いです。",
+        "安くなりますか。",
+        "～円にしてください。"
+      ],
+      "vocabulary": [
+        { "word": "ちょっと", "meaning": "hơi, một chút", "example": "ちょっと高いです。" },
+        { "word": "安くなる", "meaning": "trở nên rẻ hơn, giảm giá", "example": "安くなりますか。" },
+        { "word": "～にしてください", "meaning": "hãy để giá là~", "example": "五百円にしてください。" },
+        { "word": "まけてください", "meaning": "hãy bớt giá đi", "example": "もう少しまけてください。" }
+      ],
+      "ideas": [
+        "Nói rõ món đồ hơi đắt một cách lịch sự (ちょっと高い)",
+        "Hỏi có thể giảm giá không (安くなりますか)",
+        "Đề nghị mức giá cụ thể mình muốn"
+      ],
+      "sampleAnswer": "このかばん、ちょっと高いです。安くなりますか。八百円にしてください。お願いします。じゃあ、これを買います。\n\n(Dịch: Cái túi này hơi đắt. Có giảm giá được không ạ? Cho tôi giá 800 yên đi ạ. Làm ơn nhé. Vậy thì tôi mua cái này.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "何を飲みますか。",
+      "hint": "Nói đồ uống bạn muốn gọi, dùng を và động từ 飲みます. Có thể thêm cảm nhận hoặc gọi cho người khác.",
+      "samplePhrases": [
+        "わたしは～を飲みます。",
+        "～をください。",
+        "～にします。"
+      ],
+      "vocabulary": [
+        { "word": "コーヒー", "meaning": "cà phê", "example": "コーヒーを飲みます。" },
+        { "word": "おちゃ", "meaning": "trà", "example": "わたしはおちゃにします。" },
+        { "word": "みず", "meaning": "nước", "example": "みずをください。" },
+        { "word": "つめたい", "meaning": "lạnh, mát", "example": "つめたいビールが飲みたいです。" }
+      ],
+      "ideas": [
+        "Nói tên đồ uống muốn gọi (cà phê, trà, nước...)",
+        "Dùng ～をください hoặc ～にします để gọi món",
+        "Thêm chi tiết: nóng/lạnh, vì sao chọn"
+      ],
+      "sampleAnswer": "わたしはコーヒーを飲みます。ホットコーヒーをください。あついですから、つめたいみずもお願いします。あなたは何を飲みますか。\n\n(Dịch: Tôi uống cà phê. Cho tôi một cà phê nóng ạ. Vì trời nóng nên cho thêm cả nước lạnh nữa nhé. Còn bạn uống gì?)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "全部でいくらですか。",
+      "hint": "Hỏi tổng số tiền phải trả khi thanh toán. Có thể liệt kê các món đã mua và hỏi tổng cộng.",
+      "samplePhrases": [
+        "全部でいくらですか。",
+        "ぜんぶで～円ですね。",
+        "カードでいいですか。"
+      ],
+      "vocabulary": [
+        { "word": "全部で", "meaning": "tổng cộng", "example": "全部でいくらですか。" },
+        { "word": "はらう", "meaning": "trả (tiền)", "example": "カードではらいます。" },
+        { "word": "カード", "meaning": "thẻ (tín dụng)", "example": "カードでいいですか。" },
+        { "word": "おつり", "meaning": "tiền thừa, tiền thối lại", "example": "おつりをください。" }
+      ],
+      "ideas": [
+        "Hỏi tổng số tiền tất cả các món (全部で)",
+        "Nhắc lại tổng tiền nghe được (～円ですね)",
+        "Hỏi cách thanh toán: tiền mặt hay thẻ"
+      ],
+      "sampleAnswer": "すみません、全部でいくらですか。千二百円ですね。カードでいいですか。じゃあ、これではらいます。ありがとうございました。\n\n(Dịch: Xin lỗi, tổng cộng hết bao nhiêu tiền ạ? 1200 yên đúng không ạ. Trả bằng thẻ có được không ạ? Vậy tôi trả bằng cái này. Cảm ơn nhiều ạ.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "どの色が好きですか。",
+      "hint": "Nói màu bạn thích khi chọn đồ, dùng どの～ và 好きです. Có thể giải thích lý do hoặc so sánh các màu.",
+      "samplePhrases": [
+        "わたしは～色が好きです。",
+        "～のほうが好きです。",
+        "この色にします。"
+      ],
+      "vocabulary": [
+        { "word": "色", "meaning": "màu sắc", "example": "どの色が好きですか。" },
+        { "word": "あお", "meaning": "màu xanh dương", "example": "あおが好きです。" },
+        { "word": "あか", "meaning": "màu đỏ", "example": "あかいシャツを買います。" },
+        { "word": "しろ", "meaning": "màu trắng", "example": "しろはきれいです。" }
+      ],
+      "ideas": [
+        "Nói màu mình thích nhất (xanh, đỏ, trắng...)",
+        "Giải thích vì sao thích màu đó (đẹp, hợp...)",
+        "Quyết định chọn món có màu đó (この色にします)"
+      ],
+      "sampleAnswer": "わたしはあおが好きです。あおはきれいですから。でも、このシャツは白のほうがいいですね。じゃあ、白のシャツにします。\n\n(Dịch: Tôi thích màu xanh dương. Vì màu xanh đẹp. Nhưng cái áo này thì màu trắng hợp hơn nhỉ. Vậy tôi chọn áo màu trắng.)"
+    }
+  ]
+}

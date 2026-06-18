@@ -1,0 +1,105 @@
+{
+  "key": "ko-s1-l2",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "하나",
+      "phonetic": "hana",
+      "pos": "n.",
+      "meaning": "một (số đếm thuần Hàn)",
+      "example": "사과 하나 주세요.",
+      "options": ["một (số đếm thuần Hàn)", "hai (số đếm thuần Hàn)", "mười (số đếm thuần Hàn)", "năm (số đếm thuần Hàn)"],
+      "answer": "một (số đếm thuần Hàn)"
+    },
+    {
+      "type": "vocab",
+      "word": "둘",
+      "phonetic": "dul",
+      "pos": "n.",
+      "meaning": "hai (số đếm thuần Hàn)",
+      "example": "사람이 둘 있어요.",
+      "options": ["hai (số đếm thuần Hàn)", "một (số đếm thuần Hàn)", "ba (số đếm thuần Hàn)", "bốn (số đếm thuần Hàn)"],
+      "answer": "hai (số đếm thuần Hàn)"
+    },
+    {
+      "type": "vocab",
+      "word": "셋",
+      "phonetic": "set",
+      "pos": "n.",
+      "meaning": "ba (số đếm thuần Hàn)",
+      "example": "친구 셋이 와요.",
+      "options": ["ba (số đếm thuần Hàn)", "bốn (số đếm thuần Hàn)", "sáu (số đếm thuần Hàn)", "hai (số đếm thuần Hàn)"],
+      "answer": "ba (số đếm thuần Hàn)"
+    },
+    {
+      "type": "vocab",
+      "word": "넷",
+      "phonetic": "net",
+      "pos": "n.",
+      "meaning": "bốn (số đếm thuần Hàn)",
+      "example": "의자가 넷 있어요.",
+      "options": ["bốn (số đếm thuần Hàn)", "ba (số đếm thuần Hàn)", "năm (số đếm thuần Hàn)", "bảy (số đếm thuần Hàn)"],
+      "answer": "bốn (số đếm thuần Hàn)"
+    },
+    {
+      "type": "vocab",
+      "word": "다섯",
+      "phonetic": "daseot",
+      "pos": "n.",
+      "meaning": "năm (số đếm thuần Hàn)",
+      "example": "다섯 시에 만나요.",
+      "options": ["năm (số đếm thuần Hàn)", "sáu (số đếm thuần Hàn)", "bốn (số đếm thuần Hàn)", "chín (số đếm thuần Hàn)"],
+      "answer": "năm (số đếm thuần Hàn)"
+    },
+    {
+      "type": "vocab",
+      "word": "열",
+      "phonetic": "yeol",
+      "pos": "n.",
+      "meaning": "mười (số đếm thuần Hàn)",
+      "example": "학생이 열 명 있어요.",
+      "options": ["mười (số đếm thuần Hàn)", "tám (số đếm thuần Hàn)", "bảy (số đếm thuần Hàn)", "sáu (số đếm thuần Hàn)"],
+      "answer": "mười (số đếm thuần Hàn)"
+    },
+    {
+      "type": "vocab",
+      "word": "일",
+      "phonetic": "il",
+      "pos": "n.",
+      "meaning": "một (số đếm Hán-Hàn)",
+      "example": "일 더하기 이는 삼이에요.",
+      "options": ["một (số đếm Hán-Hàn)", "hai (số đếm Hán-Hàn)", "ba (số đếm Hán-Hàn)", "mười (số đếm Hán-Hàn)"],
+      "answer": "một (số đếm Hán-Hàn)"
+    },
+    {
+      "type": "vocab",
+      "word": "백",
+      "phonetic": "baek",
+      "pos": "n.",
+      "meaning": "một trăm (số đếm Hán-Hàn)",
+      "example": "이 가방은 백 달러예요.",
+      "options": ["một trăm (số đếm Hán-Hàn)", "một nghìn (số đếm Hán-Hàn)", "mười (số đếm Hán-Hàn)", "năm mươi (số đếm Hán-Hàn)"],
+      "answer": "một trăm (số đếm Hán-Hàn)"
+    },
+    {
+      "type": "vocab",
+      "word": "시",
+      "phonetic": "si",
+      "pos": "n.",
+      "meaning": "giờ (dùng với số thuần Hàn)",
+      "example": "지금 세 시예요.",
+      "options": ["giờ (dùng với số thuần Hàn)", "phút (dùng với số Hán-Hàn)", "ngày (dùng với số Hán-Hàn)", "tuổi (dùng với số thuần Hàn)"],
+      "answer": "giờ (dùng với số thuần Hàn)"
+    },
+    {
+      "type": "vocab",
+      "word": "분",
+      "phonetic": "bun",
+      "pos": "n.",
+      "meaning": "phút (dùng với số Hán-Hàn)",
+      "example": "지금 두 시 십 분이에요.",
+      "options": ["phút (dùng với số Hán-Hàn)", "giờ (dùng với số thuần Hàn)", "giây (dùng với số Hán-Hàn)", "ngày (dùng với số Hán-Hàn)"],
+      "answer": "phút (dùng với số Hán-Hàn)"
+    }
+  ]
+}

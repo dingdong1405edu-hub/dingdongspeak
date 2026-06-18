@@ -8,7 +8,7 @@ export function getSttConfig(lang: LangCode | string) {
   return getLang(lang).stt // { model, language }
 }
 
-/** Deepgram TTS voice for a target language, or null when unsupported (zh/ja/ko). */
+/** Deepgram TTS voice for a target language, or null when unsupported (zh/ko). */
 export function getTtsVoice(lang: LangCode | string): string | null {
   return getLang(lang).ttsVoice
 }
@@ -63,8 +63,8 @@ export async function speechToText(
   return data?.results?.channels?.[0]?.alternatives?.[0]?.transcript ?? ''
 }
 
-// English examiner voices (Deepgram Aura is English-only). Other languages
-// currently have no server TTS — see getTtsVoice().
+// English examiner voices (Deepgram Aura). Japanese uses an Aura-2 voice
+// (see registry ttsVoice); Mandarin/Korean have no Deepgram TTS — see getTtsVoice().
 export const EXAMINER_VOICES = [
   { id: 'aura-asteria-en', name: 'Asteria (Female)', accent: 'American' },
   { id: 'aura-orion-en', name: 'Orion (Male)', accent: 'American' },

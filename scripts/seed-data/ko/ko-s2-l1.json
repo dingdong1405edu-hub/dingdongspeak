@@ -1,0 +1,105 @@
+{
+  "key": "ko-s2-l1",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "밥",
+      "phonetic": "bap",
+      "pos": "n.",
+      "meaning": "cơm",
+      "example": "저는 매일 아침에 밥을 먹어요.",
+      "options": ["cơm", "bánh mì", "trái cây", "nước"],
+      "answer": "cơm"
+    },
+    {
+      "type": "vocab",
+      "word": "김치",
+      "phonetic": "gimchi",
+      "pos": "n.",
+      "meaning": "kim chi",
+      "example": "한국 사람들은 김치를 좋아해요.",
+      "options": ["kim chi", "thịt nướng", "mì gói", "cà phê"],
+      "answer": "kim chi"
+    },
+    {
+      "type": "vocab",
+      "word": "불고기",
+      "phonetic": "bulgogi",
+      "pos": "n.",
+      "meaning": "thịt bò xào kiểu Hàn (bulgogi)",
+      "example": "이 식당의 불고기가 정말 맛있어요.",
+      "options": ["thịt bò xào kiểu Hàn (bulgogi)", "cơm trộn", "kim chi", "sữa"],
+      "answer": "thịt bò xào kiểu Hàn (bulgogi)"
+    },
+    {
+      "type": "vocab",
+      "word": "비빔밥",
+      "phonetic": "bibimbap",
+      "pos": "n.",
+      "meaning": "cơm trộn (bibimbap)",
+      "example": "점심에 비빔밥을 먹었어요.",
+      "options": ["cơm trộn (bibimbap)", "mì gói", "thịt nướng", "trà"],
+      "answer": "cơm trộn (bibimbap)"
+    },
+    {
+      "type": "vocab",
+      "word": "라면",
+      "phonetic": "ramyeon",
+      "pos": "n.",
+      "meaning": "mì gói (mì ramyeon)",
+      "example": "배가 고파서 라면을 끓였어요.",
+      "options": ["mì gói (mì ramyeon)", "cơm", "trái cây", "cà phê"],
+      "answer": "mì gói (mì ramyeon)"
+    },
+    {
+      "type": "vocab",
+      "word": "과일",
+      "phonetic": "gwail",
+      "pos": "n.",
+      "meaning": "trái cây",
+      "example": "저는 과일을 아주 좋아해요.",
+      "options": ["trái cây", "bánh mì", "cơm", "nước"],
+      "answer": "trái cây"
+    },
+    {
+      "type": "vocab",
+      "word": "물",
+      "phonetic": "mul",
+      "pos": "n.",
+      "meaning": "nước",
+      "example": "운동 후에 물을 많이 마셔요.",
+      "options": ["nước", "sữa", "cà phê", "trà"],
+      "answer": "nước"
+    },
+    {
+      "type": "vocab",
+      "word": "커피",
+      "phonetic": "keopi",
+      "pos": "n.",
+      "meaning": "cà phê",
+      "example": "아침마다 커피 한 잔을 마셔요.",
+      "options": ["cà phê", "nước", "sữa", "trà"],
+      "answer": "cà phê"
+    },
+    {
+      "type": "vocab",
+      "word": "먹다",
+      "phonetic": "meokda",
+      "pos": "v.",
+      "meaning": "ăn",
+      "example": "친구하고 같이 점심을 먹어요.",
+      "options": ["ăn", "uống", "ngon", "mua"],
+      "answer": "ăn"
+    },
+    {
+      "type": "vocab",
+      "word": "마시다",
+      "phonetic": "masida",
+      "pos": "v.",
+      "meaning": "uống",
+      "example": "저는 매일 물을 두 병 마셔요.",
+      "options": ["uống", "ăn", "nấu", "ngon"],
+      "answer": "uống"
+    }
+  ]
+}

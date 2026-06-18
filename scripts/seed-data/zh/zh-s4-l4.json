@@ -1,0 +1,105 @@
+{
+  "key": "zh-s4-l4",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "旅游",
+      "phonetic": "lǚyóu",
+      "pos": "v.",
+      "meaning": "du lịch",
+      "example": "我喜欢一个人去旅游。",
+      "options": ["du lịch", "công tác", "nghỉ ngơi", "chuyển nhà"],
+      "answer": "du lịch"
+    },
+    {
+      "type": "vocab",
+      "word": "飞机",
+      "phonetic": "fēijī",
+      "pos": "n.",
+      "meaning": "máy bay",
+      "example": "我们坐飞机去北京。",
+      "options": ["máy bay", "tàu hỏa", "xe buýt", "tàu thủy"],
+      "answer": "máy bay"
+    },
+    {
+      "type": "vocab",
+      "word": "机场",
+      "phonetic": "jīchǎng",
+      "pos": "n.",
+      "meaning": "sân bay",
+      "example": "请你三点到机场来接我。",
+      "options": ["sân bay", "nhà ga", "bến xe", "bến cảng"],
+      "answer": "sân bay"
+    },
+    {
+      "type": "vocab",
+      "word": "火车站",
+      "phonetic": "huǒchēzhàn",
+      "pos": "n.",
+      "meaning": "ga tàu hỏa",
+      "example": "火车站离我家不远。",
+      "options": ["ga tàu hỏa", "sân bay", "bến xe buýt", "trạm tàu điện ngầm"],
+      "answer": "ga tàu hỏa"
+    },
+    {
+      "type": "vocab",
+      "word": "宾馆",
+      "phonetic": "bīnguǎn",
+      "pos": "n.",
+      "meaning": "khách sạn",
+      "example": "我们晚上住在这家宾馆。",
+      "options": ["khách sạn", "nhà hàng", "bệnh viện", "siêu thị"],
+      "answer": "khách sạn"
+    },
+    {
+      "type": "vocab",
+      "word": "护照",
+      "phonetic": "hùzhào",
+      "pos": "n.",
+      "meaning": "hộ chiếu",
+      "example": "出国旅游别忘了带护照。",
+      "options": ["hộ chiếu", "vé máy bay", "bản đồ", "tiền mặt"],
+      "answer": "hộ chiếu"
+    },
+    {
+      "type": "vocab",
+      "word": "行李",
+      "phonetic": "xíngli",
+      "pos": "n.",
+      "meaning": "hành lý",
+      "example": "我的行李太多了，有点儿重。",
+      "options": ["hành lý", "vé tàu", "quà tặng", "đồ ăn"],
+      "answer": "hành lý"
+    },
+    {
+      "type": "vocab",
+      "word": "照相",
+      "phonetic": "zhàoxiàng",
+      "pos": "v.",
+      "meaning": "chụp ảnh",
+      "example": "我们在长城前面照相吧。",
+      "options": ["chụp ảnh", "vẽ tranh", "viết thư", "xem phim"],
+      "answer": "chụp ảnh"
+    },
+    {
+      "type": "vocab",
+      "word": "景点",
+      "phonetic": "jǐngdiǎn",
+      "pos": "n.",
+      "meaning": "địa điểm tham quan, danh thắng",
+      "example": "这个城市有很多有名的景点。",
+      "options": ["địa điểm tham quan, danh thắng", "khách sạn", "nhà hàng nổi tiếng", "trung tâm mua sắm"],
+      "answer": "địa điểm tham quan, danh thắng"
+    },
+    {
+      "type": "vocab",
+      "word": "出发",
+      "phonetic": "chūfā",
+      "pos": "v.",
+      "meaning": "xuất phát, khởi hành",
+      "example": "我们明天早上八点出发。",
+      "options": ["xuất phát, khởi hành", "đến nơi", "quay về", "nghỉ lại"],
+      "answer": "xuất phát, khởi hành"
+    }
+  ]
+}

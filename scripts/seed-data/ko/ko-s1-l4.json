@@ -1,0 +1,105 @@
+{
+  "key": "ko-s1-l4",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "아버지",
+      "phonetic": "abeoji",
+      "pos": "n.",
+      "meaning": "bố, cha",
+      "example": "우리 아버지는 회사원이에요.",
+      "options": ["bố, cha", "mẹ", "ông", "anh trai"],
+      "answer": "bố, cha"
+    },
+    {
+      "type": "vocab",
+      "word": "어머니",
+      "phonetic": "eomeoni",
+      "pos": "n.",
+      "meaning": "mẹ",
+      "example": "어머니가 요리를 아주 잘하세요.",
+      "options": ["mẹ", "bố, cha", "bà", "chị gái"],
+      "answer": "mẹ"
+    },
+    {
+      "type": "vocab",
+      "word": "부모님",
+      "phonetic": "bumonim",
+      "pos": "n.",
+      "meaning": "bố mẹ, cha mẹ",
+      "example": "저는 부모님과 같이 살아요.",
+      "options": ["bố mẹ, cha mẹ", "ông bà", "anh chị em", "con cái"],
+      "answer": "bố mẹ, cha mẹ"
+    },
+    {
+      "type": "vocab",
+      "word": "형",
+      "phonetic": "hyeong",
+      "pos": "n.",
+      "meaning": "anh trai (em trai gọi)",
+      "example": "저는 형이 한 명 있어요.",
+      "options": ["anh trai (em trai gọi)", "anh trai (em gái gọi)", "chị gái (em gái gọi)", "em"],
+      "answer": "anh trai (em trai gọi)"
+    },
+    {
+      "type": "vocab",
+      "word": "오빠",
+      "phonetic": "oppa",
+      "pos": "n.",
+      "meaning": "anh trai (em gái gọi)",
+      "example": "우리 오빠는 키가 커요.",
+      "options": ["anh trai (em gái gọi)", "anh trai (em trai gọi)", "chị gái (em gái gọi)", "ông nội"],
+      "answer": "anh trai (em gái gọi)"
+    },
+    {
+      "type": "vocab",
+      "word": "누나",
+      "phonetic": "nuna",
+      "pos": "n.",
+      "meaning": "chị gái (em trai gọi)",
+      "example": "누나가 저보다 세 살 많아요.",
+      "options": ["chị gái (em trai gọi)", "chị gái (em gái gọi)", "anh trai (em gái gọi)", "em gái"],
+      "answer": "chị gái (em trai gọi)"
+    },
+    {
+      "type": "vocab",
+      "word": "언니",
+      "phonetic": "eonni",
+      "pos": "n.",
+      "meaning": "chị gái (em gái gọi)",
+      "example": "언니랑 같이 쇼핑을 했어요.",
+      "options": ["chị gái (em gái gọi)", "chị gái (em trai gọi)", "anh trai (em trai gọi)", "bà ngoại"],
+      "answer": "chị gái (em gái gọi)"
+    },
+    {
+      "type": "vocab",
+      "word": "동생",
+      "phonetic": "dongsaeng",
+      "pos": "n.",
+      "meaning": "em (em trai hoặc em gái)",
+      "example": "제 동생은 학생이에요.",
+      "options": ["em (em trai hoặc em gái)", "anh trai", "chị gái", "cháu"],
+      "answer": "em (em trai hoặc em gái)"
+    },
+    {
+      "type": "vocab",
+      "word": "할아버지",
+      "phonetic": "harabeoji",
+      "pos": "n.",
+      "meaning": "ông (ông nội/ông ngoại)",
+      "example": "할아버지께서 신문을 읽으세요.",
+      "options": ["ông (ông nội/ông ngoại)", "bà (bà nội/bà ngoại)", "bố", "bác trai"],
+      "answer": "ông (ông nội/ông ngoại)"
+    },
+    {
+      "type": "vocab",
+      "word": "할머니",
+      "phonetic": "halmeoni",
+      "pos": "n.",
+      "meaning": "bà (bà nội/bà ngoại)",
+      "example": "할머니께서 떡을 만들어 주셨어요.",
+      "options": ["bà (bà nội/bà ngoại)", "ông (ông nội/ông ngoại)", "mẹ", "cô"],
+      "answer": "bà (bà nội/bà ngoại)"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "key": "ko-s3-l2",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "았어요 (nguyên âm gốc ㅏ/ㅗ)",
+      "explanation": "Thì quá khứ trong tiếng Hàn dùng đuôi 았어요/었어요. Khi nguyên âm cuối của thân động từ/tính từ là ㅏ hoặc ㅗ thì dùng 았어요. Bỏ 다 ở dạng nguyên thể rồi gắn 았어요. Ví dụ: 가다 → 갔어요 (ㅏ+았 rút gọn thành 갔), 좋다 → 좋았어요, 살다 → 살았어요, 오다 → 왔어요 (ㅗ+았 → 왔).",
+      "examples": [
+        "어제 친구를 만났어요.",
+        "주말에 영화가 정말 좋았어요.",
+        "아침에 일찍 일어나서 운동했어요."
+      ],
+      "tip": "Người Việt hay quên rút gọn nguyên âm. 가다 + 았어요 KHÔNG phải 가았어요 mà rút gọn thành 갔어요. 오다 → 왔어요.",
+      "question": "다음 동사의 과거형으로 알맞은 것을 고르세요: 가다 → ?",
+      "options": ["갔어요", "가었어요", "가았어요", "갔었어요"],
+      "answer": "갔어요"
+    },
+    {
+      "type": "grammar",
+      "rule": "었어요 (nguyên âm gốc không phải ㅏ/ㅗ)",
+      "explanation": "Khi nguyên âm cuối của thân động từ/tính từ KHÔNG phải ㅏ hoặc ㅗ (tức là ㅓ, ㅜ, ㅡ, ㅣ, ㅔ...) thì dùng đuôi 었어요. Ví dụ: 먹다 → 먹었어요, 읽다 → 읽었어요, 마시다 → 마셨어요 (ㅣ+었 → 셨), 배우다 → 배웠어요 (ㅜ+었 → 웠), 기다리다 → 기다렸어요.",
+      "examples": [
+        "어제 저녁에 한국 음식을 먹었어요.",
+        "도서관에서 책을 읽었어요.",
+        "친구하고 커피를 마셨어요."
+      ],
+      "tip": "Phân biệt theo nguyên âm gốc: chỉ ㅏ/ㅗ mới dùng 았어요, còn lại đều dùng 었어요. 먹다 → 먹었어요 (KHÔNG phải 먹았어요).",
+      "question": "다음 동사의 과거형으로 알맞은 것을 고르세요: 먹다 → ?",
+      "options": ["먹었어요", "먹았어요", "먹였어요", "머것어요"],
+      "answer": "먹었어요"
+    },
+    {
+      "type": "grammar",
+      "rule": "했어요 (động từ kết thúc bằng 하다)",
+      "explanation": "Mọi động từ và tính từ kết thúc bằng 하다 đều chia quá khứ bất quy tắc thành 했어요 (하다 → 했어요). Đây là dạng đặc biệt, không theo quy tắc ㅏ/ㅗ. Ví dụ: 공부하다 → 공부했어요, 운동하다 → 운동했어요, 사랑하다 → 사랑했어요, 일하다 → 일했어요.",
+      "examples": [
+        "어제 도서관에서 공부했어요.",
+        "지난주에 정말 열심히 일했어요.",
+        "친구하고 같이 숙제했어요."
+      ],
+      "tip": "하다 luôn thành 했어요. Đừng viết 하았어요 hay 하었어요. Ví dụ 공부하다 → 공부했어요.",
+      "question": "다음 동사의 과거형으로 알맞은 것을 고르세요: 공부하다 → ?",
+      "options": ["공부했어요", "공부핬어요", "공부하었어요", "공부했었요"],
+      "answer": "공부했어요"
+    },
+    {
+      "type": "grammar",
+      "rule": "Danh từ + 이었어요/였어요 (đã là...)",
+      "explanation": "Để nói 'đã là (một danh từ nào đó)' ở quá khứ, ta dùng 이었어요 nếu danh từ có patchim (phụ âm cuối) và 였어요 nếu danh từ không có patchim. Ví dụ: 학생 (có patchim) → 학생이었어요, 의사 (không patchim) → 의사였어요, 가수 → 가수였어요.",
+      "examples": [
+        "10년 전에 저는 학생이었어요.",
+        "그 사람은 유명한 가수였어요.",
+        "여기는 옛날에 식당이었어요."
+      ],
+      "tip": "Có patchim dùng 이었어요, không patchim dùng 였어요. 학생 → 학생이었어요; 의사 → 의사였어요.",
+      "question": "다음 빈칸에 알맞은 것을 고르세요: 작년에 저는 회사원___.",
+      "options": ["이었어요", "였어요", "이에요", "였었어요"],
+      "answer": "이었어요"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "어제 친구하고 같이 점심을 ___.",
+      "answer": "먹었어요",
+      "options": ["먹었어요", "먹았어요", "먹어요", "먹겠어요"],
+      "explanation": "먹다 có nguyên âm gốc ㅓ (không phải ㅏ/ㅗ) nên dùng 었어요 → 먹었어요. Đồng thời 어제 (hôm qua) là dấu hiệu của thì quá khứ."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "지난 주말에 영화를 봐서 기분이 정말 ___.",
+      "answer": "좋았어요",
+      "options": ["좋았어요", "좋었어요", "좋아요", "좋했어요"],
+      "explanation": "좋다 có nguyên âm gốc ㅗ nên dùng 았어요 → 좋았어요. Đây là tính từ chỉ trạng thái trong quá khứ (đã rất tốt/vui)."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "어젯밤에 도서관에서 세 시간 동안 ___.",
+      "answer": "공부했어요",
+      "options": ["공부했어요", "공부핬어요", "공부했겠어요", "공부해요"],
+      "explanation": "공부하다 kết thúc bằng 하다 nên chia quá khứ bất quy tắc thành 공부했어요."
+    },
+    {
+      "type": "arrange",
+      "words": ["만났어요", "어제", "친구를", "저는"],
+      "answer": "저는 어제 친구를 만났어요",
+      "hint": "Hôm qua tôi đã gặp bạn. (만나다 có nguyên âm ㅏ nên rút gọn thành 만났어요)"
+    },
+    {
+      "type": "arrange",
+      "words": ["커피를", "마셨어요", "오빠가", "아침에"],
+      "answer": "오빠가 아침에 커피를 마셨어요",
+      "hint": "Buổi sáng anh trai đã uống cà phê. (마시다 → 마셨어요)"
+    },
+    {
+      "type": "arrange",
+      "words": ["학생이었어요", "10년", "저는", "전에"],
+      "answer": "저는 10년 전에 학생이었어요",
+      "hint": "10 năm trước tôi đã là học sinh. (Danh từ 학생 có patchim nên dùng 이었어요)"
+    }
+  ]
+}

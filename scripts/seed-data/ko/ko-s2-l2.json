@@ -1,0 +1,100 @@
+{
+  "key": "ko-s2-l2",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "Trợ từ tân ngữ 을/를",
+      "explanation": "Trợ từ 을/를 gắn sau danh từ để đánh dấu danh từ đó là tân ngữ (đối tượng) của hành động. Quy tắc: nếu danh từ kết thúc bằng phụ âm cuối (받침) thì dùng 을; nếu kết thúc bằng nguyên âm (không có 받침) thì dùng 를.",
+      "examples": [
+        "저는 밥을 먹어요.",
+        "친구를 만나요.",
+        "한국어를 공부해요."
+      ],
+      "tip": "Người Việt hay quên gắn trợ từ tân ngữ vì tiếng Việt không có. Hãy nhớ: có 받침 → 을, không 받침 → 를. Ví dụ 밥 (có 받침) → 밥을, 친구 (không 받침) → 친구를.",
+      "question": "다음 중 빈칸에 알맞은 것을 고르세요: 저는 물___ 마셔요.",
+      "options": ["을", "를", "이", "가"],
+      "answer": "을"
+    },
+    {
+      "type": "grammar",
+      "rule": "Thì hiện tại lịch sự 아요 (sau nguyên âm gốc ㅏ/ㅗ)",
+      "explanation": "Khi nguyên âm cuối của gốc động/tính từ là ㅏ hoặc ㅗ, ta thêm 아요 để chia ở thì hiện tại thể thân mật lịch sự (해요체). Nếu gốc kết thúc bằng nguyên âm thì hai nguyên âm rút gọn: 가다 → 가요, 오다 → 와요.",
+      "examples": [
+        "저는 학교에 가요.",
+        "동생이 사과를 좋아해요.",
+        "친구가 사진을 봐요."
+      ],
+      "tip": "Người Việt hay quên rút gọn nguyên âm. 가다 không phải 가아요 mà là 가요; 오다 không phải 오아요 mà là 와요.",
+      "question": "동사 '살다'를 현재형 해요체로 바르게 바꾼 것을 고르세요.",
+      "options": ["살아요", "살어요", "살해요", "살이에요"],
+      "answer": "살아요"
+    },
+    {
+      "type": "grammar",
+      "rule": "Thì hiện tại lịch sự 어요 (các nguyên âm gốc khác)",
+      "explanation": "Khi nguyên âm cuối của gốc KHÔNG phải ㅏ hoặc ㅗ, ta thêm 어요 để chia ở thì hiện tại thể thân mật lịch sự. Một số gốc rút gọn: 먹다 → 먹어요, 마시다 → 마셔요, 배우다 → 배워요.",
+      "examples": [
+        "저는 빵을 먹어요.",
+        "물을 마셔요.",
+        "한국어를 배워요."
+      ],
+      "tip": "Người Việt hay áp dụng nhầm 아요 cho mọi động từ. Hãy kiểm tra nguyên âm gốc: chỉ ㅏ/ㅗ mới dùng 아요, còn lại dùng 어요. 먹다 (có ㅓ) → 먹어요.",
+      "question": "동사 '읽다'를 현재형 해요체로 바르게 바꾼 것을 고르세요.",
+      "options": ["읽어요", "읽아요", "읽해요", "읽이에요"],
+      "answer": "읽어요"
+    },
+    {
+      "type": "grammar",
+      "rule": "Động từ 하다 → 해요",
+      "explanation": "Các động/tính từ kết thúc bằng 하다 (như 공부하다, 운동하다, 좋아하다) đều chia bất quy tắc thành 해요 ở thì hiện tại thể thân mật lịch sự.",
+      "examples": [
+        "저는 한국어를 공부해요.",
+        "주말에 운동해요.",
+        "저는 김치를 좋아해요."
+      ],
+      "tip": "하다 không chia thành 하아요 hay 하어요. Phải nhớ là dạng đặc biệt 해요. Mọi từ có đuôi 하다 đều theo quy tắc này.",
+      "question": "'일하다'를 현재형 해요체로 바르게 바꾼 것을 고르세요.",
+      "options": ["일해요", "일하요", "일하아요", "일아요"],
+      "answer": "일해요"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "저는 매일 아침에 빵___ 먹어요.",
+      "answer": "을",
+      "options": ["을", "를", "이", "가"],
+      "explanation": "빵 kết thúc bằng phụ âm cuối ㅇ (받침), nên trợ từ tân ngữ là 을. Câu nghĩa: 'Tôi ăn bánh mì mỗi buổi sáng.'"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "동생이 텔레비전을 ___. (보다)",
+      "answer": "봐요",
+      "options": ["봐요", "보아요", "보어요", "보해요"],
+      "explanation": "보다 có nguyên âm gốc ㅗ nên thêm 아요, rồi 오 + 아 rút gọn thành 와 → 봐요. Câu nghĩa: 'Em tôi xem ti vi.'"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "저는 친구하고 같이 한국어를 ___. (공부하다)",
+      "answer": "공부해요",
+      "options": ["공부해요", "공부하요", "공부하아요", "공부어요"],
+      "explanation": "Động từ kết thúc bằng 하다 chia bất quy tắc thành 해요. Câu nghĩa: 'Tôi học tiếng Hàn cùng với bạn.'"
+    },
+    {
+      "type": "arrange",
+      "words": ["마셔요", "물을", "저는"],
+      "answer": "저는 물을 마셔요",
+      "hint": "Câu nghĩa: 'Tôi uống nước.' (trợ từ tân ngữ 을 + động từ 마시다 → 마셔요)"
+    },
+    {
+      "type": "arrange",
+      "words": ["좋아해요", "친구가", "영화를", "한국"],
+      "answer": "친구가 한국 영화를 좋아해요",
+      "hint": "Câu nghĩa: 'Bạn tôi thích phim Hàn Quốc.' (trợ từ tân ngữ 를 + 좋아하다 → 좋아해요)"
+    },
+    {
+      "type": "arrange",
+      "words": ["읽어요", "책을", "오빠는"],
+      "answer": "오빠는 책을 읽어요",
+      "hint": "Câu nghĩa: 'Anh trai đọc sách.' (trợ từ tân ngữ 을 + 읽다 → 읽어요)"
+    }
+  ]
+}

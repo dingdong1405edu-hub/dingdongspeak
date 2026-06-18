@@ -1,0 +1,154 @@
+{
+  "key": "zh-s6-l1",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "一边...一边... (làm hai việc cùng lúc)",
+      "explanation": "Cấu trúc 一边 + động từ 1 + 一边 + động từ 2 diễn tả hai hành động xảy ra ĐỒNG THỜI cùng một lúc. Nghĩa: \"vừa... vừa...\". Ví dụ \"我一边吃饭一边看电视\" = \"Tôi vừa ăn cơm vừa xem tivi\". Hai vế đều có cùng chủ ngữ đứng đầu câu.",
+      "examples": [
+        "他一边走路一边听音乐。",
+        "我们一边喝咖啡一边聊天。",
+        "她一边做饭一边唱歌。"
+      ],
+      "tip": "Người Việt hay đặt chủ ngữ vào giữa, sau 一边 thứ hai. SAI: 一边吃饭我一边看书. ĐÚNG: chủ ngữ đứng TRƯỚC cả cụm, mỗi 一边 đứng ngay trước một động từ.",
+      "question": "Chọn câu đúng nghĩa \"Tôi vừa nghe nhạc vừa học bài\":",
+      "options": [
+        "我一边听音乐一边学习。",
+        "我一边听音乐学习一边。",
+        "一边我听音乐一边我学习。",
+        "我听音乐一边学习一边。"
+      ],
+      "answer": "我一边听音乐一边学习。"
+    },
+    {
+      "type": "grammar",
+      "rule": "越来越 + tính từ/động từ (ngày càng...)",
+      "explanation": "Cấu trúc 越来越 + tính từ (hoặc động từ chỉ trạng thái) diễn tả mức độ TĂNG DẦN theo thời gian, nghĩa \"ngày càng...\". Ví dụ \"天气越来越冷\" = \"Thời tiết ngày càng lạnh\". Không cần dùng 很 trước tính từ trong cấu trúc này.",
+      "examples": [
+        "他的中文越来越好。",
+        "天气越来越热了。",
+        "我越来越喜欢中国菜。"
+      ],
+      "tip": "Người Việt hay thêm 很 vào: SAI 越来越很冷. ĐÚNG: 越来越冷 (không có 很). 越来越 đã tự mang nghĩa \"ngày càng\" rồi.",
+      "question": "Câu \"Tiếng Trung của anh ấy ngày càng giỏi\" dịch là:",
+      "options": [
+        "他的中文越来越好。",
+        "他的中文很越来越好。",
+        "他的中文越来越很好。",
+        "他的中文好越来越。"
+      ],
+      "answer": "他的中文越来越好。"
+    },
+    {
+      "type": "grammar",
+      "rule": "越...越... (càng...càng...)",
+      "explanation": "Cấu trúc 越 + động từ/tính từ A + 越 + động từ/tính từ B diễn tả: hành động/tình trạng A tăng thì B cũng tăng theo, nghĩa \"càng... càng...\". Ví dụ \"雨越下越大\" = \"Mưa càng rơi càng to\". Hai vế có thể cùng hoặc khác chủ ngữ.",
+      "examples": [
+        "他越说越快。",
+        "我越想越生气。",
+        "雪越下越大。"
+      ],
+      "tip": "Phân biệt: 越来越 (ngày càng — theo thời gian) khác với 越...越... (càng A càng B — theo điều kiện). SAI khi trộn lẫn: 越说越来越快. ĐÚNG: 越说越快.",
+      "question": "Chọn câu đúng nghĩa \"Càng nói càng nhanh\":",
+      "options": [
+        "他越说越快。",
+        "他越来越说快。",
+        "他说越快越。",
+        "他越说越来越快。"
+      ],
+      "answer": "他越说越快。"
+    },
+    {
+      "type": "grammar",
+      "rule": "Phân biệt 越来越 và 越...越...",
+      "explanation": "越来越 + tính từ = \"ngày càng\" (biến đổi theo thời gian, chỉ một mức độ tăng dần). 越 A 越 B = \"càng A càng B\" (B thay đổi theo A, cần đủ hai vế A và B). Ví dụ: 越来越好 (ngày càng tốt) / 越学越好 (càng học càng giỏi).",
+      "examples": [
+        "学习汉语越来越有意思。",
+        "他越忙越高兴。",
+        "东西越来越贵了。"
+      ],
+      "tip": "Người Việt hay dùng nhầm: muốn nói \"càng học càng thích\" mà lại viết 越来越学喜欢. ĐÚNG: 越学越喜欢 (cần hai động từ/tính từ kẹp giữa hai chữ 越).",
+      "question": "\"Càng học tiếng Trung tôi càng thích\" dịch đúng là:",
+      "options": [
+        "我越学中文越喜欢。",
+        "我越来越学中文喜欢。",
+        "我学中文越来越喜欢越。",
+        "我越中文学越喜欢。"
+      ],
+      "answer": "我越学中文越喜欢。"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "他喜欢一边开车 ___ 听广播。",
+      "answer": "一边",
+      "options": [
+        "一边",
+        "越来越",
+        "越",
+        "一点"
+      ],
+      "explanation": "Câu diễn tả hai hành động cùng lúc \"vừa lái xe vừa nghe radio\", nên vế thứ hai cũng dùng 一边. Cấu trúc: 一边...一边..."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "春天来了，天气 ___ 暖和了。",
+      "answer": "越来越",
+      "options": [
+        "越来越",
+        "一边",
+        "越...越",
+        "比"
+      ],
+      "explanation": "Thời tiết thay đổi tăng dần theo thời gian (\"ngày càng ấm\"), nên dùng 越来越 + tính từ 暖和. Không dùng 一边 (đồng thời) ở đây."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "这本书很有意思，我 ___ 看 ___ 喜欢。",
+      "answer": "越",
+      "options": [
+        "越",
+        "一边",
+        "越来越",
+        "也"
+      ],
+      "explanation": "Diễn tả \"càng đọc càng thích\" — mức độ thích tăng theo việc đọc, dùng cấu trúc 越...越... (越看越喜欢). Cả hai chỗ trống đều điền 越."
+    },
+    {
+      "type": "arrange",
+      "words": [
+        "一边",
+        "一边",
+        "看电视",
+        "吃饭",
+        "他"
+      ],
+      "answer": "他一边吃饭一边看电视",
+      "hint": "Anh ấy vừa ăn cơm vừa xem tivi."
+    },
+    {
+      "type": "arrange",
+      "words": [
+        "越来越",
+        "汉语",
+        "好",
+        "的",
+        "我",
+        "了"
+      ],
+      "answer": "我的汉语越来越好了",
+      "hint": "Tiếng Hán của tôi ngày càng tốt."
+    },
+    {
+      "type": "arrange",
+      "words": [
+        "越",
+        "越",
+        "大",
+        "下",
+        "雨"
+      ],
+      "answer": "雨越下越大",
+      "hint": "Mưa càng rơi càng to."
+    }
+  ]
+}

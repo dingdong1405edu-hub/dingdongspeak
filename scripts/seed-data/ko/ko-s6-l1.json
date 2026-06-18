@@ -1,0 +1,100 @@
+{
+  "key": "ko-s6-l1",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "Danh từ hóa ～는 것 (động từ hiện tại)",
+      "explanation": "Thêm ～는 것 vào gốc động từ để biến hành động/việc đó thành danh từ, nghĩa là 'việc làm ~', 'điều ~'. Dùng cho động từ ở thì hiện tại. Ví dụ: 먹다 → 먹는 것 (việc ăn), 운동하다 → 운동하는 것 (việc tập thể dục).",
+      "examples": [
+        "한국어를 배우는 것이 재미있어요.",
+        "저는 책을 읽는 것을 좋아해요.",
+        "매일 운동하는 것은 건강에 좋아요."
+      ],
+      "tip": "Người Việt hay quên trợ từ sau 것 (것이/것을/것은). Sau 것 vẫn phải gắn trợ từ phù hợp với vai trò trong câu, không bỏ trống.",
+      "question": "저는 영화를 ___ 것을 좋아해요. (Tôi thích việc xem phim.)",
+      "options": ["보는", "본", "볼", "봐서"],
+      "answer": "보는"
+    },
+    {
+      "type": "grammar",
+      "rule": "Danh từ hóa ～(으)ㄴ 것 (động từ quá khứ)",
+      "explanation": "～(으)ㄴ 것 biến động từ ở thì quá khứ thành danh từ, nghĩa là 'việc đã ~', 'điều đã ~'. Gốc kết thúc bằng nguyên âm → ～ㄴ 것 (가다 → 간 것), kết thúc bằng phụ âm → ～은 것 (먹다 → 먹은 것).",
+      "examples": [
+        "어제 본 것이 무엇이었어요?",
+        "제가 만든 것이 맛있어요?",
+        "그가 말한 것을 기억해요."
+      ],
+      "tip": "Đừng nhầm ～는 것 (hiện tại) với ～(으)ㄴ 것 (quá khứ). 가는 것 = việc đang đi, 간 것 = việc đã đi.",
+      "question": "어제 제가 ___ 것이 재미있었어요? (Việc tôi đã nói hôm qua có thú vị không?)",
+      "options": ["말한", "말하는", "말할", "말해서"],
+      "answer": "말한"
+    },
+    {
+      "type": "grammar",
+      "rule": "Danh từ hóa ～기",
+      "explanation": "Thêm ～기 vào gốc động từ/tính từ để tạo danh từ. Thường dùng làm chủ ngữ, tân ngữ hoặc kết hợp với từ như 좋다, 싫다, 쉽다, 어렵다, 시작하다. Ví dụ: 읽다 → 읽기 (việc đọc), 쓰다 → 쓰기 (việc viết).",
+      "examples": [
+        "한국어 쓰기가 어려워요.",
+        "저는 일찍 일어나기가 싫어요.",
+        "수영하기는 건강에 좋아요."
+      ],
+      "tip": "～기 và ～는 것 đều danh từ hóa, nhưng ～기 thường dùng với tính từ cảm xúc/đánh giá (좋다, 싫다, 쉽다, 어렵다) và trong tiêu đề kỹ năng (읽기, 쓰기, 듣기, 말하기).",
+      "question": "저는 매일 아침 ___ 시작했어요. (Tôi đã bắt đầu việc tập thể dục mỗi sáng.)",
+      "options": ["운동하기를", "운동하는", "운동해서", "운동하고"],
+      "answer": "운동하기를"
+    },
+    {
+      "type": "grammar",
+      "rule": "Lý do ～기 때문에",
+      "explanation": "～기 때문에 gắn vào gốc động từ/tính từ để nêu lý do, nghĩa là 'vì ~ nên'. Với danh từ dùng ～(이)기 때문에. Mệnh đề trước là nguyên nhân, mệnh đề sau là kết quả. Thường dùng trong văn viết và văn nói trang trọng.",
+      "examples": [
+        "비가 오기 때문에 집에 있어요.",
+        "시간이 없기 때문에 못 가요.",
+        "학생이기 때문에 돈이 별로 없어요."
+      ],
+      "tip": "～기 때문에 không dùng được với câu mệnh lệnh hay rủ rê (～(으)세요, ～(으)ㅂ시다). Trong trường hợp đó phải dùng ～아/어서. Ví dụ sai: 늦었기 때문에 빨리 가세요 (X).",
+      "question": "오늘은 ___ 학교에 안 가요. (Hôm nay vì là chủ nhật nên không đến trường.)",
+      "options": ["일요일이기 때문에", "일요일는 때문에", "일요일하기 때문에", "일요일기 때문에"],
+      "answer": "일요일이기 때문에"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "저는 한국 음악을 ___ 것을 아주 좋아해요.",
+      "answer": "듣는",
+      "options": ["듣는", "들은", "들을", "들어서"],
+      "explanation": "Đây là việc đang/thường nghe nhạc (thì hiện tại) nên dùng ～는 것: 듣다 → 듣는 것. Nghĩa: 'Tôi rất thích việc nghe nhạc Hàn Quốc.'"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "한국어 발음이 ___ 한국 친구를 사귀고 싶어요.",
+      "answer": "어렵기 때문에",
+      "options": ["어렵기 때문에", "어려운 것", "어려워하기", "어렵는 것"],
+      "explanation": "Cần nêu lý do 'vì phát âm tiếng Hàn khó nên...', dùng tính từ + ～기 때문에: 어렵다 → 어렵기 때문에. Nghĩa: 'Vì phát âm tiếng Hàn khó nên tôi muốn kết bạn với người Hàn.'"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "아침에 일찍 ___ 가 정말 힘들어요.",
+      "answer": "일어나기",
+      "options": ["일어나기", "일어나는", "일어난", "일어나서"],
+      "explanation": "Danh từ hóa bằng ～기 dùng làm chủ ngữ với tính từ đánh giá 힘들다: 일어나다 → 일어나기. Nghĩa: 'Việc dậy sớm buổi sáng thật sự vất vả.'"
+    },
+    {
+      "type": "arrange",
+      "words": ["좋아해요", "저는", "운동하는", "것을"],
+      "answer": "저는 운동하는 것을 좋아해요",
+      "hint": "Tôi thích việc tập thể dục. (dùng ～는 것)"
+    },
+    {
+      "type": "arrange",
+      "words": ["집에", "비가", "있었어요", "때문에", "오기"],
+      "answer": "비가 오기 때문에 집에 있었어요",
+      "hint": "Vì trời mưa nên tôi đã ở nhà. (dùng ～기 때문에)"
+    },
+    {
+      "type": "arrange",
+      "words": ["한국어", "어려워요", "쓰기가"],
+      "answer": "한국어 쓰기가 어려워요",
+      "hint": "Việc viết tiếng Hàn khó. (dùng ～기)"
+    }
+  ]
+}

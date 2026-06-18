@@ -1,0 +1,100 @@
+{
+  "key": "ja-s2-l4",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "Trợ từ に chỉ nơi tồn tại (với あります/います)",
+      "explanation": "Trợ từ に dùng để chỉ NƠI mà một vật hay người TỒN TẠI. Cấu trúc: [Nơi] に [Vật/Người] が あります／います. あります dùng cho vật (đồ vật, cây cối), います dùng cho người và động vật.",
+      "examples": [
+        "つくえの うえに ほんが あります。",
+        "きょうしつに がくせいが います。",
+        "へやに ねこが います。"
+      ],
+      "tip": "Người Việt hay dùng で cho nơi tồn tại. Nhưng với あります／います phải dùng に, KHÔNG dùng で. で chỉ dùng cho nơi diễn ra hành động.",
+      "question": "いえ ___ いぬが います。",
+      "options": ["に", "で", "を", "へ"],
+      "answer": "に"
+    },
+    {
+      "type": "grammar",
+      "rule": "Phân biệt あります và います",
+      "explanation": "あります dùng cho VẬT vô tri (đồ vật, cây, thực vật). います dùng cho NGƯỜI và ĐỘNG VẬT (vật sống biết cử động). Cả hai đều có nghĩa 'có / ở'.",
+      "examples": [
+        "テーブルの うえに りんごが あります。",
+        "こうえんに こどもが います。",
+        "かばんの なかに ほんが あります。"
+      ],
+      "tip": "Người Việt hay nhầm dùng あります cho người. Nhớ: người và con vật (sống, cử động được) luôn dùng います.",
+      "question": "いけに さかなが ___。",
+      "options": ["います", "あります", "です", "ません"],
+      "answer": "います"
+    },
+    {
+      "type": "grammar",
+      "rule": "Trợ từ で chỉ nơi diễn ra hành động",
+      "explanation": "Trợ từ で dùng để chỉ ĐỊA ĐIỂM mà một HÀNH ĐỘNG xảy ra. Cấu trúc: [Nơi] で [Hành động]. Khác với に (chỉ nơi tồn tại), で luôn đi với động từ chỉ hành động.",
+      "examples": [
+        "レストランで ごはんを たべます。",
+        "がっこうで にほんごを べんきょうします。",
+        "うちで テレビを みます。"
+      ],
+      "tip": "Người Việt hay dùng に cho nơi hành động. Nhưng khi có động từ hành động (ăn, học, xem...) phải dùng で, không dùng に.",
+      "question": "としょかん ___ ほんを よみます。",
+      "options": ["で", "に", "が", "も"],
+      "answer": "で"
+    },
+    {
+      "type": "grammar",
+      "rule": "Trợ từ に chỉ thời điểm",
+      "explanation": "Trợ từ に còn dùng để chỉ MỐC THỜI GIAN cụ thể (giờ, ngày, thứ). Cấu trúc: [Thời điểm] に [Hành động]. Lưu ý: các từ thời gian tương đối như きょう (hôm nay), あした (ngày mai) thì KHÔNG dùng に.",
+      "examples": [
+        "しちじに おきます。",
+        "にちようびに やすみます。",
+        "あさ ろくじに しごとを はじめます。"
+      ],
+      "tip": "Người Việt hay thêm に sau きょう, あした, まいにち. Những từ này KHÔNG cần に. Chỉ giờ/ngày/thứ cụ thể mới dùng に.",
+      "question": "じゅうじ ___ ねます。",
+      "options": ["に", "で", "は", "を"],
+      "answer": "に"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "つくえの うえに ねこが ___。",
+      "answer": "います",
+      "options": ["います", "あります", "です", "のみます"],
+      "explanation": "Mèo (ねこ) là động vật, là vật sống nên phải dùng います, không dùng あります."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "ぎんこうの となりに コンビニが ___。",
+      "answer": "あります",
+      "options": ["あります", "います", "たべます", "です"],
+      "explanation": "Cửa hàng tiện lợi (コンビニ) là vật vô tri nên dùng あります. Câu nói về sự tồn tại của một địa điểm/vật."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "わたしは カフェ ___ コーヒーを のみます。",
+      "answer": "で",
+      "options": ["で", "に", "を", "へ"],
+      "explanation": "'Uống' (のみます) là một hành động và nó diễn ra tại quán cà phê (カフェ), nên dùng trợ từ で để chỉ nơi diễn ra hành động."
+    },
+    {
+      "type": "arrange",
+      "words": ["へやに", "が", "テレビ", "あります"],
+      "answer": "へやにテレビがあります",
+      "hint": "Trong phòng có tivi. (Dùng に chỉ nơi tồn tại và あります cho vật.)"
+    },
+    {
+      "type": "arrange",
+      "words": ["こうえんで", "あそびます", "こどもが"],
+      "answer": "こうえんでこどもがあそびます",
+      "hint": "Trẻ con chơi ở công viên. (Dùng で chỉ nơi diễn ra hành động chơi.)"
+    },
+    {
+      "type": "arrange",
+      "words": ["います", "いぬが", "にわに"],
+      "answer": "にわにいぬがいます",
+      "hint": "Trong vườn có con chó. (Dùng に chỉ nơi tồn tại và います cho động vật.)"
+    }
+  ]
+}

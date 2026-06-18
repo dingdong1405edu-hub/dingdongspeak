@@ -1,0 +1,105 @@
+{
+  "key": "zh-s6-l4",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "网络",
+      "phonetic": "wǎngluò",
+      "pos": "n.",
+      "meaning": "mạng (Internet)",
+      "example": "现在很多工作都离不开网络。",
+      "options": ["mạng (Internet)", "máy tính", "điện thoại", "phần mềm"],
+      "answer": "mạng (Internet)"
+    },
+    {
+      "type": "vocab",
+      "word": "互联网",
+      "phonetic": "hùliánwǎng",
+      "pos": "n.",
+      "meaning": "Internet",
+      "example": "互联网改变了人们的生活方式。",
+      "options": ["Internet", "trang web", "dữ liệu", "thông tin"],
+      "answer": "Internet"
+    },
+    {
+      "type": "vocab",
+      "word": "手机",
+      "phonetic": "shǒujī",
+      "pos": "n.",
+      "meaning": "điện thoại di động",
+      "example": "他每天用手机看新闻和聊天。",
+      "options": ["điện thoại di động", "máy tính", "trang web", "mật khẩu"],
+      "answer": "điện thoại di động"
+    },
+    {
+      "type": "vocab",
+      "word": "电脑",
+      "phonetic": "diànnǎo",
+      "pos": "n.",
+      "meaning": "máy tính",
+      "example": "我的电脑出问题了，不能上网。",
+      "options": ["máy tính", "điện thoại di động", "phần mềm", "mạng (Internet)"],
+      "answer": "máy tính"
+    },
+    {
+      "type": "vocab",
+      "word": "信息",
+      "phonetic": "xìnxī",
+      "pos": "n.",
+      "meaning": "thông tin",
+      "example": "网上有各种各样的信息。",
+      "options": ["thông tin", "tin nhắn", "dữ liệu", "công nghệ"],
+      "answer": "thông tin"
+    },
+    {
+      "type": "vocab",
+      "word": "短信",
+      "phonetic": "duǎnxìn",
+      "pos": "n.",
+      "meaning": "tin nhắn (SMS)",
+      "example": "请给我发一条短信告诉我地址。",
+      "options": ["tin nhắn (SMS)", "thư điện tử", "thông tin", "trang web"],
+      "answer": "tin nhắn (SMS)"
+    },
+    {
+      "type": "vocab",
+      "word": "网站",
+      "phonetic": "wǎngzhàn",
+      "pos": "n.",
+      "meaning": "trang web",
+      "example": "这个购物网站的东西很便宜。",
+      "options": ["trang web", "Internet", "phần mềm", "thư điện tử"],
+      "answer": "trang web"
+    },
+    {
+      "type": "vocab",
+      "word": "上网",
+      "phonetic": "shàngwǎng",
+      "pos": "v.",
+      "meaning": "lên mạng, truy cập Internet",
+      "example": "我喜欢晚上上网看电影。",
+      "options": ["lên mạng, truy cập Internet", "tải xuống", "gửi tin nhắn", "đăng nhập"],
+      "answer": "lên mạng, truy cập Internet"
+    },
+    {
+      "type": "vocab",
+      "word": "下载",
+      "phonetic": "xiàzài",
+      "pos": "v.",
+      "meaning": "tải xuống",
+      "example": "我刚下载了一个新的学习软件。",
+      "options": ["tải xuống", "lên mạng", "cài đặt", "gửi thư"],
+      "answer": "tải xuống"
+    },
+    {
+      "type": "vocab",
+      "word": "软件",
+      "phonetic": "ruǎnjiàn",
+      "pos": "n.",
+      "meaning": "phần mềm",
+      "example": "这个软件可以帮你练习中文。",
+      "options": ["phần mềm", "máy tính", "dữ liệu", "mật khẩu"],
+      "answer": "phần mềm"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "key": "zh-s2-l3",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "买",
+      "phonetic": "mǎi",
+      "pos": "v.",
+      "meaning": "mua",
+      "example": "我想买一件衣服。",
+      "options": ["mua", "bán", "đắt", "rẻ"],
+      "answer": "mua"
+    },
+    {
+      "type": "vocab",
+      "word": "卖",
+      "phonetic": "mài",
+      "pos": "v.",
+      "meaning": "bán",
+      "example": "这个商店卖水果。",
+      "options": ["bán", "mua", "trả tiền", "đổi"],
+      "answer": "bán"
+    },
+    {
+      "type": "vocab",
+      "word": "钱",
+      "phonetic": "qián",
+      "pos": "n.",
+      "meaning": "tiền",
+      "example": "我没有钱了。",
+      "options": ["tiền", "màu sắc", "cửa hàng", "giá cả"],
+      "answer": "tiền"
+    },
+    {
+      "type": "vocab",
+      "word": "多少钱",
+      "phonetic": "duōshao qián",
+      "pos": "phrase",
+      "meaning": "bao nhiêu tiền",
+      "example": "这件衣服多少钱？",
+      "options": ["bao nhiêu tiền", "có đắt không", "ở đâu bán", "màu gì"],
+      "answer": "bao nhiêu tiền"
+    },
+    {
+      "type": "vocab",
+      "word": "块",
+      "phonetic": "kuài",
+      "pos": "n.",
+      "meaning": "đồng (tệ, đơn vị tiền)",
+      "example": "这个苹果三块钱。",
+      "options": ["đồng (tệ, đơn vị tiền)", "cái (lượng từ)", "cửa hàng", "giảm giá"],
+      "answer": "đồng (tệ, đơn vị tiền)"
+    },
+    {
+      "type": "vocab",
+      "word": "贵",
+      "phonetic": "guì",
+      "pos": "adj.",
+      "meaning": "đắt",
+      "example": "这件衣服太贵了。",
+      "options": ["đắt", "rẻ", "to", "nhỏ"],
+      "answer": "đắt"
+    },
+    {
+      "type": "vocab",
+      "word": "便宜",
+      "phonetic": "piányi",
+      "pos": "adj.",
+      "meaning": "rẻ",
+      "example": "这个商店的东西很便宜。",
+      "options": ["rẻ", "đắt", "nhiều", "đẹp"],
+      "answer": "rẻ"
+    },
+    {
+      "type": "vocab",
+      "word": "颜色",
+      "phonetic": "yánsè",
+      "pos": "n.",
+      "meaning": "màu sắc",
+      "example": "你喜欢什么颜色？",
+      "options": ["màu sắc", "kích cỡ", "giá tiền", "kiểu dáng"],
+      "answer": "màu sắc"
+    },
+    {
+      "type": "vocab",
+      "word": "红",
+      "phonetic": "hóng",
+      "pos": "adj.",
+      "meaning": "(màu) đỏ",
+      "example": "我想买红色的鞋子。",
+      "options": ["(màu) đỏ", "(màu) trắng", "(màu) đen", "(màu) xanh"],
+      "answer": "(màu) đỏ"
+    },
+    {
+      "type": "vocab",
+      "word": "商店",
+      "phonetic": "shāngdiàn",
+      "pos": "n.",
+      "meaning": "cửa hàng",
+      "example": "前面有一家大商店。",
+      "options": ["cửa hàng", "nhà hàng", "chợ", "ngân hàng"],
+      "answer": "cửa hàng"
+    }
+  ]
+}

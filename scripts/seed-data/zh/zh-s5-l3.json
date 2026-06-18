@@ -1,0 +1,105 @@
+{
+  "key": "zh-s5-l3",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "语言",
+      "phonetic": "yǔyán",
+      "pos": "n.",
+      "meaning": "ngôn ngữ",
+      "example": "汉语是一种很有意思的语言。",
+      "options": ["ngôn ngữ", "văn hóa", "chữ viết", "giọng nói"],
+      "answer": "ngôn ngữ"
+    },
+    {
+      "type": "vocab",
+      "word": "语法",
+      "phonetic": "yǔfǎ",
+      "pos": "n.",
+      "meaning": "ngữ pháp",
+      "example": "这个语法很难，我还不太懂。",
+      "options": ["ngữ pháp", "từ vựng", "phát âm", "câu văn"],
+      "answer": "ngữ pháp"
+    },
+    {
+      "type": "vocab",
+      "word": "句子",
+      "phonetic": "jùzi",
+      "pos": "n.",
+      "meaning": "câu (câu văn)",
+      "example": "老师让我们用新词造句子。",
+      "options": ["câu (câu văn)", "đoạn văn", "từ ngữ", "bài hát"],
+      "answer": "câu (câu văn)"
+    },
+    {
+      "type": "vocab",
+      "word": "词典",
+      "phonetic": "cídiǎn",
+      "pos": "n.",
+      "meaning": "từ điển",
+      "example": "我不认识这个词，要查一下词典。",
+      "options": ["từ điển", "sách giáo khoa", "vở bài tập", "tạp chí"],
+      "answer": "từ điển"
+    },
+    {
+      "type": "vocab",
+      "word": "复习",
+      "phonetic": "fùxí",
+      "pos": "v.",
+      "meaning": "ôn tập, ôn lại",
+      "example": "考试以前我要好好复习。",
+      "options": ["ôn tập, ôn lại", "học từ mới", "làm bài kiểm tra", "nghỉ ngơi"],
+      "answer": "ôn tập, ôn lại"
+    },
+    {
+      "type": "vocab",
+      "word": "练习",
+      "phonetic": "liànxí",
+      "pos": "v.",
+      "meaning": "luyện tập, bài luyện tập",
+      "example": "每天练习说汉语，进步会很快。",
+      "options": ["luyện tập, bài luyện tập", "nghỉ ngơi", "giải thích", "dịch thuật"],
+      "answer": "luyện tập, bài luyện tập"
+    },
+    {
+      "type": "vocab",
+      "word": "提高",
+      "phonetic": "tígāo",
+      "pos": "v.",
+      "meaning": "nâng cao, cải thiện",
+      "example": "多看中文电影可以提高听力。",
+      "options": ["nâng cao, cải thiện", "giảm xuống", "ghi nhớ", "quên đi"],
+      "answer": "nâng cao, cải thiện"
+    },
+    {
+      "type": "vocab",
+      "word": "水平",
+      "phonetic": "shuǐpíng",
+      "pos": "n.",
+      "meaning": "trình độ",
+      "example": "他的汉语水平比以前高多了。",
+      "options": ["trình độ", "thái độ", "tốc độ", "chiều cao"],
+      "answer": "trình độ"
+    },
+    {
+      "type": "vocab",
+      "word": "进步",
+      "phonetic": "jìnbù",
+      "pos": "v.",
+      "meaning": "tiến bộ",
+      "example": "你这次考试进步很大，真棒！",
+      "options": ["tiến bộ", "thụt lùi", "thất bại", "cố gắng"],
+      "answer": "tiến bộ"
+    },
+    {
+      "type": "vocab",
+      "word": "成绩",
+      "phonetic": "chéngjì",
+      "pos": "n.",
+      "meaning": "thành tích, điểm số",
+      "example": "她这学期的成绩很好。",
+      "options": ["thành tích, điểm số", "bài tập về nhà", "kế hoạch", "kinh nghiệm"],
+      "answer": "thành tích, điểm số"
+    }
+  ]
+}

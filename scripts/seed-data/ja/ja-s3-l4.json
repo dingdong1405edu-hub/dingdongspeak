@@ -1,0 +1,100 @@
+{
+  "key": "ja-s3-l4",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "Cách chia thể て (て-form)",
+      "explanation": "Thể て được tạo từ động từ. Nhóm 1 đổi đuôi theo quy tắc âm tiện (い・ち・り→って; み・び・に→んで; き→いて, ぎ→いで; し→して). Nhóm 2 bỏ る thêm て. Bất quy tắc: する→して, くる→きて. Lưu ý đặc biệt: いく→いって.",
+      "examples": [
+        "たべる → たべて",
+        "のむ → のんで",
+        "かく → かいて"
+      ],
+      "tip": "Người Việt hay quên いく là ngoại lệ. いく KHÔNG phải いいて mà là いって.",
+      "question": "「およぐ」の て形は何ですか。",
+      "options": ["およいで", "およいて", "およんで", "およって"],
+      "answer": "およいで"
+    },
+    {
+      "type": "grammar",
+      "rule": "～てください (xin hãy làm gì)",
+      "explanation": "Động từ thể て + ください dùng để nhờ vả, yêu cầu hoặc mời ai đó làm gì một cách lịch sự. Nghĩa là 'xin hãy ~', 'làm ~ giúp nhé'.",
+      "examples": [
+        "ここに名前を書いてください。",
+        "ちょっと待ってください。",
+        "本を読んでください。"
+      ],
+      "tip": "Phải dùng thể て trước ください, không dùng thể ます. Sai: 待ちますください. Đúng: 待ってください.",
+      "question": "すみません、写真を___。",
+      "options": ["とってください", "とりてください", "とるください", "とってます"],
+      "answer": "とってください"
+    },
+    {
+      "type": "grammar",
+      "rule": "～ています (hành động đang diễn ra)",
+      "explanation": "Động từ thể て + います diễn tả một hành động đang tiếp diễn tại thời điểm nói. Tương đương 'đang ~' trong tiếng Việt.",
+      "examples": [
+        "今、ごはんを食べています。",
+        "母は電話で話しています。",
+        "子どもたちは公園で遊んでいます。"
+      ],
+      "tip": "Đừng nhầm với thể ます (thói quen/tương lai). 食べます = ăn (thói quen), 食べています = đang ăn ngay lúc này.",
+      "question": "今、何をしていますか。— 音楽を___。",
+      "options": ["聞いています", "聞きています", "聞くています", "聞いてます"],
+      "answer": "聞いています"
+    },
+    {
+      "type": "grammar",
+      "rule": "～ています (trạng thái duy trì)",
+      "explanation": "Ngoài hành động đang diễn ra, ～ています còn diễn tả trạng thái kéo dài như kết quả của hành động: nơi ở, công việc, tình trạng. Ví dụ 結婚しています (đã kết hôn / đang trong tình trạng có gia đình).",
+      "examples": [
+        "私は東京に住んでいます。",
+        "兄は銀行で働いています。",
+        "姉は結婚しています。"
+      ],
+      "tip": "住む và 結婚する luôn dùng ています để chỉ trạng thái, không nói 東京に住みます khi muốn nói 'tôi đang sống ở Tokyo'.",
+      "question": "私は大阪に___。",
+      "options": ["住んでいます", "住みています", "住んています", "住みます"],
+      "answer": "住んでいます"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "暑いですから、まどを___ください。",
+      "answer": "あけて",
+      "options": ["あけて", "あけって", "あきて", "あけます"],
+      "explanation": "あける là động từ nhóm 2 (bỏ る thêm て): あける → あけて. Sau đó + ください để nhờ vả: 'xin hãy mở cửa sổ'."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "父は今しんぶんを___います。",
+      "answer": "読んで",
+      "options": ["読んで", "読みて", "読いて", "読んて"],
+      "explanation": "読む thuộc nhóm 1, đuôi む → んで: 読む → 読んで. Cộng với います thành 読んでいます = 'đang đọc'."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "すみません、もう一度___ください。",
+      "answer": "言って",
+      "options": ["言って", "言いて", "言んで", "言います"],
+      "explanation": "言う thuộc nhóm 1, đuôi う → って: 言う → 言って. Thêm ください: 'xin hãy nói lại một lần nữa'."
+    },
+    {
+      "type": "arrange",
+      "words": ["ここに", "を", "ください", "なまえ", "かいて"],
+      "answer": "ここになまえをかいてください",
+      "hint": "Xin hãy viết tên vào đây."
+    },
+    {
+      "type": "arrange",
+      "words": ["います", "で", "あねは", "はたらいて", "ぎんこう"],
+      "answer": "あねはぎんこうではたらいています",
+      "hint": "Chị gái tôi đang làm việc ở ngân hàng. (Gợi ý: あねは ぎんこう で はたらいて います)"
+    },
+    {
+      "type": "arrange",
+      "words": ["まって", "ちょっと", "ください"],
+      "answer": "ちょっとまってください",
+      "hint": "Xin hãy đợi một chút."
+    }
+  ]
+}

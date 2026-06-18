@@ -1,0 +1,120 @@
+{
+  "key": "zh-s4-l3",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "正在 / 在 + động từ (+呢) — hành động đang diễn ra",
+      "explanation": "Để diễn đạt một hành động đang xảy ra ngay lúc nói, dùng cấu trúc: Chủ ngữ + 正在/在 + động từ (+ 呢). 正在 nhấn mạnh 'đúng lúc đang', còn 在 dùng phổ biến hằng ngày. Cuối câu thường thêm 呢 cho tự nhiên. Ví dụ: 我正在吃饭呢 = Tôi đang ăn cơm.",
+      "examples": [
+        "我正在看书呢。",
+        "他在打电话。",
+        "妈妈正在做饭呢。"
+      ],
+      "tip": "Người Việt hay quên đặt 正在/在 TRƯỚC động từ và chỉ thêm 呢 ở cuối. Chỉ có 呢 thì không đủ rõ ý 'đang'; nên dùng 在/正在 + động từ.",
+      "question": "Chọn câu đúng nghĩa 'Tôi đang xem ti vi'.",
+      "options": [
+        "我正在看电视呢。",
+        "我看电视正在呢。",
+        "我呢看电视正在。",
+        "我看正在电视呢。"
+      ],
+      "answer": "我正在看电视呢。"
+    },
+    {
+      "type": "grammar",
+      "rule": "Phủ định của hành động đang diễn ra: 没(在) + động từ",
+      "explanation": "Để phủ định 'không đang làm gì', dùng 没(有)在 + động từ, KHÔNG dùng 不. Ví dụ: 我没在睡觉 = Tôi không đang ngủ. Khi trả lời câu hỏi 'đang làm gì', cũng dùng 没在 để nói mình không làm việc đó.",
+      "examples": [
+        "我没在工作，我在休息。",
+        "他没在听音乐。",
+        "我们没在玩手机。"
+      ],
+      "tip": "Đừng dùng 不在看 để nói 'không đang xem'. Phủ định hành động đang diễn ra dùng 没(在), không dùng 不.",
+      "question": "Câu nào phủ định đúng cho '他在睡觉' (Anh ấy đang ngủ)?",
+      "options": [
+        "他没在睡觉。",
+        "他不在睡觉。",
+        "他在不睡觉。",
+        "他睡觉没在。"
+      ],
+      "answer": "他没在睡觉。"
+    },
+    {
+      "type": "grammar",
+      "rule": "Động từ + 着 — trạng thái kéo dài",
+      "explanation": "Trợ từ 着 (zhe) đặt sau động từ để diễn đạt một trạng thái đang tiếp diễn, kéo dài. Khác với 在 (chỉ hành động đang xảy ra), 着 nhấn mạnh trạng thái duy trì. Ví dụ: 门开着 = Cửa đang mở (trạng thái), 他站着 = Anh ấy đang đứng.",
+      "examples": [
+        "门开着。",
+        "他手里拿着一本书。",
+        "墙上挂着一张照片。"
+      ],
+      "tip": "Người Việt dễ nhầm 着 với 在. 在 đi với hành động (在跑步 = đang chạy), còn 着 đi với trạng thái duy trì (站着 = đang đứng/ở tư thế đứng).",
+      "question": "Chọn câu đúng nghĩa 'Trên tường treo một bức tranh'.",
+      "options": [
+        "墙上挂着一张画。",
+        "墙上着挂一张画。",
+        "墙上挂一张画着。",
+        "着墙上挂一张画。"
+      ],
+      "answer": "墙上挂着一张画。"
+    },
+    {
+      "type": "grammar",
+      "rule": "一边 ... 一边 ... — làm hai việc cùng lúc",
+      "explanation": "Cấu trúc 一边 + động từ 1 + 一边 + động từ 2 diễn đạt hai hành động xảy ra đồng thời (vừa... vừa...). Ví dụ: 我一边吃饭一边看电视 = Tôi vừa ăn cơm vừa xem ti vi. Hai 一边 đặt trước hai động từ.",
+      "examples": [
+        "他一边走路一边听音乐。",
+        "我们一边吃饭一边聊天。",
+        "她一边看书一边喝咖啡。"
+      ],
+      "tip": "Đừng chỉ dùng một 一边 cho cả câu. Phải lặp lại 一边 trước MỖI động từ: 一边...一边...",
+      "question": "Chọn câu đúng nghĩa 'Anh ấy vừa đi vừa nghe nhạc'.",
+      "options": [
+        "他一边走路一边听音乐。",
+        "他一边走路听音乐。",
+        "他走路一边听音乐一边。",
+        "他一边一边走路听音乐。"
+      ],
+      "answer": "他一边走路一边听音乐。"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "你好，我现在___开会呢，等一下给你打电话。",
+      "answer": "正在",
+      "options": ["正在", "着", "一边", "了"],
+      "explanation": "Diễn đạt 'đang họp ngay lúc này' dùng 正在 + động từ (+呢): 我正在开会呢. 正在 nhấn mạnh hành động đúng lúc đang diễn ra."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "外面下___雨，你别出去了。",
+      "answer": "着",
+      "options": ["着", "在", "正在", "呢"],
+      "explanation": "下着雨 dùng 着 sau động từ để chỉ trạng thái 'trời đang mưa' kéo dài. Đây là mẫu thường gặp: động từ + 着 chỉ trạng thái duy trì."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "孩子们___唱歌___跳舞，非常开心。",
+      "answer": "一边",
+      "options": ["一边", "正在", "着", "没在"],
+      "explanation": "Hai hành động xảy ra cùng lúc (vừa hát vừa nhảy) dùng 一边...一边...: 一边唱歌一边跳舞. Cả hai chỗ trống đều điền 一边."
+    },
+    {
+      "type": "arrange",
+      "words": ["正在", "呢", "我", "做饭"],
+      "answer": "我正在做饭呢",
+      "hint": "Tôi đang nấu cơm."
+    },
+    {
+      "type": "arrange",
+      "words": ["着", "一本", "拿", "他", "书"],
+      "answer": "他拿着一本书",
+      "hint": "Anh ấy đang cầm một quyển sách."
+    },
+    {
+      "type": "arrange",
+      "words": ["一边", "聊天", "一边", "我们", "喝茶"],
+      "answer": "我们一边喝茶一边聊天",
+      "hint": "Chúng tôi vừa uống trà vừa trò chuyện."
+    }
+  ]
+}

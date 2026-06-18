@@ -1,6 +1,9 @@
 [deploy]
 restartPolicyType = "always"
 restartPolicyMaxRetries = 3
+# Runs once per deploy (in-network, DB reachable): apply schema + seed zh/ja/ko
+# Learn-path lessons. Idempotent — safe to re-run on every deploy.
+preDeployCommand = "npx prisma db push --accept-data-loss && node scripts/seed-multilang.mjs"
 
 [environments.production.deploy]
 numReplicas = 1

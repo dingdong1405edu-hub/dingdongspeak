@@ -1,0 +1,149 @@
+{
+  "key": "ko-s4-l6",
+  "cards": [
+    {
+      "type": "speaking",
+      "prompt": "어디에 가 봤어요?",
+      "hint": "Kể những nơi bạn từng đi du lịch. Dùng cấu trúc 'V + 아/어 봤어요' (đã từng làm gì). Có thể nói tên thành phố, nước, và khi nào bạn đi.",
+      "samplePhrases": [
+        "저는 작년에 제주도에 가 봤어요.",
+        "한국하고 일본에 여행 가 봤어요.",
+        "아직 외국에는 못 가 봤어요."
+      ],
+      "vocabulary": [
+        { "word": "가 보다", "meaning": "đã từng đi (thử)", "example": "부산에 가 봤어요?" },
+        { "word": "여행", "meaning": "du lịch, chuyến đi", "example": "작년에 가족 여행을 갔어요." },
+        { "word": "외국", "meaning": "nước ngoài", "example": "외국에 가 본 적이 있어요." },
+        { "word": "작년", "meaning": "năm ngoái", "example": "작년 여름에 바다에 갔어요." },
+        { "word": "유명하다", "meaning": "nổi tiếng", "example": "그곳은 경치가 유명해요." }
+      ],
+      "ideas": [
+        "Nói một nơi (thành phố hoặc nước) bạn đã từng đi.",
+        "Cho biết bạn đi vào khi nào (năm ngoái, mùa hè...).",
+        "Bạn đi cùng ai (gia đình, bạn bè, một mình).",
+        "Nếu chưa đi đâu xa thì nói nơi gần bạn từng đến."
+      ],
+      "sampleAnswer": "저는 작년 여름에 한국 제주도에 가 봤어요. 가족하고 같이 비행기를 타고 갔어요. 바다가 정말 아름다워서 사진을 많이 찍었어요. 그리고 베트남 안에서는 다낭하고 하노이에도 여러 번 가 봤어요. 다음에는 일본에도 가 보고 싶어요.\n\n(Dịch: Mùa hè năm ngoái tôi đã đi đảo Jeju của Hàn Quốc. Tôi đi cùng gia đình bằng máy bay. Biển đẹp đến mức tôi đã chụp rất nhiều ảnh. Và ở trong Việt Nam thì tôi cũng đã đến Đà Nẵng và Hà Nội nhiều lần. Lần sau tôi muốn thử đi Nhật Bản nữa.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "여행을 어떻게 하는 걸 좋아해요?",
+      "hint": "Nói bạn thích kiểu du lịch nào: tự đi (자유 여행) hay theo tour (패키지여행), đi một mình hay cùng người khác. Dùng 'V + 는 걸 좋아해요'.",
+      "samplePhrases": [
+        "저는 자유 여행을 하는 걸 좋아해요.",
+        "친구하고 같이 여행하는 게 더 재미있어요.",
+        "여행 계획을 미리 세우는 걸 좋아해요."
+      ],
+      "vocabulary": [
+        { "word": "자유 여행", "meaning": "du lịch tự túc", "example": "저는 자유 여행을 좋아해요." },
+        { "word": "패키지여행", "meaning": "du lịch trọn gói, theo tour", "example": "부모님은 패키지여행을 좋아하세요." },
+        { "word": "계획을 세우다", "meaning": "lập kế hoạch", "example": "여행 계획을 세웠어요." },
+        { "word": "혼자", "meaning": "một mình", "example": "가끔 혼자 여행을 가요." },
+        { "word": "편하다", "meaning": "thoải mái, tiện", "example": "패키지여행이 더 편해요." }
+      ],
+      "ideas": [
+        "Nói bạn thích tự đi hay đi theo tour, vì sao.",
+        "Bạn thích đi một mình hay cùng bạn/gia đình.",
+        "Bạn có thích lên kế hoạch trước không.",
+        "Thêm kiểu du lịch bạn thích (thư giãn hay khám phá)."
+      ],
+      "sampleAnswer": "저는 자유 여행을 하는 걸 좋아해요. 제가 가고 싶은 곳에 자유롭게 갈 수 있어서 좋아요. 그래서 여행 전에 계획을 미리 세우는 편이에요. 혼자보다는 친구하고 같이 가는 게 더 재미있어요. 같이 이야기하면서 맛있는 음식도 먹을 수 있으니까요.\n\n(Dịch: Tôi thích du lịch tự túc. Vì tôi có thể tự do đi đến những nơi tôi muốn nên rất thích. Vì vậy trước chuyến đi tôi thường lập kế hoạch sẵn. So với đi một mình thì đi cùng bạn bè vui hơn. Vì có thể vừa trò chuyện vừa ăn món ngon cùng nhau.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "기억에 남는 여행을 소개해 주세요.",
+      "hint": "Giới thiệu một chuyến đi đáng nhớ. Kể: đi đâu, khi nào, với ai, đã làm gì, vì sao nhớ mãi. Dùng thì quá khứ '-았/었어요'.",
+      "samplePhrases": [
+        "제일 기억에 남는 여행은 제주도 여행이에요.",
+        "그때 친구들하고 같이 갔어요.",
+        "바다도 보고 맛있는 음식도 많이 먹었어요."
+      ],
+      "vocabulary": [
+        { "word": "기억에 남다", "meaning": "đáng nhớ, in đậm trong ký ức", "example": "그 여행이 제일 기억에 남아요." },
+        { "word": "소개하다", "meaning": "giới thiệu", "example": "제 고향을 소개할게요." },
+        { "word": "경치", "meaning": "phong cảnh", "example": "산 위에서 본 경치가 멋있었어요." },
+        { "word": "추억", "meaning": "kỷ niệm", "example": "좋은 추억이 많아요." },
+        { "word": "잊다", "meaning": "quên", "example": "그날을 잊을 수 없어요." }
+      ],
+      "ideas": [
+        "Chọn một chuyến đi đáng nhớ nhất và nói đi đâu, khi nào.",
+        "Cho biết bạn đi với ai.",
+        "Kể bạn đã làm gì, thấy gì, ăn gì ở đó.",
+        "Nói vì sao chuyến đi đó in đậm trong trí nhớ."
+      ],
+      "sampleAnswer": "제일 기억에 남는 여행은 작년에 간 제주도 여행이에요. 대학교 친구들하고 같이 삼 박 사 일 동안 갔어요. 우리는 한라산에 올라가서 멋진 경치를 봤어요. 바다 근처에서 회도 먹고 사진도 많이 찍었어요. 친구들하고 같이 웃고 이야기한 시간이 정말 좋은 추억이라서 아직도 잊을 수 없어요.\n\n(Dịch: Chuyến đi đáng nhớ nhất là chuyến đi đảo Jeju năm ngoái. Tôi đã đi cùng bạn đại học trong 4 ngày 3 đêm. Chúng tôi leo núi Halla và ngắm phong cảnh tuyệt đẹp. Ở gần biển chúng tôi ăn gỏi cá và chụp nhiều ảnh. Khoảng thời gian cùng nhau cười nói với bạn bè là một kỷ niệm thật đẹp nên đến giờ tôi vẫn không thể quên.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "여행할 때 뭐 하는 걸 좋아해요?",
+      "hint": "Nói những việc bạn thích làm khi đi du lịch: tham quan, chụp ảnh, ăn món địa phương, mua quà... Dùng 'V + 는 걸 좋아해요' và '-(으)ㄹ 때' (khi).",
+      "samplePhrases": [
+        "여행할 때 사진 찍는 걸 제일 좋아해요.",
+        "그 지역의 맛있는 음식을 먹어 봐요.",
+        "유명한 관광지를 구경하는 것도 좋아해요."
+      ],
+      "vocabulary": [
+        { "word": "구경하다", "meaning": "ngắm, tham quan", "example": "시장을 구경했어요." },
+        { "word": "관광지", "meaning": "địa điểm du lịch", "example": "유명한 관광지에 갔어요." },
+        { "word": "사진을 찍다", "meaning": "chụp ảnh", "example": "여기에서 사진을 찍어요." },
+        { "word": "현지 음식", "meaning": "món ăn địa phương", "example": "현지 음식을 먹어 보고 싶어요." },
+        { "word": "기념품", "meaning": "quà lưu niệm", "example": "기념품을 샀어요." }
+      ],
+      "ideas": [
+        "Nói một việc bạn thích làm nhất khi du lịch.",
+        "Bạn có thích thử món ăn địa phương không.",
+        "Bạn thích chụp ảnh, tham quan hay mua quà.",
+        "Thêm việc bạn thích để thư giãn khi đi chơi."
+      ],
+      "sampleAnswer": "저는 여행할 때 그 지역의 현지 음식을 먹어 보는 걸 제일 좋아해요. 새로운 음식을 먹으면 그 나라를 더 잘 알 수 있어서 재미있어요. 그리고 유명한 관광지를 구경하면서 사진을 많이 찍어요. 마지막 날에는 가족에게 줄 기념품도 사요. 이렇게 여행하면 좋은 추억이 많이 생겨요.\n\n(Dịch: Khi đi du lịch tôi thích nhất là thử món ăn địa phương của vùng đó. Khi ăn món mới, tôi có thể hiểu rõ hơn về đất nước đó nên rất thú vị. Và tôi vừa tham quan các địa điểm du lịch nổi tiếng vừa chụp nhiều ảnh. Ngày cuối tôi cũng mua quà lưu niệm để tặng gia đình. Đi du lịch như vậy sẽ có nhiều kỷ niệm đẹp.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "어느 나라에 가고 싶어요? 왜요?",
+      "hint": "Nói nước bạn muốn đến và lý do. Dùng 'V + 고 싶어요' (muốn) và '-아서/어서' hoặc '때문에' để nói lý do.",
+      "samplePhrases": [
+        "저는 한국에 가고 싶어요.",
+        "한국 드라마를 좋아해서 한번 가 보고 싶어요.",
+        "그 나라의 문화를 직접 보고 싶어요."
+      ],
+      "vocabulary": [
+        { "word": "-고 싶다", "meaning": "muốn làm gì", "example": "프랑스에 가고 싶어요." },
+        { "word": "나라", "meaning": "đất nước", "example": "어느 나라에 가고 싶어요?" },
+        { "word": "문화", "meaning": "văn hóa", "example": "한국 문화에 관심이 많아요." },
+        { "word": "때문에", "meaning": "vì, do (lý do)", "example": "친구 때문에 한국어를 배워요." },
+        { "word": "경험하다", "meaning": "trải nghiệm", "example": "새로운 문화를 경험하고 싶어요." }
+      ],
+      "ideas": [
+        "Nói rõ một nước bạn muốn đến.",
+        "Cho biết lý do (văn hóa, ẩm thực, phim ảnh, phong cảnh).",
+        "Bạn muốn làm gì hoặc xem gì ở đó.",
+        "Thêm khi nào bạn dự định đi nếu có thể."
+      ],
+      "sampleAnswer": "저는 한국에 꼭 가고 싶어요. 어릴 때부터 한국 드라마하고 K-pop을 좋아해서 한국 문화에 관심이 많아요. 그래서 서울에 가서 유명한 곳을 구경하고 진짜 한국 음식도 먹어 보고 싶어요. 그리고 한국 사람들하고 한국어로 직접 이야기해 보고 싶어요. 돈을 모아서 내년에 꼭 가 볼 거예요.\n\n(Dịch: Tôi rất muốn đến Hàn Quốc. Từ nhỏ tôi đã thích phim Hàn và K-pop nên rất quan tâm đến văn hóa Hàn Quốc. Vì vậy tôi muốn đến Seoul tham quan những nơi nổi tiếng và thử món ăn Hàn Quốc thật sự. Và tôi muốn trực tiếp trò chuyện bằng tiếng Hàn với người Hàn. Tôi sẽ dành dụm tiền và nhất định sẽ đi vào năm sau.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "여행 갈 때 뭘 준비해요?",
+      "hint": "Kể những thứ bạn chuẩn bị trước khi đi du lịch: hộ chiếu, hành lý, đặt phòng/vé, tiền... Dùng '-(으)ㄹ 때' (khi) và '준비하다', '예약하다'.",
+      "samplePhrases": [
+        "여행 가기 전에 먼저 표를 예약해요.",
+        "여권하고 짐을 준비해요.",
+        "필요한 옷하고 약도 챙겨요."
+      ],
+      "vocabulary": [
+        { "word": "준비하다", "meaning": "chuẩn bị", "example": "여행 준비를 해요." },
+        { "word": "예약하다", "meaning": "đặt (vé, phòng)", "example": "호텔을 예약했어요." },
+        { "word": "여권", "meaning": "hộ chiếu", "example": "외국 여행에는 여권이 필요해요." },
+        { "word": "짐을 싸다", "meaning": "đóng gói hành lý", "example": "출발 전날 짐을 싸요." },
+        { "word": "챙기다", "meaning": "thu xếp, mang theo (đồ)", "example": "약을 꼭 챙기세요." }
+      ],
+      "ideas": [
+        "Nói việc bạn chuẩn bị đầu tiên (đặt vé, đặt phòng).",
+        "Liệt kê đồ cần mang: hộ chiếu, hành lý, quần áo.",
+        "Cho biết bạn chuẩn bị tiền hay đổi tiền thế nào.",
+        "Thêm vật dụng quan trọng bạn không quên (thuốc, sạc điện thoại)."
+      ],
+      "sampleAnswer": "저는 여행 가기 전에 먼저 비행기 표하고 호텔을 예약해요. 그리고 외국에 갈 때는 여권을 꼭 챙겨요. 출발하기 전날에는 짐을 싸요. 날씨에 맞는 옷하고 약, 휴대폰 충전기를 가방에 넣어요. 마지막으로 돈을 조금 바꾸고 여행 계획을 한 번 더 확인해요. 준비를 잘 하면 여행이 더 편하고 즐거워요.\n\n(Dịch: Trước khi đi du lịch tôi đặt vé máy bay và khách sạn trước. Và khi đi nước ngoài thì nhất định phải mang theo hộ chiếu. Hôm trước ngày khởi hành tôi đóng gói hành lý. Tôi cho vào túi quần áo phù hợp thời tiết, thuốc và sạc điện thoại. Cuối cùng tôi đổi một ít tiền và kiểm tra lại kế hoạch chuyến đi một lần nữa. Chuẩn bị tốt thì chuyến đi sẽ thoải mái và vui hơn.)"
+    }
+  ]
+}

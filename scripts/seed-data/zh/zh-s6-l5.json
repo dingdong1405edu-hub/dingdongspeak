@@ -1,0 +1,100 @@
+{
+  "key": "zh-s6-l5",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "不但…而且… (không những… mà còn…)",
+      "explanation": "Cặp liên từ 不但…而且… dùng để diễn đạt sự tăng tiến: vế sau bổ sung và nâng mức độ hơn vế trước. Nếu hai vế CÙNG một chủ ngữ, chủ ngữ đặt TRƯỚC 不但 (他不但…而且…). Nếu hai vế KHÁC chủ ngữ, mỗi chủ ngữ đặt SAU liên từ (不但他…而且我…). 而且 thường đi kèm 也/还 ở vế sau để nhấn mạnh.",
+      "examples": [
+        "他不但会说中文，而且说得很流利。",
+        "这家餐厅的菜不但好吃，而且很便宜。",
+        "学外语不但能提高水平，而且还能了解别的文化。"
+      ],
+      "tip": "Người Việt hay quên: khi cùng chủ ngữ phải đặt chủ ngữ TRƯỚC 不但, không nói '不但他…而且他…'. Cũng đừng dịch máy móc 而且 thành 'và' đơn thuần — nó mang nghĩa tăng tiến 'mà còn'.",
+      "question": "选择正确的句子：____ 工作认真，而且对人也很热情。",
+      "options": ["她不但", "不但她但是", "她虽然", "因为她"],
+      "answer": "她不但"
+    },
+    {
+      "type": "grammar",
+      "rule": "如果…就… (nếu… thì…)",
+      "explanation": "如果…就… diễn đạt điều kiện giả định và kết quả tương ứng. 如果 (hoặc 要是) đứng đầu vế điều kiện, 就 đứng trước động từ ở vế kết quả. 如果 có thể thêm 的话 ở cuối vế điều kiện (如果…的话，就…). Chủ ngữ vế kết quả đứng trước 就.",
+      "examples": [
+        "如果明天下雨，我们就不去公园了。",
+        "如果你有时间的话，就来我家玩吧。",
+        "如果他不努力，就考不好这次考试。"
+      ],
+      "tip": "Người Việt hay quên chữ 就 ở vế sau, chỉ nói '如果…我去' là chưa tự nhiên. Phải có 就 đứng trước động từ của vế kết quả: '如果…我就去'.",
+      "question": "如果你不舒服，____ 早点儿休息吧。",
+      "options": ["就", "才", "都", "也"],
+      "answer": "就"
+    },
+    {
+      "type": "grammar",
+      "rule": "只要…就… (chỉ cần… là/thì…)",
+      "explanation": "只要…就… nêu một điều kiện ĐỦ (chỉ cần đạt điều kiện này là có kết quả). Khác với 只有…才… (điều kiện cần thiết, duy nhất). 只要 nhấn mạnh 'chỉ cần', dễ đạt; 就 đứng trước động từ vế kết quả.",
+      "examples": [
+        "只要你努力学习，就一定能进步。",
+        "只要有网络，我就可以在家工作。",
+        "这个问题只要认真想一想，就能解决。"
+      ],
+      "tip": "Đừng nhầm 只要…就… (chỉ cần…là đủ) với 只有…才… (chỉ có…mới). 只要 đi với 就, 只有 đi với 才 — dùng sai cặp là lỗi rất phổ biến của người Việt.",
+      "question": "____ 你打电话给我，我就马上过来。",
+      "options": ["只要", "虽然", "因为", "不但"],
+      "answer": "只要"
+    },
+    {
+      "type": "grammar",
+      "rule": "Phân biệt 不但…而且… và 只要…就…",
+      "explanation": "不但…而且… biểu thị quan hệ TĂNG TIẾN (bổ sung thêm thông tin, mức độ cao hơn). 只要…就… biểu thị quan hệ ĐIỀU KIỆN (chỉ cần A là có B). Cần chọn cặp liên từ phù hợp với ý nghĩa của câu.",
+      "examples": [
+        "他不但聪明，而且很努力。（tăng tiến）",
+        "只要多练习，发音就会越来越好。（điều kiện）",
+        "如果你同意，我们就这样决定。（giả định）"
+      ],
+      "tip": "Hãy xác định quan hệ giữa hai vế trước khi chọn liên từ: bổ sung/nâng mức độ → 不但…而且…; điều kiện đủ → 只要…就…; giả định → 如果…就…",
+      "question": "这件衣服 ____ 好看，____ 不太贵，我很喜欢。",
+      "options": ["不但…而且…", "如果…就…", "只要…就…", "因为…所以…"],
+      "answer": "不但…而且…"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "他不但是我的同事，___ 是我的好朋友。",
+      "answer": "而且",
+      "options": ["而且", "但是", "因为", "可是"],
+      "explanation": "Cặp 不但…而且… diễn đạt tăng tiến 'không những…mà còn…'. Vế trước đã có 不但 nên vế sau phải dùng 而且 để bổ sung thêm, không dùng 但是/可是 (vốn mang nghĩa tương phản)."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "如果你明天有空，我们 ___ 一起去看电影。",
+      "answer": "就",
+      "options": ["就", "才", "还", "也"],
+      "explanation": "如果 ở vế điều kiện đi đôi với 就 ở vế kết quả: 'nếu…thì…'. 就 đứng trước động từ 去. Dùng 才 sẽ thành nghĩa 'mới', không hợp với giả định điều kiện ở đây."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "___ 你按时吃药，病很快就会好。",
+      "answer": "只要",
+      "options": ["只要", "虽然", "不但", "如果说"],
+      "explanation": "Câu nêu một điều kiện ĐỦ và dễ đạt ('chỉ cần…là…'), nên dùng 只要 đi với 就 ở vế sau. 虽然 mang nghĩa nhượng bộ, 不但 mang nghĩa tăng tiến, đều không phù hợp."
+    },
+    {
+      "type": "arrange",
+      "words": ["而且", "好吃", "这个", "不但", "菜", "便宜"],
+      "answer": "这个菜不但好吃而且便宜",
+      "hint": "Món này không những ngon mà còn rẻ. (Dùng cặp 不但…而且…)"
+    },
+    {
+      "type": "arrange",
+      "words": ["就", "我们", "如果", "不去", "下雨", "明天"],
+      "answer": "如果明天下雨我们就不去",
+      "hint": "Nếu ngày mai trời mưa thì chúng ta không đi. (Dùng cặp 如果…就…)"
+    },
+    {
+      "type": "arrange",
+      "words": ["努力", "就", "进步", "能", "只要", "你"],
+      "answer": "只要你努力就能进步",
+      "hint": "Chỉ cần bạn cố gắng là có thể tiến bộ. (Dùng cặp 只要…就…)"
+    }
+  ]
+}

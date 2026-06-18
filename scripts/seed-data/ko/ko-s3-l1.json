@@ -1,0 +1,105 @@
+{
+  "key": "ko-s3-l1",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "버스",
+      "phonetic": "beoseu",
+      "pos": "n.",
+      "meaning": "xe buýt",
+      "example": "저는 매일 버스를 타고 학교에 가요.",
+      "options": ["xe buýt", "tàu điện ngầm", "taxi", "xe đạp"],
+      "answer": "xe buýt"
+    },
+    {
+      "type": "vocab",
+      "word": "지하철",
+      "phonetic": "jihacheol",
+      "pos": "n.",
+      "meaning": "tàu điện ngầm",
+      "example": "지하철이 버스보다 더 빨라요.",
+      "options": ["tàu điện ngầm", "xe buýt", "máy bay", "tàu hỏa"],
+      "answer": "tàu điện ngầm"
+    },
+    {
+      "type": "vocab",
+      "word": "택시",
+      "phonetic": "taeksi",
+      "pos": "n.",
+      "meaning": "taxi",
+      "example": "시간이 없어서 택시를 탔어요.",
+      "options": ["taxi", "xe buýt", "xe đạp", "tàu hỏa"],
+      "answer": "taxi"
+    },
+    {
+      "type": "vocab",
+      "word": "비행기",
+      "phonetic": "bihaenggi",
+      "pos": "n.",
+      "meaning": "máy bay",
+      "example": "내일 비행기를 타고 한국에 가요.",
+      "options": ["máy bay", "tàu hỏa", "tàu điện ngầm", "taxi"],
+      "answer": "máy bay"
+    },
+    {
+      "type": "vocab",
+      "word": "자전거",
+      "phonetic": "jajeongeo",
+      "pos": "n.",
+      "meaning": "xe đạp",
+      "example": "주말에 공원에서 자전거를 타요.",
+      "options": ["xe đạp", "xe máy", "xe buýt", "ô tô"],
+      "answer": "xe đạp"
+    },
+    {
+      "type": "vocab",
+      "word": "역",
+      "phonetic": "yeok",
+      "pos": "n.",
+      "meaning": "ga (tàu/tàu điện)",
+      "example": "서울역에서 기차를 탈 거예요.",
+      "options": ["ga (tàu/tàu điện)", "trạm xe buýt", "sân bay", "bến cảng"],
+      "answer": "ga (tàu/tàu điện)"
+    },
+    {
+      "type": "vocab",
+      "word": "타다",
+      "phonetic": "tada",
+      "pos": "v.",
+      "meaning": "lên xe, đi (phương tiện)",
+      "example": "저기에서 버스를 타세요.",
+      "options": ["lên xe, đi (phương tiện)", "xuống xe", "đi bộ", "lái xe"],
+      "answer": "lên xe, đi (phương tiện)"
+    },
+    {
+      "type": "vocab",
+      "word": "내리다",
+      "phonetic": "naerida",
+      "pos": "v.",
+      "meaning": "xuống xe",
+      "example": "다음 정류장에서 내려요.",
+      "options": ["xuống xe", "lên xe", "đi bộ", "dừng lại"],
+      "answer": "xuống xe"
+    },
+    {
+      "type": "vocab",
+      "word": "왼쪽",
+      "phonetic": "oenjjok",
+      "pos": "n.",
+      "meaning": "bên trái",
+      "example": "은행은 왼쪽에 있어요.",
+      "options": ["bên trái", "bên phải", "phía trước", "phía sau"],
+      "answer": "bên trái"
+    },
+    {
+      "type": "vocab",
+      "word": "가깝다",
+      "phonetic": "gakkapda",
+      "pos": "adj.",
+      "meaning": "gần",
+      "example": "우리 집은 지하철역에서 가까워요.",
+      "options": ["gần", "xa", "nhanh", "rộng"],
+      "answer": "gần"
+    }
+  ]
+}

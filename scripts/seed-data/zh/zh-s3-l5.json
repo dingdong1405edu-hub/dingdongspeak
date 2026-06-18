@@ -1,0 +1,105 @@
+{
+  "key": "zh-s3-l5",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "运动",
+      "phonetic": "yùndòng",
+      "pos": "v.",
+      "meaning": "vận động; tập thể thao",
+      "example": "我每天早上都去公园运动。",
+      "options": ["vận động; tập thể thao", "nghỉ ngơi", "đi du lịch", "xem phim"],
+      "answer": "vận động; tập thể thao"
+    },
+    {
+      "type": "vocab",
+      "word": "跑步",
+      "phonetic": "pǎobù",
+      "pos": "v.",
+      "meaning": "chạy bộ",
+      "example": "他喜欢早上去河边跑步。",
+      "options": ["chạy bộ", "bơi lội", "đi bộ", "nhảy múa"],
+      "answer": "chạy bộ"
+    },
+    {
+      "type": "vocab",
+      "word": "打篮球",
+      "phonetic": "dǎ lánqiú",
+      "pos": "phrase",
+      "meaning": "chơi bóng rổ",
+      "example": "周末我和朋友一起打篮球。",
+      "options": ["chơi bóng rổ", "đá bóng", "đánh bóng bàn", "chơi cầu lông"],
+      "answer": "chơi bóng rổ"
+    },
+    {
+      "type": "vocab",
+      "word": "踢足球",
+      "phonetic": "tī zúqiú",
+      "pos": "phrase",
+      "meaning": "đá bóng (bóng đá)",
+      "example": "孩子们在操场上踢足球。",
+      "options": ["đá bóng (bóng đá)", "chơi bóng rổ", "chơi bóng chuyền", "chạy bộ"],
+      "answer": "đá bóng (bóng đá)"
+    },
+    {
+      "type": "vocab",
+      "word": "游泳",
+      "phonetic": "yóuyǒng",
+      "pos": "v.",
+      "meaning": "bơi lội",
+      "example": "夏天天气很热，我常常去游泳。",
+      "options": ["bơi lội", "chạy bộ", "leo núi", "trượt tuyết"],
+      "answer": "bơi lội"
+    },
+    {
+      "type": "vocab",
+      "word": "看电影",
+      "phonetic": "kàn diànyǐng",
+      "pos": "phrase",
+      "meaning": "xem phim",
+      "example": "今天晚上我们去看电影吧。",
+      "options": ["xem phim", "đọc sách", "nghe nhạc", "xem ti vi"],
+      "answer": "xem phim"
+    },
+    {
+      "type": "vocab",
+      "word": "听音乐",
+      "phonetic": "tīng yīnyuè",
+      "pos": "phrase",
+      "meaning": "nghe nhạc",
+      "example": "我喜欢一边喝咖啡一边听音乐。",
+      "options": ["nghe nhạc", "hát hò", "xem phim", "nhảy múa"],
+      "answer": "nghe nhạc"
+    },
+    {
+      "type": "vocab",
+      "word": "唱歌",
+      "phonetic": "chànggē",
+      "pos": "v.",
+      "meaning": "hát; ca hát",
+      "example": "她唱歌唱得很好听。",
+      "options": ["hát; ca hát", "nghe nhạc", "nhảy múa", "đọc sách"],
+      "answer": "hát; ca hát"
+    },
+    {
+      "type": "vocab",
+      "word": "跳舞",
+      "phonetic": "tiàowǔ",
+      "pos": "v.",
+      "meaning": "nhảy múa; khiêu vũ",
+      "example": "晚会上大家一起唱歌跳舞。",
+      "options": ["nhảy múa; khiêu vũ", "hát hò", "chạy bộ", "bơi lội"],
+      "answer": "nhảy múa; khiêu vũ"
+    },
+    {
+      "type": "vocab",
+      "word": "爱好",
+      "phonetic": "àihào",
+      "pos": "n.",
+      "meaning": "sở thích",
+      "example": "你有什么爱好？我的爱好是看书。",
+      "options": ["sở thích", "công việc", "thói quen", "ước mơ"],
+      "answer": "sở thích"
+    }
+  ]
+}

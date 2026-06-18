@@ -1,0 +1,105 @@
+{
+  "key": "ja-s3-l3",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "天気",
+      "phonetic": "てんき / tenki",
+      "pos": "n.",
+      "meaning": "thời tiết",
+      "example": "今日はいい天気ですね。",
+      "options": ["thời tiết", "bầu trời", "mùa", "khí hậu"],
+      "answer": "thời tiết"
+    },
+    {
+      "type": "vocab",
+      "word": "暑い",
+      "phonetic": "あつい / atsui",
+      "pos": "adj.",
+      "meaning": "nóng (thời tiết)",
+      "example": "夏はとても暑いです。",
+      "options": ["nóng (thời tiết)", "lạnh", "ấm áp", "mát mẻ"],
+      "answer": "nóng (thời tiết)"
+    },
+    {
+      "type": "vocab",
+      "word": "寒い",
+      "phonetic": "さむい / samui",
+      "pos": "adj.",
+      "meaning": "lạnh (thời tiết)",
+      "example": "今日は寒いから、コートを着ます。",
+      "options": ["lạnh (thời tiết)", "nóng", "ẩm ướt", "khô"],
+      "answer": "lạnh (thời tiết)"
+    },
+    {
+      "type": "vocab",
+      "word": "雨",
+      "phonetic": "あめ / ame",
+      "pos": "n.",
+      "meaning": "mưa",
+      "example": "明日は雨が降るでしょう。",
+      "options": ["mưa", "tuyết", "gió", "mây"],
+      "answer": "mưa"
+    },
+    {
+      "type": "vocab",
+      "word": "雪",
+      "phonetic": "ゆき / yuki",
+      "pos": "n.",
+      "meaning": "tuyết",
+      "example": "北海道は冬にたくさん雪が降ります。",
+      "options": ["tuyết", "mưa", "sương mù", "băng"],
+      "answer": "tuyết"
+    },
+    {
+      "type": "vocab",
+      "word": "病気",
+      "phonetic": "びょうき / byōki",
+      "pos": "n.",
+      "meaning": "bệnh, ốm",
+      "example": "病気のときは、ゆっくり休んでください。",
+      "options": ["bệnh, ốm", "bệnh viện", "thuốc", "bác sĩ"],
+      "answer": "bệnh, ốm"
+    },
+    {
+      "type": "vocab",
+      "word": "病院",
+      "phonetic": "びょういん / byōin",
+      "pos": "n.",
+      "meaning": "bệnh viện",
+      "example": "頭が痛いので、病院へ行きます。",
+      "options": ["bệnh viện", "bệnh, ốm", "hiệu thuốc", "phòng khám nha khoa"],
+      "answer": "bệnh viện"
+    },
+    {
+      "type": "vocab",
+      "word": "薬",
+      "phonetic": "くすり / kusuri",
+      "pos": "n.",
+      "meaning": "thuốc",
+      "example": "この薬を一日三回飲んでください。",
+      "options": ["thuốc", "bệnh", "bệnh viện", "nước"],
+      "answer": "thuốc"
+    },
+    {
+      "type": "vocab",
+      "word": "頭",
+      "phonetic": "あたま / atama",
+      "pos": "n.",
+      "meaning": "đầu",
+      "example": "風邪で頭が痛いです。",
+      "options": ["đầu", "bụng", "tay", "chân"],
+      "answer": "đầu"
+    },
+    {
+      "type": "vocab",
+      "word": "疲れる",
+      "phonetic": "つかれる / tsukareru",
+      "pos": "v.",
+      "meaning": "mệt, mệt mỏi",
+      "example": "今日は仕事が多くて、とても疲れました。",
+      "options": ["mệt, mệt mỏi", "nghỉ ngơi", "ngủ", "ốm"],
+      "answer": "mệt, mệt mỏi"
+    }
+  ]
+}

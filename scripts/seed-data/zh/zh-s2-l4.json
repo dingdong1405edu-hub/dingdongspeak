@@ -1,0 +1,84 @@
+{
+  "key": "zh-s2-l4",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "Động từ + 了 (hành động hoàn thành)",
+      "explanation": "了 đặt sau động từ để diễn đạt một hành động đã xảy ra hoặc đã hoàn thành. Cấu trúc: Chủ ngữ + Động từ + 了 (+ tân ngữ).",
+      "examples": ["我吃了饭。", "他买了一本书。", "妈妈走了。"],
+      "tip": "Người Việt hay nhầm 了 là thì quá khứ và thêm vào mọi câu. 了 chỉ diễn đạt sự HOÀN THÀNH của hành động, không phải lúc nào quá khứ cũng dùng 了.",
+      "question": "Chọn câu đúng diễn đạt 'Tôi đã ăn cơm rồi'.",
+      "options": ["我吃了饭。", "我了吃饭。", "我吃饭了吗。", "我没吃了饭。"],
+      "answer": "我吃了饭。"
+    },
+    {
+      "type": "grammar",
+      "rule": "了 với số lượng (Động từ + 了 + số lượng + tân ngữ)",
+      "explanation": "Khi tân ngữ có số lượng cụ thể, 了 đặt ngay sau động từ: Động từ + 了 + (số từ + lượng từ) + tân ngữ.",
+      "examples": ["我喝了两杯水。", "他买了三个苹果。", "我看了一个小时书。"],
+      "tip": "Không đặt 了 ra cuối câu khi đã có số lượng cụ thể: nói 我买了三个苹果 chứ không nói 我买三个苹果了 (mang nghĩa khác).",
+      "question": "Chọn câu đúng cho 'Anh ấy đã mua ba quả táo'.",
+      "options": ["他买了三个苹果。", "他买三个了苹果。", "他了买三个苹果。", "他买三个苹果。"],
+      "answer": "他买了三个苹果。"
+    },
+    {
+      "type": "grammar",
+      "rule": "Phủ định: 没(有) + động từ (bỏ 了)",
+      "explanation": "Để phủ định hành động đã hoàn thành, dùng 没 hoặc 没有 trước động từ và BỎ 了. Không bao giờ dùng 没 và 了 cùng nhau.",
+      "examples": ["我没吃饭。", "他没有来。", "我没看那本书。"],
+      "tip": "Người Việt hay viết sai thành 没吃了 hoặc 不吃了. Phủ định hoàn thành phải là 没(有) + động từ và KHÔNG có 了.",
+      "question": "Chọn câu phủ định đúng của 'Tôi đã ăn cơm'.",
+      "options": ["我没吃饭。", "我没吃了饭。", "我不吃了饭。", "我没有吃了饭。"],
+      "answer": "我没吃饭。"
+    },
+    {
+      "type": "grammar",
+      "rule": "Câu hỏi: ...了吗？",
+      "explanation": "Để hỏi một hành động đã hoàn thành hay chưa, thêm 吗 vào cuối câu có 了: Chủ ngữ + Động từ + 了 + 吗？",
+      "examples": ["你吃饭了吗？", "他来了吗？", "你看了吗？"],
+      "tip": "Trả lời có thể nói 吃了 (đã ăn) hoặc 还没 / 没有 (chưa). Đừng trả lời phủ định bằng 没吃了, phải nói 还没吃.",
+      "question": "Chọn câu hỏi đúng cho 'Bạn ăn cơm chưa?'.",
+      "options": ["你吃饭了吗？", "你吃了吗饭？", "你了吃饭吗？", "你没吃饭吗了？"],
+      "answer": "你吃饭了吗？"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "我昨天买___一件衣服。",
+      "answer": "了",
+      "options": ["了", "吗", "没", "的"],
+      "explanation": "Hành động 买 (mua) đã hoàn thành với số lượng 一件衣服, nên dùng 了 ngay sau động từ: 买了一件衣服。"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "他今天___来，他生病了。",
+      "answer": "没",
+      "options": ["没", "了", "不", "吗"],
+      "explanation": "Phủ định hành động đã hoàn thành dùng 没 và bỏ 了: 他今天没来 (Hôm nay anh ấy không đến)."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "你喝___咖啡___？",
+      "answer": "了……吗",
+      "options": ["了……吗", "吗……了", "没……了", "了……了"],
+      "explanation": "Câu hỏi về hành động hoàn thành dùng cấu trúc 了 + 吗: 你喝了咖啡吗？(Bạn uống cà phê chưa?)."
+    },
+    {
+      "type": "arrange",
+      "words": ["吃", "了", "我", "饭"],
+      "answer": "我吃了饭",
+      "hint": "Tôi đã ăn cơm rồi. (Chủ ngữ + Động từ + 了 + tân ngữ)"
+    },
+    {
+      "type": "arrange",
+      "words": ["来", "他", "没", "今天"],
+      "answer": "他今天没来",
+      "hint": "Hôm nay anh ấy không đến. (Phủ định dùng 没, bỏ 了)"
+    },
+    {
+      "type": "arrange",
+      "words": ["了", "你", "吗", "饭", "吃"],
+      "answer": "你吃饭了吗",
+      "hint": "Bạn ăn cơm chưa? (Câu hỏi ...了吗？)"
+    }
+  ]
+}

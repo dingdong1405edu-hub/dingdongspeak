@@ -1,0 +1,100 @@
+{
+  "key": "ko-s5-l2",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "～(으)니까 (lý do/nguyên nhân)",
+      "explanation": "～(으)니까 gắn vào thân động từ/tính từ để nêu lý do, nguyên nhân ('vì... nên...'). Thân có patchim → 으니까 (먹다 → 먹으니까), thân không có patchim → 니까 (가다 → 가니까). Vế sau thường là phán đoán, đề nghị hoặc mệnh lệnh của người nói. Ví dụ: 비가 오니까 우산을 가져가세요 (Vì trời mưa nên hãy mang ô đi).",
+      "examples": [
+        "지금 바쁘니까 나중에 전화할게요.",
+        "날씨가 좋으니까 같이 산책해요.",
+        "시간이 없으니까 택시를 탑시다."
+      ],
+      "tip": "Người Việt hay quên quy tắc patchim: thân có patchim mới thêm 으. 먹다 → 먹으니까 (KHÔNG phải 먹니까), 가다 → 가니까 (KHÔNG phải 가으니까).",
+      "question": "다음 빈칸에 알맞은 것을 고르세요: 지금 비가 ___ 우산을 가져가세요.",
+      "options": ["오니까", "오으니까", "와서", "오면"],
+      "answer": "오니까"
+    },
+    {
+      "type": "grammar",
+      "rule": "～(으)면 (điều kiện/giả định 'nếu/khi')",
+      "explanation": "～(으)면 gắn vào thân động từ/tính từ để diễn đạt điều kiện hoặc giả định ('nếu... thì...', 'khi... thì...'). Thân có patchim → 으면 (먹다 → 먹으면), thân không có patchim → 면 (가다 → 가면). Ví dụ: 시간이 있으면 영화를 봐요 (Nếu có thời gian thì xem phim), 봄이 되면 꽃이 펴요 (Khi đến mùa xuân thì hoa nở).",
+      "examples": [
+        "주말에 시간이 있으면 같이 등산해요.",
+        "이 약을 먹으면 금방 나을 거예요.",
+        "한국에 가면 꼭 연락하세요."
+      ],
+      "tip": "～(으)면 dùng cho cả 'nếu' (điều kiện chưa chắc) lẫn 'khi' (việc lặp lại/tự nhiên). Đừng nhầm 으면 với 으니까: 면 nêu điều kiện, 니까 nêu lý do đã có thật.",
+      "question": "다음 빈칸에 알맞은 것을 고르세요: 내일 시간이 ___ 같이 영화를 봐요.",
+      "options": ["있으면", "있면", "있으니까", "있어서"],
+      "answer": "있으면"
+    },
+    {
+      "type": "grammar",
+      "rule": "(으)니까 vs 아서/어서 (lý do trước mệnh lệnh/đề nghị)",
+      "explanation": "Cả ～(으)니까 và ～아서/어서 đều nêu lý do, nhưng khi vế sau là MỆNH LỆNH (～(으)세요) hoặc ĐỀ NGHỊ/RỦ RÊ (～(으)ㅂ시다, ～(으)ㄹ까요?) thì PHẢI dùng ～(으)니까, KHÔNG được dùng ～아서/어서. Ví dụ ĐÚNG: 피곤하니까 좀 쉽시다 (Vì mệt nên nghỉ một chút đi). Câu 피곤해서 쉽시다 là SAI.",
+      "examples": [
+        "길이 막히니까 지하철을 탑시다.",
+        "더우니까 창문을 여세요.",
+        "위험하니까 빨리 나가세요."
+      ],
+      "tip": "Quy tắc vàng: trước câu mệnh lệnh/rủ rê chỉ dùng (으)니까. '배고프니까 밥 먹읍시다' ĐÚNG, '배고파서 밥 먹읍시다' SAI.",
+      "question": "다음 중 올바른 문장을 고르세요.",
+      "options": ["피곤하니까 좀 쉬세요.", "피곤해서 좀 쉬세요.", "피곤하면 좀 쉬세요고.", "피곤하니까서 좀 쉬세요."],
+      "answer": "피곤하니까 좀 쉬세요."
+    },
+    {
+      "type": "grammar",
+      "rule": "～(으)면 với động từ bất quy tắc ㄹ/ㄷ",
+      "explanation": "Khi thân kết thúc bằng phụ âm ㄹ (như 살다, 만들다) thì gắn 면 mà KHÔNG thêm 으: 살다 → 살면, 만들다 → 만들면. Với động từ bất quy tắc ㄷ (như 듣다, 걷다) thì ㄷ đổi thành ㄹ rồi thêm 으면: 듣다 → 들으면, 걷다 → 걸으면. Quy tắc 으니까 cũng tương tự: 살다 → 사니까 (ㄹ rụng), 듣다 → 들으니까.",
+      "examples": [
+        "서울에 살면 교통이 편리해요.",
+        "이 노래를 들으면 기분이 좋아져요.",
+        "매일 걸으면 건강에 좋아요."
+      ],
+      "tip": "Thân ㄹ không thêm 으: 만들다 → 만들면 (KHÔNG phải 만들으면). Động từ ㄷ bất quy tắc: 듣다 → 들으면 (KHÔNG phải 듣으면).",
+      "question": "다음 빈칸에 알맞은 것을 고르세요: 이 음악을 ___ 마음이 편해져요.",
+      "options": ["들으면", "듣으면", "들면", "듣면"],
+      "answer": "들으면"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "오늘 날씨가 ___ 같이 공원에 가요.",
+      "answer": "좋으니까",
+      "options": ["좋으니까", "좋니까", "좋아서", "좋으면서"],
+      "explanation": "좋다 có patchim ㅎ nên thêm 으니까 → 좋으니까 (vì thời tiết đẹp nên...). Vế sau là lời rủ rê (가요) nên dùng (으)니까 chứ không dùng 아서/어서."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "내일 비가 ___ 우산을 가져가세요.",
+      "answer": "오면",
+      "options": ["오면", "오으면", "와서", "오니까서"],
+      "explanation": "오다 không có patchim nên thêm 면 → 오면 (nếu/khi trời mưa). Đây là điều kiện chưa chắc ('nếu mai mưa') nên dùng ～(으)면."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "지금 길이 많이 ___ 지하철로 갑시다.",
+      "answer": "막히니까",
+      "options": ["막히니까", "막히면", "막혀서", "막히으니까"],
+      "explanation": "막히다 không có patchim (thân kết thúc bằng nguyên âm ㅣ) nên thêm 니까 → 막히니까. Vế sau là câu rủ rê (갑시다) nên bắt buộc dùng (으)니까, không dùng 아서/어서."
+    },
+    {
+      "type": "arrange",
+      "words": ["바쁘니까", "전화할게요", "지금", "나중에"],
+      "answer": "지금 바쁘니까 나중에 전화할게요",
+      "hint": "Vì bây giờ bận nên lát nữa tôi sẽ gọi điện. (바쁘다 không patchim → 바쁘니까)"
+    },
+    {
+      "type": "arrange",
+      "words": ["있으면", "봐요", "시간이", "영화를"],
+      "answer": "시간이 있으면 영화를 봐요",
+      "hint": "Nếu có thời gian thì xem phim. (있다 có patchim → 있으면)"
+    },
+    {
+      "type": "arrange",
+      "words": ["여세요", "창문을", "더우니까"],
+      "answer": "더우니까 창문을 여세요",
+      "hint": "Vì nóng nên hãy mở cửa sổ. (덥다 bất quy tắc ㅂ → 더우니까; vế sau là mệnh lệnh nên dùng 니까)"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "key": "ko-s5-l1",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "기쁘다",
+      "phonetic": "gippeuda",
+      "pos": "adj.",
+      "meaning": "vui mừng, vui sướng",
+      "example": "합격 소식을 듣고 정말 기뻤어요.",
+      "options": ["vui mừng, vui sướng", "buồn bã", "tức giận", "lo lắng"],
+      "answer": "vui mừng, vui sướng"
+    },
+    {
+      "type": "vocab",
+      "word": "행복하다",
+      "phonetic": "haengbokhada",
+      "pos": "adj.",
+      "meaning": "hạnh phúc",
+      "example": "가족과 함께 있을 때 가장 행복해요.",
+      "options": ["hạnh phúc", "sợ hãi", "lười biếng", "yên tĩnh"],
+      "answer": "hạnh phúc"
+    },
+    {
+      "type": "vocab",
+      "word": "슬프다",
+      "phonetic": "seulpeuda",
+      "pos": "adj.",
+      "meaning": "buồn bã",
+      "example": "그 영화가 너무 슬퍼서 눈물이 났어요.",
+      "options": ["buồn bã", "vui mừng", "thân thiện", "siêng năng"],
+      "answer": "buồn bã"
+    },
+    {
+      "type": "vocab",
+      "word": "화나다",
+      "phonetic": "hwanada",
+      "pos": "v.",
+      "meaning": "tức giận, nổi giận",
+      "example": "친구가 약속을 어겨서 화났어요.",
+      "options": ["tức giận, nổi giận", "hạnh phúc", "lo lắng", "căng thẳng"],
+      "answer": "tức giận, nổi giận"
+    },
+    {
+      "type": "vocab",
+      "word": "걱정하다",
+      "phonetic": "geokjeonghada",
+      "pos": "v.",
+      "meaning": "lo lắng",
+      "example": "시험 결과를 너무 걱정하지 마세요.",
+      "options": ["lo lắng", "vui sướng", "năng động", "tức giận"],
+      "answer": "lo lắng"
+    },
+    {
+      "type": "vocab",
+      "word": "무섭다",
+      "phonetic": "museopda",
+      "pos": "adj.",
+      "meaning": "đáng sợ, sợ hãi",
+      "example": "밤에 혼자 집에 있으면 좀 무서워요.",
+      "options": ["đáng sợ, sợ hãi", "buồn bã", "thân thiện", "yên tĩnh"],
+      "answer": "đáng sợ, sợ hãi"
+    },
+    {
+      "type": "vocab",
+      "word": "긴장하다",
+      "phonetic": "ginjanghada",
+      "pos": "v.",
+      "meaning": "căng thẳng, hồi hộp",
+      "example": "면접 전에 너무 긴장했어요.",
+      "options": ["căng thẳng, hồi hộp", "hạnh phúc", "lười biếng", "tức giận"],
+      "answer": "căng thẳng, hồi hộp"
+    },
+    {
+      "type": "vocab",
+      "word": "성격",
+      "phonetic": "seonggyeok",
+      "pos": "n.",
+      "meaning": "tính cách",
+      "example": "제 친구는 성격이 아주 밝아요.",
+      "options": ["tính cách", "cảm xúc", "sự tự tin", "ngôn ngữ"],
+      "answer": "tính cách"
+    },
+    {
+      "type": "vocab",
+      "word": "친절하다",
+      "phonetic": "chinjeolhada",
+      "pos": "adj.",
+      "meaning": "tử tế, thân thiện",
+      "example": "그 직원은 아주 친절해요.",
+      "options": ["tử tế, thân thiện", "lười biếng", "buồn bã", "đáng sợ"],
+      "answer": "tử tế, thân thiện"
+    },
+    {
+      "type": "vocab",
+      "word": "활발하다",
+      "phonetic": "hwalbalhada",
+      "pos": "adj.",
+      "meaning": "năng động, hoạt bát",
+      "example": "그 아이는 성격이 활발해서 친구가 많아요.",
+      "options": ["năng động, hoạt bát", "yên tĩnh, ít nói", "lo lắng", "căng thẳng"],
+      "answer": "năng động, hoạt bát"
+    }
+  ]
+}

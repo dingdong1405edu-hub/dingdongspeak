@@ -1,0 +1,105 @@
+{
+  "key": "ja-s2-l1",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "ごはん",
+      "phonetic": "ごはん / gohan",
+      "pos": "n.",
+      "meaning": "cơm",
+      "example": "まいあさ ごはんを たべます。",
+      "options": ["cơm", "bánh mì", "thịt", "rau"],
+      "answer": "cơm"
+    },
+    {
+      "type": "vocab",
+      "word": "パン",
+      "phonetic": "パン / pan",
+      "pos": "n.",
+      "meaning": "bánh mì",
+      "example": "あさは パンを たべます。",
+      "options": ["bánh mì", "cơm", "cá", "trái cây"],
+      "answer": "bánh mì"
+    },
+    {
+      "type": "vocab",
+      "word": "にく",
+      "phonetic": "にく / niku",
+      "pos": "n.",
+      "meaning": "thịt",
+      "example": "わたしは にくが すきです。",
+      "options": ["thịt", "cá", "rau", "nước"],
+      "answer": "thịt"
+    },
+    {
+      "type": "vocab",
+      "word": "さかな",
+      "phonetic": "さかな / sakana",
+      "pos": "n.",
+      "meaning": "cá",
+      "example": "ばんごはんに さかなを たべます。",
+      "options": ["cá", "thịt", "trái cây", "trà"],
+      "answer": "cá"
+    },
+    {
+      "type": "vocab",
+      "word": "やさい",
+      "phonetic": "やさい / yasai",
+      "pos": "n.",
+      "meaning": "rau",
+      "example": "やさいは からだに いいです。",
+      "options": ["rau", "trái cây", "thịt", "sữa"],
+      "answer": "rau"
+    },
+    {
+      "type": "vocab",
+      "word": "くだもの",
+      "phonetic": "くだもの / kudamono",
+      "pos": "n.",
+      "meaning": "trái cây",
+      "example": "わたしは くだものが だいすきです。",
+      "options": ["trái cây", "rau", "bánh mì", "cá"],
+      "answer": "trái cây"
+    },
+    {
+      "type": "vocab",
+      "word": "みず",
+      "phonetic": "みず / mizu",
+      "pos": "n.",
+      "meaning": "nước",
+      "example": "つめたい みずを のみます。",
+      "options": ["nước", "trà", "cà phê", "sữa"],
+      "answer": "nước"
+    },
+    {
+      "type": "vocab",
+      "word": "コーヒー",
+      "phonetic": "コーヒー / koohii",
+      "pos": "n.",
+      "meaning": "cà phê",
+      "example": "あさ、コーヒーを のみます。",
+      "options": ["cà phê", "trà", "sữa", "nước"],
+      "answer": "cà phê"
+    },
+    {
+      "type": "vocab",
+      "word": "たべる",
+      "phonetic": "たべる / taberu",
+      "pos": "v.",
+      "meaning": "ăn",
+      "example": "ひるごはんを たべます。",
+      "options": ["ăn", "uống", "mua", "ngon"],
+      "answer": "ăn"
+    },
+    {
+      "type": "vocab",
+      "word": "おいしい",
+      "phonetic": "おいしい / oishii",
+      "pos": "adj.",
+      "meaning": "ngon",
+      "example": "この レストランの りょうりは おいしいです。",
+      "options": ["ngon", "đắt", "rẻ", "no"],
+      "answer": "ngon"
+    }
+  ]
+}

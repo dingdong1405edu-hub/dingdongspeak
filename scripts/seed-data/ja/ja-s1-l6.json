@@ -1,0 +1,146 @@
+{
+  "key": "ja-s1-l6",
+  "cards": [
+    {
+      "type": "speaking",
+      "prompt": "お名前は何ですか。",
+      "hint": "Nói tên của bạn. Có thể dùng mẫu '...と申します' (lịch sự) hoặc '...です'. Thêm 'はじめまして' để chào lần đầu gặp.",
+      "samplePhrases": [
+        "わたしの名前は…です。",
+        "…と申します。",
+        "はじめまして。"
+      ],
+      "vocabulary": [
+        { "word": "名前", "meaning": "tên", "example": "わたしの名前はランです。" },
+        { "word": "はじめまして", "meaning": "rất vui được gặp (lần đầu)", "example": "はじめまして、ランです。" },
+        { "word": "申します", "meaning": "tôi tên là (khiêm nhường)", "example": "グエンと申します。" },
+        { "word": "どうぞよろしく", "meaning": "rất mong được giúp đỡ", "example": "どうぞよろしくおねがいします。" }
+      ],
+      "ideas": [
+        "Chào hỏi mở đầu bằng 'はじめまして'",
+        "Nói rõ họ và tên của bạn",
+        "Kết thúc bằng 'よろしくおねがいします' cho lịch sự",
+        "Có thể nói thêm tên gọi thân mật nếu muốn"
+      ],
+      "sampleAnswer": "はじめまして。わたしの名前はグエン・ラインです。ラインと呼んでください。どうぞよろしくおねがいします。\n\n(Dịch: Rất vui được gặp bạn. Tên tôi là Nguyễn Lan. Hãy gọi tôi là Lan. Rất mong được bạn giúp đỡ.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "どこの国の人ですか。",
+      "hint": "Nói quốc tịch của bạn bằng mẫu '...人です'. Ví dụ người Việt là 'ベトナム人'. Có thể nói thêm bạn đến từ đâu.",
+      "samplePhrases": [
+        "わたしはベトナム人です。",
+        "ベトナムから来ました。",
+        "国はベトナムです。"
+      ],
+      "vocabulary": [
+        { "word": "国", "meaning": "đất nước, quốc gia", "example": "どこの国の人ですか。" },
+        { "word": "ベトナム人", "meaning": "người Việt Nam", "example": "わたしはベトナム人です。" },
+        { "word": "出身", "meaning": "quê quán, xuất thân", "example": "ハノイの出身です。" },
+        { "word": "来ました", "meaning": "đã đến (từ đâu)", "example": "ベトナムから来ました。" }
+      ],
+      "ideas": [
+        "Nói rõ quốc tịch bằng mẫu '...人です'",
+        "Cho biết bạn đến từ thành phố nào",
+        "Có thể dùng 'から来ました' để nói nơi xuất phát",
+        "Thêm một câu về quê hương nếu muốn"
+      ],
+      "sampleAnswer": "わたしはベトナム人です。ハノイから来ました。ハノイはベトナムの首都です。とても大きい町です。\n\n(Dịch: Tôi là người Việt Nam. Tôi đến từ Hà Nội. Hà Nội là thủ đô của Việt Nam. Đó là một thành phố rất lớn.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "お仕事は何ですか。学生ですか。",
+      "hint": "Nói nghề nghiệp của bạn (vd: học sinh, nhân viên công ty). Dùng mẫu '...です'. Nếu là học sinh thì nói học gì hoặc học ở đâu.",
+      "samplePhrases": [
+        "わたしは学生です。",
+        "会社員です。",
+        "大学で日本語を勉強しています。"
+      ],
+      "vocabulary": [
+        { "word": "仕事", "meaning": "công việc", "example": "お仕事は何ですか。" },
+        { "word": "学生", "meaning": "học sinh, sinh viên", "example": "わたしは学生です。" },
+        { "word": "会社員", "meaning": "nhân viên công ty", "example": "ちちは会社員です。" },
+        { "word": "大学", "meaning": "trường đại học", "example": "大学で勉強しています。" },
+        { "word": "勉強します", "meaning": "học, học tập", "example": "日本語を勉強します。" }
+      ],
+      "ideas": [
+        "Trả lời rõ là học sinh hay đi làm",
+        "Nếu là học sinh, nói học trường nào, ngành gì",
+        "Nếu đi làm, nói làm ở công ty nào",
+        "Có thể nói thêm bạn thích công việc/việc học đó"
+      ],
+      "sampleAnswer": "はい、わたしは学生です。大学で日本語を勉強しています。日本語はおもしろいです。将来、日本の会社で働きたいです。\n\n(Dịch: Vâng, tôi là sinh viên. Tôi đang học tiếng Nhật ở trường đại học. Tiếng Nhật rất thú vị. Tương lai tôi muốn làm việc ở công ty Nhật.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "何歳ですか。",
+      "hint": "Nói tuổi của bạn bằng mẫu '...歳です'. Lưu ý cách đọc: 20 tuổi là 'はたち'. Có thể nói thêm ngày sinh nếu muốn.",
+      "samplePhrases": [
+        "わたしは…歳です。",
+        "今年…歳になりました。",
+        "二十歳です。"
+      ],
+      "vocabulary": [
+        { "word": "歳", "meaning": "tuổi", "example": "二十歳です。" },
+        { "word": "二十歳", "meaning": "hai mươi tuổi (cách đọc đặc biệt)", "example": "わたしは二十歳です。" },
+        { "word": "今年", "meaning": "năm nay", "example": "今年二十一歳になりました。" },
+        { "word": "誕生日", "meaning": "sinh nhật", "example": "誕生日は五月です。" }
+      ],
+      "ideas": [
+        "Nói rõ tuổi của bạn bằng '...歳です'",
+        "Nhớ 20 tuổi đọc là 'はたち'",
+        "Có thể nói thêm tháng sinh hoặc sinh nhật",
+        "Có thể dùng '...になりました' nếu vừa mới sinh nhật"
+      ],
+      "sampleAnswer": "わたしは二十歳です。今年の五月に二十歳になりました。誕生日は五月十日です。だから、もう大人です。\n\n(Dịch: Tôi hai mươi tuổi. Tháng năm năm nay tôi vừa tròn hai mươi tuổi. Sinh nhật của tôi là ngày mười tháng năm. Vì vậy, tôi đã là người lớn rồi.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "家族は何人ですか。",
+      "hint": "Nói gia đình bạn có mấy người bằng mẫu '...人家族です'. Kể ra các thành viên (bố, mẹ, anh, chị...) bằng cách khiêm nhường.",
+      "samplePhrases": [
+        "わたしの家族は…人家族です。",
+        "ちちとははと…がいます。",
+        "兄弟が…人います。"
+      ],
+      "vocabulary": [
+        { "word": "家族", "meaning": "gia đình", "example": "家族は四人です。" },
+        { "word": "四人家族", "meaning": "gia đình bốn người", "example": "わたしは四人家族です。" },
+        { "word": "ちち", "meaning": "bố (của tôi)", "example": "ちちは会社員です。" },
+        { "word": "はは", "meaning": "mẹ (của tôi)", "example": "ははは先生です。" },
+        { "word": "兄弟", "meaning": "anh chị em", "example": "兄弟が二人います。" }
+      ],
+      "ideas": [
+        "Nói tổng số người trong gia đình",
+        "Kể tên các thành viên: bố, mẹ, anh chị em",
+        "Dùng cách khiêm nhường cho gia đình mình (ちち, はは)",
+        "Có thể nói thêm nghề nghiệp của bố mẹ"
+      ],
+      "sampleAnswer": "わたしの家族は四人家族です。ちちとははと、いもうととわたしです。ちちは会社員で、ははは先生です。いもうとは高校生です。みんな元気です。\n\n(Dịch: Gia đình tôi có bốn người. Đó là bố, mẹ, em gái và tôi. Bố tôi là nhân viên công ty, mẹ tôi là giáo viên. Em gái tôi là học sinh cấp ba. Mọi người đều khỏe mạnh.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "日本語が話せますか。",
+      "hint": "Nói bạn có nói được tiếng Nhật không, ở mức độ nào. Dùng 'すこし' (một chút) cho khiêm tốn. Nói thêm bạn học bao lâu rồi.",
+      "samplePhrases": [
+        "はい、すこし話せます。",
+        "まだ上手じゃありません。",
+        "今、勉強しています。"
+      ],
+      "vocabulary": [
+        { "word": "日本語", "meaning": "tiếng Nhật", "example": "日本語を勉強しています。" },
+        { "word": "話せます", "meaning": "có thể nói được", "example": "日本語が少し話せます。" },
+        { "word": "すこし", "meaning": "một chút, một ít", "example": "すこし話せます。" },
+        { "word": "上手", "meaning": "giỏi, thành thạo", "example": "まだ上手じゃありません。" },
+        { "word": "むずかしい", "meaning": "khó", "example": "日本語はむずかしいです。" }
+      ],
+      "ideas": [
+        "Trả lời có nói được hay không, ở mức độ nào",
+        "Dùng 'すこし' để nói khiêm tốn 'một chút'",
+        "Nói bạn học tiếng Nhật được bao lâu rồi",
+        "Có thể nói cảm nghĩ: khó nhưng thú vị"
+      ],
+      "sampleAnswer": "はい、すこし話せます。でも、まだ上手じゃありません。一年前から日本語を勉強しています。日本語はむずかしいですが、とてもおもしろいです。もっと勉強したいです。\n\n(Dịch: Vâng, tôi nói được một chút. Nhưng tôi vẫn chưa giỏi. Tôi học tiếng Nhật từ một năm trước. Tiếng Nhật khó nhưng rất thú vị. Tôi muốn học nhiều hơn nữa.)"
+    }
+  ]
+}

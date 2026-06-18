@@ -1,0 +1,105 @@
+{
+  "key": "zh-s3-l3",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "天气",
+      "phonetic": "tiānqì",
+      "pos": "n.",
+      "meaning": "thời tiết",
+      "example": "今天天气很好，我们去公园吧。",
+      "options": ["thời tiết", "khí hậu nóng", "bầu trời", "mùa đông"],
+      "answer": "thời tiết"
+    },
+    {
+      "type": "vocab",
+      "word": "冷",
+      "phonetic": "lěng",
+      "pos": "adj.",
+      "meaning": "lạnh",
+      "example": "冬天很冷，你要多穿衣服。",
+      "options": ["lạnh", "nóng", "ấm áp", "mát mẻ"],
+      "answer": "lạnh"
+    },
+    {
+      "type": "vocab",
+      "word": "热",
+      "phonetic": "rè",
+      "pos": "adj.",
+      "meaning": "nóng",
+      "example": "夏天的天气太热了。",
+      "options": ["nóng", "lạnh", "khô ráo", "ẩm ướt"],
+      "answer": "nóng"
+    },
+    {
+      "type": "vocab",
+      "word": "下雨",
+      "phonetic": "xià yǔ",
+      "pos": "v.",
+      "meaning": "mưa, trời mưa",
+      "example": "今天下雨了，别忘了带伞。",
+      "options": ["mưa, trời mưa", "có tuyết rơi", "trời nắng", "có gió"],
+      "answer": "mưa, trời mưa"
+    },
+    {
+      "type": "vocab",
+      "word": "晴",
+      "phonetic": "qíng",
+      "pos": "adj.",
+      "meaning": "trời nắng, quang đãng",
+      "example": "明天是晴天，我们可以去爬山。",
+      "options": ["trời nắng, quang đãng", "trời âm u", "trời mưa", "trời nhiều mây"],
+      "answer": "trời nắng, quang đãng"
+    },
+    {
+      "type": "vocab",
+      "word": "生病",
+      "phonetic": "shēngbìng",
+      "pos": "v.",
+      "meaning": "bị ốm, đổ bệnh",
+      "example": "他生病了，今天不能上班。",
+      "options": ["bị ốm, đổ bệnh", "nghỉ ngơi", "khỏe mạnh", "mệt mỏi"],
+      "answer": "bị ốm, đổ bệnh"
+    },
+    {
+      "type": "vocab",
+      "word": "医院",
+      "phonetic": "yīyuàn",
+      "pos": "n.",
+      "meaning": "bệnh viện",
+      "example": "我妈妈在医院工作。",
+      "options": ["bệnh viện", "bác sĩ", "hiệu thuốc", "trường học"],
+      "answer": "bệnh viện"
+    },
+    {
+      "type": "vocab",
+      "word": "医生",
+      "phonetic": "yīshēng",
+      "pos": "n.",
+      "meaning": "bác sĩ",
+      "example": "医生说我要多休息。",
+      "options": ["bác sĩ", "y tá", "bệnh nhân", "bệnh viện"],
+      "answer": "bác sĩ"
+    },
+    {
+      "type": "vocab",
+      "word": "头",
+      "phonetic": "tóu",
+      "pos": "n.",
+      "meaning": "đầu",
+      "example": "我头很疼，想去医院看看。",
+      "options": ["đầu", "tay", "chân", "bụng"],
+      "answer": "đầu"
+    },
+    {
+      "type": "vocab",
+      "word": "累",
+      "phonetic": "lèi",
+      "pos": "adj.",
+      "meaning": "mệt, mệt mỏi",
+      "example": "我今天工作了一天，很累。",
+      "options": ["mệt, mệt mỏi", "buồn ngủ", "đói bụng", "vui vẻ"],
+      "answer": "mệt, mệt mỏi"
+    }
+  ]
+}

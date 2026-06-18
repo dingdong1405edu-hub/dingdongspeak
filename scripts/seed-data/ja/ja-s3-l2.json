@@ -1,0 +1,100 @@
+{
+  "key": "ja-s3-l2",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "Thì quá khứ thể ます: ました / ませんでした",
+      "explanation": "Để nói về hành động đã xảy ra ở quá khứ, ta đổi đuôi ます thành ました (khẳng định) và ません thành ませんでした (phủ định). Ví dụ: 食べます (ăn) → 食べました (đã ăn) / 食べませんでした (đã không ăn). Đây là thể lịch sự, dùng trong giao tiếp thông thường.",
+      "examples": [
+        "きのう、すしを食べました。",
+        "あさ、コーヒーを飲みませんでした。",
+        "せんしゅう、えいがを見ました。"
+      ],
+      "tip": "Người Việt hay nhầm dùng 食べませんでした cho cả phủ định hiện tại. Nhớ: hiện tại phủ định là ません, còn quá khứ phủ định mới là ませんでした.",
+      "question": "「きのう、テレビを___。」(Hôm qua tôi đã xem ti vi.) Chọn đáp án đúng.",
+      "options": ["見ました", "見ます", "見ませんでした", "見ましょう"],
+      "answer": "見ました"
+    },
+    {
+      "type": "grammar",
+      "rule": "Quá khứ của tính từ い: ～かった / ～くなかった",
+      "explanation": "Tính từ đuôi い khi chia quá khứ thì bỏ い rồi thêm かった. Ví dụ: たかい (đắt) → たかかった (đã đắt). Phủ định quá khứ: bỏ い thêm くなかった (たかくなかった = đã không đắt). Lưu ý đặc biệt: いい (tốt) → よかった. Dạng lịch sự thêm です ở sau: たかかったです.",
+      "examples": [
+        "りょこうは たのしかったです。",
+        "きのうは あつくなかったです。",
+        "テストは むずかしかったです。"
+      ],
+      "tip": "Người Việt hay viết たかいでした — SAI. Tính từ い tự chia quá khứ (たかかった), KHÔNG dùng でした sau tính từ い.",
+      "question": "「えいがは とても___です。」(Bộ phim đã rất thú vị.) Chọn đáp án đúng.",
+      "options": ["おもしろかった", "おもしろいでした", "おもしろくなかった", "おもしろい"],
+      "answer": "おもしろかった"
+    },
+    {
+      "type": "grammar",
+      "rule": "Quá khứ của tính từ な: ～でした / ～じゃありませんでした",
+      "explanation": "Tính từ đuôi な (và danh từ) chia quá khứ bằng cách thêm でした (khẳng định) hoặc じゃありませんでした / ではありませんでした (phủ định). Ví dụ: しずか (yên tĩnh) → しずかでした (đã yên tĩnh) / しずかじゃありませんでした (đã không yên tĩnh). Khác hẳn với tính từ い.",
+      "examples": [
+        "へやは きれいでした。",
+        "まちは にぎやかじゃありませんでした。",
+        "テストは かんたんでした。"
+      ],
+      "tip": "Người Việt hay nhầm tính từ な với tính từ い. Tính từ な dùng でした (giống danh từ), còn tính từ い dùng ～かった.",
+      "question": "「むかし、この まちは___。」(Ngày xưa, thành phố này đã yên tĩnh.) Chọn đáp án đúng.",
+      "options": ["しずかでした", "しずかかった", "しずかました", "しずくなかった"],
+      "answer": "しずかでした"
+    },
+    {
+      "type": "grammar",
+      "rule": "Tính từ bổ nghĩa danh từ (tính từ + danh từ)",
+      "explanation": "Khi tính từ đứng trước danh từ để bổ nghĩa: tính từ い giữ nguyên đuôi い (たかい くるま = chiếc xe đắt); tính từ な thêm な vào trước danh từ (しずかな まち = thành phố yên tĩnh). Đây là điểm khác biệt cốt lõi giữa hai loại tính từ.",
+      "examples": [
+        "あたらしい かばんを かいました。",
+        "しずかな ところが すきです。",
+        "ゆうめいな レストランへ いきました。"
+      ],
+      "tip": "Người Việt hay quên thêm な cho tính từ な khi bổ nghĩa danh từ. Nhớ: きれい + danh từ phải là きれいな (きれいな はな), không phải きれい はな.",
+      "question": "「これは___ほんです。」(Đây là quyển sách thú vị.) Chọn đáp án đúng.",
+      "options": ["おもしろい", "おもしろな", "おもしろいな", "おもしろく"],
+      "answer": "おもしろい"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "きのう、ともだちと えいがを ___。(Hôm qua tôi đã xem phim cùng bạn.)",
+      "answer": "見ました",
+      "options": ["見ました", "見ます", "見ませんでした", "見ましょう"],
+      "explanation": "Hành động đã xảy ra trong quá khứ (きのう = hôm qua) nên dùng thể quá khứ khẳng định ました. 見ます → 見ました."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "せんしゅうの りょこうは とても ___です。(Chuyến du lịch tuần trước đã rất vui.)",
+      "answer": "たのしかった",
+      "options": ["たのしかった", "たのしいでした", "たのしです", "たのしくない"],
+      "explanation": "たのしい là tính từ い. Quá khứ khẳng định: bỏ い thêm かった → たのしかった (thêm です để lịch sự). KHÔNG dùng たのしいでした."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "むかし、この こうえんは ___でした。(Ngày xưa công viên này đã yên tĩnh.)",
+      "answer": "しずか",
+      "options": ["しずか", "しずかい", "しずかく", "しずかかった"],
+      "explanation": "しずか là tính từ な. Quá khứ dùng でした (giống danh từ): しずかでした. Vì câu đã có でした nên chỗ trống chỉ điền しずか."
+    },
+    {
+      "type": "arrange",
+      "words": ["きのうは", "あつく", "です", "あまり", "なかった"],
+      "answer": "きのうはあまりあつくなかったです",
+      "hint": "Hôm qua trời đã không nóng lắm. (あつい là tính từ い, phủ định quá khứ: あつくなかった + です)"
+    },
+    {
+      "type": "arrange",
+      "words": ["を", "あたらしい", "かいました", "くるま"],
+      "answer": "あたらしいくるまをかいました",
+      "hint": "Tôi đã mua một chiếc xe mới. (tính từ い あたらしい bổ nghĩa danh từ くるま)"
+    },
+    {
+      "type": "arrange",
+      "words": ["レストラン", "でした", "きれいな", "あの"],
+      "answer": "あのきれいなレストランでした",
+      "hint": "Đó đã là nhà hàng sạch đẹp ấy. (tính từ な きれい + な bổ nghĩa danh từ)"
+    }
+  ]
+}

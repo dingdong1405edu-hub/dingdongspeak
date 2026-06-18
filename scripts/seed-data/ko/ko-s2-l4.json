@@ -1,0 +1,100 @@
+{
+  "key": "ko-s2-l4",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "에 chỉ đích đến (với 가다/오다)",
+      "explanation": "Trợ từ 에 gắn vào danh từ chỉ nơi chốn để biểu thị ĐÍCH ĐẾN của động từ di chuyển như 가다 (đi), 오다 (đến). Cấu trúc: [Nơi chốn] + 에 + 가다/오다. Khác với 에서, 에 không dùng cho nơi DIỄN RA hành động.",
+      "examples": [
+        "저는 학교에 가요.",
+        "친구가 우리 집에 와요.",
+        "내일 시장에 가요."
+      ],
+      "tip": "Người Việt hay nhầm dùng 에서 cho đích đến. Với 가다/오다 (đi/đến một nơi) phải dùng 에, KHÔNG dùng 에서.",
+      "question": "다음 빈칸에 알맞은 것을 고르세요: 저는 회사___ 가요.",
+      "options": ["에", "에서", "를", "도"],
+      "answer": "에"
+    },
+    {
+      "type": "grammar",
+      "rule": "에서 chỉ nơi diễn ra hành động",
+      "explanation": "Trợ từ 에서 gắn vào danh từ chỉ nơi chốn để biểu thị NƠI một hành động diễn ra (làm gì đó Ở đâu). Cấu trúc: [Nơi chốn] + 에서 + [động từ hành động]. Ví dụ ăn, học, làm việc, mua... tại một địa điểm.",
+      "examples": [
+        "식당에서 밥을 먹어요.",
+        "도서관에서 책을 읽어요.",
+        "집에서 공부해요."
+      ],
+      "tip": "Hành động xảy ra TẠI một nơi (ăn, học, làm việc) thì dùng 에서, không dùng 에.",
+      "question": "다음 빈칸에 알맞은 것을 고르세요: 카페___ 커피를 마셔요.",
+      "options": ["에서", "에", "를", "은"],
+      "answer": "에서"
+    },
+    {
+      "type": "grammar",
+      "rule": "에 chỉ nơi tồn tại (với 있다/없다)",
+      "explanation": "Khi nói một người hoặc vật ở/không ở đâu (sự tồn tại) với động từ 있다 (có/ở) và 없다 (không có/không ở), ta dùng 에. Cấu trúc: [Nơi chốn] + 에 + 있다/없다. Đây là vị trí tồn tại, không phải nơi diễn ra hành động.",
+      "examples": [
+        "고양이가 방에 있어요.",
+        "지금 집에 없어요.",
+        "책상 위에 책이 있어요."
+      ],
+      "tip": "Với 있다/없다 (ở đâu, có ở đâu) luôn dùng 에. Đừng dùng 에서 cho sự tồn tại.",
+      "question": "다음 빈칸에 알맞은 것을 고르세요: 동생이 학교___ 있어요.",
+      "options": ["에", "에서", "를", "이"],
+      "answer": "에"
+    },
+    {
+      "type": "grammar",
+      "rule": "에 chỉ thời điểm (giờ, thứ, ngày)",
+      "explanation": "Trợ từ 에 còn gắn vào danh từ chỉ THỜI ĐIỂM (giờ, thứ, ngày, buổi) để chỉ lúc hành động xảy ra. Ví dụ: 7시에 (lúc 7 giờ), 월요일에 (vào thứ Hai), 주말에 (vào cuối tuần). Lưu ý: 어제/오늘/내일 (hôm qua/hôm nay/ngày mai) KHÔNG đi với 에.",
+      "examples": [
+        "저는 7시에 일어나요.",
+        "월요일에 학교에 가요.",
+        "주말에 친구를 만나요."
+      ],
+      "tip": "Chỉ thời điểm dùng 에, nhưng 어제, 오늘, 내일, 지금 thì KHÔNG thêm 에.",
+      "question": "다음 빈칸에 알맞은 것을 고르세요: 아침 8시___ 밥을 먹어요.",
+      "options": ["에", "에서", "도", "를"],
+      "answer": "에"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "주말에 백화점___ 가요.",
+      "answer": "에",
+      "options": ["에", "에서", "를", "도"],
+      "explanation": "백화점 (trung tâm thương mại) là ĐÍCH ĐẾN của động từ 가다 (đi), nên dùng 에."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "시장___ 과일을 사요.",
+      "answer": "에서",
+      "options": ["에서", "에", "을", "는"],
+      "explanation": "Hành động mua (사다) DIỄN RA tại 시장 (chợ), nên dùng 에서 để chỉ nơi diễn ra hành động."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "지금 어머니가 집___ 없어요.",
+      "answer": "에",
+      "options": ["에", "에서", "를", "이"],
+      "explanation": "Đây là sự tồn tại (có/không ở đâu) với động từ 없다, nên dùng 에. 집에 없어요 nghĩa là không ở nhà."
+    },
+    {
+      "type": "arrange",
+      "words": ["밥을", "식당에서", "먹어요", "저는"],
+      "answer": "저는 식당에서 밥을 먹어요",
+      "hint": "Tôi ăn cơm ở nhà hàng. (Hành động ăn diễn ra tại nhà hàng nên dùng 에서)"
+    },
+    {
+      "type": "arrange",
+      "words": ["가요", "친구가", "학교에"],
+      "answer": "친구가 학교에 가요",
+      "hint": "Bạn tôi đi đến trường. (Đích đến với 가다 dùng 에)"
+    },
+    {
+      "type": "arrange",
+      "words": ["있어요", "고양이가", "방에"],
+      "answer": "고양이가 방에 있어요",
+      "hint": "Con mèo ở trong phòng. (Sự tồn tại với 있다 dùng 에)"
+    }
+  ]
+}

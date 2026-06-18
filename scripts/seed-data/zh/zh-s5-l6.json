@@ -1,0 +1,149 @@
+{
+  "key": "zh-s5-l6",
+  "cards": [
+    {
+      "type": "speaking",
+      "prompt": "你以后想做什么工作？",
+      "hint": "Nói tên công việc bạn muốn làm; giải thích lý do bạn thích nó; nói bạn cần chuẩn bị gì cho công việc đó.",
+      "samplePhrases": [
+        "我以后想当……",
+        "因为我喜欢……",
+        "为了这个工作，我要……"
+      ],
+      "vocabulary": [
+        { "word": "工作", "meaning": "công việc, làm việc", "example": "我以后想找一个有意思的工作。" },
+        { "word": "老师", "meaning": "giáo viên", "example": "我以后想当一名中文老师。" },
+        { "word": "医生", "meaning": "bác sĩ", "example": "我哥哥是医生，我也想当医生。" },
+        { "word": "努力", "meaning": "cố gắng, nỗ lực", "example": "为了这个工作，我要努力学习。" },
+        { "word": "梦想", "meaning": "ước mơ", "example": "当老师是我的梦想。" }
+      ],
+      "ideas": [
+        "Chọn một nghề cụ thể (giáo viên, bác sĩ, kỹ sư...) và nói rõ ra.",
+        "Giải thích vì sao bạn thích nghề đó (thú vị, giúp được người khác...).",
+        "Nói bạn cần học hoặc rèn luyện kỹ năng gì để đạt được.",
+        "Có thể nhắc đến tấm gương trong gia đình hoặc người bạn ngưỡng mộ."
+      ],
+      "sampleAnswer": "我以后想当一名中文老师。因为我很喜欢中文，也喜欢跟别人交流。我觉得教别人学习是一件很有意思的事情。为了这个梦想，我现在要努力学习，提高自己的水平。我相信只要认真学习，以后一定能找到喜欢的工作。\n\n(Dịch: Sau này tôi muốn làm một giáo viên tiếng Trung. Vì tôi rất thích tiếng Trung, cũng thích giao tiếp với người khác. Tôi thấy dạy người khác học là một việc rất thú vị. Để thực hiện ước mơ này, bây giờ tôi phải cố gắng học, nâng cao trình độ của mình. Tôi tin rằng chỉ cần học hành nghiêm túc, sau này nhất định sẽ tìm được công việc mình thích.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "你有什么学习计划？",
+      "hint": "Nói mục tiêu học tập của bạn; kế hoạch cụ thể mỗi ngày hoặc mỗi tuần; bạn muốn đạt được kết quả gì.",
+      "samplePhrases": [
+        "我的学习计划是……",
+        "我打算每天……",
+        "我希望能够……"
+      ],
+      "vocabulary": [
+        { "word": "计划", "meaning": "kế hoạch", "example": "我有一个新的学习计划。" },
+        { "word": "复习", "meaning": "ôn tập", "example": "我每天晚上都会复习生词。" },
+        { "word": "提高", "meaning": "nâng cao", "example": "我想提高我的口语水平。" },
+        { "word": "坚持", "meaning": "kiên trì, duy trì", "example": "学习外语一定要坚持。" },
+        { "word": "水平", "meaning": "trình độ", "example": "我的中文水平比以前高了。" }
+      ],
+      "ideas": [
+        "Nêu mục tiêu chính: nâng cao nghe, nói, đọc hay viết.",
+        "Mô tả thói quen hằng ngày: học từ mới, ôn bài, luyện nói.",
+        "Nói về tần suất: mỗi ngày bao nhiêu phút, mỗi tuần mấy lần.",
+        "Nhấn mạnh sự kiên trì và kết quả mong muốn (thi HSK, nói trôi chảy...)."
+      ],
+      "sampleAnswer": "我的学习计划很简单。我打算每天学习二十个新词，晚上再复习一遍。每个星期我会看一部中文电影，练习听力。我还想多跟中国朋友聊天，提高我的口语水平。我觉得学习最重要的是坚持，所以我一定会努力完成我的计划。\n\n(Dịch: Kế hoạch học tập của tôi rất đơn giản. Tôi dự định mỗi ngày học hai mươi từ mới, buổi tối ôn lại một lần nữa. Mỗi tuần tôi sẽ xem một bộ phim tiếng Trung để luyện nghe. Tôi cũng muốn nói chuyện nhiều với bạn bè Trung Quốc để nâng cao khả năng nói. Tôi thấy điều quan trọng nhất khi học là sự kiên trì, nên tôi nhất định sẽ cố gắng hoàn thành kế hoạch của mình.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "你打算去哪里旅游？",
+      "hint": "Nói địa điểm bạn dự định đi; lý do chọn nơi đó; bạn muốn làm gì khi đến đó.",
+      "samplePhrases": [
+        "我打算去……旅游",
+        "听说那里……",
+        "到了那儿，我想……"
+      ],
+      "vocabulary": [
+        { "word": "打算", "meaning": "dự định, định", "example": "我打算明年去中国旅游。" },
+        { "word": "旅游", "meaning": "du lịch", "example": "我很喜欢一个人去旅游。" },
+        { "word": "风景", "meaning": "phong cảnh", "example": "那个地方的风景非常漂亮。" },
+        { "word": "有名", "meaning": "nổi tiếng", "example": "北京有很多有名的地方。" },
+        { "word": "照相", "meaning": "chụp ảnh", "example": "我想在长城上照相。" }
+      ],
+      "ideas": [
+        "Chọn một nơi cụ thể (Bắc Kinh, Thượng Hải, một thành phố trong nước...).",
+        "Giải thích vì sao chọn nơi đó (phong cảnh đẹp, nổi tiếng, đồ ăn ngon...).",
+        "Nói các hoạt động: tham quan, chụp ảnh, ăn món đặc sản.",
+        "Có thể nói đi với ai và đi vào thời gian nào."
+      ],
+      "sampleAnswer": "我打算明年夏天去北京旅游。听说北京有很多有名的地方，比如长城和故宫。我特别想去爬长城，在上面照很多照片。我还想尝一尝北京烤鸭，听说非常好吃。如果有时间，我也想去看看中国的大学。我相信这次旅游一定会很难忘。\n\n(Dịch: Tôi dự định mùa hè năm sau đi du lịch Bắc Kinh. Nghe nói Bắc Kinh có rất nhiều nơi nổi tiếng, ví dụ như Vạn Lý Trường Thành và Cố Cung. Tôi đặc biệt muốn leo Trường Thành, chụp thật nhiều ảnh ở trên đó. Tôi còn muốn nếm thử vịt quay Bắc Kinh, nghe nói rất ngon. Nếu có thời gian, tôi cũng muốn đi xem các trường đại học của Trung Quốc. Tôi tin chuyến du lịch lần này nhất định sẽ rất đáng nhớ.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "你想学好中文吗？为什么？",
+      "hint": "Trả lời rõ có hay không; nêu lý do bạn muốn học giỏi tiếng Trung; nói tiếng Trung giúp ích gì cho bạn.",
+      "samplePhrases": [
+        "我当然想学好中文",
+        "因为……对我很有用",
+        "学好中文以后，我可以……"
+      ],
+      "vocabulary": [
+        { "word": "学好", "meaning": "học giỏi, học tốt", "example": "我希望能学好中文。" },
+        { "word": "中文", "meaning": "tiếng Trung", "example": "中文越来越重要了。" },
+        { "word": "有用", "meaning": "có ích, hữu dụng", "example": "学中文对找工作很有用。" },
+        { "word": "机会", "meaning": "cơ hội", "example": "会中文能给我更多的机会。" },
+        { "word": "交流", "meaning": "giao lưu, trao đổi", "example": "我想用中文跟中国人交流。" }
+      ],
+      "ideas": [
+        "Khẳng định rõ ràng: có, bạn rất muốn học giỏi tiếng Trung.",
+        "Lý do thực dụng: có ích cho công việc, du lịch, kiếm tiền.",
+        "Lý do cá nhân: thích văn hóa Trung Quốc, muốn kết bạn.",
+        "Nói về cơ hội tương lai khi giỏi tiếng Trung (việc làm, học tập)."
+      ],
+      "sampleAnswer": "我当然想学好中文。因为现在学中文的人越来越多，会中文对我以后找工作很有用。如果我能用中文跟中国人交流，就会有更多的机会。而且我很喜欢中国的文化和电影，学好中文以后我就能看懂更多东西。所以我一定会坚持学下去。\n\n(Dịch: Tôi đương nhiên muốn học giỏi tiếng Trung. Vì bây giờ người học tiếng Trung ngày càng nhiều, biết tiếng Trung rất có ích cho việc tìm việc làm sau này của tôi. Nếu tôi có thể dùng tiếng Trung giao tiếp với người Trung Quốc thì sẽ có nhiều cơ hội hơn. Hơn nữa tôi rất thích văn hóa và phim ảnh Trung Quốc, sau khi học giỏi tiếng Trung tôi sẽ hiểu được nhiều thứ hơn. Vì vậy tôi nhất định sẽ kiên trì học tiếp.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "你周末有什么打算？",
+      "hint": "Nói kế hoạch cuối tuần của bạn; bạn làm việc đó với ai; vì sao bạn thích những hoạt động đó.",
+      "samplePhrases": [
+        "这个周末我打算……",
+        "我想跟……一起……",
+        "因为周末我想好好休息"
+      ],
+      "vocabulary": [
+        { "word": "周末", "meaning": "cuối tuần", "example": "我周末一般在家休息。" },
+        { "word": "休息", "meaning": "nghỉ ngơi", "example": "工作了一周，周末应该好好休息。" },
+        { "word": "运动", "meaning": "vận động, thể thao", "example": "周末我喜欢去公园运动。" },
+        { "word": "见面", "meaning": "gặp mặt", "example": "周末我要跟朋友见面。" },
+        { "word": "逛街", "meaning": "đi dạo phố, đi mua sắm", "example": "我和妈妈打算去逛街。" }
+      ],
+      "ideas": [
+        "Liệt kê hoạt động cụ thể: nghỉ ngơi, gặp bạn, vận động, mua sắm.",
+        "Nói rõ làm với ai (bạn bè, gia đình) và ở đâu.",
+        "Giải thích lý do: thư giãn sau một tuần bận rộn.",
+        "Có thể nói đến cả việc học hoặc làm thêm vào cuối tuần."
+      ],
+      "sampleAnswer": "这个周末我有不少打算。星期六上午我想睡一个懒觉，好好休息一下。下午我打算跟朋友一起去打篮球，运动以后特别舒服。星期天我要陪妈妈去逛街，再吃一顿好吃的。晚上我会复习一下中文，准备下周的考试。我觉得这样的周末又轻松又有意思。\n\n(Dịch: Cuối tuần này tôi có khá nhiều dự định. Sáng thứ Bảy tôi muốn ngủ nướng, nghỉ ngơi cho thoải mái. Buổi chiều tôi định cùng bạn đi chơi bóng rổ, vận động xong rất dễ chịu. Chủ nhật tôi sẽ đi dạo phố với mẹ, rồi ăn một bữa ngon. Buổi tối tôi sẽ ôn lại tiếng Trung, chuẩn bị cho kỳ thi tuần sau. Tôi thấy một cuối tuần như vậy vừa thoải mái lại vừa thú vị.)"
+    },
+    {
+      "type": "speaking",
+      "prompt": "你将来想住在哪个城市？",
+      "hint": "Nói tên thành phố bạn muốn sống; nêu lý do (việc làm, môi trường, gia đình); mô tả cuộc sống bạn mong muốn ở đó.",
+      "samplePhrases": [
+        "我将来想住在……",
+        "因为那个城市……",
+        "我希望以后的生活……"
+      ],
+      "vocabulary": [
+        { "word": "将来", "meaning": "tương lai, sau này", "example": "将来我想住在大城市。" },
+        { "word": "城市", "meaning": "thành phố", "example": "上海是一个很大的城市。" },
+        { "word": "方便", "meaning": "tiện lợi", "example": "在城市里生活很方便。" },
+        { "word": "环境", "meaning": "môi trường", "example": "我喜欢环境好的地方。" },
+        { "word": "生活", "meaning": "cuộc sống, sinh sống", "example": "我希望以后的生活又方便又舒服。" }
+      ],
+      "ideas": [
+        "Chọn một thành phố cụ thể (thành phố lớn hoặc quê hương).",
+        "Lý do: cơ hội việc làm, tiện lợi, môi trường tốt, gần gia đình.",
+        "So sánh ưu điểm của thành phố đó (sống động vs yên tĩnh).",
+        "Mô tả cuộc sống mơ ước: nhà ở, công việc, thời gian rảnh."
+      ],
+      "sampleAnswer": "将来我想住在一个大城市，比如上海。因为大城市的工作机会比较多，生活也很方便。那里有很多公司，我可以找到自己喜欢的工作。我希望以后能在那儿买一套小房子，每天上班，周末跟朋友出去玩。虽然大城市有点儿忙，但是我觉得那样的生活很有意思。\n\n(Dịch: Sau này tôi muốn sống ở một thành phố lớn, ví dụ như Thượng Hải. Vì thành phố lớn có khá nhiều cơ hội việc làm, cuộc sống cũng rất tiện lợi. Ở đó có nhiều công ty, tôi có thể tìm được công việc mình thích. Tôi mong sau này có thể mua một căn nhà nhỏ ở đó, mỗi ngày đi làm, cuối tuần đi chơi với bạn bè. Tuy thành phố lớn hơi bận rộn, nhưng tôi thấy cuộc sống như vậy rất thú vị.)"
+    }
+  ]
+}

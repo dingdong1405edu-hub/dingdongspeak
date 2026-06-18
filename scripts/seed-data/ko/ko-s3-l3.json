@@ -1,0 +1,105 @@
+{
+  "key": "ko-s3-l3",
+  "cards": [
+    {
+      "type": "vocab",
+      "word": "날씨",
+      "phonetic": "nalssi",
+      "pos": "n.",
+      "meaning": "thời tiết",
+      "example": "오늘 날씨가 정말 좋아요.",
+      "options": ["thời tiết", "mùa", "bầu trời", "nhiệt độ"],
+      "answer": "thời tiết"
+    },
+    {
+      "type": "vocab",
+      "word": "덥다",
+      "phonetic": "deopda",
+      "pos": "adj.",
+      "meaning": "nóng (nực)",
+      "example": "여름에는 날씨가 너무 더워요.",
+      "options": ["nóng (nực)", "lạnh", "ấm áp", "mát mẻ"],
+      "answer": "nóng (nực)"
+    },
+    {
+      "type": "vocab",
+      "word": "춥다",
+      "phonetic": "chupda",
+      "pos": "adj.",
+      "meaning": "lạnh",
+      "example": "겨울에는 정말 추워요.",
+      "options": ["lạnh", "nóng", "ẩm ướt", "khô"],
+      "answer": "lạnh"
+    },
+    {
+      "type": "vocab",
+      "word": "따뜻하다",
+      "phonetic": "ttatteuthada",
+      "pos": "adj.",
+      "meaning": "ấm áp",
+      "example": "봄 날씨가 따뜻해요.",
+      "options": ["ấm áp", "nóng bức", "lạnh giá", "se lạnh"],
+      "answer": "ấm áp"
+    },
+    {
+      "type": "vocab",
+      "word": "비",
+      "phonetic": "bi",
+      "pos": "n.",
+      "meaning": "mưa",
+      "example": "오늘 비가 많이 와요.",
+      "options": ["mưa", "tuyết", "gió", "mây"],
+      "answer": "mưa"
+    },
+    {
+      "type": "vocab",
+      "word": "눈",
+      "phonetic": "nun",
+      "pos": "n.",
+      "meaning": "tuyết",
+      "example": "겨울에 눈이 와요.",
+      "options": ["tuyết", "mưa", "sương mù", "băng"],
+      "answer": "tuyết"
+    },
+    {
+      "type": "vocab",
+      "word": "아프다",
+      "phonetic": "apeuda",
+      "pos": "adj.",
+      "meaning": "đau, ốm, bị bệnh",
+      "example": "머리가 너무 아파요.",
+      "options": ["đau, ốm, bị bệnh", "mệt mỏi", "khỏe mạnh", "buồn ngủ"],
+      "answer": "đau, ốm, bị bệnh"
+    },
+    {
+      "type": "vocab",
+      "word": "병원",
+      "phonetic": "byeongwon",
+      "pos": "n.",
+      "meaning": "bệnh viện",
+      "example": "아파서 병원에 갔어요.",
+      "options": ["bệnh viện", "hiệu thuốc", "phòng khám răng", "ngân hàng"],
+      "answer": "bệnh viện"
+    },
+    {
+      "type": "vocab",
+      "word": "감기",
+      "phonetic": "gamgi",
+      "pos": "n.",
+      "meaning": "cảm cúm, cảm lạnh",
+      "example": "감기에 걸려서 콧물이 나요.",
+      "options": ["cảm cúm, cảm lạnh", "đau đầu", "sốt", "ho"],
+      "answer": "cảm cúm, cảm lạnh"
+    },
+    {
+      "type": "vocab",
+      "word": "쉬다",
+      "phonetic": "swida",
+      "pos": "v.",
+      "meaning": "nghỉ ngơi",
+      "example": "피곤해서 집에서 쉬어요.",
+      "options": ["nghỉ ngơi", "ngủ", "làm việc", "chơi"],
+      "answer": "nghỉ ngơi"
+    }
+  ]
+}

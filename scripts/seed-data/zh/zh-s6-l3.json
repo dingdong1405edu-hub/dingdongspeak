@@ -1,0 +1,135 @@
+{
+  "key": "zh-s6-l3",
+  "cards": [
+    {
+      "type": "grammar",
+      "rule": "Cấu trúc cơ bản câu bị động 被",
+      "explanation": "Câu chữ 被 diễn đạt ý bị động: đối tượng bị một hành động tác động lên. Cấu trúc: Tân ngữ (người/vật bị tác động) + 被 + (chủ thể gây ra hành động) + động từ + thành phần khác. Giống câu chữ 把, động từ KHÔNG được đứng trơ một mình, phải có bổ ngữ kết quả, 了 hoặc thành phần khác đi kèm. Chủ thể sau 被 có thể lược bỏ nếu không rõ hoặc không cần nói.",
+      "examples": [
+        "杯子被弟弟打破了。",
+        "我的自行车被偷了。",
+        "蛋糕被妹妹吃完了。"
+      ],
+      "tip": "Người Việt hay quên thêm thành phần sau động từ. Không nói '杯子被弟弟打' mà phải nói '杯子被弟弟打破了'. Động từ trong câu chữ 被 hầu như luôn có bổ ngữ kết quả hoặc 了 đi kèm.",
+      "question": "请选择正确的句子。",
+      "options": [
+        "杯子被弟弟打破了。",
+        "杯子被弟弟打。",
+        "弟弟杯子被打破了。",
+        "杯子打破被弟弟了。"
+      ],
+      "answer": "杯子被弟弟打破了。"
+    },
+    {
+      "type": "grammar",
+      "rule": "Vị trí của phủ định và trạng ngữ trong câu chữ 被",
+      "explanation": "Trong câu chữ 被, các từ phủ định (没/不) và năng nguyện động từ (要/会/可能) phải đặt TRƯỚC 被, không được đặt sau. Ví dụ: 我的手机没被偷 (điện thoại của tôi không bị mất cắp), không nói 我的手机被没偷.",
+      "examples": [
+        "我的钱包没被偷。",
+        "这件事不会被发现。",
+        "他可能被老板批评了。"
+      ],
+      "tip": "Người Việt hay đặt 没/不 sau 被 do dịch sát theo tiếng Việt. Hãy nhớ: 没/不/会/要 luôn đứng TRƯỚC 被.",
+      "question": "我的手机 ______ 偷。",
+      "options": [
+        "没被",
+        "被没",
+        "被偷没",
+        "偷没被"
+      ],
+      "answer": "没被"
+    },
+    {
+      "type": "grammar",
+      "rule": "Câu bị động với 让 và 叫",
+      "explanation": "Ngoài 被, khẩu ngữ thường dùng 让 hoặc 叫 để diễn đạt bị động với nghĩa tương tự. Cấu trúc giống nhau: Tân ngữ + 让/叫 + chủ thể + động từ + thành phần khác. Khác với 被, khi dùng 让/叫 thì BẮT BUỘC phải nêu rõ chủ thể gây ra hành động (không được lược bỏ).",
+      "examples": [
+        "我的雨伞让弟弟拿走了。",
+        "蛋糕叫小狗吃了。",
+        "玻璃叫他打破了。"
+      ],
+      "tip": "Người Việt hay lược bỏ chủ thể sau 让/叫 như khi dùng 被. Nhớ rằng dùng 让/叫 thì phải có chủ thể: nói '雨伞让弟弟拿走了', không nói '雨伞让拿走了'.",
+      "question": "我的雨伞 ______ 拿走了。",
+      "options": [
+        "让弟弟",
+        "让",
+        "被弟弟让",
+        "弟弟让走"
+      ],
+      "answer": "让弟弟"
+    },
+    {
+      "type": "grammar",
+      "rule": "Lựa chọn giữa câu bị động và câu chủ động",
+      "explanation": "Câu chữ 被 thường dùng khi sự việc mang ý không mong muốn, bất lợi, hoặc khi muốn nhấn mạnh đối tượng bị tác động. Đối tượng đứng đầu câu phải là người/vật xác định mà cả hai bên đều biết. Nếu chỉ kể việc tốt, trung tính một cách thông thường, người Hoa thường dùng câu chủ động.",
+      "examples": [
+        "我的电脑被人弄坏了。",
+        "作业被老师收走了。",
+        "那本书被借走了。"
+      ],
+      "tip": "Câu chữ 被 thường mang sắc thái bị động bất lợi (mất mát, hư hỏng, bị phê bình). Đừng lạm dụng 被 cho những việc tích cực bình thường như trong tiếng Anh 'be done'.",
+      "question": "下面哪个句子使用 被 最自然？",
+      "options": [
+        "我的钱包被小偷偷走了。",
+        "我被吃了早饭。",
+        "我被去了学校。",
+        "他被是老师。"
+      ],
+      "answer": "我的钱包被小偷偷走了。"
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "杯子 ___ 弟弟打破了。",
+      "answer": "被",
+      "options": [
+        "被",
+        "把",
+        "给",
+        "在"
+      ],
+      "explanation": "Cấu trúc câu bị động: Tân ngữ + 被 + chủ thể + động từ + thành phần khác. Ở đây '杯子' (cái cốc) là đối tượng bị tác động, '弟弟' là người gây ra hành động, nên dùng 被."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "我的自行车被人偷 ___ 了。",
+      "answer": "走",
+      "options": [
+        "走",
+        "在",
+        "被",
+        "把"
+      ],
+      "explanation": "Động từ trong câu chữ 被 phải có thành phần đi kèm. '偷走' (lấy trộm đi mất) dùng bổ ngữ xu hướng '走' để chỉ kết quả xe đạp đã bị lấy đi."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "蛋糕 ___ 妹妹吃完了。",
+      "answer": "让",
+      "options": [
+        "让",
+        "把",
+        "在",
+        "和"
+      ],
+      "explanation": "让/叫 cũng dùng để diễn đạt bị động trong khẩu ngữ. '蛋糕让妹妹吃完了' nghĩa là bánh kem bị em gái ăn hết rồi, tương đương với dùng 被."
+    },
+    {
+      "type": "arrange",
+      "words": ["弟弟", "打破", "杯子", "被", "了"],
+      "answer": "杯子被弟弟打破了",
+      "hint": "Cái cốc bị em trai làm vỡ rồi. (Cấu trúc: Tân ngữ + 被 + chủ thể + động từ + bổ ngữ kết quả + 了)"
+    },
+    {
+      "type": "arrange",
+      "words": ["偷走", "被", "自行车", "我的", "了", "人"],
+      "answer": "我的自行车被人偷走了",
+      "hint": "Xe đạp của tôi bị người ta lấy trộm mất rồi. (Cấu trúc: Tân ngữ + 被 + 人 + động từ + bổ ngữ + 了)"
+    },
+    {
+      "type": "arrange",
+      "words": ["让", "拿走", "妹妹", "雨伞", "我的", "了"],
+      "answer": "我的雨伞让妹妹拿走了",
+      "hint": "Cây dù của tôi bị em gái cầm đi mất rồi. (Cấu trúc: Tân ngữ + 让 + chủ thể + động từ + bổ ngữ + 了)"
+    }
+  ]
+}
